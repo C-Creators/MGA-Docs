@@ -4,6 +4,9 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	server: {
+		port: 4329, // Uncommon port to avoid conflicts with other local apps
+	},
 	integrations: [
 		starlight({
 			title: 'MyGPTAssistants Documentation',
@@ -54,7 +57,7 @@ export default defineConfig({
 				},
 			],
 			editLink: {
-				baseUrl: 'https://github.com/C-Creators/mygptassistants/edit/main/docs-site/',
+				baseUrl: 'https://github.com/C-Creators/MGA-Docs/edit/main/',
 			},
 		}),
 	],
