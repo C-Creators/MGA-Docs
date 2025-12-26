@@ -12,7 +12,7 @@ export default defineConfig({
 			title: 'MyGPTAssistants Documentation',
 			description: 'Complete guide to MyGPTAssistants platform - AI Assistants and CRM tools',
 			logo: {
-				src: './src/assets/logo.svg',
+				src: './src/assets/logo.png',
 				alt: 'MyGPTAssistants'
 			},
 			social: [
