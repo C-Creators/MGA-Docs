@@ -1,0 +1,163 @@
+---
+title: Analytics
+description: See how your assistant is performing and what customers are asking about
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Your Assistant's Performance Report <Badge text="Insights" variant="tip" size="small" />
+
+Analytics show you how well your assistant is doing their job. See how many customers they've helped, what questions come up most often, and which channels are busiest. It's like reviewing your team member's performance metrics to understand their strengths and where they could improve.
+
+![Bot analytics dashboard](../../../assets/screenshots/assistants-analytics.png)
+
+## What You Can Track
+
+<CardGrid>
+  <Card title="Chat Activity" icon="comment">
+    **How Busy They Are**
+    
+    See total conversations, messages per chat, and how engaged customers are over time.
+  </Card>
+  <Card title="Performance" icon="rocket">
+    **How Well They're Doing**
+    
+    Check response speed, how many questions they solved, and when they needed human help.
+  </Card>
+  <Card title="Customer Happiness" icon="star">
+    **What Customers Think**
+    
+    View satisfaction ratings and how customers feel about the conversations.
+  </Card>
+  <Card title="Popular Topics" icon="list-format">
+    **What People Ask About**
+    
+    Discover which subjects customers bring up most frequently.
+  </Card>
+</CardGrid>
+
+## Conversation Numbers <Badge text="Key Metric" variant="note" size="small" />
+
+See how many conversations your assistant has handled and how many messages were exchanged. This tells you how active they are and how much customers are engaging with them.
+
+<Tabs>
+  <TabItem label="Activity Numbers">
+    | Metric | What It Shows |
+    |--------|--------------|
+    | **Total Conversations** | All chats your assistant has had |
+    | **Messages Sent** | How many responses they gave |
+    | **Avg. Messages/Chat** | How deep conversations go |
+    | **Daily/Weekly Trends** | When they're busiest |
+  </TabItem>
+  <TabItem label="Engagement Numbers">
+    | Metric | What It Shows |
+    |--------|--------------|
+    | **Chat Duration** | How long customers stay engaged |
+    | **Return Visitors** | People who come back |
+    | **Quick Exits** | Customers who leave fast |
+    | **Resolved Chats** | Questions successfully answered |
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Understanding the Numbers">
+- **More messages per chat** usually means customers are finding helpful answers
+- **Very short conversations** might mean your assistant didn't understand or couldn't help
+- **Track over time** – is your assistant getting better?
+</Aside>
+
+## Where Customers Are Chatting
+
+See which channels customers prefer – your website, Instagram, Telegram, etc. This helps you know where to focus your efforts and where your assistant is working hardest.
+
+<CardGrid>
+  <Card title="Website" icon="laptop">
+    How the chat widget on your site is performing.
+  </Card>
+  <Card title="Social Media" icon="external">
+    Activity from Instagram, Facebook, and other social channels.
+  </Card>
+  <Card title="Messaging Apps" icon="comment">
+    WhatsApp, Telegram, and Discord conversations.
+  </Card>
+  <Card title="Custom Apps" icon="setting">
+    Usage from your own integrations via the API.
+  </Card>
+</CardGrid>
+
+## When Customers Need Help <Badge text="Timing" variant="caution" size="small" />
+
+See what times and days your assistant is busiest. This helps you know when customers need the most support and when might be a good time to make updates.
+
+<Aside type="tip" title="Timing Insights">
+- **Peak hours** show when customers need the most help
+- **Quiet periods** are good times to update training materials
+- **Weekend vs. weekday** patterns help you plan ahead
+</Aside>
+
+## Getting Useful Insights
+
+<Steps>
+1. **Check in weekly**
+   
+   Set a regular time to review how your assistant is performing.
+
+2. **Look for patterns**
+   
+   Notice trends in conversation volume, common topics, and timing.
+
+3. **Spot issues early**
+   
+   Low engagement or customers leaving quickly may mean something needs attention.
+
+4. **Make improvements**
+   
+   Use what you learn to add training materials, adjust settings, or refine how your assistant responds.
+</Steps>
+
+Use analytics to guide decisions: if many customers ask about a topic, make sure your assistant has great information on it. If conversations are too short, they might need more training.
+
+## Dashboard Features
+
+<CardGrid>
+  <Card title="Date Range" icon="document">
+    Look at specific time periods to compare performance before and after changes.
+  </Card>
+  <Card title="Export Reports" icon="external">
+    Download your data as spreadsheets or PDFs for deeper analysis.
+  </Card>
+  <Card title="Real-Time View" icon="rocket">
+    **<Badge text="Live" variant="success" size="small" />** Watch conversations happening right now.
+  </Card>
+  <Card title="Alerts" icon="warning">
+    Get notified when something unusual happens or hits certain thresholds.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Pro Tip">
+Export your analytics monthly to track long-term progress. A simple spreadsheet comparing month-over-month numbers shows your assistant's growth over time.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Conversations"
+    description="Read through individual customer chats"
+    href="/assistants/conversations/"
+  />
+  <LinkCard
+    title="Data Sources"
+    description="Add training materials based on common questions"
+    href="/assistants/data-sources/"
+  />
+  <LinkCard
+    title="Playground"
+    description="Practice and test improvements"
+    href="/assistants/playground/"
+  />
+  <LinkCard
+    title="Settings"
+    description="Adjust how your assistant behaves"
+    href="/assistants/settings/"
+  />
+</CardGrid>

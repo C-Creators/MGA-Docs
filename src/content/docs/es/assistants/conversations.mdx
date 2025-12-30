@@ -1,0 +1,149 @@
+---
+title: Conversaciones
+description: Revisa cómo está rindiendo tu asistente con clientes reales
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+## Revisando el Trabajo de Tu Asistente <Badge text="Datos en Vivo" variant="success" size="small" />
+
+La página de Conversaciones es como sentarte a observar las interacciones de tu asistente con los clientes. Puedes leer cada chat que han tenido, ver qué preguntas hacen los clientes y verificar si tu asistente está haciendo un buen trabajo. Piensa en ello como una evaluación de rendimiento para tu miembro del equipo.
+
+![Historial de conversaciones](../../../../assets/screenshots/assistants-conversations.png)
+
+## Qué Puedes Ver
+
+<CardGrid>
+  <Card title="Transcripciones Completas" icon="document">
+    Lee cada palabra de cada conversación, con marcas de tiempo mostrando cuándo sucedieron las cosas.
+  </Card>
+  <Card title="Todos los Canales" icon="external">
+    Ve conversaciones de todas partes – tu sitio web, Instagram, WhatsApp y más.
+  </Card>
+  <Card title="Encontrar Chats Específicos" icon="magnifier">
+    Busca conversaciones particulares por palabra clave, fecha o dónde ocurrieron.
+  </Card>
+  <Card title="Ver en Vivo" icon="rocket">
+    **<Badge text="En Vivo" variant="success" size="small" />** Observa conversaciones mientras están sucediendo en tiempo real.
+  </Card>
+</CardGrid>
+
+## Navegando Conversaciones
+
+Las conversaciones se listan con las más nuevas arriba. Puedes ver cuándo ocurrió cada chat, de qué plataforma vino y una vista previa de lo que se discutió. Haz clic en cualquier conversación para leer el intercambio completo.
+
+<Aside type="tip" title="Revisiones Regulares">
+- Revisa conversaciones recientes **cada día o semana** para detectar problemas temprano
+- Busca patrones – si muchos clientes preguntan lo mismo, tu asistente podría necesitar mejor entrenamiento
+- Nota de qué plataforma vino cada conversación
+- Marca conversaciones que necesiten seguimiento de un humano
+</Aside>
+
+## Encontrando Conversaciones Específicas
+
+Usa el cuadro de búsqueda para encontrar chats sobre temas o palabras clave particulares.
+
+<CardGrid>
+  <Card title="Buscar por Tema" icon="magnifier">
+    Encuentra menciones de productos, funciones o problemas específicos.
+  </Card>
+  <Card title="Filtrar por Fecha" icon="document">
+    Mira períodos específicos, como antes y después de que hiciste cambios.
+  </Card>
+  <Card title="Filtrar por Canal" icon="external">
+    Ve solo conversaciones de tu sitio web, Instagram u otras plataformas.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Consejos de Búsqueda">
+- Busca **nombres de productos** para ver qué preguntan los clientes sobre ellos
+- Busca **palabras de problemas** como "problema" o "no funciona" para encontrar quejas
+- Filtra por **fecha** para ver cómo cambiaron las cosas después de actualizaciones de entrenamiento
+- Compara **diferentes canales** para ver si el rendimiento varía
+</Aside>
+
+## Aprendiendo de Interacciones Reales
+
+<Steps>
+1. **Revisa regularmente**
+   
+   Reserva tiempo cada día o semana para leer conversaciones recientes.
+
+2. **Detecta patrones**
+   
+   Nota preguntas que surgen frecuentemente o puntos donde los clientes parecen confundidos.
+
+3. **Marca problemas**
+   
+   Señala conversaciones donde tu asistente tuvo dificultades – estas muestran dónde mejorar.
+
+4. **Toma acción**
+   
+   Actualiza materiales de entrenamiento o configuraciones basándote en lo que aprendas.
+</Steps>
+
+<Aside type="note" title="Señales de que Tu Asistente Necesita Ayuda">
+- **El cliente reformula múltiples veces** – Tu asistente no está entendiendo → añade materiales de entrenamiento más claros
+- **Respuestas de "No sé"** – Conocimiento faltante → añade información sobre ese tema
+- **Respuestas incorrectas** – Verifica y corrige los materiales de entrenamiento
+- **Clientes felices** – Nota qué está funcionando bien para poder hacer más de eso
+</Aside>
+
+## Lista de Verificación de Calidad
+
+Usa las conversaciones como una verificación de calidad para tu asistente:
+
+| Verifica | Qué Buscar |
+|----------|-----------|
+| **Precisión** | ¿Son las respuestas correctas y actuales? |
+| **Amabilidad** | ¿Tu asistente suena servicial y acorde a la marca? |
+| **Relevancia** | ¿Se mantienen en el tema y abordan la pregunta? |
+| **Completitud** | ¿Son las respuestas lo suficientemente completas? |
+| **Transferencia** | ¿Funciona bien la escalación a humanos? |
+
+<Aside type="tip" title="Consejo Pro">
+Crea una **tarjeta de puntuación de calidad** con estos criterios. Califica una muestra de conversaciones cada semana para rastrear cómo mejora tu asistente con el tiempo.
+</Aside>
+
+## Qué Puedes Hacer con las Conversaciones
+
+<CardGrid>
+  <Card title="Exportar" icon="document">
+    Descarga registros de conversaciones para revisión o propósitos de cumplimiento.
+  </Card>
+  <Card title="Eliminar" icon="close">
+    Quita conversaciones cuando sea requerido por razones de privacidad.
+  </Card>
+  <Card title="Transferir" icon="comment">
+    Transfiere conversaciones en vivo a un miembro humano del equipo cuando sea necesario.
+  </Card>
+</CardGrid>
+
+<Aside type="caution" title="Recordatorio de Privacidad">
+Ten en cuenta las reglas de privacidad de datos (como GDPR o CCPA). Establece políticas sobre cuánto tiempo mantener las conversaciones y elimínalas cuando sea requerido.
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Analíticas"
+    description="Ve el panorama general de cómo está rindiendo tu asistente"
+    href="/es/assistants/analytics/"
+  />
+  <LinkCard
+    title="Fuentes de Datos"
+    description="Añade materiales de entrenamiento para mejorar las respuestas de tu asistente"
+    href="/es/assistants/data-sources/"
+  />
+  <LinkCard
+    title="Área de Pruebas"
+    description="Practica y prueba mejoras antes de ponerlas en producción"
+    href="/es/assistants/playground/"
+  />
+  <LinkCard
+    title="Contactos CRM"
+    description="Conecta conversaciones con perfiles de clientes"
+    href="/es/crm/contacts/"
+  />
+</CardGrid>

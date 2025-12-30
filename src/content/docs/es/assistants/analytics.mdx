@@ -1,0 +1,163 @@
+---
+title: Analíticas
+description: Mira cómo está rindiendo tu asistente y qué preguntan los clientes
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## El Informe de Rendimiento de Tu Asistente <Badge text="Insights" variant="tip" size="small" />
+
+Las analíticas te muestran qué tan bien está haciendo su trabajo tu asistente. Mira cuántos clientes ha ayudado, qué preguntas surgen con más frecuencia y qué canales están más ocupados. Es como revisar las métricas de rendimiento de un miembro de tu equipo para entender sus fortalezas y dónde podría mejorar.
+
+![Panel de analíticas del bot](../../../../assets/screenshots/assistants-analytics.png)
+
+## Qué Puedes Rastrear
+
+<CardGrid>
+  <Card title="Actividad de Chat" icon="comment">
+    **Qué Tan Ocupado Está**
+    
+    Mira conversaciones totales, mensajes por chat y qué tan comprometidos están los clientes a lo largo del tiempo.
+  </Card>
+  <Card title="Rendimiento" icon="rocket">
+    **Qué Tan Bien Lo Está Haciendo**
+    
+    Verifica la velocidad de respuesta, cuántas preguntas resolvió y cuándo necesitó ayuda humana.
+  </Card>
+  <Card title="Satisfacción del Cliente" icon="star">
+    **Qué Piensan los Clientes**
+    
+    Ve calificaciones de satisfacción y cómo se sienten los clientes sobre las conversaciones.
+  </Card>
+  <Card title="Temas Populares" icon="list-format">
+    **Sobre Qué Pregunta la Gente**
+    
+    Descubre qué temas traen los clientes con más frecuencia.
+  </Card>
+</CardGrid>
+
+## Números de Conversación <Badge text="Métrica Clave" variant="note" size="small" />
+
+Mira cuántas conversaciones ha manejado tu asistente y cuántos mensajes se intercambiaron. Esto te dice qué tan activo está y cuánto están interactuando los clientes con él.
+
+<Tabs>
+  <TabItem label="Números de Actividad">
+    | Métrica | Qué Muestra |
+    |---------|-------------|
+    | **Total de Conversaciones** | Todos los chats que ha tenido tu asistente |
+    | **Mensajes Enviados** | Cuántas respuestas dio |
+    | **Prom. Mensajes/Chat** | Qué tan profundas van las conversaciones |
+    | **Tendencias Diarias/Semanales** | Cuándo está más ocupado |
+  </TabItem>
+  <TabItem label="Números de Engagement">
+    | Métrica | Qué Muestra |
+    |---------|-------------|
+    | **Duración del Chat** | Cuánto tiempo permanecen comprometidos los clientes |
+    | **Visitantes que Regresan** | Personas que vuelven |
+    | **Salidas Rápidas** | Clientes que se van rápido |
+    | **Chats Resueltos** | Preguntas respondidas exitosamente |
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Entendiendo los Números">
+- **Más mensajes por chat** generalmente significa que los clientes están encontrando respuestas útiles
+- **Conversaciones muy cortas** podrían significar que tu asistente no entendió o no pudo ayudar
+- **Rastrea a lo largo del tiempo** – ¿está mejorando tu asistente?
+</Aside>
+
+## Dónde Están Chateando los Clientes
+
+Mira qué canales prefieren los clientes – tu sitio web, Instagram, Telegram, etc. Esto te ayuda a saber dónde enfocar tus esfuerzos y dónde está trabajando más tu asistente.
+
+<CardGrid>
+  <Card title="Sitio Web" icon="laptop">
+    Cómo está funcionando el widget de chat en tu sitio.
+  </Card>
+  <Card title="Redes Sociales" icon="external">
+    Actividad de Instagram, Facebook y otros canales sociales.
+  </Card>
+  <Card title="Apps de Mensajería" icon="comment">
+    Conversaciones de WhatsApp, Telegram y Discord.
+  </Card>
+  <Card title="Apps Personalizadas" icon="setting">
+    Uso desde tus propias integraciones vía API.
+  </Card>
+</CardGrid>
+
+## Cuándo los Clientes Necesitan Ayuda <Badge text="Horarios" variant="caution" size="small" />
+
+Mira a qué horas y días tu asistente está más ocupado. Esto te ayuda a saber cuándo los clientes necesitan más apoyo y cuándo podría ser un buen momento para hacer actualizaciones.
+
+<Aside type="tip" title="Ideas sobre Horarios">
+- **Horas pico** muestran cuándo los clientes necesitan más ayuda
+- **Períodos tranquilos** son buenos momentos para actualizar materiales de entrenamiento
+- **Patrones de fin de semana vs. días laborables** te ayudan a planificar con anticipación
+</Aside>
+
+## Obteniendo Ideas Útiles
+
+<Steps>
+1. **Revisa semanalmente**
+   
+   Establece un tiempo regular para revisar cómo está rindiendo tu asistente.
+
+2. **Busca patrones**
+   
+   Nota tendencias en el volumen de conversaciones, temas comunes y horarios.
+
+3. **Detecta problemas temprano**
+   
+   Bajo engagement o clientes que se van rápido puede significar que algo necesita atención.
+
+4. **Haz mejoras**
+   
+   Usa lo que aprendes para añadir materiales de entrenamiento, ajustar configuraciones o refinar cómo responde tu asistente.
+</Steps>
+
+Usa las analíticas para guiar decisiones: si muchos clientes preguntan sobre un tema, asegúrate de que tu asistente tenga excelente información al respecto. Si las conversaciones son muy cortas, podría necesitar más entrenamiento.
+
+## Funciones del Panel de Control
+
+<CardGrid>
+  <Card title="Rango de Fechas" icon="document">
+    Mira períodos específicos para comparar rendimiento antes y después de cambios.
+  </Card>
+  <Card title="Exportar Informes" icon="external">
+    Descarga tus datos como hojas de cálculo o PDFs para análisis más profundo.
+  </Card>
+  <Card title="Vista en Tiempo Real" icon="rocket">
+    **<Badge text="En Vivo" variant="success" size="small" />** Observa conversaciones que están sucediendo ahora mismo.
+  </Card>
+  <Card title="Alertas" icon="warning">
+    Recibe notificaciones cuando algo inusual suceda o alcance ciertos umbrales.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Consejo Pro">
+Exporta tus analíticas mensualmente para rastrear el progreso a largo plazo. Una hoja de cálculo simple comparando números mes a mes muestra el crecimiento de tu asistente con el tiempo.
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Conversaciones"
+    description="Lee las conversaciones individuales con clientes"
+    href="/es/assistants/conversations/"
+  />
+  <LinkCard
+    title="Fuentes de Datos"
+    description="Añade materiales de entrenamiento basados en preguntas comunes"
+    href="/es/assistants/data-sources/"
+  />
+  <LinkCard
+    title="Área de Pruebas"
+    description="Practica y prueba mejoras"
+    href="/es/assistants/playground/"
+  />
+  <LinkCard
+    title="Configuración"
+    description="Ajusta cómo se comporta tu asistente"
+    href="/es/assistants/settings/"
+  />
+</CardGrid>

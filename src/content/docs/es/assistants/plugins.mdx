@@ -1,0 +1,194 @@
+---
+title: Plugins
+description: Dale a tu asistente nuevas habilidades como reservar citas o enviar emails
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Enseñando Nuevas Habilidades a Tu Asistente <Badge text="Extensible" variant="note" size="small" />
+
+Los plugins son como cursos de entrenamiento especializados para tu asistente. Añaden nuevas habilidades que tu asistente no podría hacer de otra manera – como programar citas, enviar emails o procesar pagos. Al igual que enviar a un empleado a un curso de capacitación, los plugins expanden lo que tu asistente puede hacer por los clientes.
+
+![Plugins disponibles](../../../../assets/screenshots/assistants-plugins.png)
+
+## Habilidades Disponibles para Añadir
+
+<CardGrid>
+  <Card title="Reserva de Citas" icon="phone">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Deja que tu asistente programe reuniones directamente con los clientes. Se conecta con tu calendario.
+  </Card>
+  <Card title="Envío de Email" icon="email">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Tu asistente puede enviar emails para seguimientos, confirmaciones y más.
+  </Card>
+  <Card title="Recolección de Formularios" icon="document">
+    Ayuda a tu asistente a recopilar información estructurada de los clientes con formularios validados.
+  </Card>
+  <Card title="Procesamiento de Pagos" icon="approve">
+    **<Badge text="Beta" variant="caution" size="small" />**
+    
+    Deja que tu asistente maneje transacciones seguras a través de Stripe o PayPal.
+  </Card>
+  <Card title="Conexión CRM" icon="add-document">
+    **<Badge text="Nuevo" variant="tip" size="small" />**
+    
+    Añade y actualiza automáticamente información de clientes en tu CRM desde las conversaciones.
+  </Card>
+  <Card title="Acciones Personalizadas" icon="setting">
+    Conecta tu asistente a tus propios sistemas para tareas de negocio personalizadas.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Eligiendo Habilidades">
+- **Solo añade habilidades que tu asistente realmente necesite** – demasiadas pueden confundir
+- **Lee lo que hace cada plugin** antes de habilitarlo
+- **Algunos plugins necesitan configuración extra** como conectarse a servicios externos
+</Aside>
+
+## Añadiendo Nuevas Habilidades
+
+<Steps>
+1. **Explora los plugins disponibles**
+   
+   Mira la lista de habilidades que puedes dar a tu asistente.
+
+2. **Lee la descripción**
+   
+   Entiende qué hace la habilidad y qué acceso necesita.
+
+3. **Habilita el plugin**
+   
+   Actívalo para que la habilidad esté disponible para tu asistente.
+
+4. **Configúralo**
+   
+   Proporciona cualquier información necesaria como detalles de conexión o preferencias.
+
+5. **Prueba en el Área de Pruebas**
+   
+   Asegúrate de que tu asistente use la nueva habilidad correctamente antes de que los clientes la prueben.
+</Steps>
+
+## Configurando Habilidades
+
+Después de habilitar un plugin, haz clic en configuración para configurarlo. Podrías necesitar conectarte a servicios externos, proporcionar información de cuenta o establecer reglas para cuándo tu asistente debe usar esta habilidad.
+
+<Tabs>
+  <TabItem label="Tipos de Configuración">
+    | Tipo | Qué Necesitarás |
+    |------|-----------------|
+    | **Conexiones** | Info de login para servicios externos |
+    | **Notificaciones** | Dónde enviar alertas cuando algo suceda |
+    | **Disparadores** | Reglas para cuándo tu asistente debe usar esta habilidad |
+    | **Permisos** | Qué información puede acceder el plugin |
+  </TabItem>
+  <TabItem label="Cuándo Usar Habilidades">
+    | Disparador | Cuándo Tu Asistente Usa la Habilidad |
+    |-----------|-------------------------------------|
+    | **Auto-Detectar** | Cuando reconoce que un cliente quiere esto |
+    | **Palabras Clave** | Cuando el cliente dice ciertas palabras |
+    | **Siempre Disponible** | Tu asistente puede usarla cuando tenga sentido |
+    | **Solo por Solicitud** | Solo cuando el cliente pide específicamente |
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Consejos de Configuración">
+- **Sigue las instrucciones de configuración** paso a paso
+- **Prueba en el Área de Pruebas** antes de dejar que los clientes usen nuevas habilidades
+- **Algunas habilidades necesitan cuentas** con otros servicios (como Calendly para programación)
+</Aside>
+
+## A Qué Pueden Acceder los Plugins
+
+<Aside type="caution" title="Verifica Antes de Habilitar">
+Algunos plugins necesitan acceso a información de clientes o servicios externos. Revisa qué necesita cada plugin antes de activarlo, y asegúrate de estar cómodo con lo que puede ver y hacer.
+</Aside>
+
+<CardGrid>
+  <Card title="Info de Clientes" icon="document">
+    Qué detalles de clientes puede ver el plugin.
+  </Card>
+  <Card title="Servicios Externos" icon="external">
+    A qué herramientas de terceros se conecta el plugin.
+  </Card>
+  <Card title="Acciones" icon="setting">
+    Qué puede hacer el plugin (enviar emails, crear registros, etc.).
+  </Card>
+</CardGrid>
+
+## Construyendo Habilidades Personalizadas <Badge text="Avanzado" variant="default" size="small" />
+
+Para aquellos que quieren construir sus propios plugins:
+
+```javascript
+// Ejemplo: Habilidad personalizada
+{
+  "name": "verificar_inventario",
+  "description": "Verificar cuántos items hay en stock",
+  "parameters": {
+    "product_id": "string"
+  },
+  "endpoint": "https://tu-api.com/inventario"
+}
+```
+
+<Aside type="note" title="Recursos para Desarrolladores">
+Consulta la [Referencia de API](/es/api/overview/) para documentación completa sobre cómo construir plugins personalizados.
+</Aside>
+
+## Consejos para el Éxito
+
+<Steps>
+1. **Comienza con lo que necesitas**
+   
+   Más plugins = más complejidad. Empieza simple.
+
+2. **Prueba todo**
+   
+   Asegúrate de que las habilidades funcionen correctamente en todas las situaciones.
+
+3. **Establece reglas claras**
+   
+   Ayuda a tu asistente a saber exactamente cuándo usar cada habilidad.
+
+4. **Monitorea los resultados**
+   
+   Usa Analíticas para ver qué habilidades son más valiosas.
+</Steps>
+
+## Guía de Estado de Habilidades
+
+| Estado | Qué Significa |
+|--------|--------------|
+| **<Badge text="Popular" variant="success" size="small" />** | Ampliamente usado y confiable |
+| **<Badge text="Nuevo" variant="tip" size="small" />** | Habilidad añadida recientemente |
+| **<Badge text="Beta" variant="caution" size="small" />** | Aún en pruebas, puede cambiar |
+| **<Badge text="Avanzado" variant="default" size="small" />** | Necesita algo de configuración técnica |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Configuración"
+    description="Ajusta el comportamiento general de tu asistente"
+    href="/es/assistants/settings/"
+  />
+  <LinkCard
+    title="Área de Pruebas"
+    description="Prueba nuevas habilidades antes de lanzar"
+    href="/es/assistants/playground/"
+  />
+  <LinkCard
+    title="Integraciones"
+    description="Conéctate a plataformas de mensajería"
+    href="/es/assistants/integrations/"
+  />
+  <LinkCard
+    title="Resumen de API"
+    description="Construye habilidades personalizadas"
+    href="/es/api/overview/"
+  />
+</CardGrid>

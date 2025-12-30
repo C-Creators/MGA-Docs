@@ -1,0 +1,204 @@
+---
+title: Segments
+description: Create dynamic groups of contacts for targeting and analysis
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Segments are dynamic groups of contacts based on rules you define. <Badge text="Targeting" variant="note" size="small" />
+
+![Customer segments](../../../assets/screenshots/crm-segments.png)
+
+## Why Use Segments?
+
+<CardGrid>
+  <Card title="Targeted Campaigns" icon="email">
+    Send relevant messages to the right audience.
+  </Card>
+  <Card title="Personalization" icon="pencil">
+    Customize bot behavior based on segment membership.
+  </Card>
+  <Card title="Analysis" icon="graph">
+    Understand your audience with segment-based metrics.
+  </Card>
+  <Card title="Automation" icon="random">
+    Trigger workflows when contacts enter/exit segments.
+  </Card>
+</CardGrid>
+
+## Creating Segments
+
+<Steps>
+1. **Click + New Segment**
+   
+   Open the segment creation form from the Segments page.
+
+2. **Name your segment**
+   
+   Give it a clear, descriptive name (e.g., "VIP Customers", "Inactive 30 Days").
+
+3. **Add filter rules**
+   
+   Define conditions that contacts must match to be included.
+
+4. **Preview results**
+   
+   See how many contacts match your rules before saving.
+
+5. **Save**
+   
+   The segment is now active and ready for use.
+</Steps>
+
+## Filter Types
+
+<Tabs>
+  <TabItem label="Contact Properties">
+    | Filter | Example |
+    |--------|---------|
+    | **Name contains** | "Smith" |
+    | **Email domain** | "@company.com" |
+    | **Created date** | Last 30 days |
+    | **Has tag** | "VIP" |
+    | **Custom field** | Any value match |
+  </TabItem>
+  <TabItem label="Behavior">
+    | Filter | Example |
+    |--------|---------|
+    | **Had conversation** | In last 7 days |
+    | **Opened email** | Any campaign |
+    | **Booked appointment** | Ever / recently |
+    | **Submitted form** | Specific form |
+    | **Clicked link** | In last email |
+  </TabItem>
+  <TabItem label="CRM Data">
+    | Filter | Example |
+    |--------|---------|
+    | **Lead score** | Above 80 |
+    | **Has open ticket** | True/False |
+    | **Purchase value** | Over $1,000 |
+    | **Pipeline stage** | "Negotiation" |
+    | **Deal value** | Above threshold |
+  </TabItem>
+</Tabs>
+
+## Combining Rules
+
+<CardGrid>
+  <Card title="AND Logic" icon="bars">
+    Contact must match **all** conditions.
+    
+    *Example: Has tag "Customer" AND purchased in last 90 days*
+  </Card>
+  <Card title="OR Logic" icon="random">
+    Contact matches **any** condition.
+    
+    *Example: Tag is "VIP" OR purchase value > $5,000*
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Segment Strategy">
+- **Start broad, then refine** - Begin with simple segments and add specificity
+- **Use behavior-based segments** for targeting active users
+- **Create "at risk" segments** to identify customers who need attention
+- **Test before launch** - Preview results to verify rules work as expected
+</Aside>
+
+## Segment Types
+
+<Tabs>
+  <TabItem label="Static Segments">
+    **Fixed list of contacts**
+    
+    <CardGrid>
+      <Card title="Manual Control" icon="pencil">
+        Add or remove contacts manually.
+      </Card>
+      <Card title="Fixed Membership" icon="document">
+        Doesn't update automatically.
+      </Card>
+      <Card title="Use Case" icon="star">
+        One-time campaigns, specific lists.
+      </Card>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Dynamic Segments">
+    **Updates automatically based on rules** <Badge text="Recommended" variant="success" size="small" />
+    
+    <CardGrid>
+      <Card title="Real-Time" icon="rocket">
+        Membership updates as data changes.
+      </Card>
+      <Card title="Rule-Based" icon="setting">
+        Define conditions, system handles membership.
+      </Card>
+      <Card title="Use Case" icon="star">
+        Ongoing targeting, behavior-based groups.
+      </Card>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Using Segments
+
+<CardGrid>
+  <Card title="In Campaigns" icon="email">
+    **Target specific audiences**
+    
+    Select segment as campaign audience. Contacts matching rules receive the campaign.
+  </Card>
+  <Card title="In Workflows" icon="random">
+    **Trigger automation**
+    
+    "When contact enters VIP segment" or "When contact leaves Active segment".
+  </Card>
+  <Card title="In Bot Behavior" icon="comment">
+    **Personalize responses**
+    
+    Different greetings, VIP routing, custom offers based on segment.
+  </Card>
+  <Card title="In Reports" icon="graph">
+    **Analyze performance**
+    
+    Compare metrics across segments to understand audience behavior.
+  </Card>
+</CardGrid>
+
+## Segment Examples
+
+| Segment Name | Rules | Use Case |
+|-------------|-------|----------|
+| **VIP Customers** | Lifetime value > $5,000 OR tag = "VIP" | Priority support, exclusive offers |
+| **Inactive 30 Days** | Last conversation > 30 days ago | Re-engagement campaign |
+| **High Intent** | Lead score > 80 AND has open deal | Sales follow-up priority |
+| **New This Week** | Created date = last 7 days | Welcome sequence |
+| **At Risk** | Support tickets > 3 AND no purchase in 60 days | Retention outreach |
+
+<Aside type="note" title="Pro Tip">
+Create a "Master Segment Map" document listing all your segments, their rules, and intended uses. This helps maintain consistency as your team grows.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Contacts"
+    description="Manage individual contact records"
+    href="/crm/contacts/"
+  />
+  <LinkCard
+    title="Workflows"
+    description="Automate based on segment membership"
+    href="/crm/workflows/"
+  />
+  <LinkCard
+    title="Reports"
+    description="Analyze segment performance"
+    href="/crm/reports/"
+  />
+  <LinkCard
+    title="CRM Overview"
+    description="Full CRM feature overview"
+    href="/crm/overview/"
+  />
+</CardGrid>

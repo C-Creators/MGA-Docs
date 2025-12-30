@@ -1,0 +1,172 @@
+---
+title: Autenticación
+description: Aprende a autenticar solicitudes de la API de forma segura
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Todas las solicitudes de API requieren autenticación mediante claves API. <Badge text="Requerido" variant="caution" size="small" />
+
+## Generando Claves API
+
+<Steps>
+1. **Inicia sesión en tu panel de control**
+   
+   Ve a [panel.mygptassistants.com](https://dashboard.mygptassistants.com)
+
+2. **Navega a Configuración de API**
+   
+   Haz clic en **Configuración** → **API** en la barra lateral.
+
+3. **Haz clic en "Generar Nueva Clave"**
+   
+   Elige un nombre descriptivo para tu clave.
+
+4. **Configura los permisos**
+   
+   Selecciona qué acciones puede realizar esta clave.
+
+5. **Copia tu clave de forma segura**
+   
+   <Aside type="caution" title="¡Importante!">
+   Tu clave API solo se muestra una vez. Cópiala inmediatamente y guárdala de forma segura. Si la pierdes, deberás generar una nueva.
+   </Aside>
+</Steps>
+
+## Usando tu Clave API
+
+Incluye tu clave API en la cabecera `Authorization`:
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    const response = await fetch('https://api.mygptassistants.com/v1/chat/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        bot_id: 'your-bot-id',
+        message: 'Hola'
+      })
+    });
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import requests
+
+    headers = {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.post(
+        'https://api.mygptassistants.com/v1/chat/send',
+        headers=headers,
+        json={'bot_id': 'your-bot-id', 'message': 'Hola'}
+    )
+    ```
+  </TabItem>
+  <TabItem label="cURL">
+    ```bash
+    curl -X POST https://api.mygptassistants.com/v1/chat/send \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"bot_id": "your-bot-id", "message": "Hola"}'
+    ```
+  </TabItem>
+</Tabs>
+
+## Mejores Prácticas de Seguridad
+
+<CardGrid>
+  <Card title="Nunca Expongas Claves" icon="warning">
+    **Nunca commits claves API al control de versiones**
+    
+    Usa variables de entorno o gestores de secretos.
+  </Card>
+  <Card title="Usa Mínimos Privilegios" icon="setting">
+    **Solo otorga los permisos necesarios**
+    
+    Crea claves con alcance limitado para diferentes servicios.
+  </Card>
+  <Card title="Rota Regularmente" icon="random">
+    **Regenera claves periódicamente**
+    
+    Configura una rotación programada de claves.
+  </Card>
+  <Card title="Monitorea el Uso" icon="approve">
+    **Rastrea la actividad de las claves API**
+    
+    Revisa los logs para accesos no autorizados.
+  </Card>
+</CardGrid>
+
+<Aside type="danger" title="Advertencia de Seguridad">
+Si tu clave API está comprometida:
+1. Revócala inmediatamente en el panel de control
+2. Genera una nueva clave
+3. Actualiza todas las aplicaciones que usen la clave antigua
+4. Revisa los logs para acceso no autorizado
+</Aside>
+
+## Permisos de Clave API
+
+| Permiso | Descripción |
+|---------|-------------|
+| `chat:send` | Enviar mensajes a bots |
+| `chat:read` | Leer historial de conversaciones |
+| `chat:stream` | Usar respuestas en streaming |
+| `bots:read` | Listar y ver bots |
+| `bots:write` | Crear y modificar bots |
+| `analytics:read` | Acceder a datos analíticos |
+| `webhooks:manage` | Configurar webhooks |
+
+## Rotación de Claves
+
+<Steps>
+1. **Genera una nueva clave**
+   
+   Crea una nueva clave API con los mismos permisos.
+
+2. **Actualiza tus aplicaciones**
+   
+   Despliega la nueva clave en tu código.
+
+3. **Prueba minuciosamente**
+   
+   Verifica que todo funcione con la nueva clave.
+
+4. **Revoca la clave antigua**
+   
+   Una vez confirmado, elimina la clave antigua.
+</Steps>
+
+<Aside type="tip" title="Consejo">
+Implementa rotación de claves en tu CI/CD pipeline para actualizaciones automáticas regulares.
+</Aside>
+
+## Errores de Autenticación
+
+| Error | Causa | Solución |
+|-------|-------|----------|
+| `401 Unauthorized` | Clave faltante o inválida | Verifica que tu clave sea correcta |
+| `403 Forbidden` | Permisos insuficientes | Revisa los permisos de la clave |
+| `429 Too Many Requests` | Límite de tasa excedido | Implementa backoff exponencial |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard 
+    title="Visión General de la API" 
+    description="Introducción general a la API"
+    href="/es/api/overview/"
+  />
+  <LinkCard 
+    title="API de Chat" 
+    description="Endpoints de chat y ejemplos"
+    href="/es/api/chat-api/"
+  />
+</CardGrid>

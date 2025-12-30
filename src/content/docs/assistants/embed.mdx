@@ -1,0 +1,300 @@
+---
+title: Embed Widget
+description: Put your trained assistant to work on your website
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Putting Your Assistant on Your Website <Badge text="Go Live" variant="success" size="small" />
+
+The Embed page gives you the code to add your assistant to your website. Once installed, your assistant appears as a friendly chat bubble that visitors can click to start a conversation – just like having a helpful team member available 24/7.
+
+![Embed code and preview](../../../assets/screenshots/assistants-embed.png)
+
+## Getting the Code
+
+Copy the code snippet provided and paste it into your website. The code is unique to your assistant and includes all the styling you've set up in Appearance.
+
+<Aside type="tip" title="Where to Put the Code">
+- Paste the code just before the closing `</body>` tag in your website
+- Don't worry – it loads in the background and won't slow down your page
+- When you change appearance or settings, the widget updates automatically – no need to touch the code again
+</Aside>
+
+## Step-by-Step for Different Websites
+
+<Tabs syncKey="platform">
+  <TabItem label="HTML">
+    ### Basic Website
+    
+    <Steps>
+    1. **Copy the code** from the Embed page in your dashboard
+    
+    2. **Open your HTML file** in a code editor
+    
+    3. **Paste before `</body>`**
+       ```html
+       <!-- Your Assistant Chat Widget -->
+       <script
+         src="https://app.mygptassistants.com/widget.js"
+         data-bot-id="YOUR_BOT_ID"
+         async
+       ></script>
+       </body>
+       ```
+    
+    4. **Save and upload** your website
+    </Steps>
+  </TabItem>
+  
+  <TabItem label="WordPress">
+    ### WordPress
+    
+    <Steps>
+    1. **Install a code plugin** like "Insert Headers and Footers" or "WPCode"
+    
+    2. **Go to the plugin settings** in your WordPress admin
+    
+    3. **Paste in the footer section**
+       ```html
+       <script
+         src="https://app.mygptassistants.com/widget.js"
+         data-bot-id="YOUR_BOT_ID"
+         async
+       ></script>
+       ```
+    
+    4. **Save** your changes
+    </Steps>
+    
+    <Aside type="tip">
+    Using a plugin means you don't have to edit theme files directly. Your assistant will stay even if you change themes!
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="Shopify">
+    ### Shopify
+    
+    <Steps>
+    1. **Go to Online Store** → **Themes** in Shopify admin
+    
+    2. **Click Actions** → **Edit code**
+    
+    3. **Find `theme.liquid`** in the Layout folder
+    
+    4. **Paste before `</body>`**
+       ```html
+       <script
+         src="https://app.mygptassistants.com/widget.js"
+         data-bot-id="YOUR_BOT_ID"
+         async
+       ></script>
+       ```
+    
+    5. **Save** the file
+    </Steps>
+    
+    <Aside type="caution">
+    Make a backup of your theme before editing code. Changes to theme.liquid affect your entire store.
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="React">
+    ### React / Next.js
+    
+    Create a component for the chat widget:
+    
+    ```jsx
+    import { useEffect } from 'react';
+
+    export default function ChatWidget() {
+      useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://app.mygptassistants.com/widget.js';
+        script.setAttribute('data-bot-id', 'YOUR_BOT_ID');
+        script.async = true;
+        document.body.appendChild(script);
+        
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
+      
+      return null;
+    }
+    ```
+    
+    Then add it to your layout or app:
+    
+    ```jsx
+    import ChatWidget from './components/ChatWidget';
+
+    export default function App() {
+      return (
+        <>
+          {/* Your app content */}
+          <ChatWidget />
+        </>
+      );
+    }
+    ```
+  </TabItem>
+  
+  <TabItem label="Vue">
+    ### Vue.js
+    
+    Create a component:
+    
+    ```vue
+    <script setup>
+    import { onMounted, onUnmounted } from 'vue';
+
+    let script;
+
+    onMounted(() => {
+      script = document.createElement('script');
+      script.src = 'https://app.mygptassistants.com/widget.js';
+      script.setAttribute('data-bot-id', 'YOUR_BOT_ID');
+      script.async = true;
+      document.body.appendChild(script);
+    });
+
+    onUnmounted(() => {
+      if (script) document.body.removeChild(script);
+    });
+    </script>
+
+    <template>
+      <!-- Component renders nothing -->
+    </template>
+    ```
+    
+    Add to your App.vue:
+    
+    ```vue
+    <template>
+      <div id="app">
+        <!-- Your app content -->
+        <ChatWidget />
+      </div>
+    </template>
+    ```
+  </TabItem>
+  
+  <TabItem label="Other">
+    ### Other Platforms
+    
+    **Squarespace:**
+    - Go to Settings → Advanced → Code Injection
+    - Paste in the Footer section
+    
+    **Webflow:**
+    - Go to Project Settings → Custom Code
+    - Paste in Footer Code section
+    
+    **Wix:**
+    - Use the Velo Code Editor
+    - Add script to masterPage.js
+    
+    <Aside type="note">
+    For any platform, the goal is to add the code before the closing `</body>` tag. Check your platform's help docs for "custom code" or "code injection."
+    </Aside>
+  </TabItem>
+</Tabs>
+
+## For Developers: Widget Events
+
+Listen for what's happening with the chat widget:
+
+```javascript
+// Know when customers interact with your assistant
+window.MGAWidget.on('open', () => {
+  console.log('Chat opened');
+});
+
+window.MGAWidget.on('close', () => {
+  console.log('Chat closed');
+});
+
+window.MGAWidget.on('message', (data) => {
+  console.log('New message:', data);
+});
+```
+
+## Customization Options
+
+<CardGrid>
+  <Card title="Position" icon="external">
+    Choose which corner of the screen your assistant appears in.
+  </Card>
+  <Card title="Chat Icon" icon="star">
+    Customize the chat bubble that visitors click to start chatting.
+  </Card>
+  <Card title="Colors" icon="pencil">
+    Match the widget to your brand colors.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Styling Your Widget">
+All the visual customization happens in the **Appearance** section. Changes show up automatically – no need to change your embed code.
+</Aside>
+
+## Testing Your Installation
+
+<Steps>
+1. **Add the code** to your website using one of the methods above
+
+2. **Visit your website** and look for the chat bubble
+
+3. **Click to open** and have a test conversation
+
+4. **Check on mobile** – make sure it works on phones and tablets too
+</Steps>
+
+<Aside type="tip" title="Testing Checklist">
+- Test on different devices (phone, tablet, computer)
+- Try different browsers (Chrome, Firefox, Safari)
+- Make sure the chat bubble doesn't cover anything important
+- Verify all your customizations show up correctly
+</Aside>
+
+## Troubleshooting
+
+<Aside type="caution" title="Can't see the chat widget?">
+1. Double-check that your assistant ID is correct in the code
+2. Make sure your assistant is active (not paused)
+3. Look for error messages in your browser's developer console
+4. Confirm the code is placed before `</body>`
+</Aside>
+
+<Aside type="caution" title="Widget overlapping other elements?">
+- Try adjusting the `data-z-index` setting if needed
+- Check if your website's CSS is conflicting
+- Try a different corner position
+</Aside>
+
+<Aside type="note" title="About Performance">
+- The code loads in the background without slowing your page
+- The widget files are optimized and cached
+- Minimal impact on page speed
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Appearance"
+    description="Customize how your assistant looks"
+    href="/assistants/appearance/"
+  />
+  <LinkCard
+    title="Integrations"
+    description="Other places to deploy your assistant"
+    href="/assistants/integrations/"
+  />
+  <LinkCard
+    title="Settings"
+    description="Adjust how your assistant behaves"
+    href="/assistants/settings/"
+  />
+</CardGrid>

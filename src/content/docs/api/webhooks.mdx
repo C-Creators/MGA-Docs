@@ -1,0 +1,265 @@
+---
+title: Webhooks
+description: Receive real-time notifications about events in your account
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Webhooks allow your application to receive real-time notifications when events occur in your MyGPTAssistants account. <Badge text="Real-time" variant="success" size="small" />
+
+## Setting Up Webhooks
+
+<Steps>
+1. **Navigate to Settings**
+   
+   Go to **Settings → Webhooks** in your dashboard.
+
+2. **Click Add Webhook**
+   
+   Start creating a new webhook endpoint.
+
+3. **Enter your endpoint URL**
+   
+   Must use HTTPS for security.
+
+4. **Select events**
+   
+   Choose which events you want to receive.
+
+5. **Save and copy secret**
+   
+   Store your signing secret securely - you'll need it for verification.
+</Steps>
+
+## Event Types
+
+<CardGrid>
+  <Card title="Conversation Events" icon="comment">
+    **<Badge text="Most Common" variant="success" size="small" />**
+    
+    Track conversation lifecycle: created, updated, completed.
+  </Card>
+  <Card title="Message Events" icon="document">
+    Get notified for every message sent by users or assistant.
+  </Card>
+  <Card title="Bot Events" icon="setting">
+    Monitor when bot settings change or bot is published.
+  </Card>
+</CardGrid>
+
+<Tabs>
+  <TabItem label="Conversation Events">
+    | Event | Description |
+    |-------|-------------|
+    | `conversation.created` | New conversation started |
+    | `conversation.updated` | Conversation received new message |
+    | `conversation.completed` | Conversation marked as resolved |
+  </TabItem>
+  <TabItem label="Message Events">
+    | Event | Description |
+    |-------|-------------|
+    | `message.created` | New message sent (user or assistant) |
+    | `message.updated` | Message was edited |
+    | `message.deleted` | Message was removed |
+  </TabItem>
+  <TabItem label="Bot Events">
+    | Event | Description |
+    |-------|-------------|
+    | `bot.updated` | Bot settings changed |
+    | `bot.published` | Bot published to production |
+    | `bot.disabled` | Bot was disabled |
+  </TabItem>
+</Tabs>
+
+## Payload Format
+
+All webhook payloads follow this structure:
+
+```json
+{
+  "id": "evt_abc123",
+  "type": "conversation.created",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "data": {
+    "conversationId": "conv_123456",
+    "botId": "bot_789",
+    "metadata": {}
+  }
+}
+```
+
+<Aside type="tip" title="Event Processing">
+Store the event `id` and check for duplicates before processing. This ensures **idempotent handling** if the same event is delivered multiple times.
+</Aside>
+
+## Verifying Webhooks <Badge text="Security" variant="caution" size="small" />
+
+<Aside type="caution" title="Important Security Step">
+Always verify the webhook signature before processing. Unverified webhooks could be spoofed by attackers.
+</Aside>
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    import crypto from 'crypto';
+
+    function verifyWebhook(payload, signature, secret) {
+      const expectedSignature = crypto
+        .createHmac('sha256', secret)
+        .update(payload)
+        .digest('hex');
+      
+      return crypto.timingSafeEqual(
+        Buffer.from(signature),
+        Buffer.from(`sha256=${expectedSignature}`)
+      );
+    }
+
+    // In your webhook handler
+    app.post('/webhook', (req, res) => {
+      const signature = req.headers['x-mga-signature'];
+      const payload = JSON.stringify(req.body);
+      
+      if (!verifyWebhook(payload, signature, WEBHOOK_SECRET)) {
+        return res.status(401).send('Invalid signature');
+      }
+      
+      // Process the webhook
+      const event = req.body;
+      console.log(`Received ${event.type}`);
+      
+      res.status(200).send('OK');
+    });
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import hmac
+    import hashlib
+    from flask import Flask, request
+
+    def verify_webhook(payload: bytes, signature: str, secret: str) -> bool:
+        expected = hmac.new(
+            secret.encode(),
+            payload,
+            hashlib.sha256
+        ).hexdigest()
+        return hmac.compare_digest(f"sha256={expected}", signature)
+
+    @app.route('/webhook', methods=['POST'])
+    def handle_webhook():
+        signature = request.headers.get('X-MGA-Signature')
+        payload = request.get_data()
+        
+        if not verify_webhook(payload, signature, WEBHOOK_SECRET):
+            return 'Invalid signature', 401
+        
+        event = request.json
+        print(f"Received {event['type']}")
+        
+        return 'OK', 200
+    ```
+  </TabItem>
+</Tabs>
+
+## Retry Policy
+
+<CardGrid>
+  <Card title="Automatic Retries" icon="random">
+    Failed deliveries (non-2xx) are automatically retried.
+  </Card>
+  <Card title="Exponential Backoff" icon="rocket">
+    Retry delays increase with each attempt.
+  </Card>
+  <Card title="Manual Retry" icon="pencil">
+    After 5 failures, retry manually from dashboard.
+  </Card>
+</CardGrid>
+
+| Attempt | Delay |
+|---------|-------|
+| 1 | Immediate |
+| 2 | 5 minutes |
+| 3 | 30 minutes |
+| 4 | 2 hours |
+| 5 | 8 hours |
+
+<Aside type="tip" title="Quick Response">
+Return a **200 status immediately** after receiving the webhook. Process the event asynchronously to avoid timeouts. We wait up to 30 seconds for a response.
+</Aside>
+
+## Testing Webhooks
+
+<CardGrid>
+  <Card title="Dashboard Test" icon="rocket">
+    Use the **Test** button in webhook settings to send a test event.
+  </Card>
+  <Card title="ngrok" icon="external">
+    Expose localhost to the internet for local testing.
+    
+    [ngrok.com](https://ngrok.com/)
+  </Card>
+  <Card title="webhook.site" icon="document">
+    Inspect webhook payloads in real-time.
+    
+    [webhook.site](https://webhook.site/)
+  </Card>
+</CardGrid>
+
+## Webhook Best Practices
+
+<Steps>
+1. **Always verify signatures**
+   
+   Never trust unverified webhook requests.
+
+2. **Respond quickly**
+   
+   Return 200 immediately, process async.
+
+3. **Handle duplicates**
+   
+   Store event IDs to ensure idempotency.
+
+4. **Monitor failures**
+   
+   Set up alerts for webhook delivery issues.
+
+5. **Use queues**
+   
+   Queue events for reliable processing at scale.
+</Steps>
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| **Not receiving webhooks** | Check endpoint URL is HTTPS and publicly accessible |
+| **Signature verification fails** | Ensure you're using the raw body, not parsed JSON |
+| **Events arriving late** | Check retry schedule; may be retrying after failures |
+| **Missing events** | Verify the event type is selected in webhook settings |
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Chat API"
+    description="Send and receive messages"
+    href="/api/chat-api/"
+  />
+  <LinkCard
+    title="Authentication"
+    description="API security best practices"
+    href="/api/authentication/"
+  />
+  <LinkCard
+    title="Conversations"
+    description="Conversation management"
+    href="/assistants/conversations/"
+  />
+  <LinkCard
+    title="API Overview"
+    description="API basics and rate limits"
+    href="/api/overview/"
+  />
+</CardGrid>

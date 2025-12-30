@@ -1,0 +1,309 @@
+---
+title: API de Chat
+description: Envía mensajes, recibe respuestas y gestiona conversaciones
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+La API de Chat te permite enviar mensajes a tus asistentes y recibir respuestas de IA. <Badge text="Core API" variant="success" size="small" />
+
+## Endpoints
+
+<CardGrid>
+  <Card title="Enviar Mensaje" icon="comment">
+    `POST /chat/send`
+    
+    Envía un mensaje y recibe una respuesta.
+  </Card>
+  <Card title="Mensaje en Streaming" icon="rocket">
+    `POST /chat/stream`
+    
+    Recibe respuestas en fragmentos en tiempo real.
+  </Card>
+  <Card title="Obtener Historial" icon="document">
+    `GET /chat/history`
+    
+    Recupera mensajes previos de una sesión.
+  </Card>
+  <Card title="Listar Conversaciones" icon="bars">
+    `GET /chat/conversations`
+    
+    Lista todas las conversaciones de un bot.
+  </Card>
+</CardGrid>
+
+## Enviar Mensaje
+
+<Tabs>
+  <TabItem label="Solicitud">
+    ```json
+    POST /v1/chat/send
+    Content-Type: application/json
+    Authorization: Bearer YOUR_API_KEY
+
+    {
+      "bot_id": "bot_abc123",
+      "message": "¿Cuál es tu política de devoluciones?",
+      "session_id": "session_xyz789",
+      "metadata": {
+        "user_id": "user_123",
+        "source": "mobile_app"
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem label="Respuesta">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "message_id": "msg_abc123",
+        "response": "Nuestra política de devoluciones permite...",
+        "session_id": "session_xyz789",
+        "confidence": 0.95,
+        "sources": [
+          {
+            "title": "Política de Devoluciones",
+            "url": "/docs/returns"
+          }
+        ],
+        "created_at": "2024-01-15T10:30:00Z"
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem label="Ejemplo en Código">
+    ```javascript
+    const response = await fetch('https://api.mygptassistants.com/v1/chat/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        bot_id: 'bot_abc123',
+        message: '¿Cuál es tu política de devoluciones?',
+        session_id: 'session_xyz789'
+      })
+    });
+
+    const data = await response.json();
+    console.log(data.data.response);
+    ```
+  </TabItem>
+</Tabs>
+
+### Parámetros
+
+| Parámetro | Tipo | Requerido | Descripción |
+|-----------|------|-----------|-------------|
+| `bot_id` | string | ✅ | ID del asistente al que enviar el mensaje |
+| `message` | string | ✅ | El mensaje del usuario |
+| `session_id` | string | ❌ | Identificador de sesión para contexto de conversación |
+| `metadata` | object | ❌ | Metadatos personalizados para adjuntar |
+
+## Respuestas en Streaming
+
+Para aplicaciones en tiempo real, usa streaming para recibir respuestas fragmento por fragmento:
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    const response = await fetch('https://api.mygptassistants.com/v1/chat/stream', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        bot_id: 'bot_abc123',
+        message: '¿Cuál es tu política de devoluciones?',
+        session_id: 'session_xyz789'
+      })
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const chunk = decoder.decode(value);
+      process.stdout.write(chunk); // Imprime cada fragmento en tiempo real
+    }
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import requests
+
+    response = requests.post(
+        'https://api.mygptassistants.com/v1/chat/stream',
+        headers={
+            'Authorization': 'Bearer YOUR_API_KEY',
+            'Content-Type': 'application/json'
+        },
+        json={
+            'bot_id': 'bot_abc123',
+            'message': '¿Cuál es tu política de devoluciones?',
+            'session_id': 'session_xyz789'
+        },
+        stream=True
+    )
+
+    for chunk in response.iter_content(chunk_size=None):
+        print(chunk.decode(), end='', flush=True)
+    ```
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Cuándo Usar Streaming">
+El streaming es ideal para:
+- Interfaces de chat donde quieres mostrar respuestas mientras se escriben
+- Respuestas largas donde esperar la respuesta completa sería lento
+- Mejorar la experiencia del usuario percibida
+</Aside>
+
+## Obtener Historial de Chat
+
+Recupera mensajes previos de una sesión de conversación:
+
+<Tabs>
+  <TabItem label="Solicitud">
+    ```bash
+    GET /v1/chat/history?session_id=session_xyz789&limit=50
+    Authorization: Bearer YOUR_API_KEY
+    ```
+  </TabItem>
+  <TabItem label="Respuesta">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "messages": [
+          {
+            "id": "msg_001",
+            "role": "user",
+            "content": "Hola, tengo una pregunta",
+            "created_at": "2024-01-15T10:25:00Z"
+          },
+          {
+            "id": "msg_002",
+            "role": "assistant",
+            "content": "¡Hola! Estaré encantado de ayudarte...",
+            "created_at": "2024-01-15T10:25:01Z"
+          }
+        ],
+        "has_more": false,
+        "total": 2
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+### Parámetros de Consulta
+
+| Parámetro | Tipo | Por Defecto | Descripción |
+|-----------|------|-------------|-------------|
+| `session_id` | string | - | Requerido. La sesión a obtener |
+| `limit` | integer | 50 | Número máximo de mensajes a retornar |
+| `before` | string | - | ID de mensaje para paginación |
+| `after` | string | - | ID de mensaje para paginación |
+
+## Listar Conversaciones
+
+Obtén todas las conversaciones de un bot específico:
+
+<Tabs>
+  <TabItem label="Solicitud">
+    ```bash
+    GET /v1/chat/conversations?bot_id=bot_abc123&limit=20
+    Authorization: Bearer YOUR_API_KEY
+    ```
+  </TabItem>
+  <TabItem label="Respuesta">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "conversations": [
+          {
+            "session_id": "session_xyz789",
+            "bot_id": "bot_abc123",
+            "message_count": 15,
+            "last_message_at": "2024-01-15T10:30:00Z",
+            "created_at": "2024-01-15T09:00:00Z",
+            "metadata": {
+              "user_id": "user_123"
+            }
+          }
+        ],
+        "has_more": true,
+        "total": 150
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Gestión de Sesiones
+
+<CardGrid>
+  <Card title="Sesiones Automáticas" icon="setting">
+    Si no proporcionas `session_id`, generamos uno automáticamente.
+  </Card>
+  <Card title="Sesiones Personalizadas" icon="pencil">
+    Usa tu propio ID de sesión para rastrear conversaciones a través de tu sistema.
+  </Card>
+  <Card title="Expiración de Sesiones" icon="document">
+    Las sesiones expiran después de 24 horas de inactividad por defecto.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="IDs de Sesión">
+Usa IDs de sesión consistentes para mantener el contexto de la conversación. Cada sesión mantiene su propio historial y contexto.
+</Aside>
+
+## Manejo de Errores
+
+| Código | Error | Descripción |
+|--------|-------|-------------|
+| `400` | `INVALID_BOT_ID` | El bot especificado no existe |
+| `400` | `MESSAGE_TOO_LONG` | El mensaje excede el límite de caracteres |
+| `401` | `UNAUTHORIZED` | Clave API inválida o faltante |
+| `429` | `RATE_LIMITED` | Demasiadas solicitudes |
+| `500` | `BOT_ERROR` | Error interno del bot |
+
+<Aside type="tip" title="Manejo de Errores">
+Siempre implementa manejo de errores apropiado:
+```javascript
+try {
+  const response = await sendMessage(message);
+  // Manejar éxito
+} catch (error) {
+  if (error.status === 429) {
+    // Implementar reintentos con backoff exponencial
+    await sleep(1000);
+    return retry();
+  }
+  // Manejar otros errores
+}
+```
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard 
+    title="Autenticación" 
+    description="Aprende sobre claves API y seguridad"
+    href="/es/api/authentication/"
+  />
+  <LinkCard 
+    title="Webhooks" 
+    description="Recibe notificaciones en tiempo real"
+    href="/es/api/webhooks/"
+  />
+</CardGrid>

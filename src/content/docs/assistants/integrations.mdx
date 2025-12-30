@@ -1,0 +1,184 @@
+---
+title: Integrations
+description: Put your assistant to work wherever your customers hang out
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Send Your Assistant Where Customers Are <Badge text="Multi-Channel" variant="tip" size="small" />
+
+Integrations let you deploy your trained assistant to different places – your website, Instagram, WhatsApp, and more. Think of it like assigning your team member to different locations where customers need help.
+
+![Available integrations](../../../assets/screenshots/assistants-integrations.png)
+
+## Where Your Assistant Can Work
+
+<CardGrid>
+  <Card title="Your Website" icon="external">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Add a chat bubble to your website. Visitors click it to start chatting with your assistant instantly.
+    
+    [Setup Guide →](/assistants/embed/)
+  </Card>
+  <Card title="Instagram DMs" icon="star">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Your assistant answers Instagram direct messages automatically, helping customers 24/7.
+  </Card>
+  <Card title="WhatsApp" icon="phone">
+    Connect to WhatsApp Business so customers can reach your assistant on their favorite messaging app.
+  </Card>
+  <Card title="Telegram" icon="comment">
+    Deploy your assistant as a Telegram bot – great for communities and ongoing support.
+  </Card>
+  <Card title="Discord" icon="discord">
+    Add your assistant to Discord servers for gaming communities or tech support.
+  </Card>
+  <Card title="Custom Apps" icon="setting">
+    **<Badge text="For Developers" variant="note" size="small" />**
+    
+    Build your own integration using our full REST API.
+    
+    [API Docs →](/api/overview/)
+  </Card>
+</CardGrid>
+
+## Website Chat
+
+The easiest way to deploy your assistant is adding them to your website. You get a small piece of code to paste into your site, and your assistant appears as a friendly chat bubble in the corner.
+
+<Steps>
+1. **Go to the Embed page** in your dashboard
+
+2. **Copy the code** provided
+
+3. **Paste it into your website** (before the closing `</body>` tag)
+
+4. **Test the chat** on your live site
+</Steps>
+
+<Aside type="tip" title="Website Tips">
+- The code goes in your HTML, usually at the bottom of the page
+- You can choose which corner the chat bubble appears in
+- Test on different browsers to make sure everything works
+- The chat works automatically on mobile devices too
+</Aside>
+
+## Instagram Messaging <Badge text="Business Account Required" variant="caution" size="small" />
+
+Connect your assistant to Instagram so they can respond to direct messages automatically.
+
+<Steps>
+1. **Connect your Instagram Business account**
+
+2. **Set up how your assistant should respond**
+
+3. **Make sure your assistant knows** common Instagram customer questions
+
+4. **Test by sending a DM** to your own account
+</Steps>
+
+<Aside type="tip" title="Instagram Requirements">
+- You need an **Instagram Business** or **Creator** account
+- Your assistant responds to **direct messages only**, not comments
+- You can turn off automatic replies during business hours if you prefer to respond personally
+- You may need to connect through Facebook
+</Aside>
+
+<Aside type="note" title="Good Practices">
+- Let followers know in your bio that they might chat with an automated assistant
+- Set up a way to transfer to humans for complex questions
+- Keep an eye on conversation quality in Analytics
+</Aside>
+
+## WhatsApp Business
+
+Connect to WhatsApp Business API for automated customer messaging.
+
+<CardGrid>
+  <Card title="What You Need" icon="document">
+    - WhatsApp Business API access
+    - A verified business phone number
+    - Meta Business account
+  </Card>
+  <Card title="What You Get" icon="star">
+    - 24/7 automated customer help
+    - Rich messages with images and buttons
+    - Customer info synced with your CRM
+  </Card>
+</CardGrid>
+
+<Aside type="caution" title="WhatsApp Rules">
+WhatsApp has strict messaging policies. Make sure your assistant follows their business messaging guidelines to keep your account in good standing.
+</Aside>
+
+## Telegram Bot
+
+Deploy your assistant as a Telegram bot.
+
+<Steps>
+1. **Create a bot** with [@BotFather](https://t.me/BotFather) on Telegram
+
+2. **Copy the token** you receive
+
+3. **Paste the token** into your Telegram integration settings
+
+4. **Test your bot** by messaging it on Telegram
+</Steps>
+
+## Custom Integration <Badge text="For Developers" variant="note" size="small" />
+
+For developers: use the API to integrate your assistant into your own applications.
+
+<CardGrid>
+  <Card title="Full Access" icon="setting">
+    Complete control over conversations, contacts, settings, and analytics.
+  </Card>
+  <Card title="Real-Time Updates" icon="rocket">
+    Get instant notifications when new messages arrive or conversations start.
+  </Card>
+  <Card title="Code Libraries" icon="document">
+    Pre-built tools for JavaScript, Python, and other languages.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Developer Resources">
+Check out the [API Reference](/api/overview/) for detailed documentation on building custom integrations.
+</Aside>
+
+## Comparing Your Options
+
+| Platform | Setup Time | Best For | What You Need |
+|----------|------------|----------|---------------|
+| Website | 5 minutes | Most businesses | Access to edit your site |
+| Instagram | 15 minutes | Social media brands | Business account |
+| WhatsApp | 30 minutes | Customer support teams | Business API access |
+| Telegram | 10 minutes | Communities | Bot token |
+| Discord | 10 minutes | Gaming/Tech communities | Server admin rights |
+| Custom API | Varies | Unique needs | Development skills |
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Embed Widget"
+    description="Get the code to add your assistant to your website"
+    href="/assistants/embed/"
+  />
+  <LinkCard
+    title="API Overview"
+    description="Documentation for building custom integrations"
+    href="/api/overview/"
+  />
+  <LinkCard
+    title="Analytics"
+    description="See which platforms your customers prefer"
+    href="/assistants/analytics/"
+  />
+  <LinkCard
+    title="Plugins"
+    description="Add more skills to your assistant"
+    href="/assistants/plugins/"
+  />
+</CardGrid>

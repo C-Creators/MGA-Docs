@@ -1,0 +1,184 @@
+---
+title: Integraciones
+description: Pon a tu asistente a trabajar donde están tus clientes
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Envía a Tu Asistente Donde Están los Clientes <Badge text="Multi-Canal" variant="tip" size="small" />
+
+Las integraciones te permiten desplegar a tu asistente entrenado en diferentes lugares – tu sitio web, Instagram, WhatsApp y más. Piensa en ello como asignar a tu miembro del equipo a diferentes ubicaciones donde los clientes necesitan ayuda.
+
+![Integraciones disponibles](../../../../assets/screenshots/assistants-integrations.png)
+
+## Dónde Puede Trabajar Tu Asistente
+
+<CardGrid>
+  <Card title="Tu Sitio Web" icon="external">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Añade una burbuja de chat a tu sitio web. Los visitantes hacen clic para empezar a chatear con tu asistente instantáneamente.
+    
+    [Guía de Configuración →](/es/assistants/embed/)
+  </Card>
+  <Card title="DMs de Instagram" icon="star">
+    **<Badge text="Popular" variant="success" size="small" />**
+    
+    Tu asistente responde mensajes directos de Instagram automáticamente, ayudando a clientes 24/7.
+  </Card>
+  <Card title="WhatsApp" icon="phone">
+    Conéctate a WhatsApp Business para que los clientes puedan contactar a tu asistente en su app de mensajería favorita.
+  </Card>
+  <Card title="Telegram" icon="comment">
+    Despliega a tu asistente como un bot de Telegram – genial para comunidades y soporte continuo.
+  </Card>
+  <Card title="Discord" icon="discord">
+    Añade tu asistente a servidores de Discord para comunidades de gaming o soporte técnico.
+  </Card>
+  <Card title="Apps Personalizadas" icon="setting">
+    **<Badge text="Para Desarrolladores" variant="note" size="small" />**
+    
+    Construye tu propia integración usando nuestra API REST completa.
+    
+    [Docs de API →](/es/api/overview/)
+  </Card>
+</CardGrid>
+
+## Chat en Sitio Web
+
+La forma más fácil de desplegar a tu asistente es añadirlo a tu sitio web. Obtienes un pequeño fragmento de código para pegar en tu sitio, y tu asistente aparece como una burbuja de chat amigable en la esquina.
+
+<Steps>
+1. **Ve a la página de Insertar** en tu panel de control
+
+2. **Copia el código** proporcionado
+
+3. **Pégalo en tu sitio web** (antes de la etiqueta de cierre `</body>`)
+
+4. **Prueba el chat** en tu sitio en vivo
+</Steps>
+
+<Aside type="tip" title="Consejos para Sitio Web">
+- El código va en tu HTML, generalmente al final de la página
+- Puedes elegir en qué esquina aparece la burbuja de chat
+- Prueba en diferentes navegadores para asegurarte de que todo funciona
+- El chat funciona automáticamente en dispositivos móviles también
+</Aside>
+
+## Mensajería de Instagram <Badge text="Cuenta Business Requerida" variant="caution" size="small" />
+
+Conecta a tu asistente a Instagram para que responda mensajes directos automáticamente.
+
+<Steps>
+1. **Conecta tu cuenta de Instagram Business**
+
+2. **Configura cómo debe responder tu asistente**
+
+3. **Asegúrate de que tu asistente sepa** las preguntas comunes de clientes de Instagram
+
+4. **Prueba enviando un DM** a tu propia cuenta
+</Steps>
+
+<Aside type="tip" title="Requisitos de Instagram">
+- Necesitas una cuenta de **Instagram Business** o **Creator**
+- Tu asistente responde solo a **mensajes directos**, no a comentarios
+- Puedes desactivar las respuestas automáticas durante horario comercial si prefieres responder personalmente
+- Puede que necesites conectarte a través de Facebook
+</Aside>
+
+<Aside type="note" title="Buenas Prácticas">
+- Informa a tus seguidores en tu bio que podrían chatear con un asistente automatizado
+- Configura una manera de transferir a humanos para preguntas complejas
+- Mantén un ojo en la calidad de las conversaciones en Analíticas
+</Aside>
+
+## WhatsApp Business
+
+Conéctate a la API de WhatsApp Business para mensajería automatizada con clientes.
+
+<CardGrid>
+  <Card title="Qué Necesitas" icon="document">
+    - Acceso a API de WhatsApp Business
+    - Un número de teléfono de negocio verificado
+    - Cuenta de Meta Business
+  </Card>
+  <Card title="Qué Obtienes" icon="star">
+    - Ayuda automatizada al cliente 24/7
+    - Mensajes enriquecidos con imágenes y botones
+    - Info de clientes sincronizada con tu CRM
+  </Card>
+</CardGrid>
+
+<Aside type="caution" title="Reglas de WhatsApp">
+WhatsApp tiene políticas estrictas de mensajería. Asegúrate de que tu asistente siga sus directrices de mensajería de negocio para mantener tu cuenta en buen estado.
+</Aside>
+
+## Bot de Telegram
+
+Despliega a tu asistente como un bot de Telegram.
+
+<Steps>
+1. **Crea un bot** con [@BotFather](https://t.me/BotFather) en Telegram
+
+2. **Copia el token** que recibes
+
+3. **Pega el token** en la configuración de tu integración de Telegram
+
+4. **Prueba tu bot** enviándole un mensaje en Telegram
+</Steps>
+
+## Integración Personalizada <Badge text="Para Desarrolladores" variant="note" size="small" />
+
+Para desarrolladores: usa la API para integrar a tu asistente en tus propias aplicaciones.
+
+<CardGrid>
+  <Card title="Acceso Completo" icon="setting">
+    Control total sobre conversaciones, contactos, configuraciones y analíticas.
+  </Card>
+  <Card title="Actualizaciones en Tiempo Real" icon="rocket">
+    Recibe notificaciones instantáneas cuando lleguen nuevos mensajes o inicien conversaciones.
+  </Card>
+  <Card title="Bibliotecas de Código" icon="document">
+    Herramientas pre-construidas para JavaScript, Python y otros lenguajes.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Recursos para Desarrolladores">
+Consulta la [Referencia de API](/es/api/overview/) para documentación detallada sobre cómo construir integraciones personalizadas.
+</Aside>
+
+## Comparando Tus Opciones
+
+| Plataforma | Tiempo de Config | Mejor Para | Qué Necesitas |
+|------------|-----------------|-----------|---------------|
+| Sitio Web | 5 minutos | La mayoría de negocios | Acceso para editar tu sitio |
+| Instagram | 15 minutos | Marcas en redes sociales | Cuenta Business |
+| WhatsApp | 30 minutos | Equipos de soporte al cliente | Acceso a API Business |
+| Telegram | 10 minutos | Comunidades | Token de bot |
+| Discord | 10 minutos | Comunidades de Gaming/Tech | Permisos de admin del servidor |
+| API Personalizada | Varía | Necesidades únicas | Habilidades de desarrollo |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Widget de Inserción"
+    description="Obtén el código para añadir tu asistente a tu sitio web"
+    href="/es/assistants/embed/"
+  />
+  <LinkCard
+    title="Resumen de API"
+    description="Documentación para construir integraciones personalizadas"
+    href="/es/api/overview/"
+  />
+  <LinkCard
+    title="Analíticas"
+    description="Ve qué plataformas prefieren tus clientes"
+    href="/es/assistants/analytics/"
+  />
+  <LinkCard
+    title="Plugins"
+    description="Añade más habilidades a tu asistente"
+    href="/es/assistants/plugins/"
+  />
+</CardGrid>

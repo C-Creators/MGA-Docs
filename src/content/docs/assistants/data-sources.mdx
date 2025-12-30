@@ -1,0 +1,211 @@
+---
+title: Data Sources
+description: Share training materials to help your assistant learn about your business
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+## Training Your Assistant <Badge text="Core Feature" variant="note" size="small" />
+
+Just like onboarding a new employee, you need to share training materials with your assistant. The more relevant information you provide, the better they'll be at helping your customers. Think of Data Sources as your assistant's training binder – everything they need to know about your business goes here.
+
+![Training data sources](../../../assets/screenshots/assistants-data-sources.png)
+
+## Adding a New Data Source
+
+Click "Add new source" to open the data source selection modal. Choose from multiple source types including webpages, text, files, web crawlers, GitHub repos, YouTube videos, REST APIs, and sitemaps.
+
+![Data source type selection](../../../assets/screenshots/assistants-data-sources-modal.png)
+
+## Types of Training Materials
+
+<Tabs syncKey="datasource">
+  <TabItem label="Documents" icon="document">
+    **Share files** like PDFs, Word documents, and text files. Perfect for:
+    - Employee handbooks and guides
+    - Product manuals and specifications
+    - Company policies and procedures
+    - FAQ sheets and reference materials
+    
+    **Accepted formats:** PDF, DOCX, DOC, TXT, MD
+    
+    <Aside type="tip" title="Best for Documents">
+    Documents work great for official materials that don't change often – like your product manual or company handbook.
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="Websites" icon="external">
+    **Point to your website** and let your assistant read and learn from your pages. Great for:
+    - Product and service descriptions
+    - Help center and support articles
+    - Blog posts and company news
+    - About us and contact information
+    
+    **Features:**
+    - Choose how many pages deep to read
+    - Set a limit on total pages
+    - Auto-update to keep knowledge fresh
+    
+    <Aside type="tip" title="Website Tips">
+    Start small – have your assistant read just 2-3 levels deep. You can always add more pages later. Reading too many pages at once takes longer and costs more.
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="Text" icon="pencil">
+    **Type or paste information** directly for quick updates. Perfect for:
+    - Common questions and answers
+    - Specific talking points you want them to know
+    - Quick corrections or clarifications
+    - Special instructions or guidelines
+    
+    <Aside type="tip" title="Direct Text Tips">
+    This is like giving your assistant a quick note or memo. Use it for specific things you want them to say, or answers to questions that aren't covered elsewhere.
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="Media" icon="star">
+    **Audio and video** files that get automatically transcribed. Great for:
+    - Training videos and tutorials
+    - Recorded presentations and webinars
+    - Meeting recordings with important info
+    - Product demos and walkthroughs
+    
+    **Accepted formats:** MP3, MP4, WAV, M4A
+    
+    <Aside type="note">
+    Your assistant will "listen" to audio and video files and learn from what's said. Longer recordings take more time to process.
+    </Aside>
+  </TabItem>
+</Tabs>
+
+## Adding Website Content
+
+<Steps>
+1. **Share the web address**
+   
+   Paste the URL of the website you want your assistant to study.
+
+2. **Set boundaries**
+   
+   Tell them how many pages to read (depth) and the maximum number of pages total.
+
+3. **Start the learning process**
+   
+   Click "Add Source" and your assistant will begin reading and memorizing the content.
+
+4. **Keep them updated (optional)**
+   
+   Turn on auto-sync so your assistant automatically learns when your website changes.
+</Steps>
+
+<Aside type="caution" title="Things to Keep in Mind">
+- Large websites take longer for your assistant to learn
+- More pages means more processing time
+- Some pages might be protected and can't be read
+- Pages with lots of interactive elements may not work well
+</Aside>
+
+## Organizing Training Materials <Badge text="Pro Tip" variant="tip" size="small" />
+
+Keep your assistant's training materials organized, just like you would for a new hire:
+
+<FileTree>
+- Training Materials/
+  - **Products/**
+    - product-catalog.pdf
+    - pricing-guide.pdf
+    - feature-list.txt
+  - **Support/**
+    - faq.txt
+    - troubleshooting-guide.pdf
+    - https://help.example.com
+  - **Company/**
+    - about-us.txt
+    - https://example.com/about
+  - **Policies/**
+    - terms-of-service.pdf
+    - privacy-policy.pdf
+</FileTree>
+
+## Managing What They've Learned
+
+<CardGrid>
+  <Card title="Refresh" icon="refresh">
+    Update website knowledge to get the latest information. Use this when your site has new content.
+  </Card>
+  <Card title="Remove" icon="close">
+    Take away outdated or incorrect materials. Keeps your assistant from giving old information.
+  </Card>
+  <Card title="Check Status" icon="information">
+    See if training is complete, in progress, or had any issues.
+  </Card>
+</CardGrid>
+
+## Tips for Better Training
+
+<Aside type="tip" title="Quality Over Quantity">
+Clear, well-organized information helps your assistant learn better than piles of messy content. Think about what a new employee would actually need:
+- Accurate, current information
+- Well-structured content with clear sections
+- No conflicting or duplicate information
+</Aside>
+
+<Steps>
+1. **Use clear names**
+   
+   Label materials descriptively like "Product FAQ" not "Document 1"
+
+2. **Group related content**
+   
+   Organize by topic – it's easier to manage and update later
+
+3. **Avoid duplicates**
+   
+   Repeating the same information can confuse your assistant
+
+4. **Test after training**
+   
+   Head to the Playground and ask questions to make sure they learned correctly
+</Steps>
+
+## Common Questions
+
+<Aside type="caution" title="My assistant doesn't know about something I shared">
+- Double-check that the material covers that topic
+- Make sure the training finished (check the status)
+- Try asking the question in a different way
+- The information might be buried too deep in a document
+</Aside>
+
+<Aside type="caution" title="My assistant is giving outdated information">
+- Hit "Refresh" on website sources to get the latest content
+- Upload the newest version of any documents
+- Remove old materials before adding updated ones
+</Aside>
+
+<Aside type="danger" title="Training seems stuck (over 24 hours)">
+- Very large files can take extra time
+- Make sure the file type is supported
+- Try splitting large files into smaller pieces
+- Reach out to support if it's been too long
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Playground"
+    description="Interview your assistant after adding new training materials"
+    href="/assistants/playground/"
+  />
+  <LinkCard
+    title="Settings"
+    description="Adjust how your assistant searches their knowledge"
+    href="/assistants/settings/"
+  />
+  <LinkCard
+    title="Search"
+    description="Check that your assistant can find the right answers"
+    href="/assistants/search/"
+  />
+</CardGrid>

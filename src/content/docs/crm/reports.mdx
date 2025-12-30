@@ -1,0 +1,237 @@
+---
+title: Reports
+description: Analyze your CRM data with built-in reporting
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Get insights into your business with comprehensive reporting. <Badge text="Analytics" variant="tip" size="small" />
+
+![CRM analytics and reports](../../../assets/screenshots/crm-reports.png)
+
+## Report Types
+
+<CardGrid>
+  <Card title="Contact Reports" icon="group">
+    **<Badge text="Live" variant="success" size="small" />**
+    
+    Total contacts, sources, geographic distribution, tag analysis, growth rate.
+  </Card>
+  <Card title="Conversation Reports" icon="comment">
+    **<Badge text="Live" variant="success" size="small" />**
+    
+    Volume by bot/channel, resolution rates, duration, peak hours.
+  </Card>
+  <Card title="Ticket Reports" icon="document">
+    Open vs resolved, priority breakdown, assignee stats, SLA compliance.
+  </Card>
+  <Card title="Campaign Reports" icon="email">
+    Open rates, click rates, conversions, best content, optimal timing.
+  </Card>
+  <Card title="Lead Reports" icon="rocket">
+    Lead sources, pipeline stages, conversion rates, velocity, win/loss.
+  </Card>
+  <Card title="Custom Reports" icon="setting">
+    **<Badge text="Flexible" variant="note" size="small" />**
+    
+    Build reports with any data, metrics, and dimensions.
+  </Card>
+</CardGrid>
+
+## Building Reports
+
+<Tabs>
+  <TabItem label="Quick Reports">
+    **Pre-built reports ready to use**
+    
+    <Steps>
+    1. **Go to Reports**
+       
+       Navigate to the Reports section from the sidebar.
+    
+    2. **Select report type**
+       
+       Choose from Contact, Conversation, Ticket, Campaign, or Lead reports.
+    
+    3. **Choose date range**
+       
+       Set the time period you want to analyze.
+    
+    4. **View results**
+       
+       See your data visualized instantly.
+    </Steps>
+  </TabItem>
+  <TabItem label="Custom Reports">
+    **Build your own reports** <Badge text="Advanced" variant="note" size="small" />
+    
+    <Steps>
+    1. **Click + New Report**
+       
+       Start a custom report configuration.
+    
+    2. **Select data source**
+       
+       Choose which data to report on.
+    
+    3. **Choose metrics**
+       
+       Select what to measure (counts, averages, rates).
+    
+    4. **Add dimensions**
+       
+       Define how to group the data.
+    
+    5. **Apply filters**
+       
+       Narrow down to specific criteria.
+    
+    6. **Save report**
+       
+       Name and save for future access.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Report Building">
+- **Start with pre-built reports** and customize from there
+- **Save frequently used reports** for quick access
+- **Share reports** with team members for collaboration
+</Aside>
+
+## Report Components
+
+<Tabs>
+  <TabItem label="Metrics">
+    **What to measure**
+    
+    | Metric Type | Examples |
+    |-------------|----------|
+    | **Count** | Total contacts, messages |
+    | **Sum** | Total revenue, hours |
+    | **Average** | Avg. response time |
+    | **Percentage** | Conversion rate |
+    | **Rate** | Messages per hour |
+  </TabItem>
+  <TabItem label="Dimensions">
+    **How to group data**
+    
+    | Dimension | Use Case |
+    |-----------|----------|
+    | **Date/Time** | Trends over time |
+    | **Category** | By type or status |
+    | **User/Assignee** | Team performance |
+    | **Segment** | Customer groups |
+    | **Platform** | Channel comparison |
+  </TabItem>
+  <TabItem label="Filters">
+    **What to include**
+    
+    | Filter Type | Example |
+    |-------------|---------|
+    | **Date range** | Last 30 days |
+    | **Specific values** | Status = "Open" |
+    | **Conditions** | Value > $1,000 |
+    | **Segments** | VIP customers only |
+  </TabItem>
+</Tabs>
+
+## Visualizations
+
+<CardGrid>
+  <Card title="Line Charts" icon="graph">
+    Show trends and changes over time.
+  </Card>
+  <Card title="Bar Charts" icon="bars">
+    Compare values across categories.
+  </Card>
+  <Card title="Pie Charts" icon="approve">
+    Display proportions and percentages.
+  </Card>
+  <Card title="Tables" icon="document">
+    Detailed data with sorting and filtering.
+  </Card>
+  <Card title="Key Metrics" icon="rocket">
+    Single numbers for KPIs and highlights.
+  </Card>
+</CardGrid>
+
+## Dashboards <Badge text="Overview" variant="success" size="small" />
+
+Create custom dashboards combining multiple reports for a complete view of your business.
+
+<CardGrid>
+  <Card title="Sales Dashboard" icon="approve">
+    Pipeline value, deals closed, conversion rates.
+  </Card>
+  <Card title="Support Dashboard" icon="document">
+    Open tickets, response times, satisfaction.
+  </Card>
+  <Card title="Marketing Dashboard" icon="email">
+    Campaign performance, lead sources, engagement.
+  </Card>
+  <Card title="Executive Dashboard" icon="graph">
+    High-level KPIs across all departments.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Dashboard Strategy">
+- **Create role-specific dashboards** (sales, support, marketing)
+- **Include key metrics at the top** for quick scanning
+- **Update dashboards regularly** as business needs change
+</Aside>
+
+## Exporting Data
+
+<CardGrid>
+  <Card title="CSV Export" icon="external">
+    For spreadsheet analysis and data manipulation.
+  </Card>
+  <Card title="PDF Export" icon="document">
+    For sharing polished reports with stakeholders.
+  </Card>
+  <Card title="Scheduled Email" icon="email">
+    **<Badge text="Automated" variant="success" size="small" />**
+    
+    Automatic delivery to your inbox daily/weekly.
+  </Card>
+</CardGrid>
+
+## Report Examples
+
+| Report | Key Metrics | Use Case |
+|--------|-------------|----------|
+| **Weekly Pipeline** | Deal count, total value, stage distribution | Sales forecast |
+| **Monthly Conversations** | Volume, resolution rate, avg. duration | Support capacity |
+| **Campaign Performance** | Open rate, CTR, conversions | Marketing ROI |
+| **Contact Growth** | New contacts, sources, retention | Growth tracking |
+| **Team Performance** | Tickets/deals per user, response time | Management review |
+
+<Aside type="note" title="Pro Tip">
+Schedule your key reports to be emailed automatically. Start your week with a "Weekly Summary" report delivered every Monday morning.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Analytics"
+    description="Bot-specific analytics and metrics"
+    href="/assistants/analytics/"
+  />
+  <LinkCard
+    title="Contacts"
+    description="Contact data source for reports"
+    href="/crm/contacts/"
+  />
+  <LinkCard
+    title="Pipelines"
+    description="Pipeline performance data"
+    href="/crm/pipelines/"
+  />
+  <LinkCard
+    title="CRM Overview"
+    description="Full CRM feature overview"
+    href="/crm/overview/"
+  />
+</CardGrid>

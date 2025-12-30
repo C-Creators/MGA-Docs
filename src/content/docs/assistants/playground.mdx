@@ -1,0 +1,121 @@
+---
+title: Playground
+description: Interview and practice with your assistant before they meet customers
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Your Assistant's Interview Room <Badge text="Interactive" variant="tip" size="small" />
+
+The Playground is where you interview and practice with your assistant before they start helping real customers. Think of it as a rehearsal space where you can ask them questions, see how they respond, and make sure they're ready for the job.
+
+![Playground chat interface](../../../assets/screenshots/assistants-playground.png)
+
+## Interviewing Your Assistant
+
+Use the Playground to have a conversation with your assistant, just like a customer would. Ask them questions about your business, try different ways of phrasing things, and see if they give helpful, accurate answers. This helps you understand what they've learned and where they might need more training.
+
+![Active conversation in the Playground](../../../assets/screenshots/assistants-playground-chat.png)
+
+<Aside type="tip" title="Interview Tips">
+- Ask the same question different ways – customers won't always use the same words
+- Try the real questions you know customers will ask
+- If answers aren't quite right, your assistant might need more training materials
+- See how they handle casual greetings and small talk too
+</Aside>
+
+## Reviewing Past Practice Sessions
+
+The Playground keeps a record of your practice conversations in the sidebar. You can click on any previous session to review how it went, or start a fresh conversation to test from scratch.
+
+## Tools at Your Disposal
+
+<CardGrid>
+  <Card title="Creativity Level" icon="setting">
+    Adjust how creative vs. focused your assistant's responses are. More focused = consistent answers. More creative = varied responses.
+  </Card>
+  <Card title="Live Web Search" icon="magnifier">
+    Let your assistant search the internet for current information beyond what you've taught them.
+  </Card>
+  <Card title="Show Sources" icon="document">
+    See exactly which training materials your assistant used to form their answer.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Creativity Settings">
+<Tabs>
+  <TabItem label="More Focused (0.1-0.5)">
+    **Lower creativity** means your assistant sticks closely to the facts. Best for:
+    - Answering support questions
+    - Providing accurate information
+    - Customer service conversations
+  </TabItem>
+  <TabItem label="More Creative (0.6-1.0)">
+    **Higher creativity** means your assistant is more flexible and inventive. Best for:
+    - Writing marketing messages
+    - Brainstorming ideas
+    - More conversational interactions
+  </TabItem>
+</Tabs>
+</Aside>
+
+## Getting the Most from Practice
+
+Make interviewing your assistant a regular habit. Test them after sharing new training materials, challenge them with tricky questions, and experiment with different settings until you're confident they're ready to meet customers.
+
+## How to Run a Good Practice Session
+
+<Steps>
+1. **Be systematic**
+   
+   Make a list of common customer questions and work through them. Cover all the important topics.
+
+2. **Try to stump them**
+   
+   Ask unusual or complex questions to find their weak spots before customers do.
+
+3. **Make quick adjustments**
+   
+   When something's not right, update their training or settings and test again right away.
+
+4. **Keep notes**
+   
+   Write down any issues you find so you can address them later.
+</Steps>
+
+## Starting Fresh
+
+Click **Clear Chat** to begin a new conversation. This is helpful when:
+
+- You want to see how they greet new visitors
+- You're testing something specific without past context
+- You're starting a whole new practice scenario
+
+<Aside type="tip" title="Pro Tip">
+Always start fresh when testing your assistant's greeting or first impression – you want to see what new customers will experience!
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Settings"
+    description="Shape your assistant's personality and response style"
+    href="/assistants/settings/"
+  />
+  <LinkCard
+    title="Data Sources"
+    description="Add more training materials to improve answers"
+    href="/assistants/data-sources/"
+  />
+  <LinkCard
+    title="Conversations"
+    description="See how your assistant performs with real customers"
+    href="/assistants/conversations/"
+  />
+  <LinkCard
+    title="Analytics"
+    description="Track your assistant's overall performance"
+    href="/assistants/analytics/"
+  />
+</CardGrid>

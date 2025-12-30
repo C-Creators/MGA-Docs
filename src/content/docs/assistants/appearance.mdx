@@ -1,0 +1,173 @@
+---
+title: Appearance & Branding
+description: Dress your assistant in your brand colors and style
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Give Your Assistant a Company Look <Badge text="Branding" variant="tip" size="small" />
+
+The Appearance section is where you customize how your assistant looks when chatting with customers. Think of it like choosing a uniform and name tag for a new team member – you want them to look professional and fit in with your brand.
+
+![Widget appearance customization](../../../assets/screenshots/assistants-appearance.png)
+
+## What You Can Customize
+
+<CardGrid>
+  <Card title="Colors & Theme" icon="pencil">
+    Pick colors for chat bubbles and backgrounds that match your brand.
+  </Card>
+  <Card title="Name & Greeting" icon="star">
+    Choose what your assistant calls themselves and how they introduce themselves to visitors.
+  </Card>
+  <Card title="Position" icon="external">
+    Decide where the chat button appears on your website.
+  </Card>
+  <Card title="Voice" icon="comment">
+    Let your assistant speak responses out loud with text-to-speech.
+  </Card>
+</CardGrid>
+
+## The Basics: Name & Greeting
+
+Start by giving your assistant a name and writing their greeting message – the first thing customers see when they open the chat. This is your assistant's first impression, so make it welcoming and clear!
+
+<Aside type="tip" title="Name & Greeting Tips">
+- Keep the name short and friendly (like "Alex" or "Support Team")
+- The greeting should explain what your assistant can help with
+- Use a friendly, conversational tone that matches your brand
+- Think about your audience – formal for business clients, casual for everyday customers
+</Aside>
+
+### Example Greetings
+
+<Tabs>
+  <TabItem label="Friendly">
+    > 👋 Hi there! I'm here to help with any questions about our products. What can I help you with today?
+    
+    **Best for:** Consumer brands, e-commerce, casual businesses
+  </TabItem>
+  <TabItem label="Professional">
+    > Welcome to [Company] Support. I can assist with product information, technical questions, and account inquiries. How may I help you?
+    
+    **Best for:** B2B companies, enterprise, professional services
+  </TabItem>
+  <TabItem label="Focused">
+    > Hi! I'm your product specialist. Ask me anything about features, pricing, or getting started.
+    
+    **Best for:** SaaS products, specific product support
+  </TabItem>
+</Tabs>
+
+## Colors: Dressing for the Job
+
+Pick colors that match your website and brand. Your assistant should look like they belong on your team!
+
+<CardGrid>
+  <Card title="Assistant's Messages" icon="comment">
+    Use your brand color here. Just make sure text is easy to read.
+  </Card>
+  <Card title="Customer's Messages" icon="pencil">
+    Keep these neutral (gray or white) so they stand out from your assistant's replies.
+  </Card>
+  <Card title="Background" icon="document">
+    Light backgrounds usually work best for easy reading.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Color Tips">
+- Make sure text is easy to read against the background colors
+- Test your colors on both light and dark website backgrounds
+- Preview changes before saving to see how everything looks together
+- Remember people with color blindness – don't rely on color alone
+</Aside>
+
+### Color Examples
+
+| Style | Assistant Color | Customer Color | Background | Works For |
+|-------|----------------|----------------|------------|-----------|
+| Professional | Navy Blue | Light Gray | White | Corporate, B2B |
+| Friendly | Bright Blue | Light Gray | Off-white | Consumer apps |
+| Bold | Brand Red | Dark Gray | White | Marketing sites |
+| Minimal | Dark Gray | Light Gray | White | Clean, modern looks |
+
+## See It Before You Save
+
+The preview panel shows exactly what your chat widget will look like to customers. Any changes you make show up instantly, so you can experiment until it looks just right.
+
+<Steps>
+1. **Make a change** in the customization panel
+
+2. **Check the preview** on the right side
+
+3. **Try different backgrounds** using the preview options
+
+4. **Save** when you're happy with how it looks
+</Steps>
+
+## Voice Features <Badge text="Optional" variant="note" size="small" />
+
+Want your assistant to speak their responses out loud? Enable text-to-speech and choose a voice that fits your brand.
+
+<CardGrid>
+  <Card title="OpenAI Voices" icon="star">
+    High-quality, natural-sounding voices with multiple options.
+  </Card>
+  <Card title="ElevenLabs" icon="star">
+    Premium voices with emotional range and custom voice options.
+  </Card>
+  <Card title="Browser Voices" icon="setting">
+    Built-in browser voices. Free but more robotic sounding.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Voice Considerations">
+- Voice adds a small delay to responses
+- Premium voice providers may cost extra
+- Test voice on mobile devices – speakers vary
+</Aside>
+
+## Where Should the Chat Button Go?
+
+<Tabs>
+  <TabItem label="Bottom Right">
+    **The standard spot.** Most visitors expect to find chat widgets here. 
+    
+    ✅ Recommended for most websites
+  </TabItem>
+  <TabItem label="Bottom Left">
+    Use this if bottom-right conflicts with other elements on your site.
+    
+    ⚠️ Less common, some visitors might miss it
+  </TabItem>
+</Tabs>
+
+## Making It Look Professional
+
+<Aside type="tip" title="Design Tips">
+1. **Stay consistent** – Match your website's overall look and feel
+2. **Keep it readable** – Make sure text is easy to read with good contrast
+3. **Think mobile first** – Most visitors will be on phones, so test there first
+4. **Keep it simple** – A clean look is more professional than over-designed
+5. **Get feedback** – Ask real customers what they think before finalizing
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Embed"
+    description="Put your styled assistant on your website"
+    href="/assistants/embed/"
+  />
+  <LinkCard
+    title="Playground"
+    description="See how your assistant looks while practicing"
+    href="/assistants/playground/"
+  />
+  <LinkCard
+    title="Settings"
+    description="Define your assistant's personality"
+    href="/assistants/settings/"
+  />
+</CardGrid>

@@ -1,0 +1,264 @@
+---
+title: Flujos de Trabajo
+description: Automatiza acciones basadas en eventos y condiciones
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Los flujos de trabajo automatizan tareas repetitivas disparando acciones basadas en eventos. <Badge text="Automatización" variant="success" size="small" />
+
+![Flujos de trabajo automatizados](../../../assets/screenshots/crm-workflows.png)
+
+## Cómo Funcionan los Flujos de Trabajo
+
+<CardGrid>
+  <Card title="Disparador" icon="rocket">
+    **Evento que inicia el flujo**
+    
+    Contacto creado, mensaje recibido, horario alcanzado.
+  </Card>
+  <Card title="Condiciones" icon="setting">
+    **Reglas que deben ser verdaderas**
+    
+    Filtra cuándo se ejecuta el flujo basándote en datos.
+  </Card>
+  <Card title="Acciones" icon="random">
+    **Lo que sucede cuando se dispara**
+    
+    Enviar emails, actualizar registros, notificar al equipo.
+  </Card>
+</CardGrid>
+
+## Disparadores
+
+<Tabs>
+  <TabItem label="Disparadores de Contacto">
+    | Disparador | Descripción |
+    |------------|-------------|
+    | **Contacto creado** | Nuevo contacto agregado al CRM |
+    | **Contacto actualizado** | Cualquier campo cambia |
+    | **Agregado a segmento** | Contacto coincide con reglas del segmento |
+    | **Etiqueta agregada/removida** | Cambios de etiquetas en contacto |
+  </TabItem>
+  <TabItem label="Disparadores de Conversación">
+    | Disparador | Descripción |
+    |------------|-------------|
+    | **Conversación iniciada** | Nuevo chat comienza |
+    | **Conversación terminada** | Sesión de chat cierra |
+    | **Mensaje recibido** | Cualquier mensaje entrante |
+    | **Escalamiento solicitado** | Usuario pide agente humano |
+    | **Sentimiento detectado** | Positivo/negativo detectado |
+  </TabItem>
+  <TabItem label="Disparadores CRM">
+    | Disparador | Descripción |
+    |------------|-------------|
+    | **Lead creado** | Nuevo lead en pipeline |
+    | **Estado de lead cambiado** | Progresión de etapa |
+    | **Ticket creado** | Nuevo ticket de soporte |
+    | **Cita reservada** | Reunión programada |
+    | **Cita cancelada** | Reunión cancelada |
+  </TabItem>
+  <TabItem label="Disparadores de Tiempo">
+    | Disparador | Descripción |
+    |------------|-------------|
+    | **Programado (cron)** | Se ejecuta en horario |
+    | **Retraso después de evento** | Espera y luego ejecuta |
+    | **Campo de fecha alcanzado** | Cuando llega la fecha |
+  </TabItem>
+</Tabs>
+
+## Condiciones
+
+<CardGrid>
+  <Card title="Propiedades de Contacto" icon="group">
+    Filtra por nombre, email, etiquetas, campos personalizados.
+  </Card>
+  <Card title="Datos de Conversación" icon="comment">
+    Basado en contenido del mensaje, plataforma, sentimiento.
+  </Card>
+  <Card title="Basadas en Tiempo" icon="document">
+    Horario laboral, días desde evento, fechas.
+  </Card>
+  <Card title="Lógica Personalizada" icon="setting">
+    Combinaciones AND/OR para escenarios complejos.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Estrategia de Condiciones">
+- **Usa condiciones** para prevenir que los flujos se ejecuten innecesariamente
+- **Prueba condiciones** con datos de muestra antes de activar
+- **Combina lógica AND/OR** para escenarios complejos
+</Aside>
+
+## Acciones
+
+<Tabs>
+  <TabItem label="Acciones de Contacto">
+    <CardGrid>
+      <Card title="Actualizar Campos" icon="pencil">
+        Cambia cualquier propiedad del contacto o campo personalizado.
+      </Card>
+      <Card title="Agregar/Remover Etiquetas" icon="add-document">
+        Gestiona organización y targeting de contactos.
+      </Card>
+      <Card title="Agregar a Segmento" icon="bars">
+        Coloca contacto en segmento específico.
+      </Card>
+      <Card title="Asignar a Usuario" icon="group">
+        Enruta contacto a miembro del equipo.
+      </Card>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Acciones de Comunicación">
+    <CardGrid>
+      <Card title="Enviar Email" icon="email">
+        Email automatizado desde plantillas.
+      </Card>
+      <Card title="Enviar SMS" icon="comment">
+        Notificaciones por mensaje de texto.
+      </Card>
+      <Card title="Notificación Interna" icon="warning">
+        Alertar a miembros del equipo.
+      </Card>
+      <Card title="Crear Tarea" icon="add-document">
+        Asignar tareas de seguimiento.
+      </Card>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Acciones CRM">
+    <CardGrid>
+      <Card title="Crear Lead" icon="rocket">
+        Agregar nuevo lead al pipeline.
+      </Card>
+      <Card title="Actualizar Estado de Lead" icon="pencil">
+        Mover lead a través de etapas.
+      </Card>
+      <Card title="Crear Ticket" icon="document">
+        Abrir ticket de soporte.
+      </Card>
+      <Card title="Asignar Ticket" icon="group">
+        Enrutar al equipo de soporte.
+      </Card>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Acciones de Integración">
+    <CardGrid>
+      <Card title="Llamar Webhook" icon="external">
+        Enviar datos a URLs externas.
+      </Card>
+      <Card title="Actualizar CRM Externo" icon="random">
+        Sincronizar con otros sistemas.
+      </Card>
+      <Card title="Disparar Zapier" icon="setting">
+        Conectar con 5,000+ apps.
+      </Card>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Acciones de Flujo">
+    <CardGrid>
+      <Card title="Esperar/Retrasar" icon="document">
+        Pausar antes de la siguiente acción.
+      </Card>
+      <Card title="Rama Condicional" icon="random">
+        Rutas lógicas if/then.
+      </Card>
+      <Card title="Terminar Flujo" icon="close">
+        Detener ejecución.
+      </Card>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Creando un Flujo de Trabajo
+
+<Steps>
+1. **Navega a Flujos de Trabajo**
+   
+   Ve a **CRM** → **Flujos de Trabajo** desde la barra lateral.
+
+2. **Haz clic en Crear Flujo de Trabajo**
+   
+   Inicia una nueva configuración de flujo de trabajo.
+
+3. **Selecciona un disparador**
+   
+   Elige qué evento inicia el flujo de trabajo.
+
+4. **Agrega condiciones**
+   
+   Define cuándo debe ejecutarse el flujo (opcional).
+
+5. **Agrega acciones**
+   
+   Configura qué sucede cuando se dispara.
+
+6. **Prueba el flujo de trabajo**
+   
+   Usa el modo de prueba con datos de muestra.
+
+7. **Activa**
+   
+   Enciende el flujo de trabajo para uso en producción.
+</Steps>
+
+<Aside type="caution" title="Advertencia de Pruebas">
+Siempre prueba los flujos de trabajo en un entorno de staging o con datos de prueba antes de activar. Los flujos de trabajo automatizados pueden afectar muchos contactos rápidamente si están mal configurados.
+</Aside>
+
+<Aside type="tip" title="Mejores Prácticas de Flujos de Trabajo">
+- **Empieza simple** - Agrega complejidad gradualmente
+- **Usa retrasos** - Evita abrumar a los contactos con demasiados mensajes
+- **Prueba exhaustivamente** - Verifica todas las rutas antes de activar
+- **Monitorea rendimiento** - Rastrea ejecución y ajusta según sea necesario
+</Aside>
+
+## Ejemplos de Flujos de Trabajo
+
+<Tabs>
+  <TabItem label="Serie de Bienvenida">
+    **Disparador**: Contacto creado
+    
+    <Steps>
+    1. Enviar email de bienvenida inmediatamente
+    2. Esperar 2 días
+    3. Enviar seguimiento con recursos
+    4. Esperar 3 días
+    5. Enviar check-in de engagement
+    </Steps>
+  </TabItem>
+  <TabItem label="Nurturing de Leads">
+    **Disparador**: Puntuación de lead > 50
+    
+    <Steps>
+    1. Agregar al segmento "Leads Calientes"
+    2. Notificar al equipo de ventas
+    3. Crear tarea de seguimiento
+    4. Enviar email personalizado
+    </Steps>
+  </TabItem>
+  <TabItem label="Manejador de Escalamiento">
+    **Disparador**: Escalamiento solicitado
+    
+    <Steps>
+    1. Crear ticket de soporte
+    2. Asignar al equipo de soporte
+    3. Enviar notificación interna
+    4. Enviar confirmación al cliente
+    </Steps>
+  </TabItem>
+</Tabs>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard 
+    title="Segmentos" 
+    description="Disparadores basados en segmentos"
+    href="/es/crm/segments/"
+  />
+  <LinkCard 
+    title="Contactos" 
+    description="Datos de contacto para condiciones"
+    href="/es/crm/contacts/"
+  />
+</CardGrid>

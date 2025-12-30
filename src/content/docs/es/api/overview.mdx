@@ -1,0 +1,176 @@
+---
+title: Referencia de API
+description: Guía completa para integrar con la API de MyGPTAssistants
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+La API de MyGPTAssistants te permite integrar capacidades de chat con IA en tus aplicaciones. <Badge text="REST API" variant="tip" size="small" />
+
+## Visión General
+
+<CardGrid>
+  <Card title="URL Base" icon="external">
+    ```
+    https://api.mygptassistants.com/v1
+    ```
+  </Card>
+  <Card title="Autenticación" icon="setting">
+    Portador de Token (API Key)
+    ```
+    Authorization: Bearer YOUR_API_KEY
+    ```
+  </Card>
+</CardGrid>
+
+## Inicio Rápido
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    const response = await fetch('https://api.mygptassistants.com/v1/chat/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        bot_id: 'your-bot-id',
+        message: 'Hola, ¿cómo puedo ayudarte?',
+        session_id: 'user-session-123'
+      })
+    });
+
+    const data = await response.json();
+    console.log(data.response);
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import requests
+
+    response = requests.post(
+        'https://api.mygptassistants.com/v1/chat/send',
+        headers={
+            'Authorization': 'Bearer YOUR_API_KEY',
+            'Content-Type': 'application/json'
+        },
+        json={
+            'bot_id': 'your-bot-id',
+            'message': 'Hola, ¿cómo puedo ayudarte?',
+            'session_id': 'user-session-123'
+        }
+    )
+
+    data = response.json()
+    print(data['response'])
+    ```
+  </TabItem>
+  <TabItem label="cURL">
+    ```bash
+    curl -X POST https://api.mygptassistants.com/v1/chat/send \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "bot_id": "your-bot-id",
+        "message": "Hola, ¿cómo puedo ayudarte?",
+        "session_id": "user-session-123"
+      }'
+    ```
+  </TabItem>
+</Tabs>
+
+## Endpoints Disponibles
+
+<CardGrid>
+  <LinkCard 
+    title="Autenticación" 
+    description="Gestiona claves API y permisos de acceso"
+    href="/es/api/authentication/"
+  />
+  <LinkCard 
+    title="API de Chat" 
+    description="Envía mensajes, recibe respuestas, gestiona sesiones"
+    href="/es/api/chat-api/"
+  />
+  <LinkCard 
+    title="Webhooks" 
+    description="Recibe notificaciones en tiempo real de eventos"
+    href="/es/api/webhooks/"
+  />
+</CardGrid>
+
+## Límites de Tasa
+
+<Aside type="note" title="Límites de Tasa">
+Los límites de tasa varían según el plan:
+- **Gratis**: 100 solicitudes/minuto
+- **Pro**: 1,000 solicitudes/minuto
+- **Empresa**: Límites personalizados
+</Aside>
+
+| Cabecera | Descripción |
+|----------|-------------|
+| `X-RateLimit-Limit` | Máximo de solicitudes por minuto |
+| `X-RateLimit-Remaining` | Solicitudes restantes en la ventana actual |
+| `X-RateLimit-Reset` | Marca de tiempo cuando se reinicia el límite |
+
+## Códigos de Error
+
+| Código | Significado |
+|--------|-------------|
+| `200` | Éxito |
+| `400` | Solicitud inválida - revisa tus parámetros |
+| `401` | No autorizado - clave API inválida o faltante |
+| `403` | Prohibido - permisos insuficientes |
+| `404` | No encontrado - recurso no existe |
+| `429` | Demasiadas solicitudes - límite de tasa excedido |
+| `500` | Error del servidor - inténtalo de nuevo más tarde |
+
+## Formato de Respuesta
+
+Todas las respuestas son JSON:
+
+```json
+{
+  "success": true,
+  "data": {
+    // Datos de respuesta aquí
+  },
+  "error": null
+}
+```
+
+Respuestas de error:
+
+```json
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Descripción del error"
+  }
+}
+```
+
+## SDKs y Librerías
+
+<CardGrid>
+  <Card title="JavaScript/TypeScript" icon="seti:javascript">
+    ```bash
+    npm install @mygptassistants/sdk
+    ```
+  </Card>
+  <Card title="Python" icon="seti:python">
+    ```bash
+    pip install mygptassistants
+    ```
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="¿Necesitas Ayuda?">
+- Revisa nuestra [documentación de la API de Chat](/es/api/chat-api/) para uso detallado de endpoints
+- Únete a nuestra [comunidad de Discord](https://discord.gg/mygptassistants) para soporte
+- Contacta a soporte en api-support@mygptassistants.com
+</Aside>

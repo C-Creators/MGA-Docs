@@ -1,0 +1,242 @@
+---
+title: Protección de Datos y Cumplimiento
+description: Cómo MyGPTAssistants protege tus datos y mantiene el cumplimiento con GDPR, SOC2 y otras regulaciones
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+MyGPTAssistants está comprometido con proteger tus datos y mantener el cumplimiento con las regulaciones internacionales de protección de datos.
+
+## Estado de Cumplimiento
+
+| Certificación | Estado |
+|---------------|--------|
+| **GDPR** | ✅ Implementado |
+| **CCPA/CPRA** | ✅ Implementado |
+| **SOC2 Tipo II** | 🔄 En Progreso (Q2 2025) |
+| **HIPAA** | 🔄 Parcial - BAA disponible (Q3 2025) |
+
+## Roles de Procesamiento de Datos
+
+Entendiendo cómo se comparten las responsabilidades de datos:
+
+<CardGrid>
+  <Card title="MyGPTAssistants" icon="setting">
+    Actúa como **Procesador de Datos** - procesamos datos en tu nombre según tus instrucciones.
+  </Card>
+  <Card title="Tu Negocio" icon="group">
+    Actúa como **Controlador de Datos** - tú determinas cómo y por qué se procesan los datos personales.
+  </Card>
+  <Card title="Tus Clientes" icon="comment">
+    Son **Sujetos de Datos** - individuos cuyos datos están siendo procesados.
+  </Card>
+</CardGrid>
+
+## Datos que Recopilamos
+
+### Información que Proporcionas
+
+| Categoría | Elementos de Datos | Propósito |
+|-----------|-------------------|-----------|
+| **Datos de Contacto** | Nombre, email, teléfono, zona horaria | Comunicación con clientes |
+| **Datos de Conversación** | Mensajes de chat, respuestas del bot | Entrega del servicio |
+| **Datos de Citas** | Detalles de reservas, respuestas de formularios | Servicios de programación |
+
+### Información Recopilada Automáticamente
+
+- **Datos de Uso**: Páginas visitadas, funciones usadas, interacciones con bots
+- **Información del Dispositivo**: Tipo de navegador, sistema operativo, dirección IP
+- **Cookies**: Cookies de sesión, cookies de preferencias
+
+## Base Legal para el Procesamiento
+
+Procesamos datos personales bajo las siguientes bases legales (Artículo 6 del GDPR):
+
+| Base Legal | Caso de Uso |
+|------------|-------------|
+| **Consentimiento** | Comunicaciones de marketing - opt-in explícito requerido |
+| **Contrato** | Entrega del servicio - requerido para funcionalidad de la plataforma |
+| **Intereses Legítimos** | Prevención de fraude, analytics, mejora del servicio |
+| **Obligación Legal** | Registros fiscales, logs de auditoría, cumplimiento regulatorio |
+
+---
+
+## Tus Derechos de Datos (GDPR)
+
+### Derecho de Acceso (Artículo 15)
+
+Puedes solicitar una exportación completa de todos los datos personales que tenemos sobre ti.
+
+- Solicita a través de nuestro portal o contactando a soporte
+- Respondemos dentro de **30 días**
+- Exportación disponible en formato JSON o CSV
+- Incluye todos los registros relacionados (citas, conversaciones, etc.)
+
+### Derecho de Rectificación (Artículo 16)
+
+Puedes corregir cualquier dato personal inexacto.
+
+- Actualiza tu perfil directamente en la plataforma
+- Contacta a soporte para asistencia con correcciones
+- Todas las modificaciones se registran para cumplimiento
+
+### Derecho de Eliminación (Artículo 17)
+
+Puedes solicitar la eliminación de tus datos personales.
+
+<Steps>
+1. **Envía una solicitud de eliminación**
+   
+   A través de nuestro portal o contactando a soporte.
+
+2. **Los datos se anonimizan**
+   
+   Para preservar la integridad estadística.
+
+3. **Registros relacionados también se anonimizan**
+   
+   Todos los datos vinculados se procesan.
+
+4. **Recibes un certificado de eliminación**
+   
+   Como prueba del procesamiento.
+</Steps>
+
+<Aside type="note" title="Proceso de Anonimización">
+Cuando solicitas la eliminación, anonimizamos tus datos en lugar de eliminarlos completamente. Esto preserva los analytics agregados mientras elimina toda la información de identificación personal. El email se convierte en `deleted_xxx@anonymized.local`, los nombres se convierten en `GDPR_ERASED_USER`, y todas las notas se redactan.
+</Aside>
+
+### Derecho a la Portabilidad de Datos (Artículo 20)
+
+Puedes recibir tus datos en un formato legible por máquina.
+
+- Formatos de exportación: JSON (completo) o CSV (compatible con hojas de cálculo)
+- Incluye checksum de integridad para verificación
+- Enlace de descarga seguro con expiración
+
+### Derecho a Retirar el Consentimiento (Artículo 7)
+
+Puedes retirar el consentimiento para actividades de procesamiento específicas en cualquier momento.
+
+**Tipos de consentimiento que puedes controlar:**
+- Emails de marketing
+- SMS de marketing
+- Tracking de analytics
+- Compartir datos con terceros
+- Perfilado
+
+<Aside type="tip" title="Gestión del Consentimiento">
+Puedes gestionar tus preferencias de consentimiento en cualquier momento a través de la configuración de tu cuenta o contactando al negocio con el que interactuaste.
+</Aside>
+
+---
+
+## Retención de Datos
+
+Retenemos datos solo mientras sea necesario para los propósitos descritos.
+
+### Períodos de Retención Predeterminados
+
+| Tipo de Datos | Período de Retención | Razón |
+|---------------|---------------------|-------|
+| Información de Contacto | 3 años | Intereses comerciales legítimos |
+| Historial de Conversaciones | 2 años | Mejora del servicio |
+| Citas | 2 años | Registros contractuales |
+| Tickets de Soporte | 5 años | Cumplimiento legal |
+| Logs de Auditoría | 7 años | Requisitos regulatorios |
+
+<Aside type="tip" title="Retención Personalizada">
+Los clientes empresariales pueden configurar políticas de retención personalizadas que pueden ser más cortas que estos valores predeterminados. Contacta al negocio con el que interactuaste para sus períodos de retención específicos.
+</Aside>
+
+### Retención Automatizada
+
+- Las políticas de retención se ejecutan automáticamente
+- Los datos que pasan el período de retención se anonimizan o eliminan
+- Todas las acciones de retención se registran para cumplimiento
+
+---
+
+## Seguridad de Datos
+
+### Encriptación
+
+**En Tránsito:**
+- TLS 1.3 aplicado para todas las conexiones
+- HSTS (HTTP Strict Transport Security) habilitado
+- Certificate pinning para aplicaciones móviles
+
+**En Reposo:**
+- Encriptación de base de datos vía proveedor de nube
+- Campos sensibles encriptados a nivel de aplicación (AES-256-GCM)
+- Claves API y tokens nunca se almacenan en texto plano
+
+### Control de Acceso
+
+Implementamos Control de Acceso Basado en Roles (RBAC):
+
+| Rol | Nivel de Acceso |
+|-----|-----------------|
+| Propietario | Acceso completo incluyendo facturación y gestión de equipo |
+| Admin | Acceso completo excepto transferencia de propiedad |
+| Miembro | Acceso estándar a CRM y bots |
+| Visor | Acceso de solo lectura |
+
+### Registro de Auditoría
+
+Todo acceso y modificación de datos se registra:
+
+- Cadena de hash criptográfico previene manipulación
+- Logs retenidos por 7 años
+- Incluye valores antes/después para todos los cambios
+
+### Aislamiento Multi-Tenant
+
+Tus datos están lógicamente aislados de otros clientes:
+
+- Todas las consultas tienen alcance a tu equipo
+- No es posible acceso de datos entre tenants
+- Aplicado a nivel de API y base de datos
+
+---
+
+## Compartir Datos con Terceros
+
+**No vendemos tus datos personales.**
+
+Compartimos datos solo con:
+
+| Tercero | Propósito | Salvaguardas |
+|---------|-----------|--------------|
+| Infraestructura de Nube | Hosting y almacenamiento | Acuerdo de Procesamiento de Datos (DPA) |
+| Proveedores de Modelos de IA | Procesamiento de consultas de chat | Datos anonimizados/agregados |
+| Procesadores de Pago | Facturación (clientes empresariales) | Cumple PCI-DSS |
+
+---
+
+## Para Clientes Empresariales
+
+### Tus Responsabilidades como Controlador de Datos
+
+Cuando usas MyGPTAssistants para procesar los datos de tus clientes, eres responsable de:
+
+1. **Obtener consentimiento válido** de tus usuarios finales
+2. **Proporcionar avisos de privacidad** claros sobre la recopilación de datos
+3. **Responder a solicitudes de sujetos de datos** de tus clientes
+4. **Determinar períodos de retención** apropiados para tu negocio
+5. **Asegurar bases legales** para el procesamiento de datos
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard 
+    title="Política de Privacidad" 
+    description="Detalles sobre la recopilación de datos"
+    href="/es/legal/privacy-policy/"
+  />
+  <LinkCard 
+    title="Términos de Servicio" 
+    description="Términos de uso del servicio"
+    href="/es/legal/terms-of-service/"
+  />
+</CardGrid>

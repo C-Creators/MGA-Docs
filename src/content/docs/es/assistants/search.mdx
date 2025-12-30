@@ -1,0 +1,180 @@
+---
+title: Búsqueda
+description: Verifica si tu asistente puede encontrar las respuestas correctas de su entrenamiento
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Probando la Memoria de Tu Asistente <Badge text="Herramienta de Prueba" variant="note" size="small" />
+
+La página de Búsqueda te permite asomarte al cerebro de tu asistente para ver qué ha aprendido. Haz una pregunta y mira exactamente qué información obtiene de sus materiales de entrenamiento. Es como hacer un examen a un empleado para asegurarte de que absorbió su entrenamiento.
+
+![Interfaz de búsqueda de conocimiento](../../../../assets/screenshots/assistants-search.png)
+
+## Qué Puedes Hacer Aquí
+
+<CardGrid>
+  <Card title="Hacer Preguntas" icon="magnifier">
+    Escribe una pregunta como lo haría un cliente y mira qué encuentra tu asistente.
+  </Card>
+  <Card title="Verificar Relevancia" icon="graph">
+    Mira qué tan cerca coincide cada resultado con tu pregunta (puntuado de 0 a 1).
+  </Card>
+  <Card title="Rastrear Fuentes" icon="document">
+    Sabe exactamente de qué material de entrenamiento vino cada respuesta.
+  </Card>
+  <Card title="Encontrar Vacíos" icon="warning">
+    Descubre temas donde tu asistente necesita más entrenamiento antes de que los clientes lo noten.
+  </Card>
+</CardGrid>
+
+## Cómo Probar su Conocimiento
+
+<Steps>
+1. **Haz una pregunta**
+   
+   Escribe algo que un cliente podría preguntar, usando lenguaje natural.
+
+2. **Revisa lo que encontró**
+   
+   Mira los fragmentos de información y qué tan relevante es cada uno.
+
+3. **Verifica la fuente**
+   
+   Asegúrate de que las respuestas vengan de materiales de entrenamiento precisos y actualizados.
+
+4. **Anota los vacíos**
+   
+   Escribe temas que no devolvieron resultados o coincidencias pobres.
+</Steps>
+
+Cuando buscas, verás las piezas de información más relevantes del entrenamiento de tu asistente. Cada resultado muestra una puntuación de relevancia (qué tan bien coincide con tu pregunta) y de qué material de entrenamiento vino.
+
+<Aside type="tip" title="Entendiendo los Resultados de Búsqueda">
+- **Puntuaciones altas (arriba de 0.7)** – Tu asistente encontró excelente información sobre este tema
+- **Sin resultados** – ¡Tu asistente no sabe sobre esto! Es hora de añadir materiales de entrenamiento
+- **Verifica la fuente** – Asegúrate de que la información sea actual y precisa
+- **Prueba diferente redacción** – Pregunta lo mismo de múltiples maneras para ser exhaustivo
+</Aside>
+
+## Leyendo los Resultados
+
+<Tabs>
+  <TabItem label="Puntuaciones de Relevancia">
+    | Puntuación | Qué Significa |
+    |------------|--------------|
+    | **0.9 - 1.0** | Excelente – Tu asistente realmente sabe esto |
+    | **0.7 - 0.9** | Bueno – Tienen información sólida |
+    | **0.5 - 0.7** | Regular – La info está algo relacionada |
+    | **Debajo de 0.5** | Débil – Podrían tener dificultades con esto |
+  </TabItem>
+  <TabItem label="Qué Muestra Cada Parte">
+    | Parte | Qué Te Dice |
+    |-------|-------------|
+    | **Contenido** | La información real encontrada |
+    | **Fuente** | De qué material de entrenamiento vino |
+    | **Puntuación** | Qué tan bien coincide con tu pregunta |
+    | **Detalles** | Contexto extra como número de página o sección |
+  </TabItem>
+</Tabs>
+
+Los resultados de búsqueda te muestran las piezas exactas de texto de las que tu asistente se basará al responder preguntas. Esto te ayuda a confirmar que tienen la información correcta y pueden encontrarla cuando se necesite.
+
+## Encontrando Vacíos de Entrenamiento <Badge text="Importante" variant="caution" size="small" />
+
+Cuando las búsquedas resultan vacías o con puntuaciones bajas, has encontrado un vacío en el entrenamiento de tu asistente. Todavía no tienen buena información sobre ese tema. Usa estos vacíos para planificar qué materiales de entrenamiento añadir después.
+
+<CardGrid>
+  <Card title="Sin Resultados" icon="error">
+    **Vacío Urgente**
+    
+    Tu asistente no sabe nada sobre esto. Añade materiales de entrenamiento inmediatamente.
+  </Card>
+  <Card title="Puntuaciones Bajas" icon="warning">
+    **Vacío de Contenido**
+    
+    Tienen algo de info pero es poco clara o incompleta. Considera añadir materiales más claros.
+  </Card>
+  <Card title="Resultados Incorrectos" icon="close">
+    **Problema de Precisión**
+    
+    Están encontrando información no relacionada. Revisa y reorganiza los materiales de entrenamiento.
+  </Card>
+  <Card title="Buenos Resultados" icon="approve">
+    **Listo para Funcionar**
+    
+    Tu asistente está bien preparado para este tema.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Abordando Vacíos de Entrenamiento">
+- **Sin resultados** = Definitivamente añade materiales sobre este tema
+- **Resultados de baja puntuación** = Haz la información existente más clara o completa
+- **Ejecuta búsquedas antes de lanzar** – Encuentra vacíos proactivamente, no cuando los clientes los encuentren
+</Aside>
+
+## Lista de Verificación de Prueba Pre-Lanzamiento
+
+<Steps>
+1. **Prueba las preguntas más comunes**
+   
+   Busca las 10 principales preguntas de clientes para asegurarte de que tu asistente está listo.
+
+2. **Prueba diferentes formas de preguntar**
+   
+   Pregunta formalmente, casualmente, e incluso con errores de escritura para ver qué tan flexible es.
+
+3. **Prueba escenarios inusuales**
+   
+   Busca casos límite y temas de nicho que podrían surgir.
+
+4. **Verifica la precisión**
+   
+   Confirma que la información es correcta y actual.
+
+5. **Haz una lista de vacíos**
+   
+   Documenta temas que necesitan más materiales de entrenamiento.
+</Steps>
+
+<Aside type="caution" title="Nota Importante">
+- La búsqueda muestra conocimiento crudo, no la conversación pulida que tu asistente tendrá
+- Alta relevancia no garantiza una respuesta perfecta en conversación
+- Siempre prueba también en el **Área de Pruebas** para ver la calidad real de conversación
+</Aside>
+
+## Ejemplos de Búsqueda para Probar
+
+Prueba las preguntas que tus clientes hacen más frecuentemente. ¿Tu asistente puede encontrar la información correcta? ¿Es precisa?
+
+| Intenta Buscar | Qué Estás Verificando |
+|----------------|----------------------|
+| "¿Cómo restablezco mi contraseña?" | Contenido de ayuda de cuenta |
+| "¿Cuál es su política de devolución?" | Información de políticas |
+| "Horario de atención" | Info de contacto y disponibilidad |
+| "Precio de [tu producto]" | Datos de precios precisos |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Fuentes de Datos"
+    description="Añade materiales de entrenamiento para llenar cualquier vacío que encuentres"
+    href="/es/assistants/data-sources/"
+  />
+  <LinkCard
+    title="Área de Pruebas"
+    description="Prueba conversaciones completas con tu asistente"
+    href="/es/assistants/playground/"
+  />
+  <LinkCard
+    title="Configuración"
+    description="Ajusta cómo tu asistente busca en su conocimiento"
+    href="/es/assistants/settings/"
+  />
+  <LinkCard
+    title="Analíticas"
+    description="Ve qué temas preguntan más los clientes"
+    href="/es/assistants/analytics/"
+  />
+</CardGrid>

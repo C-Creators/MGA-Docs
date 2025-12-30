@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://docs.mygptassistants.com',
 	server: {
 		port: 4329, // Uncommon port to avoid conflicts with other local apps
 	},
@@ -12,47 +13,65 @@ export default defineConfig({
 			title: 'MyGPTAssistants Documentation',
 			description: 'Complete guide to MyGPTAssistants platform - AI Assistants and CRM tools',
 			logo: {
-				src: './src/assets/logo.png',
-				alt: 'MyGPTAssistants'
+				light: './src/assets/mga-logo.png',
+				dark: './src/assets/mga-logo-light.png',
+				replacesTitle: true,
+			},
+			// Custom theme matching MyGPTAssistants app
+			customCss: ['./src/styles/custom.css'],
+			// i18n configuration - English (root) and Spanish
+			// Using root locale so English pages serve at / without prefix
+			locales: {
+				root: { label: 'English', lang: 'en' },
+				es: { label: 'Español', lang: 'es' },
 			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/C-Creators/mygptassistants' },
 			],
 			sidebar: [
 				{
-					label: 'Getting Started',
+					label: 'Assistants',
 					items: [
-						{ label: 'Introduction', slug: 'getting-started/introduction' },
-						{ label: 'Platform Overview', slug: 'getting-started/platform-overview' },
-						{ label: 'Quick Start', slug: 'getting-started/quick-start' },
+						{ slug: 'assistants/overview', label: 'Overview' },
+						{ slug: 'assistants/playground' },
+						{ slug: 'assistants/appearance' },
+						{ slug: 'assistants/integrations' },
+						{ slug: 'assistants/analytics' },
+						{ slug: 'assistants/conversations' },
+						{ slug: 'assistants/settings' },
+						{ slug: 'assistants/data-sources' },
+						{ slug: 'assistants/plugins' },
+						{ slug: 'assistants/search' },
+						{ slug: 'assistants/embed' },
 					],
 				},
 				{
-					label: 'AI Assistants',
+					label: 'CRM',
 					items: [
-						{ label: 'Playground', slug: 'assistants/playground' },
-						{ label: 'Appearance & Branding', slug: 'assistants/appearance' },
-						{ label: 'Integrations', slug: 'assistants/integrations' },
-						{ label: 'Analytics', slug: 'assistants/analytics' },
-						{ label: 'Conversations', slug: 'assistants/conversations' },
-						{ label: 'Settings', slug: 'assistants/settings' },
-						
-						{ label: 'Data Sources', slug: 'assistants/data-sources' },
-						{ label: 'Plugins', slug: 'assistants/plugins' },
-						{ label: 'Search', slug: 'assistants/search' },
-						{ label: 'Embed', slug: 'assistants/embed' },
+						{ slug: 'crm/overview', label: 'Overview' },
+						{ slug: 'crm/contacts' },
+						{ slug: 'crm/segments' },
+						{ slug: 'crm/pipelines' },
+						{ slug: 'crm/workflows' },
+						{ slug: 'crm/reports' },
 					],
 				},
 				{
-					label: 'CRM System',
+					label: 'API Reference',
 					items: [
-						{ label: 'CRM Overview', slug: 'crm/overview' },
-						{ label: 'Contacts', slug: 'crm/contacts' },
-						{ label: 'Segments', slug: 'crm/segments' },
-						{ label: 'Campaigns', slug: 'crm/campaigns' },
-						{ label: 'Workflows', slug: 'crm/workflows' },
-						{ label: 'Tickets', slug: 'crm/tickets' },
-						{ label: 'Reports', slug: 'crm/reports' },
+						{ slug: 'api/overview', label: 'Overview' },
+						{ slug: 'api/authentication' },
+						{ slug: 'api/chat-api' },
+						{ slug: 'api/webhooks' },
+					],
+				},
+				{
+					label: 'Legal',
+					items: [
+						{ slug: 'legal/overview', label: 'Overview' },
+						{ slug: 'legal/terms-of-service' },
+						{ slug: 'legal/privacy-policy' },
+						{ slug: 'legal/data-protection' },
 					],
 				},
 			],

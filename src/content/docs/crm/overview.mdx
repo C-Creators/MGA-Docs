@@ -1,0 +1,197 @@
+---
+title: CRM Overview
+description: Manage customer relationships with the built-in CRM system
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+MyGPTAssistants includes a full-featured CRM system that integrates seamlessly with your AI assistants. <Badge text="AI-Powered" variant="success" size="small" />
+
+![CRM dashboard](../../../assets/screenshots/crm-overview.png)
+
+## What is the CRM?
+
+The CRM (Customer Relationship Management) system helps you manage every aspect of your customer relationships:
+
+<CardGrid>
+  <Card title="Track Contacts" icon="add-document">
+    Everyone who interacts with your business, automatically captured.
+  </Card>
+  <Card title="Manage Pipelines" icon="rocket">
+    Track deals through sales stages with values and probability.
+  </Card>
+  <Card title="Create Segments" icon="bars">
+    Group contacts dynamically by behavior or attributes.
+  </Card>
+  <Card title="Automate Workflows" icon="random">
+    Trigger actions based on events and conditions.
+  </Card>
+  <Card title="Analyze Reports" icon="graph">
+    Understand your customer interactions with insights.
+  </Card>
+</CardGrid>
+
+## Core Components
+
+<CardGrid>
+  <Card title="Contacts" icon="group">
+    **People who interact with your business**
+    
+    Automatically created from chat conversations with full profile and communication history.
+    
+    [Learn more →](/crm/contacts/)
+  </Card>
+  <Card title="Segments" icon="bars">
+    **Dynamic groups of contacts**
+    
+    Rule-based filtering and real-time updates for targeted campaigns.
+    
+    [Learn more →](/crm/segments/)
+  </Card>
+  <Card title="Pipelines" icon="rocket">
+    **Track deals and opportunities**
+    
+    Custom stages with deal values, probability, and win/loss tracking.
+    
+    [Learn more →](/crm/pipelines/)
+  </Card>
+  <Card title="Workflows" icon="random">
+    **Automate your processes**
+    
+    Trigger-based actions, multi-step sequences, and conditional logic.
+    
+    [Learn more →](/crm/workflows/)
+  </Card>
+  <Card title="Reports" icon="graph">
+    **Understand your data**
+    
+    Contact analytics, pipeline performance, and conversation insights.
+    
+    [Learn more →](/crm/reports/)
+  </Card>
+</CardGrid>
+
+## Integration with AI Assistants <Badge text="AI-Powered" variant="success" size="small" />
+
+<Aside type="tip" title="AI + CRM Integration">
+- **Automatic contact creation** - New chat visitors become contacts
+- **Conversation history** - All chats linked to contact profiles
+- **Smart routing** - Route conversations based on CRM data
+- **Personalization** - Use CRM data to personalize bot responses
+</Aside>
+
+<Tabs>
+  <TabItem label="Auto Contact Creation">
+    When a visitor chats with your bot, a contact record is automatically created with:
+    
+    | Data Captured | Source |
+    |--------------|--------|
+    | Name | Bot conversation or form |
+    | Email | User-provided or integration |
+    | Platform | Website, Instagram, WhatsApp, etc. |
+    | First Message | Conversation opener |
+    | Timestamp | When conversation started |
+  </TabItem>
+  <TabItem label="Smart Routing">
+    Route conversations based on CRM data:
+    
+    | Condition | Action |
+    |-----------|--------|
+    | VIP Contact | Priority queue |
+    | Open Deal | Route to assigned rep |
+    | New Contact | Welcome workflow |
+    | Support Segment | Technical team |
+  </TabItem>
+</Tabs>
+
+## Getting Started
+
+<Steps>
+1. **Navigate to CRM**
+   
+   Access the CRM section from your main dashboard sidebar.
+
+2. **Import or auto-create contacts**
+   
+   Import existing contacts via CSV or let them be created automatically from conversations.
+
+3. **Set up pipelines**
+   
+   Create pipeline stages that match your sales process (Lead → Qualified → Proposal → Closed).
+
+4. **Create segments**
+   
+   Organize contacts into groups based on shared attributes or behaviors.
+
+5. **Build workflows**
+   
+   Automate repetitive tasks like follow-ups, assignments, and notifications.
+</Steps>
+
+## CRM Features Overview
+
+<Tabs>
+  <TabItem label="Sales Features">
+    | Feature | Description |
+    |---------|-------------|
+    | **Deal Tracking** | Monitor opportunities through stages |
+    | **Pipeline Views** | Kanban and list views |
+    | **Win/Loss Analysis** | Track conversion rates |
+    | **Revenue Forecasting** | Projected deal values |
+  </TabItem>
+  <TabItem label="Marketing Features">
+    | Feature | Description |
+    |---------|-------------|
+    | **Contact Segmentation** | Target specific groups |
+    | **Campaign Tracking** | Measure engagement |
+    | **Lead Scoring** | Prioritize hot leads |
+    | **Automated Nurturing** | Multi-step sequences |
+  </TabItem>
+  <TabItem label="Service Features">
+    | Feature | Description |
+    |---------|-------------|
+    | **Conversation History** | Full chat records |
+    | **Ticket Management** | Track support issues |
+    | **SLA Tracking** | Response time monitoring |
+    | **Satisfaction Scores** | Customer feedback |
+  </TabItem>
+</Tabs>
+
+<Aside type="note" title="Pro Tip">
+Start with Contacts and Conversations before setting up complex workflows. Understanding your data flow is key to effective automation.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Contacts"
+    description="Managing customer records"
+    href="/crm/contacts/"
+  />
+  <LinkCard
+    title="Segments"
+    description="Grouping contacts dynamically"
+    href="/crm/segments/"
+  />
+  <LinkCard
+    title="Pipelines"
+    description="Sales deal tracking"
+    href="/crm/pipelines/"
+  />
+  <LinkCard
+    title="Workflows"
+    description="Process automation"
+    href="/crm/workflows/"
+  />
+  <LinkCard
+    title="Reports"
+    description="Business analytics"
+    href="/crm/reports/"
+  />
+  <LinkCard
+    title="Conversations"
+    description="Review customer chats"
+    href="/assistants/conversations/"
+  />
+</CardGrid>

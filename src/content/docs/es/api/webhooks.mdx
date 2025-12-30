@@ -1,0 +1,241 @@
+---
+title: Webhooks
+description: Recibe notificaciones en tiempo real cuando ocurren eventos
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Los webhooks te permiten recibir notificaciones HTTP cuando ocurren eventos en tus asistentes. <Badge text="Tiempo Real" variant="success" size="small" />
+
+## Cómo Funcionan los Webhooks
+
+<Steps>
+1. **Registra una URL de endpoint**
+   
+   Proporciona una URL donde podamos enviar notificaciones.
+
+2. **Elige los eventos**
+   
+   Selecciona qué eventos quieres recibir.
+
+3. **Recibe solicitudes POST**
+   
+   Enviamos datos JSON cuando ocurren eventos.
+
+4. **Responde con 200**
+   
+   Confirma la recepción con un código de estado éxito.
+</Steps>
+
+## Configurando Webhooks
+
+<Steps>
+1. **Ve a Configuración de API**
+   
+   Navega a **Configuración** → **API** → **Webhooks**
+
+2. **Haz clic en Agregar Webhook**
+   
+   Crea una nueva configuración de webhook.
+
+3. **Ingresa tu URL de endpoint**
+   
+   Proporciona la URL donde recibirás los eventos.
+
+4. **Selecciona los eventos**
+   
+   Elige qué eventos deben disparar el webhook.
+
+5. **Guarda y prueba**
+   
+   Guarda la configuración y envía un evento de prueba.
+</Steps>
+
+## Tipos de Eventos
+
+<Tabs>
+  <TabItem label="Eventos de Conversación">
+    | Evento | Descripción |
+    |--------|-------------|
+    | `conversation.started` | Nueva conversación iniciada |
+    | `conversation.ended` | Conversación cerrada |
+    | `message.received` | Nuevo mensaje del usuario |
+    | `message.sent` | Respuesta del bot enviada |
+    | `escalation.requested` | Usuario solicitó humano |
+  </TabItem>
+  <TabItem label="Eventos de Bot">
+    | Evento | Descripción |
+    |--------|-------------|
+    | `bot.created` | Nuevo bot creado |
+    | `bot.updated` | Configuración del bot cambiada |
+    | `bot.deleted` | Bot eliminado |
+    | `bot.trained` | Entrenamiento del bot completado |
+  </TabItem>
+  <TabItem label="Eventos de Contacto">
+    | Evento | Descripción |
+    |--------|-------------|
+    | `contact.created` | Nuevo contacto agregado |
+    | `contact.updated` | Contacto modificado |
+    | `lead.created` | Nuevo lead creado |
+    | `appointment.booked` | Cita programada |
+    | `appointment.cancelled` | Cita cancelada |
+  </TabItem>
+</Tabs>
+
+## Formato de Payload
+
+Todos los webhooks envían datos JSON con esta estructura:
+
+```json
+{
+  "id": "evt_abc123",
+  "type": "message.received",
+  "created_at": "2024-01-15T10:30:00Z",
+  "data": {
+    "bot_id": "bot_xyz789",
+    "session_id": "session_123",
+    "message": {
+      "id": "msg_456",
+      "content": "Hola, necesito ayuda",
+      "role": "user",
+      "created_at": "2024-01-15T10:30:00Z"
+    },
+    "contact": {
+      "id": "contact_789",
+      "email": "usuario@ejemplo.com",
+      "name": "Juan García"
+    }
+  }
+}
+```
+
+## Verificando Webhooks
+
+<Aside type="caution" title="Importante de Seguridad">
+Siempre verifica las firmas de webhook para asegurar que las solicitudes vengan de MyGPTAssistants.
+</Aside>
+
+Cada solicitud de webhook incluye una cabecera de firma:
+
+```
+X-Webhook-Signature: sha256=abc123...
+```
+
+<Tabs>
+  <TabItem label="Node.js">
+    ```javascript
+    const crypto = require('crypto');
+
+    function verificarWebhook(payload, signature, secret) {
+      const expectedSignature = crypto
+        .createHmac('sha256', secret)
+        .update(payload)
+        .digest('hex');
+      
+      const expected = `sha256=${expectedSignature}`;
+      return crypto.timingSafeEqual(
+        Buffer.from(signature),
+        Buffer.from(expected)
+      );
+    }
+
+    // En tu manejador de endpoint
+    app.post('/webhook', (req, res) => {
+      const signature = req.headers['x-webhook-signature'];
+      const payload = JSON.stringify(req.body);
+      
+      if (!verificarWebhook(payload, signature, process.env.WEBHOOK_SECRET)) {
+        return res.status(401).send('Firma inválida');
+      }
+      
+      // Procesar el webhook
+      console.log('Webhook recibido:', req.body.type);
+      res.status(200).send('OK');
+    });
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import hmac
+    import hashlib
+
+    def verificar_webhook(payload, signature, secret):
+        expected = 'sha256=' + hmac.new(
+            secret.encode(),
+            payload.encode(),
+            hashlib.sha256
+        ).hexdigest()
+        return hmac.compare_digest(signature, expected)
+
+    # En tu endpoint de Flask/Django
+    @app.route('/webhook', methods=['POST'])
+    def manejar_webhook():
+        signature = request.headers.get('X-Webhook-Signature')
+        payload = request.get_data(as_text=True)
+        
+        if not verificar_webhook(payload, signature, WEBHOOK_SECRET):
+            return 'Firma inválida', 401
+        
+        # Procesar el webhook
+        data = request.json
+        print(f"Webhook recibido: {data['type']}")
+        return 'OK', 200
+    ```
+  </TabItem>
+</Tabs>
+
+## Política de Reintentos
+
+<CardGrid>
+  <Card title="Reintentos Automáticos" icon="random">
+    Reintentamos webhooks fallidos hasta 5 veces.
+  </Card>
+  <Card title="Backoff Exponencial" icon="document">
+    Los reintentos ocurren a 1m, 5m, 30m, 2h, 24h.
+  </Card>
+  <Card title="Umbral de Fallo" icon="warning">
+    Después de 5 fallos, el webhook se desactiva.
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Mejores Prácticas">
+- **Responde rápido** - Retorna 200 inmediatamente, procesa asincrónicamente
+- **Maneja duplicados** - Los webhooks pueden enviarse más de una vez
+- **Usa colas** - Encola procesamiento pesado para después
+- **Registra todo** - Guarda payloads de webhook para debugging
+</Aside>
+
+## Probando Webhooks
+
+<Steps>
+1. **Usa un endpoint de prueba**
+   
+   Herramientas como [webhook.site](https://webhook.site) te permiten inspeccionar solicitudes.
+
+2. **Envía eventos de prueba**
+   
+   Usa el botón "Enviar Prueba" en el panel de control.
+
+3. **Verifica la recepción**
+   
+   Revisa que tu endpoint recibió los datos correctamente.
+
+4. **Prueba el manejo de errores**
+   
+   Asegúrate de que tu endpoint maneje fallos con gracia.
+</Steps>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard 
+    title="API de Chat" 
+    description="Endpoints principales de chat"
+    href="/es/api/chat-api/"
+  />
+  <LinkCard 
+    title="Autenticación" 
+    description="Seguridad de claves API"
+    href="/es/api/authentication/"
+  />
+</CardGrid>

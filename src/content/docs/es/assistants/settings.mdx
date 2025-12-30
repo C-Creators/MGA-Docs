@@ -1,0 +1,176 @@
+---
+title: Configuración
+description: Dale forma a la personalidad de tu asistente y cómo responde a los clientes
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Definiendo la Personalidad de Tu Asistente <Badge text="Configuración Principal" variant="note" size="small" />
+
+La Configuración es donde das forma a quién es tu asistente y cómo se comporta. Piensa en ello como establecer expectativas para un nuevo miembro del equipo – definirás su personalidad, cómo debe responder y qué está permitido hacer.
+
+![Configuración del bot](../../../../assets/screenshots/assistants-settings.png)
+
+## Qué Puedes Ajustar
+
+<CardGrid>
+  <Card title="Quién Es" icon="star">
+    Dale a tu asistente un nombre y personalidad que encaje con tu marca.
+  </Card>
+  <Card title="Cómo Habla" icon="setting">
+    Controla qué tan creativas o enfocadas son sus respuestas.
+  </Card>
+  <Card title="Qué Sabe" icon="document">
+    Ajusta cómo tu asistente busca en sus materiales de entrenamiento.
+  </Card>
+  <Card title="Habilidades Especiales" icon="warning">
+    Habilita funciones como búsqueda web y memoria de conversación.
+  </Card>
+</CardGrid>
+
+## La Identidad de Tu Asistente
+
+Dale a tu asistente un nombre y rol claros. El nombre del proyecto te ayuda a organizar múltiples asistentes, y las instrucciones de personalidad le dicen a tu asistente cómo comportarse y qué experiencia mostrar.
+
+<Aside type="tip" title="Consejos de Personalidad">
+- Las instrucciones de personalidad son como una descripción de trabajo para tu asistente
+- Sé específico sobre de qué debe y no debe hablar
+- Establece el tono – ¿deben ser formales, casuales, amigables o profesionales?
+- Define en qué temas son expertos
+</Aside>
+
+**Configuraciones Clave:**
+- **Nombre** – Cómo se llama tu asistente
+- **Instrucciones de Personalidad** – Guías de cómo deben comportarse
+- **Mensaje de Bienvenida** – Lo primero que ven los clientes
+
+## Cómo Responde Tu Asistente
+
+Configuraciones como nivel de creatividad y modelo de IA afectan el estilo de las respuestas de tu asistente.
+
+<Tabs>
+  <TabItem label="Nivel de Creatividad">
+    **Creatividad** controla si tu asistente se apega a los hechos o es más creativo:
+    
+    | Nivel | Comportamiento | Mejor Para |
+    |-------|---------------|-----------|
+    | 0.1 - 0.3 | Muy enfocado, consistente | Preguntas de soporte, respuestas factuales |
+    | 0.4 - 0.6 | Balanceado | La mayoría de conversaciones |
+    | 0.7 - 1.0 | Creativo, variado | Marketing, lluvia de ideas |
+    
+    <Aside type="tip">
+    Para servicio al cliente, mantén la creatividad baja (0.3-0.5) para respuestas confiables. Para tareas creativas, súbela (0.7-0.9).
+    </Aside>
+  </TabItem>
+  
+  <TabItem label="Modelo de IA">
+    **Modelo** determina qué tan inteligente y capaz es tu asistente:
+    
+    | Modelo | Fortalezas | Costo |
+    |--------|-----------|-------|
+    | GPT-4o | El más inteligente, mejor razonamiento | Mayor |
+    | GPT-4o-mini | Rápido y económico | Menor |
+    | Claude 3.5 | Excelente con contenido largo | Medio |
+    
+    <Aside type="note">
+    Los modelos más avanzados cuestan más por mensaje pero dan mejores respuestas para preguntas difíciles.
+    </Aside>
+  </TabItem>
+</Tabs>
+
+## Cómo Buscan en su Entrenamiento
+
+<CardGrid>
+  <Card title="Cuántas Fuentes" icon="document">
+    Cuántos materiales de entrenamiento revisar al responder. Más = mejor contexto, pero más lento.
+  </Card>
+  <Card title="Calidad de Coincidencia" icon="magnifier">
+    Qué tan cerca debe coincidir la información con la pregunta. Más alto = más estricto, menos respuestas incorrectas.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Consejos de Ajuste">
+Si tu asistente da respuestas fuera de tema, sube el umbral de calidad de coincidencia. Si dicen "No sé" demasiado seguido, bájalo o déjalos revisar más fuentes.
+</Aside>
+
+## Habilidades Especiales
+
+<CardGrid>
+  <Card title="Búsqueda Web" icon="external">
+    Deja que tu asistente busque en internet información actual más allá de su entrenamiento.
+  </Card>
+  <Card title="Memoria de Conversación" icon="comment">
+    Cuántos mensajes anteriores recordar. Más memoria = conversaciones más fluidas.
+  </Card>
+  <Card title="Seguimiento de Sesión" icon="setting">
+    Controla cómo se rastrean y continúan las conversaciones.
+  </Card>
+</CardGrid>
+
+<Aside type="caution" title="Ten en Cuenta">
+- La búsqueda web añade un pequeño retraso a las respuestas
+- Más memoria de conversación usa más recursos
+- Configuraciones complejas pueden ralentizar el tiempo de respuesta
+</Aside>
+
+## Seguridad y Control de Acceso
+
+<CardGrid>
+  <Card title="Protección por Contraseña" icon="approve-check">
+    Requiere una contraseña para que los clientes chateen con tu asistente.
+  </Card>
+  <Card title="Límites de Mensajes" icon="warning">
+    Previene spam limitando cuántos mensajes se pueden enviar.
+  </Card>
+  <Card title="Claves de Acceso" icon="setting">
+    Crea claves especiales para conectar tu asistente con otras herramientas.
+  </Card>
+</CardGrid>
+
+<Aside type="danger" title="Consejo de Seguridad">
+Si tu asistente tiene acceso a información sensible, siempre habilita protección por contraseña. Los asistentes públicos pueden ser accedidos por cualquiera con el enlace.
+</Aside>
+
+### Límites de Mensajes
+
+| Configuración | Propósito | Recomendado |
+|--------------|----------|-------------|
+| Mensajes por minuto | Detener spam | 10-20 |
+| Chats por día | Controlar uso | Basado en tu plan |
+| Longitud máxima de mensaje | Prevenir abuso | 2000 caracteres |
+
+## Probando Tus Cambios
+
+<Steps>
+1. **Haz un cambio** en Configuración
+
+2. **Ve al Área de Pruebas** para practicar con las nuevas configuraciones
+
+3. **Prueba preguntas inusuales** para ver cómo las maneja tu asistente
+
+4. **Ajusta y repite** hasta que tu asistente se comporte exactamente como quieres
+</Steps>
+
+<Aside type="tip" title="Consejo Pro">
+Mantén una lista de preguntas de prueba que verifican el comportamiento de tu asistente. Repásalas después de cualquier cambio de configuración para asegurarte de que todo sigue funcionando bien.
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard
+    title="Área de Pruebas"
+    description="Practica con tu asistente después de cambiar configuraciones"
+    href="/es/assistants/playground/"
+  />
+  <LinkCard
+    title="Apariencia"
+    description="Estiliza cómo se ve tu asistente"
+    href="/es/assistants/appearance/"
+  />
+  <LinkCard
+    title="Fuentes de Datos"
+    description="Gestiona los materiales de entrenamiento de tu asistente"
+    href="/es/assistants/data-sources/"
+  />
+</CardGrid>

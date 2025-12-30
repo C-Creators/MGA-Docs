@@ -1,0 +1,241 @@
+---
+title: API Reference
+description: Developer documentation for the MyGPTAssistants API
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+The MyGPTAssistants API allows you to programmatically interact with your AI assistants, manage conversations, and integrate chat functionality into your applications. <Badge text="REST API" variant="note" size="small" />
+
+![API integration options](../../../assets/screenshots/assistants-integrations.png)
+
+## API Endpoints
+
+<CardGrid>
+  <LinkCard
+    title="Authentication"
+    description="Learn how to authenticate API requests"
+    href="/api/authentication/"
+  />
+  <LinkCard
+    title="Chat API"
+    description="Send messages and receive responses"
+    href="/api/chat-api/"
+  />
+  <LinkCard
+    title="Webhooks"
+    description="Receive real-time notifications"
+    href="/api/webhooks/"
+  />
+</CardGrid>
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.mygptassistants.com/api/v1
+```
+
+## Quick Start <Badge text="Example" variant="success" size="small" />
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    const response = await fetch('https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'Hello, what can you help me with?'
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data.response);
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python
+    import requests
+
+    response = requests.post(
+        'https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message',
+        headers={
+            'Authorization': 'Bearer YOUR_API_KEY',
+            'Content-Type': 'application/json',
+        },
+        json={
+            'message': 'Hello, what can you help me with?'
+        }
+    )
+
+    data = response.json()
+    print(data['response'])
+    ```
+  </TabItem>
+  <TabItem label="cURL">
+    ```bash
+    curl -X POST 'https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message' \
+      -H 'Authorization: Bearer YOUR_API_KEY' \
+      -H 'Content-Type: application/json' \
+      -d '{"message": "Hello, what can you help me with?"}'
+    ```
+  </TabItem>
+</Tabs>
+
+## API Features
+
+<CardGrid>
+  <Card title="Chat Messaging" icon="comment">
+    Send messages to your AI assistants and receive responses.
+  </Card>
+  <Card title="Conversation Management" icon="document">
+    Create, retrieve, and manage conversation sessions.
+  </Card>
+  <Card title="Webhook Events" icon="rocket">
+    **<Badge text="Real-time" variant="success" size="small" />**
+    
+    Receive notifications for new messages and events.
+  </Card>
+  <Card title="Contact API" icon="group">
+    Manage CRM contacts programmatically.
+  </Card>
+</CardGrid>
+
+## Rate Limits
+
+<Tabs>
+  <TabItem label="Standard Limits">
+    | Endpoint Type | Limit |
+    |--------------|-------|
+    | **Chat endpoints** | 100 requests/minute |
+    | **Data endpoints** | 1000 requests/hour |
+    | **Webhook endpoints** | 500 requests/minute |
+  </TabItem>
+  <TabItem label="Rate Limit Headers">
+    | Header | Description |
+    |--------|-------------|
+    | `X-RateLimit-Limit` | Maximum requests allowed |
+    | `X-RateLimit-Remaining` | Requests remaining |
+    | `X-RateLimit-Reset` | Unix timestamp when limit resets |
+  </TabItem>
+</Tabs>
+
+<Aside type="note" title="Need Higher Limits?">
+Contact support if you need higher rate limits for your use case. Enterprise plans include custom rate limits.
+</Aside>
+
+## Response Format
+
+<Tabs>
+  <TabItem label="Success Response">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "response": "Hello! I can help you with...",
+        "conversationId": "conv_123abc",
+        "messageId": "msg_456def"
+      },
+      "error": null
+    }
+    ```
+  </TabItem>
+  <TabItem label="Error Response">
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": {
+        "code": "RATE_LIMIT_EXCEEDED",
+        "message": "Too many requests. Please try again later."
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Error Codes
+
+| Code | Description | Solution |
+|------|-------------|----------|
+| `RATE_LIMIT_EXCEEDED` | Too many requests | Implement backoff, wait and retry |
+| `INVALID_API_KEY` | API key invalid | Check key in dashboard |
+| `BOT_NOT_FOUND` | Bot ID doesn't exist | Verify bot ID |
+| `INVALID_REQUEST` | Malformed request | Check request body |
+| `INTERNAL_ERROR` | Server error | Contact support if persists |
+
+<Aside type="tip" title="Best Practices">
+- **Always check the `success` field** before processing data
+- **Implement exponential backoff** for rate limit errors
+- **Cache responses** when appropriate to reduce API calls
+- **Use webhooks** instead of polling for real-time updates
+</Aside>
+
+## Getting Started
+
+<Steps>
+1. **Get your API key**
+   
+   Navigate to **Settings** → **API** in your dashboard to generate a key.
+
+2. **Choose your endpoint**
+   
+   Determine which API endpoints you need for your integration.
+
+3. **Make your first request**
+   
+   Use the Quick Start examples above to test the connection.
+
+4. **Set up webhooks**
+   
+   Configure webhooks for real-time event notifications.
+
+5. **Go to production**
+   
+   Replace test keys with production keys when ready.
+</Steps>
+
+## SDKs & Libraries <Badge text="Coming Soon" variant="caution" size="small" />
+
+Official SDKs for popular languages are in development:
+
+<CardGrid>
+  <Card title="JavaScript/TypeScript" icon="seti:javascript">
+    NPM package for Node.js and browser.
+  </Card>
+  <Card title="Python" icon="seti:python">
+    PyPI package with async support.
+  </Card>
+  <Card title="PHP" icon="seti:php">
+    Composer package for Laravel and more.
+  </Card>
+</CardGrid>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard
+    title="Authentication"
+    description="API key setup and usage"
+    href="/api/authentication/"
+  />
+  <LinkCard
+    title="Chat API"
+    description="Message endpoints reference"
+    href="/api/chat-api/"
+  />
+  <LinkCard
+    title="Webhooks"
+    description="Event notifications setup"
+    href="/api/webhooks/"
+  />
+  <LinkCard
+    title="Integrations"
+    description="Platform connections"
+    href="/assistants/integrations/"
+  />
+</CardGrid>
