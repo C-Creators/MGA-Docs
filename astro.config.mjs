@@ -33,6 +33,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Assistants',
+					collapsed: true,
 					items: [
 						{ slug: 'assistants/overview', label: 'Overview' },
 						{ slug: 'assistants/playground' },
@@ -49,6 +50,7 @@ export default defineConfig({
 				},
 				{
 					label: 'CRM',
+					collapsed: true,
 					items: [
 						{ slug: 'crm/overview', label: 'Overview' },
 						{ slug: 'crm/contacts' },
@@ -60,6 +62,7 @@ export default defineConfig({
 				},
 				{
 					label: 'API Reference',
+					collapsed: true,
 					items: [
 						{ slug: 'api/overview', label: 'Overview' },
 						{ slug: 'api/authentication' },
@@ -69,6 +72,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Legal',
+					collapsed: true,
 					items: [
 						{ slug: 'legal/overview', label: 'Overview' },
 						{ slug: 'legal/terms-of-service' },
