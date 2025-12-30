@@ -115,3 +115,55 @@ td, th { border-bottom: 1px solid var(--sl-color-hairline); padding: 0.75rem 1re
 tr:last-child td { border-bottom: none; }
 blockquote { border-left: 4px solid var(--sl-color-accent); background: var(--sl-color-accent-low); border-radius: 0 8px 8px 0; padding: 1rem; margin: 1rem 0; }
 header.header { backdrop-filter: blur(12px); }
+
+/* 
+ * Mobile-only sidebar collapse
+ * Collapse sidebar groups on mobile (< 50rem), expand on desktop
+ */
+@media (max-width: 50rem) {
+  /* Collapse sidebar groups on mobile by default */
+  .sidebar details:not([open]) > ul {
+    display: none;
+  }
+  
+  .sidebar details > summary {
+    cursor: pointer;
+  }
+  
+  /* Ensure groups are collapsed by default on mobile */
+  .sidebar details {
+    --sl-sidebar-item-padding-inline: 0.5rem;
+  }
+}
+
+/* 
+ * Mobile Language Picker Enhancement
+ * Make language selector more prominent on mobile
+ */
+@media (max-width: 50rem) {
+  /* Style the language select in mobile menu footer */
+  starlight-lang-select {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+  
+  starlight-lang-select select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-accent);
+    border-radius: 8px;
+    color: var(--sl-color-text);
+  }
+  
+  starlight-lang-select select:focus {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+  
+  /* Add globe icon styling if available */
+  starlight-lang-select::before {
+    content: "🌐 ";
+  }
+}
