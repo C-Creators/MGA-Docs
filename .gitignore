@@ -19,3 +19,12 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Shrimp task manager data
+.shrimp-data/
+
+# GitHub Copilot agents
+.github/agents/
+
+# VS Code MCP config (contains API keys)
+.vscode/mcp.json
