@@ -26,7 +26,9 @@ export default defineConfig({
 				es: { label: 'Español', lang: 'es' },
 			},
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/C-Creators/mygptassistants' },
+				{ icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/mygptassistants' },
+				{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/my-gpt-assistants/' },
+				{ icon: 'email', label: 'Email', href: 'mailto:info@mygptassistants.com' },
 			],
 			sidebar: [
 				{
