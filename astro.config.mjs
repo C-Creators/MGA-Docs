@@ -75,9 +75,6 @@ export default defineConfig({
 					],
 				},
 			],
-			editLink: {
-				baseUrl: 'https://github.com/C-Creators/MGA-Docs/edit/main/',
-			},
 		}),
 	],
 });
