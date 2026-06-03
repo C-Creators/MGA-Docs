@@ -1,0 +1,53 @@
+---
+title: Leads
+description: Rastrea y nutre a los posibles clientes a través de tu pipeline de ventas
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## De Prospecto a Cliente <Badge text="Función CRM" variant="note" size="small" />
+
+Los leads son contactos potenciales que han mostrado interés pero aún no se han convertido en clientes. Tu asistente de IA puede capturar y calificar leads automáticamente durante las conversaciones.
+
+## Leads vs. Contactos
+
+| | **Lead** | **Contacto** |
+|---|---|---|
+| **Estado** | Prospecto, aún no convertido | Cliente o relación establecida |
+| **Fuente** | Bot, formulario, importación manual | Compra, reserva, registro |
+| **Etapas** | Nuevo → Contactado → Calificado → Convertido | N/A |
+| **Enfoque** | Ventas y nurturing | Soporte y relación |
+
+## Etapas del Pipeline de Leads
+
+| Etapa | Descripción |
+|-------|-------------|
+| **Nuevo** | Acabas de capturar el lead, aún no contactado |
+| **Contactado** | Has iniciado contacto |
+| **Calificado** | Confirmaste que es un buen prospecto |
+| **Convertido** | Convirtió en cliente (creando un Contacto) |
+
+## Cómo la IA Captura Leads
+
+Cuando un cliente interactúa con tu widget de chat, la IA puede:
+
+1. Detectar señales de intención de compra
+2. Hacer preguntas de calificación naturalmente
+3. Recopilar información de contacto
+4. Crear automáticamente un registro de Lead en el CRM
+5. Notificar a tu equipo de ventas
+
+## Puntuación de Leads
+
+<Aside type="tip" title="Puntuación Automática">
+La IA asigna automáticamente puntuaciones de leads basándose en el compromiso del cliente, el sentimiento de la conversación, las respuestas a preguntas de calificación y la fuente del lead. Las puntuaciones más altas = mayor intención de compra.
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Pipelines" description="Visualiza el progreso de los leads en los pipelines" href="/es/crm/pipelines/" />
+  <LinkCard title="Campañas y Secuencias" description="Nutre leads con drips automatizados" href="/es/crm/campaigns/" />
+  <LinkCard title="Contactos" description="Gestión de clientes convertidos" href="/es/crm/contacts/" />
+  <LinkCard title="Segmentos" description="Segmenta leads por comportamiento" href="/es/crm/segments/" />
+</CardGrid>

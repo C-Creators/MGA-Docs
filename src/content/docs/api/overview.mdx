@@ -42,14 +42,15 @@ https://api.mygptassistants.com/api/v1
 <Tabs>
   <TabItem label="JavaScript">
     ```javascript
-    const response = await fetch('https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message', {
+    const response = await fetch('https://api.mygptassistants.com/api/v1/bot/YOUR_BOT_ID', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer YOUR_API_KEY',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        message: 'Hello, what can you help me with?'
+        message: 'Hello, what can you help me with?',
+        sessionId: 'optional-session-id'
       }),
     });
 
@@ -62,13 +63,14 @@ https://api.mygptassistants.com/api/v1
     import requests
 
     response = requests.post(
-        'https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message',
+        'https://api.mygptassistants.com/api/v1/bot/YOUR_BOT_ID',
         headers={
             'Authorization': 'Bearer YOUR_API_KEY',
             'Content-Type': 'application/json',
         },
         json={
-            'message': 'Hello, what can you help me with?'
+            'message': 'Hello, what can you help me with?',
+            'sessionId': 'optional-session-id'
         }
     )
 
@@ -78,10 +80,10 @@ https://api.mygptassistants.com/api/v1
   </TabItem>
   <TabItem label="cURL">
     ```bash
-    curl -X POST 'https://api.mygptassistants.com/api/v1/chat/YOUR_BOT_ID/message' \
+    curl -X POST 'https://api.mygptassistants.com/api/v1/bot/YOUR_BOT_ID' \
       -H 'Authorization: Bearer YOUR_API_KEY' \
       -H 'Content-Type: application/json' \
-      -d '{"message": "Hello, what can you help me with?"}'
+      -d '{"message": "Hello, what can you help me with?", "sessionId": "optional-session-id"}'
     ```
   </TabItem>
 </Tabs>

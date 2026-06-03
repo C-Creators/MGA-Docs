@@ -1,0 +1,155 @@
+---
+title: WordPress Plugin
+description: Native WordPress plugin that embeds your AI assistant with a settings panel and shortcode
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## The Native WordPress Integration <Badge text="WordPress" variant="note" size="small" />
+
+The MyGPTAssistants WordPress Plugin gives you a full native integration — no theme file editing, no manual script pasting. Install it like any other plugin, enter your API key, and your AI assistant appears on your site with a dedicated settings panel.
+
+![WordPress plugin settings panel](../../../assets/screenshots/assistants-wordpress-plugin.png)
+
+## Why Use the Plugin vs. Manual Embed?
+
+| | WordPress Plugin | Manual Embed Script |
+|-|-----------------|---------------------|
+| **Setup** | Install from dashboard | Edit theme files |
+| **Settings UI** | Full settings panel in WP admin | Edit widget config in dashboard |
+| **Shortcode support** | Yes — `[mga_chat_app]` | No |
+| **Updates** | Auto-updates via WordPress | Manual code updates |
+| **Page-specific control** | Yes — via shortcode placement | Limited |
+| **Theme file changes required** | None | Yes |
+
+## Installation
+
+<Steps>
+1. **Download the plugin** from your MyGPTAssistants dashboard → Embed → WordPress tab
+
+2. **Upload to WordPress:**
+   - Go to **Plugins → Add New → Upload Plugin**
+   - Select the downloaded `.zip` file
+   - Click **Install Now**
+
+3. **Activate the plugin** after installation
+
+4. **Enter your API Key:**
+   - Navigate to **Settings → MyGPTAssistants** in your WP admin
+   - Paste your API key from MyGPTAssistants → Settings → API Keys
+
+5. **Select your assistant:**
+   - Choose which assistant to embed
+   - Your bot is now live on your site!
+</Steps>
+
+## Plugin Settings Panel
+
+After installation, navigate to **Settings → MyGPTAssistants** to configure:
+
+<Tabs>
+  <TabItem label="General">
+    | Setting | Description |
+    |---------|-------------|
+    | **API Key** | Your MyGPTAssistants API key |
+    | **Assistant** | Which assistant to display |
+    | **Display Mode** | Widget (floating button) or Inline |
+    | **Auto-open** | Open the chat automatically on page load |
+  </TabItem>
+  <TabItem label="Appearance">
+    | Setting | Description |
+    |---------|-------------|
+    | **Widget Position** | Bottom-right or bottom-left |
+    | **Primary Color** | Override the widget's primary color |
+    | **Button Icon** | Chat bubble icon style |
+    | **Widget Width** | Width of the chat panel (px or %) |
+  </TabItem>
+  <TabItem label="Behavior">
+    | Setting | Description |
+    |---------|-------------|
+    | **Show on All Pages** | Display widget site-wide |
+    | **Exclude Pages** | Specific pages to hide the widget on |
+    | **Show to Logged-In Users** | Control visibility by login state |
+    | **Show to Guests** | Control visibility for non-logged users |
+  </TabItem>
+</Tabs>
+
+## Shortcode Usage
+
+Use the `[mga_chat_app]` shortcode to embed a full inline chat panel anywhere on your site:
+
+### Basic Usage
+```
+[mga_chat_app]
+```
+
+### With Options
+```
+[mga_chat_app bot_id="your-bot-id" height="600" width="100%"]
+```
+
+### Shortcode Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `bot_id` | Plugin setting | Override which assistant to show |
+| `height` | `600px` | Height of the inline chat panel |
+| `width` | `100%` | Width of the inline chat panel |
+| `class` | — | Additional CSS class for styling |
+
+<Aside type="tip" title="Inline vs Widget">
+Use the **widget** (floating button) for site-wide support. Use the **shortcode inline embed** for dedicated pages like a "Chat with Us" page or inside a contact form page.
+</Aside>
+
+## WordPress Tools Plugin
+
+When connected, the plugin also enables **WordPress Tools** for your AI assistant — giving it the ability to search your site's actual content:
+
+- Search your WordPress posts and pages
+- Look up WooCommerce products and prices
+- Answer questions about your site content accurately
+- Always return up-to-date information (no re-training needed)
+
+Enable this in your assistant → **Plugins → WordPress Tools**.
+
+## Automatic Updates
+
+The plugin uses Ed25519-signed updates delivered through the WordPress update system. When a new version is released:
+
+1. You'll see an update notification in **Plugins → Installed Plugins**
+2. Click **Update Now** to apply
+3. No manual download needed
+
+<Aside type="note" title="Update Signatures">
+Plugin updates are cryptographically signed. WordPress will only install updates that pass signature verification, protecting against supply-chain attacks.
+</Aside>
+
+## Troubleshooting
+
+<Tabs>
+  <TabItem label="Widget Not Showing">
+    1. Check that the plugin is **activated** in Plugins → Installed Plugins
+    2. Verify your **API key** is entered correctly in Settings → MyGPTAssistants
+    3. Check the **"Show on All Pages"** setting is enabled (or add shortcode manually)
+    4. Clear your WordPress cache and browser cache
+  </TabItem>
+  <TabItem label="Wrong Assistant">
+    1. Go to Settings → MyGPTAssistants → General
+    2. Verify the correct assistant is selected in the dropdown
+    3. Save settings and clear cache
+  </TabItem>
+  <TabItem label="Shortcode Not Working">
+    1. Make sure the plugin is activated
+    2. Check for shortcode typos — it must be exactly `[mga_chat_app]`
+    3. Some page builders (Elementor, Divi) require using a "Shortcode" block widget
+  </TabItem>
+</Tabs>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Embed" description="Manual embed options for all platforms" href="/assistants/embed/" />
+  <LinkCard title="Integrations" description="Other channel integrations" href="/assistants/integrations/" />
+  <LinkCard title="Plugins" description="WordPress Tools and other plugins" href="/assistants/plugins/" />
+  <LinkCard title="Appearance" description="Customize widget look and feel" href="/assistants/appearance/" />
+</CardGrid>

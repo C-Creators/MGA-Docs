@@ -1,0 +1,127 @@
+---
+title: Tasks
+description: Assign and track follow-up tasks for your team and AI assistants
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Keep Your Team on Track <Badge text="CRM Feature" variant="note" size="small" />
+
+Tasks are follow-up actions tied to contacts, conversations, or deals. Your AI assistant can create tasks automatically during conversations — like "follow up in 3 days" or "send pricing proposal" — or team members can create them manually.
+
+![Tasks list and kanban view](../../../assets/screenshots/crm-tasks.png)
+
+## What Tasks Are For
+
+<CardGrid>
+  <Card title="Follow-ups" icon="phone">
+    Never miss a promised callback or follow-up email. Tasks keep the commitment visible and assigned.
+  </Card>
+  <Card title="Bot-Assigned Actions" icon="rocket">
+    Your AI assistant can create tasks when it detects action items in conversations (e.g., "I'll have someone call you back").
+  </Card>
+  <Card title="Team Coordination" icon="group">
+    Assign tasks to specific team members so nothing falls through the cracks.
+  </Card>
+  <Card title="Progress Tracking" icon="approve-check">
+    See all open tasks by status, due date, or assignee in list or kanban view.
+  </Card>
+</CardGrid>
+
+## Task Views
+
+<Tabs>
+  <TabItem label="List View">
+    A flat table of all tasks with:
+    - Task title and description
+    - Due date
+    - Assignee
+    - Status (To Do / In Progress / Done)
+    - Linked contact
+    
+    Sort and filter by status, assignee, or due date.
+  </TabItem>
+  <TabItem label="Kanban View">
+    A drag-and-drop board organized by status columns:
+    
+    ```
+    To Do  →  In Progress  →  Done
+    ```
+    
+    Drag cards between columns to update status. Click any card for full details.
+  </TabItem>
+</Tabs>
+
+## Creating a Task
+
+<Steps>
+1. **Navigate to CRM → Tasks**
+
+2. **Click "New Task"**
+
+3. **Fill in the details:**
+   - Title (what needs to be done)
+   - Description (optional context)
+   - Due date
+   - Assignee (team member or unassigned)
+   - Priority (Low / Medium / High)
+   - Linked contact (optional)
+
+4. **Save** — the task appears in the board and the assignee is notified
+</Steps>
+
+## Bot-Created Tasks
+
+Your AI assistant creates tasks automatically when configured via the CRM Toolkit plugin. Common triggers:
+
+| Conversation Outcome | Task Created |
+|---------------------|--------------|
+| Customer asked for callback | "Call back [Name]" with due date |
+| Customer interested but not ready | "Follow up in X days" |
+| Issue not resolved | "Resolve open issue for [Name]" |
+| Quote requested | "Send pricing proposal to [Name]" |
+
+<Aside type="tip" title="Configuring Bot Tasks">
+To enable bot-created tasks, make sure the CRM Toolkit plugin is enabled on your assistant. You can configure which conversation outcomes should trigger task creation in the plugin settings.
+</Aside>
+
+## Task Status Lifecycle
+
+```
+To Do  →  In Progress  →  Done
+                        ↓
+                     Cancelled (optional)
+```
+
+## Task Comments
+
+Each task has a comment thread for team discussion. Use comments to:
+- Log progress notes
+- Ask questions to teammates
+- Record the outcome when marking done
+
+## Filtering & Search
+
+<CardGrid>
+  <Card title="By Assignee" icon="group">
+    See all tasks assigned to a specific team member or all unassigned tasks.
+  </Card>
+  <Card title="By Due Date" icon="document">
+    Filter overdue tasks, tasks due today, or tasks due this week.
+  </Card>
+  <Card title="By Contact" icon="add-document">
+    View all tasks linked to a specific contact from their profile page.
+  </Card>
+  <Card title="By Priority" icon="warning">
+    Surface high-priority tasks that need immediate attention.
+  </Card>
+</CardGrid>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="CRM Overview" description="Full CRM feature list" href="/crm/overview/" />
+  <LinkCard title="Contacts" description="Tasks linked to contact profiles" href="/crm/contacts/" />
+  <LinkCard title="Plugins" description="Enable bot task creation" href="/assistants/plugins/" />
+  <LinkCard title="Tickets" description="Support tickets vs tasks" href="/crm/tickets/" />
+</CardGrid>

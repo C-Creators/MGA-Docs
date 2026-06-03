@@ -7,7 +7,7 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 ## Send Your Assistant Where Customers Are <Badge text="Multi-Channel" variant="tip" size="small" />
 
-Integrations let you deploy your trained assistant to different places – your website, Instagram, WhatsApp, and more. Think of it like assigning your team member to different locations where customers need help.
+Integrations let you deploy your trained assistant to different places – your website, Instagram, WhatsApp, LinkedIn, and more. Think of it like assigning your team member to different locations where customers need help.
 
 ![Available integrations](../../../assets/screenshots/assistants-integrations.png)
 
@@ -27,13 +27,30 @@ Integrations let you deploy your trained assistant to different places – your 
     Your assistant answers Instagram direct messages automatically, helping customers 24/7.
   </Card>
   <Card title="WhatsApp" icon="phone">
-    Connect to WhatsApp Business so customers can reach your assistant on their favorite messaging app.
+    Connect to WhatsApp by scanning a QR code — no Business API approval required. Your assistant replies to customers on their favorite messaging app.
   </Card>
   <Card title="Telegram" icon="comment">
     Deploy your assistant as a Telegram bot – great for communities and ongoing support.
   </Card>
-  <Card title="Discord" icon="discord">
+  <Card title="Facebook Messenger" icon="comment">
+    **<Badge text="New" variant="tip" size="small" />**
+    
+    Connect your Facebook Page inbox so your assistant answers Messenger conversations automatically.
+  </Card>
+  <Card title="LinkedIn" icon="comment">
+    **<Badge text="New" variant="tip" size="small" />**
+    
+    Your assistant handles LinkedIn direct messages, ideal for B2B outreach and lead qualification.
+  </Card>
+  <Card title="Discord" icon="setting">
     Add your assistant to Discord servers for gaming communities or tech support.
+  </Card>
+  <Card title="WordPress Plugin" icon="external">
+    **<Badge text="Native Plugin" variant="success" size="small" />**
+    
+    Install the native WordPress plugin for a seamless embed with a settings panel.
+    
+    [Plugin Guide →](/assistants/wordpress-plugin/)
   </Card>
   <Card title="Custom Apps" icon="setting">
     **<Badge text="For Developers" variant="note" size="small" />**
@@ -92,25 +109,62 @@ Connect your assistant to Instagram so they can respond to direct messages autom
 - Keep an eye on conversation quality in Analytics
 </Aside>
 
-## WhatsApp Business
+## WhatsApp Business <Badge text="QR Code Setup" variant="tip" size="small" />
 
-Connect to WhatsApp Business API for automated customer messaging.
+Connect to WhatsApp by scanning a QR code — no Business API approval or Meta verification required. Your WhatsApp session is linked directly through the QR code scan in your dashboard.
 
 <CardGrid>
   <Card title="What You Need" icon="document">
-    - WhatsApp Business API access
-    - A verified business phone number
-    - Meta Business account
+    - A WhatsApp account (personal or business)
+    - Your phone nearby to scan the QR code
   </Card>
   <Card title="What You Get" icon="star">
     - 24/7 automated customer help
-    - Rich messages with images and buttons
     - Customer info synced with your CRM
+    - Full conversation history in your inbox
   </Card>
 </CardGrid>
 
-<Aside type="caution" title="WhatsApp Rules">
-WhatsApp has strict messaging policies. Make sure your assistant follows their business messaging guidelines to keep your account in good standing.
+<Steps>
+1. **Open the WhatsApp integration** in your dashboard
+
+2. **Scan the QR code** with your WhatsApp app (Settings → Linked Devices)
+
+3. **Wait for the connection** to activate (usually under 30 seconds)
+
+4. **Test by sending a message** to the connected number
+</Steps>
+
+<Aside type="caution" title="Session Management">
+Your WhatsApp session may occasionally disconnect and require re-scanning. The dashboard will alert you when reconnection is needed.
+</Aside>
+
+## Facebook Messenger <Badge text="New" variant="tip" size="small" />
+
+Connect your Facebook Page so your assistant automatically handles Messenger conversations.
+
+<Steps>
+1. **Link your Facebook Page** from the Messenger integration settings
+
+2. **Authorize the connection** via Facebook's OAuth flow
+
+3. **Test by messaging** your Facebook Page from another account
+</Steps>
+
+## LinkedIn Messages <Badge text="New" variant="tip" size="small" />
+
+Your assistant can respond to LinkedIn direct messages — ideal for B2B outreach, lead qualification, and professional customer support.
+
+<Steps>
+1. **Connect your LinkedIn account** from the LinkedIn integration settings
+
+2. **Authorize access** to your LinkedIn messages
+
+3. **Test by sending a DM** to your connected profile
+</Steps>
+
+<Aside type="note" title="LinkedIn Use Cases">
+LinkedIn is best suited for B2B scenarios: sales outreach, lead qualification, professional support. Keep your assistant's tone formal and professional.
 </Aside>
 
 ## Telegram Bot
@@ -152,8 +206,11 @@ Check out the [API Reference](/api/overview/) for detailed documentation on buil
 | Platform | Setup Time | Best For | What You Need |
 |----------|------------|----------|---------------|
 | Website | 5 minutes | Most businesses | Access to edit your site |
+| WordPress | 5 minutes | WordPress sites | Admin access to WP |
 | Instagram | 15 minutes | Social media brands | Business account |
-| WhatsApp | 30 minutes | Customer support teams | Business API access |
+| WhatsApp | 5 minutes | Customer support | Phone with WhatsApp |
+| Facebook Messenger | 15 minutes | Facebook businesses | Facebook Page admin |
+| LinkedIn | 10 minutes | B2B businesses | LinkedIn account |
 | Telegram | 10 minutes | Communities | Bot token |
 | Discord | 10 minutes | Gaming/Tech communities | Server admin rights |
 | Custom API | Varies | Unique needs | Development skills |

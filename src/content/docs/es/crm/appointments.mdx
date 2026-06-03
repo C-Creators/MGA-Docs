@@ -1,0 +1,89 @@
+---
+title: Citas
+description: Permite que tu asistente de IA programe citas directamente con los clientes
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Programación Asistida por IA <Badge text="Función CRM" variant="success" size="small" />
+
+Las Citas permiten que tu asistente de IA programe reuniones directamente con los clientes durante las conversaciones — sin emails de ida y vuelta. Los clientes eligen el horario que les conviene y queda en tu calendario automáticamente.
+
+![Vista de calendario de citas](../../../../assets/screenshots/crm-appointments.png)
+
+## Cómo Funciona
+
+<CardGrid>
+  <Card title="Tipos de Citas" icon="document">
+    Crea diferentes tipos de reuniones — demos, consultas, llamadas de soporte — cada uno con su propia duración, disponibilidad y color.
+  </Card>
+  <Card title="Programación con IA" icon="rocket">
+    Tu asistente detecta cuando un cliente quiere reservar y ofrece horarios disponibles en tiempo real durante la conversación.
+  </Card>
+  <Card title="Sincronización con Google Calendar" icon="external">
+    Las citas se sincronizan bidireccionalmente con Google Calendar. Los eventos existentes bloquean la disponibilidad automáticamente.
+  </Card>
+  <Card title="Emails de Confirmación" icon="email">
+    Los clientes reciben un email de confirmación con los detalles, un archivo .ics adjunto y enlaces para cancelar o reprogramar.
+  </Card>
+</CardGrid>
+
+## Configuración de Tipos de Citas
+
+<Steps>
+1. **Navega a CRM → Citas**
+
+2. **Haz clic en "Nuevo Tipo de Cita"**
+
+3. **Configura los detalles:**
+   - Nombre y descripción (visibles para los clientes)
+   - Duración (15, 30, 45, 60 minutos o personalizado)
+   - Color (para visualización en calendario)
+   - Ventanas de disponibilidad (qué días y horas)
+   - Tiempo de pausa entre citas
+
+4. **Conecta tu calendario** (opcional pero recomendado)
+
+5. **Actívalo en tu asistente** desde Complementos → Kit CRM → Citas
+</Steps>
+
+## Experiencia del Cliente
+
+Cuando un cliente pide reservar una reunión, tu asistente:
+
+1. **Detecta la intención** — "Me gustaría programar una demo" activa el flujo de reserva
+2. **Hace preguntas de calificación** — recopila nombre, email e información relevante
+3. **Muestra horarios disponibles** — muestra disponibilidad en tiempo real
+4. **Confirma la reserva** — crea la cita y envía un email de confirmación
+5. **Proporciona enlace de gestión** — el cliente recibe un enlace para cancelar o reprogramar
+
+<Aside type="tip" title="Email de Confirmación">
+El email de confirmación incluye:
+- Fecha, hora y tipo de cita
+- Archivo adjunto de calendario .ics
+- Enlace para cancelar o reprogramar en `/my-appointment`
+- Colores y logo de tu marca
+</Aside>
+
+## Integración con Google Calendar
+
+<Steps>
+1. **Ve a Configuración CRM → Integraciones**
+
+2. **Haz clic en "Conectar Google Calendar"**
+
+3. **Autoriza el acceso** — concede permisos de lectura/escritura a tu calendario
+
+4. **Selecciona el calendario** a sincronizar
+
+5. **Prueba** — crea una cita de prueba y verifica que aparezca en Google Calendar
+</Steps>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Visión General del CRM" description="Lista completa de funciones CRM" href="/es/crm/overview/" />
+  <LinkCard title="Complementos" description="Activa la reserva de citas en tu asistente" href="/es/assistants/plugins/" />
+  <LinkCard title="Contactos" description="Contactos creados a partir de reservas" href="/es/crm/contacts/" />
+  <LinkCard title="Escalada en Vivo" description="Escala a humano cuando sea necesario" href="/es/crm/live-escalation/" />
+</CardGrid>

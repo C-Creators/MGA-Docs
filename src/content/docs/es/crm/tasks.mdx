@@ -1,0 +1,60 @@
+---
+title: Tareas
+description: Asigna y rastrea tareas de seguimiento para tu equipo y asistentes de IA
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Mantén a Tu Equipo en Seguimiento <Badge text="Función CRM" variant="note" size="small" />
+
+Las tareas son acciones de seguimiento vinculadas a contactos, conversaciones o negocios. Tu asistente de IA puede crear tareas automáticamente durante las conversaciones, o los miembros del equipo pueden crearlas manualmente.
+
+![Vista de lista y kanban de tareas](../../../../assets/screenshots/crm-tasks.png)
+
+## Vistas de Tareas
+
+<Tabs>
+  <TabItem label="Vista de Lista">
+    Una tabla plana de todas las tareas con título, fecha de vencimiento, asignado, estado y contacto vinculado.
+  </TabItem>
+  <TabItem label="Vista Kanban">
+    Un tablero de arrastrar y soltar organizado por columnas de estado:
+    
+    ```
+    Por Hacer  →  En Progreso  →  Completado
+    ```
+    
+    Arrastra tarjetas entre columnas para actualizar el estado.
+  </TabItem>
+</Tabs>
+
+## Creación de una Tarea
+
+<Steps>
+1. **Navega a CRM → Tareas**
+
+2. **Haz clic en "Nueva Tarea"**
+
+3. **Completa los detalles:** título, descripción, fecha de vencimiento, asignado, prioridad y contacto vinculado
+
+4. **Guarda** — la tarea aparece en el tablero y se notifica al asignado
+</Steps>
+
+## Tareas Creadas por el Bot
+
+Tu asistente de IA crea tareas automáticamente cuando se configura a través del complemento Kit CRM:
+
+| Resultado de Conversación | Tarea Creada |
+|--------------------------|--------------|
+| Cliente pidió que le llamaran | "Llamar a [Nombre]" con fecha |
+| Cliente interesado pero no listo | "Seguimiento en X días" |
+| Problema no resuelto | "Resolver problema abierto para [Nombre]" |
+| Cotización solicitada | "Enviar propuesta de precios a [Nombre]" |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Visión General del CRM" description="Lista completa de funciones CRM" href="/es/crm/overview/" />
+  <LinkCard title="Contactos" description="Tareas vinculadas a perfiles de contacto" href="/es/crm/contacts/" />
+  <LinkCard title="Tickets" description="Tickets de soporte vs tareas" href="/es/crm/tickets/" />
+</CardGrid>

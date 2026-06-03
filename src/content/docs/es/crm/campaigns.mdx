@@ -1,0 +1,76 @@
+---
+title: Campañas y Secuencias
+description: Envía campañas de mensajes y correos segmentados a tus contactos y leads
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Llega a Tu Audiencia a Escala <Badge text="Función CRM" variant="note" size="small" />
+
+Las campañas te permiten enviar mensajes dirigidos a grupos de contactos. Las secuencias extienden esto a campañas de goteo de varios pasos — mensajes automatizados enviados a lo largo del tiempo para nutrir leads.
+
+## Campañas vs. Secuencias
+
+<Tabs>
+  <TabItem label="Campañas">
+    **Envíos únicos** a un segmento de contactos.
+    
+    - Envía un email o mensaje único a un grupo
+    - Rastrea aperturas, clics y respuestas
+    - Ideal para anuncios, promociones, newsletters
+  </TabItem>
+  <TabItem label="Secuencias">
+    **Goteos automatizados de varios pasos** activados al inscribirse.
+    
+    - Define una serie de mensajes con retrasos entre ellos
+    - Los contactos avanzan automáticamente
+    - Se detiene cuando responden o convierten
+    - Ideal para nurturing de leads, onboarding, series de seguimiento
+  </TabItem>
+</Tabs>
+
+## Crear una Campaña
+
+<Steps>
+1. **Navega a CRM → Campañas**
+
+2. **Haz clic en "Nueva Campaña"**
+
+3. **Elige tu audiencia:** selecciona un Segmento o contactos individuales
+
+4. **Escribe tu mensaje:** asunto y cuerpo del email, o plantilla de mensaje
+
+5. **Programa o envía inmediatamente**
+</Steps>
+
+## Crear una Secuencia
+
+<Steps>
+1. **Navega a CRM → Secuencias**
+
+2. **Haz clic en "Nueva Secuencia"**
+
+3. **Añade pasos:** Día 0 — bienvenida, Día 3 — seguimiento, Día 7 — llamada a la acción
+
+4. **Configura criterios de inscripción:** manual, automático por segmento, o por disparador
+
+5. **Activa la secuencia**
+</Steps>
+
+## Personalización
+
+Usa tokens en el contenido de tus mensajes para personalizar a escala:
+
+| Token | Reemplazado por |
+|-------|----------------|
+| `{{name}}` | Nombre del contacto |
+| `{{email}}` | Email del contacto |
+| `{{company}}` | Empresa del contacto |
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Segmentos" description="Construye tu audiencia de campaña" href="/es/crm/segments/" />
+  <LinkCard title="Contactos" description="Gestiona las suscripciones de contactos" href="/es/crm/contacts/" />
+  <LinkCard title="Leads" description="Nutre leads con secuencias" href="/es/crm/leads/" />
+</CardGrid>

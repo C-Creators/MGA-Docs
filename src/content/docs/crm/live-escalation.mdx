@@ -1,0 +1,172 @@
+---
+title: Live Escalation
+description: Seamlessly transfer conversations from AI to human agents in real time
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Human Handoff When It Matters Most <Badge text="CRM Feature" variant="success" size="small" />
+
+Live Escalation lets your AI assistant hand off conversations to a real human agent when customers need more than an AI can provide. The handoff is seamless — the human agent sees the full conversation history and can pick up right where the AI left off.
+
+![Live escalation interface](../../../assets/screenshots/crm-live-escalation.png)
+
+## How Escalation Works
+
+<CardGrid>
+  <Card title="AI Detection" icon="rocket">
+    The AI continuously monitors conversation sentiment and intent. When it detects frustration, complex issues, or an explicit request for human help, it initiates escalation.
+  </Card>
+  <Card title="Customer Request" icon="phone">
+    Customers can ask for a human agent at any time ("I want to speak to a person"). The AI recognizes this and escalates immediately.
+  </Card>
+  <Card title="Instant Notification" icon="warning">
+    Your team is notified instantly when an escalation happens — in-app notification, email, or both.
+  </Card>
+  <Card title="Full Context Handoff" icon="document">
+    The human agent receives the complete conversation history, contact profile, and the escalation reason.
+  </Card>
+</CardGrid>
+
+## AI-Powered Escalation Detection
+
+Unlike keyword-matching systems, escalation detection uses AI to analyze:
+
+- **Sentiment** — frustration, anger, confusion
+- **Intent** — explicit requests for human help
+- **Context** — issue complexity, unresolved loops
+- **Confidence** — when the AI isn't confident in its answers
+
+<Aside type="tip" title="Confidence Threshold">
+You can configure the escalation sensitivity in your assistant's settings. Higher sensitivity = more escalations. Start medium and adjust based on your team's capacity.
+</Aside>
+
+## The Escalation Flow
+
+<Steps>
+1. **Escalation triggered** — AI detects the need or customer requests human help
+
+2. **Queue created** — conversation joins the escalation queue with priority
+
+3. **Team notified** — available agents receive an alert
+
+4. **Agent claims** — an agent opens the conversation and clicks "Take Over"
+
+5. **AI steps back** — the AI stops responding; the human is now driving
+
+6. **Ticket created** — a support ticket is automatically created for tracking
+
+7. **Resolution** — agent resolves the issue and closes the conversation
+</Steps>
+
+## The Escalation Queue
+
+Navigate to **CRM → Live Escalation** to see the real-time queue:
+
+| Column | Description |
+|--------|-------------|
+| **Contact** | Who is waiting |
+| **Wait Time** | How long they've been waiting |
+| **Channel** | Website, WhatsApp, Instagram, etc. |
+| **Reason** | Why the AI escalated |
+| **Priority** | Urgency level |
+
+Agents can filter by channel, priority, or wait time to pick up the most urgent conversations first.
+
+## Taking Over a Conversation
+
+<Steps>
+1. **Open the escalation queue**
+
+2. **Click on a waiting conversation**
+
+3. **Review the AI's summary** and conversation history
+
+4. **Click "Take Over"** to claim it
+
+5. **Type your message** — the customer sees "Now speaking with [Agent Name]"
+
+6. **Resolve the issue** at your own pace
+
+7. **Close or reassign** when done
+</Steps>
+
+<Aside type="note" title="AI Summary">
+When an agent takes over, they see an AI-generated summary of the conversation: what the customer wanted, what the AI tried, and why it escalated. This saves agents from reading every message.
+</Aside>
+
+## Handoff Messaging
+
+You can configure the message customers see when a handoff starts:
+
+> "I'm connecting you with a member of our team. Your wait time is approximately X minutes."
+
+And when an agent takes over:
+
+> "Hi, I'm [Agent Name]. I've reviewed your conversation and I'm here to help."
+
+Both messages are customizable in **CRM Settings**.
+
+## Escalation Analytics
+
+<CardGrid>
+  <Card title="Escalation Rate" icon="graph">
+    What percentage of AI conversations get escalated. Useful for calibrating AI training.
+  </Card>
+  <Card title="Wait Time" icon="document">
+    Average time between escalation and agent pickup. Keep this low for good customer experience.
+  </Card>
+  <Card title="Resolution Time" icon="approve-check">
+    How long human agents take to resolve escalated conversations.
+  </Card>
+  <Card title="Escalation Reasons" icon="bars">
+    Breakdown of why escalations happened (sentiment, request, complexity). Helps improve AI training.
+  </Card>
+</CardGrid>
+
+## Configuring Escalation
+
+<Tabs>
+  <TabItem label="Enable Human Handoff">
+    1. Go to your assistant's **Settings → Agent Framework**
+    2. Enable **Human Handoff**
+    3. The assistant now knows it can escalate
+
+    <Aside type="caution" title="Required for Escalation">
+    Human Handoff must be enabled on the assistant for escalations to work. Without it, the AI will not initiate handoffs.
+    </Aside>
+  </TabItem>
+  <TabItem label="Escalation Triggers">
+    Configure what triggers an escalation:
+    - Sentiment score threshold
+    - Keywords that always escalate ("lawsuit", "refund", "cancel account")
+    - Number of AI responses without resolution
+    - Explicit customer request
+  </TabItem>
+  <TabItem label="Team Notifications">
+    Choose how agents are notified:
+    - In-app alert (notification bell)
+    - Email notification
+    - Sound alert in browser
+    
+    Configure in **CRM Settings → Notifications**.
+  </TabItem>
+</Tabs>
+
+## Tickets from Escalations
+
+Every escalation automatically creates a support ticket. This ensures:
+- Nothing falls through after the conversation ends
+- Resolution is formally tracked
+- Customer history is preserved
+
+See [Tickets →](/crm/tickets/) for how tickets work.
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Tickets" description="Tickets auto-created from escalations" href="/crm/tickets/" />
+  <LinkCard title="Plugins" description="Enable human handoff on your assistant" href="/assistants/plugins/" />
+  <LinkCard title="Contacts" description="Contact profile shown during handoff" href="/crm/contacts/" />
+  <LinkCard title="Analytics" description="Escalation rate and performance" href="/assistants/analytics/" />
+</CardGrid>

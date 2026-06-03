@@ -1,0 +1,137 @@
+---
+title: Agent Framework
+description: Define your assistant's purpose, capabilities, and operating guardrails
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Beyond Q&A: Your AI as an Agent <Badge text="Advanced" variant="tip" size="small" />
+
+The Agent Framework turns a simple Q&A chatbot into a capable AI agent. Instead of just answering questions, your assistant can take actions: schedule appointments, capture leads, escalate to humans, and proactively reach out to contacts.
+
+![Agent framework settings](../../../assets/screenshots/assistants-agent-framework.png)
+
+## What the Agent Framework Controls
+
+<CardGrid>
+  <Card title="Bot Purpose" icon="star">
+    Define what kind of agent your assistant is. This shapes how it prioritizes tasks, routes conversations, and frames its responses.
+  </Card>
+  <Card title="Capability Toggles" icon="setting">
+    Enable or disable specific capabilities: human handoff, appointment booking, lead capture, proactive outreach. Only give your assistant the powers it needs.
+  </Card>
+  <Card title="Guardrails" icon="warning">
+    Set boundaries on what topics or actions your assistant can engage with. Keep it focused and on-brand.
+  </Card>
+  <Card title="Proactive Scheduler" icon="rocket">
+    **BotJobs** — let your assistant proactively reach out to contacts based on schedules or triggers, without waiting for them to initiate.
+  </Card>
+</CardGrid>
+
+## Bot Purpose / Mode
+
+Select the primary role for your assistant:
+
+<Tabs>
+  <TabItem label="Support Bot">
+    **Best for:** Customer service, helpdesks, technical support
+    
+    - Prioritizes resolving issues and answering questions
+    - Escalates quickly when it can't resolve
+    - Creates tickets for unresolved issues
+    - Tracks conversation to resolution
+  </TabItem>
+  <TabItem label="Sales Rep">
+    **Best for:** Lead generation, product demos, inbound sales
+    
+    - Qualifies leads through conversation
+    - Captures contact details and buying signals
+    - Offers demo scheduling
+    - Hands off hot leads to human sales reps
+  </TabItem>
+  <TabItem label="Scheduler">
+    **Best for:** Booking-heavy businesses (clinics, consultants, coaches)
+    
+    - Focuses on getting appointments booked
+    - Shows availability and offers slots immediately
+    - Sends confirmation emails automatically
+    - Handles rescheduling and cancellations
+  </TabItem>
+  <TabItem label="General Assistant">
+    **Best for:** Versatile bots that do many things
+    
+    - Handles Q&A, scheduling, support, and lead capture
+    - AI routes each conversation to the right behavior
+    - Best combined with good training data across all topics
+  </TabItem>
+</Tabs>
+
+## Capability Toggles
+
+Enable only the capabilities your assistant needs:
+
+| Capability | Description | Requires |
+|-----------|-------------|---------|
+| **Human Handoff** | Escalate conversations to a live agent | CRM Toolkit plugin |
+| **Appointment Booking** | Schedule appointments during conversations | Appointment types set up |
+| **Lead Capture** | Create lead records from conversations | CRM Toolkit plugin |
+| **Ticket Creation** | Create support tickets automatically | CRM Toolkit plugin |
+| **Proactive Outreach (BotJobs)** | Reach out to contacts without them initiating | BotJobs configuration |
+
+<Aside type="caution" title="Principle of Least Capability">
+Only enable capabilities your assistant actually uses. Every extra capability adds complexity to the AI's decision-making. A Support Bot doesn't need Appointment Booking enabled if it never schedules meetings.
+</Aside>
+
+## Agent Profiles
+
+Agent profiles let you create specialized configurations for different use cases. For example:
+- A **Sales Profile** focused on lead qualification during business hours
+- A **Support Profile** that escalates faster and focuses on issue resolution
+- An **After-Hours Profile** that sets different expectations and captures callbacks
+
+Each profile can have different:
+- Personality instructions
+- Enabled capabilities
+- Escalation thresholds
+- Available appointment types
+
+## BotJobs: Proactive Outreach <Badge text="Advanced" variant="tip" size="small" />
+
+BotJobs allows your assistant to initiate conversations proactively — sending reminders, follow-ups, or re-engagement messages — without waiting for customers to reach out first.
+
+### Common BotJob Use Cases
+
+| Job Type | Example |
+|----------|---------|
+| **Follow-up reminder** | "We haven't heard from you — still interested in a demo?" |
+| **Appointment reminder** | "Your appointment is tomorrow at 2pm. Need to reschedule?" |
+| **Re-engagement** | "It's been 30 days since your last message. How can we help?" |
+| **Campaign trigger** | Enroll contacts in a sequence after a specific event |
+
+### Setting Up BotJobs
+
+<Steps>
+1. **Enable Proactive Outreach** in Agent Framework capabilities
+
+2. **Create a BotJob:**
+   - Choose a trigger (schedule, segment, event)
+   - Define the message template
+   - Set the target audience (segment or individual contacts)
+
+3. **Test** with a small segment before rolling out broadly
+
+4. **Monitor** responses and adjust targeting as needed
+</Steps>
+
+<Aside type="note" title="Outreach Channels">
+BotJobs currently supports WhatsApp and Telegram channels for proactive outreach. Email campaigns are handled through the Campaigns & Sequences feature.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Settings" description="Configure your assistant's base behavior" href="/assistants/settings/" />
+  <LinkCard title="Plugins" description="Enable capabilities via plugins" href="/assistants/plugins/" />
+  <LinkCard title="Live Escalation" description="Human handoff configuration" href="/crm/live-escalation/" />
+  <LinkCard title="Appointments" description="Scheduling setup for the Scheduler mode" href="/crm/appointments/" />
+</CardGrid>

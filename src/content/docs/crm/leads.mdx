@@ -1,0 +1,121 @@
+---
+title: Leads
+description: Capture, qualify, and convert prospects with AI-assisted lead management
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Turn Conversations into Customers <Badge text="CRM Feature" variant="note" size="small" />
+
+Leads are prospects captured by your AI assistant before they become full contacts. Your assistant qualifies them during conversation — gathering name, email, interest level, and budget — and creates a structured lead record in your CRM automatically.
+
+![Leads management](../../../assets/screenshots/crm-leads.png)
+
+## Leads vs. Contacts
+
+| | Leads | Contacts |
+|-|-------|---------|
+| **Who** | Prospects being qualified | Known customers/clients |
+| **Created by** | AI assistant during conversation | Manual import, form, or conversion from lead |
+| **Pipeline** | Leads pipeline | Deals pipeline |
+| **Goal** | Qualify and convert | Manage ongoing relationship |
+
+## How Leads Are Created
+
+Your AI assistant creates lead records automatically when it detects qualifying intent in a conversation:
+
+1. **Visitor initiates chat** on your website or channel
+2. **AI detects buying/inquiry intent** ("I'm looking for pricing", "Can you help me with X")
+3. **AI qualifies** — asks for name, email, company, and key interest details
+4. **Lead created in CRM** with all collected data and the full conversation transcript
+
+<Aside type="tip" title="AI Lead Qualification">
+The assistant uses AI intent classification to detect when a conversation has lead potential. It doesn't rely on keywords — it understands context.
+</Aside>
+
+## Lead Fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Prospect's full name |
+| **Email** | Contact email address |
+| **Company** | Organization name |
+| **Source** | Channel (website, WhatsApp, Instagram, etc.) |
+| **Status** | New / Contacted / Qualified / Converted / Lost |
+| **Score** | AI-assigned qualification score |
+| **Notes** | AI summary of conversation |
+| **Assigned To** | Team member responsible |
+
+## Lead Pipeline
+
+Leads progress through stages:
+
+```
+New  →  Contacted  →  Qualified  →  Converted  →  [Contact created]
+  ↓
+Lost (not interested or unresponsive)
+```
+
+When a lead is **Converted**, a Contact is automatically created with all the lead's information. The lead record is archived.
+
+## Managing Leads
+
+<Steps>
+1. **Navigate to CRM → Leads**
+
+2. **Review new leads** — sorted by creation date with AI score
+
+3. **Open a lead** to see the conversation transcript and collected details
+
+4. **Assign to a team member** for follow-up
+
+5. **Update the stage** as you progress (Contacted → Qualified)
+
+6. **Convert to Contact** when ready to start a formal relationship
+</Steps>
+
+## Lead Scoring
+
+The AI assigns each lead a score based on:
+- Completeness of information (email, company, etc.)
+- Expressed interest level
+- Budget or timeline signals
+- Channel quality (website vs. cold social)
+
+Higher scores = higher priority leads to follow up with first.
+
+## Filtering & Search
+
+<CardGrid>
+  <Card title="By Status" icon="document">
+    View all New leads, Contacted leads, or Qualified leads ready to convert.
+  </Card>
+  <Card title="By Source" icon="external">
+    Filter leads from a specific channel (Instagram, website chat, Telegram, etc.).
+  </Card>
+  <Card title="By Score" icon="graph">
+    Sort by AI qualification score to prioritize high-value prospects.
+  </Card>
+  <Card title="By Assignee" icon="group">
+    See all leads assigned to a specific team member.
+  </Card>
+</CardGrid>
+
+## Sequences for Leads
+
+Use Campaigns & Sequences to automatically nurture leads:
+
+- Enroll new leads in a drip sequence
+- Send follow-up messages at Day 1, Day 3, Day 7
+- Stop the sequence when they reply or book an appointment
+
+See [Campaigns & Sequences →](/crm/campaigns/) for details.
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Contacts" description="Leads convert into contacts" href="/crm/contacts/" />
+  <LinkCard title="Pipelines" description="Track opportunities through deal stages" href="/crm/pipelines/" />
+  <LinkCard title="Campaigns" description="Nurture leads with sequences" href="/crm/campaigns/" />
+  <LinkCard title="Plugins" description="Enable lead capture on your assistant" href="/assistants/plugins/" />
+</CardGrid>

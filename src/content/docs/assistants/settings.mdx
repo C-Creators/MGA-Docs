@@ -139,6 +139,29 @@ If your assistant has access to sensitive information, always enable password pr
 | Chats per day | Control usage | Based on your plan |
 | Max message length | Prevent abuse | 2000 characters |
 
+## Agent Framework & Capabilities <Badge text="Advanced" variant="tip" size="small" />
+
+The Agent Framework lets you define your assistant's purpose and grant it specific operational capabilities. This is where you go from a simple Q&A bot to a fully capable AI agent.
+
+<CardGrid>
+  <Card title="Bot Purpose" icon="star">
+    Set whether your assistant is a **Support Bot**, **Sales Rep**, **Scheduler**, or **General Assistant**. This shapes how it prioritizes tasks and routes conversations.
+  </Card>
+  <Card title="Human Handoff" icon="phone">
+    Enable `Human Handoff` to let your assistant escalate conversations to a live agent. Required for the Live Escalation feature to work.
+  </Card>
+  <Card title="Appointment Booking" icon="document">
+    Enable the appointment booking capability to allow your assistant to offer and schedule meetings during conversations.
+  </Card>
+  <Card title="Proactive Scheduler" icon="rocket">
+    Enable BotJobs to let your assistant proactively reach out to contacts (e.g., for follow-ups or reminders) without waiting for them to initiate conversation.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Agent Framework Documentation">
+For a complete reference on capability toggles, agent profiles, and the proactive scheduler, see the [Agent Framework guide](/assistants/agent-framework/).
+</Aside>
+
 ## Testing Your Changes
 
 <Steps>

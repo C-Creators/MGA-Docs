@@ -32,6 +32,12 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
+					label: 'Getting Started',
+					items: [
+						{ slug: 'getting-started/subscription-plans' },
+					],
+				},
+				{
 					label: 'Assistants',
 					items: [
 						{ slug: 'assistants/overview', label: 'Overview' },
@@ -43,6 +49,8 @@ export default defineConfig({
 						{ slug: 'assistants/settings' },
 						{ slug: 'assistants/data-sources' },
 						{ slug: 'assistants/plugins' },
+						{ slug: 'assistants/agent-framework' },
+						{ slug: 'assistants/wordpress-plugin' },
 						{ slug: 'assistants/search' },
 						{ slug: 'assistants/embed' },
 					],
@@ -52,6 +60,12 @@ export default defineConfig({
 					items: [
 						{ slug: 'crm/overview', label: 'Overview' },
 						{ slug: 'crm/contacts' },
+						{ slug: 'crm/leads' },
+						{ slug: 'crm/appointments' },
+						{ slug: 'crm/tasks' },
+						{ slug: 'crm/tickets' },
+						{ slug: 'crm/campaigns' },
+						{ slug: 'crm/live-escalation' },
 						{ slug: 'crm/segments' },
 						{ slug: 'crm/pipelines' },
 						{ slug: 'crm/workflows' },

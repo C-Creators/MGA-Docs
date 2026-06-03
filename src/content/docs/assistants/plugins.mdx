@@ -7,45 +7,48 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 ## Teaching Your Assistant New Skills <Badge text="Extensible" variant="note" size="small" />
 
-Plugins are like specialized training courses for your assistant. They add new abilities your assistant couldn't do otherwise – like scheduling appointments, sending emails, or processing payments. Just like sending an employee to a training course, plugins expand what your assistant can do for customers.
+Plugins extend what your assistant can do beyond answering questions. Enable the right plugins and your assistant can schedule meetings, hand off to a human agent, manage your CRM, and even help customers on your WordPress site.
 
 ![Available plugins](../../../assets/screenshots/assistants-plugins.png)
 
-## Available Skills to Add
+## Available Plugins
 
 <CardGrid>
-  <Card title="Appointment Booking" icon="phone">
+  <Card title="CRM Toolkit" icon="group">
+    **<Badge text="Core" variant="success" size="small" />**
+    
+    Gives your assistant full CRM powers: create contacts, qualify leads, create tickets, schedule appointments, detect and escalate to human agents, and take structured notes from conversations.
+  </Card>
+  <Card title="Appointment Booking" icon="document">
     **<Badge text="Popular" variant="success" size="small" />**
     
-    Let your assistant schedule meetings directly with customers. Connects with your calendar.
+    Part of the CRM Toolkit — your assistant can check availability and book appointments directly with customers. Syncs with Google Calendar and sends branded confirmation emails.
+    
+    [Appointments guide →](/crm/appointments/)
   </Card>
-  <Card title="Email Sending" icon="email">
+  <Card title="Human Handoff" icon="phone">
     **<Badge text="Popular" variant="success" size="small" />**
     
-    Your assistant can send emails for follow-ups, confirmations, and more.
-  </Card>
-  <Card title="Form Collection" icon="document">
-    Help your assistant gather structured information from customers with validated forms.
-  </Card>
-  <Card title="Payment Processing" icon="approve">
-    **<Badge text="Beta" variant="caution" size="small" />**
+    Transfers a conversation to a live human agent when the customer needs real help. AI monitors conversation sentiment and can trigger handoff automatically.
     
-    Let your assistant handle secure transactions through Stripe or PayPal.
+    [Live escalation guide →](/crm/live-escalation/)
   </Card>
-  <Card title="CRM Connection" icon="add-document">
-    **<Badge text="New" variant="tip" size="small" />**
+  <Card title="WordPress Tools" icon="external">
+    **<Badge text="WordPress" variant="note" size="small" />**
     
-    Automatically add and update customer information in your CRM from conversations.
+    Lets your assistant search your WordPress site's posts, pages, and products to give customers accurate, up-to-date answers from your actual website content.
+    
+    [WordPress Plugin →](/assistants/wordpress-plugin/)
   </Card>
   <Card title="Custom Actions" icon="setting">
-    Connect your assistant to your own systems for custom business tasks.
+    Connect your assistant to your own systems and APIs for custom business workflows.
   </Card>
 </CardGrid>
 
 <Aside type="tip" title="Choosing Skills">
-- **Only add skills your assistant actually needs** – too many can be confusing
-- **Read what each plugin does** before enabling it
-- **Some plugins need extra setup** like connecting to external services
+- **Only add skills your assistant actually needs** – too many can confuse responses
+- **The CRM Toolkit enables most sales and support workflows** in one plugin
+- **Human Handoff is recommended for any production assistant** so customers can always reach a real person
 </Aside>
 
 ## Adding New Skills

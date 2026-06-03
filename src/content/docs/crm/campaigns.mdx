@@ -1,0 +1,149 @@
+---
+title: Campaigns & Sequences
+description: Send targeted email and message campaigns to your contacts and leads
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Reach Your Audience at Scale <Badge text="CRM Feature" variant="note" size="small" />
+
+Campaigns let you send targeted messages to groups of contacts. Sequences extend this into multi-step drip campaigns — automated messages sent over time to nurture leads through your funnel.
+
+![Campaigns overview](../../../assets/screenshots/crm-campaigns.png)
+
+## Campaigns vs. Sequences
+
+<Tabs>
+  <TabItem label="Campaigns">
+    **One-time sends** to a segment of contacts.
+    
+    - Send a single email or message to a group
+    - Target by segment (e.g., "All leads from last month")
+    - Track opens, clicks, and replies
+    - Best for announcements, promotions, newsletters
+  </TabItem>
+  <TabItem label="Sequences">
+    **Multi-step automated drips** triggered by enrollment.
+    
+    - Define a series of messages with delays between them
+    - Contacts move through automatically
+    - Stop when they reply or convert
+    - Best for lead nurturing, onboarding, follow-up series
+  </TabItem>
+</Tabs>
+
+## Creating a Campaign
+
+<Steps>
+1. **Navigate to CRM → Campaigns**
+
+2. **Click "New Campaign"**
+
+3. **Choose your audience:**
+   - Select a Segment (e.g., "Hot Leads", "New Contacts")
+   - Or choose individual contacts
+
+4. **Write your message:**
+   - Email subject and body
+   - Or a message template for WhatsApp/Telegram
+
+5. **Schedule or send immediately**
+
+6. **Review the preview** and confirm
+</Steps>
+
+## Creating a Sequence
+
+<Steps>
+1. **Navigate to CRM → Sequences**
+
+2. **Click "New Sequence"**
+
+3. **Add steps:**
+   - Step 1: Day 0 — Welcome message
+   - Step 2: Day 3 — Follow-up with value
+   - Step 3: Day 7 — Offer or call to action
+
+4. **Set enrollment criteria:**
+   - Manual enrollment
+   - Auto-enroll when contact matches a segment
+   - Auto-enroll when a trigger fires (e.g., form submitted)
+
+5. **Activate the sequence**
+</Steps>
+
+## Message Types
+
+<CardGrid>
+  <Card title="Email" icon="email">
+    Full HTML email with your brand template. Supports personalization tokens (name, company, etc.).
+  </Card>
+  <Card title="WhatsApp" icon="phone">
+    Text message sent to contacts' WhatsApp numbers. Requires WhatsApp integration active.
+  </Card>
+  <Card title="Telegram" icon="comment">
+    Message via your Telegram bot integration.
+  </Card>
+</CardGrid>
+
+## Personalization
+
+Use tokens in your message content to personalize at scale:
+
+| Token | Replaced With |
+|-------|--------------|
+| `{{name}}` | Contact's first name |
+| `{{email}}` | Contact's email address |
+| `{{company}}` | Contact's company |
+| `{{assistant_name}}` | Your AI assistant's name |
+
+## Campaign Analytics
+
+After sending, the campaign detail page shows:
+
+| Metric | Description |
+|--------|-------------|
+| **Sent** | Total messages delivered |
+| **Opened** | Email open rate |
+| **Clicked** | Link click rate |
+| **Replied** | Contacts who responded |
+| **Unsubscribed** | Contacts who opted out |
+
+## Sequence Performance
+
+For sequences, track each step:
+- How many contacts are on each step
+- Drop-off rate between steps
+- Conversion events (reply, appointment booked, etc.)
+
+<Aside type="tip" title="Effective Sequences">
+The best sequences are short (3–5 steps), personal, and provide genuine value at each step. Avoid purely promotional messages — mix in helpful content.
+</Aside>
+
+## Audience Targeting
+
+Campaigns integrate with Segments so you can target precisely:
+
+- "All contacts from Instagram with no appointment"
+- "Leads created in the last 30 days"
+- "Contacts tagged 'VIP'"
+
+See [Segments →](/crm/segments/) to build your audience.
+
+## Compliance
+
+<Aside type="caution" title="Email & Messaging Compliance">
+- Always include an unsubscribe option in emails
+- Only message contacts who have opted in to receive communications
+- Respect WhatsApp's messaging policy for business accounts
+- Contacts who unsubscribe are automatically excluded from future campaigns
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Segments" description="Build your campaign audience" href="/crm/segments/" />
+  <LinkCard title="Contacts" description="Manage contact subscriptions" href="/crm/contacts/" />
+  <LinkCard title="Leads" description="Nurture leads with sequences" href="/crm/leads/" />
+  <LinkCard title="Reports" description="Campaign analytics and performance" href="/crm/reports/" />
+</CardGrid>

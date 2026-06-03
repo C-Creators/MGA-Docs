@@ -1,0 +1,79 @@
+---
+title: Marco de Agente
+description: Configura el propósito, capacidades y comportamiento proactivo de tu asistente de IA
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Qué Es el Marco de Agente <Badge text="Asistentes" variant="success" size="small" />
+
+El Marco de Agente te da control de alto nivel sobre cómo se comporta tu asistente de IA. En lugar de ajustar cada parámetro, configuras el **propósito** del bot — lo que el agente sabe automáticamente sobre cómo comportarse.
+
+## Propósito del Bot
+
+Elige el modo principal del asistente:
+
+| Propósito | Mejor Para |
+|-----------|------------|
+| **Bot de Soporte** | Atención al cliente, resolución de problemas, tickets |
+| **Representante de Ventas** | Calificación de leads, demos, propuestas de precios |
+| **Programador** | Reserva de citas, gestión de calendarios |
+| **Asistente General** | Preguntas frecuentes, información, consultas mixtas |
+
+## Interruptores de Capacidades
+
+Dentro de la Configuración del asistente → Marco de Agente:
+
+| Capacidad | Descripción |
+|-----------|-------------|
+| **Transferencia Humana** | Permite que la IA escale a un agente humano cuando sea necesario |
+| **Reserva de Citas** | Habilita programación en vivo durante el chat |
+| **Creación de Leads** | Crea automáticamente registros de leads del CRM |
+| **Creación de Tickets** | Genera tickets de soporte a partir de problemas de clientes |
+
+<Aside type="tip">
+Activa solo las capacidades que necesitas. Mantiene el sistema de prompt del asistente enfocado y mejora la precisión de respuesta.
+</Aside>
+
+## BotJobs: Alcance Proactivo
+
+BotJobs permite que tu asistente envíe mensajes proactivamente — en lugar de solo responder.
+
+<Steps>
+1. **Ve a la configuración del asistente → BotJobs**
+
+2. **Haz clic en "Nuevo Trabajo"**
+
+3. **Define la audiencia:** segmento de contactos o lista individual
+
+4. **Escribe el mensaje** o selecciona una plantilla
+
+5. **Programa:** único o recurrente (diario, semanal)
+
+6. **Activa** — el bot enviará el mensaje a la hora programada
+</Steps>
+
+### Casos de Uso de BotJobs
+
+<CardGrid>
+  <Card title="Seguimiento de Leads" icon="rocket">
+    Haz ping a leads calificados que no han respondido en 3 días
+  </Card>
+  <Card title="Recordatorios de Citas" icon="document">
+    Envía recordatorios 24 horas antes de una cita
+  </Card>
+  <Card title="Actualizaciones de Campaña" icon="email">
+    Envía a segmentos de contactos actualizaciones de productos
+  </Card>
+  <Card title="Reactivación" icon="group">
+    Re-involucra contactos inactivos con un mensaje relevante
+  </Card>
+</CardGrid>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Complementos" description="Habilita las capacidades del Kit CRM en tu asistente" href="/es/assistants/plugins/" />
+  <LinkCard title="Citas" description="Configura la programación con IA" href="/es/crm/appointments/" />
+  <LinkCard title="Escalada en Vivo" description="Configuración de transferencia humana" href="/es/crm/live-escalation/" />
+</CardGrid>

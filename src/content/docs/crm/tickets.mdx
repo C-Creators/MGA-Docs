@@ -1,0 +1,121 @@
+---
+title: Tickets
+description: Track and resolve customer support issues from escalated conversations
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Support Ticket Management <Badge text="CRM Feature" variant="note" size="small" />
+
+Tickets are created when a customer conversation requires formal tracking and resolution. They're typically generated automatically when the AI escalates to a human agent, or manually by your team when a conversation reveals a support issue.
+
+![Tickets list view](../../../assets/screenshots/crm-tickets.png)
+
+## How Tickets Work
+
+<CardGrid>
+  <Card title="Auto-Created on Escalation" icon="warning">
+    When the AI escalates a conversation to a human agent, a ticket is automatically created with the conversation transcript attached.
+  </Card>
+  <Card title="Manual Creation" icon="add-document">
+    Team members can create tickets manually from any conversation or contact profile.
+  </Card>
+  <Card title="Status Tracking" icon="approve-check">
+    Track each ticket from Open → In Progress → Resolved. Set priorities and assign to team members.
+  </Card>
+  <Card title="Contact Linked" icon="group">
+    Every ticket is linked to the customer contact. View all of a customer's tickets from their profile.
+  </Card>
+</CardGrid>
+
+## Ticket Lifecycle
+
+```
+Open  →  In Progress  →  Resolved
+  ↓                         ↓
+Cancelled            Reopened (if customer replies again)
+```
+
+## Ticket Fields
+
+| Field | Description |
+|-------|-------------|
+| **Title** | Short summary of the issue |
+| **Description** | Detailed problem description |
+| **Status** | Open / In Progress / Resolved / Cancelled |
+| **Priority** | Low / Medium / High / Urgent |
+| **Assignee** | Team member responsible |
+| **Contact** | The customer this ticket belongs to |
+| **Source** | Escalation / Manual / API |
+| **Conversation** | Linked original chat transcript |
+
+## Creating a Ticket
+
+<Steps>
+1. **From a conversation:** Open the conversation → Click "Create Ticket"
+
+2. **From a contact profile:** Contact page → Tickets tab → New Ticket
+
+3. **From the Tickets list:** CRM → Tickets → New Ticket
+
+4. **Fill in the details** — title, description, priority, assignee
+
+5. **Save** — ticket is created and the assignee is notified
+</Steps>
+
+## Working with Tickets
+
+<Tabs>
+  <TabItem label="Viewing Tickets">
+    Navigate to **CRM → Tickets** to see all tickets. Filter by:
+    - Status (Open, In Progress, Resolved)
+    - Priority (Urgent, High, Medium, Low)
+    - Assignee
+    - Date range
+  </TabItem>
+  <TabItem label="Updating a Ticket">
+    Open any ticket to:
+    - Change status or priority
+    - Reassign to another team member
+    - Add internal notes
+    - View the linked conversation transcript
+    - See all contact history
+  </TabItem>
+  <TabItem label="Resolving a Ticket">
+    When the issue is fixed:
+    1. Update status to **Resolved**
+    2. Add a resolution note (what was done)
+    3. The contact is notified (if email notifications are enabled)
+  </TabItem>
+</Tabs>
+
+## Auto-Creation from Escalations
+
+When the AI escalates a conversation, a ticket is created with:
+- The full conversation transcript
+- The escalation reason detected by AI
+- The contact's profile data
+- A default priority based on escalation severity
+
+<Aside type="tip" title="Escalation + Ticket Integration">
+Tickets and Live Escalation work together. When a human agent takes over a conversation, the ticket tracks the issue formally through to resolution.
+
+See [Live Escalation →](/crm/live-escalation/) for the full handoff flow.
+</Aside>
+
+## Ticket Reports
+
+Ticket data appears in CRM Reports under the Ticket Analytics section:
+- Average resolution time
+- Open ticket count by assignee
+- Ticket volume by day/week
+- Priority distribution
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Live Escalation" description="How tickets are auto-created from handoffs" href="/crm/live-escalation/" />
+  <LinkCard title="CRM Overview" description="Full CRM feature list" href="/crm/overview/" />
+  <LinkCard title="Contacts" description="View all tickets for a contact" href="/crm/contacts/" />
+  <LinkCard title="Reports" description="Ticket analytics and resolution metrics" href="/crm/reports/" />
+</CardGrid>

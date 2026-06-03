@@ -1,0 +1,77 @@
+---
+title: Plugin de WordPress
+description: Integra el chat de IA de MyGPTAssistants directamente en tu sitio WordPress
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+## IA Nativa para WordPress <Badge text="Asistentes" variant="success" size="small" />
+
+El Plugin de WordPress de MyGPTAssistants proporciona integración nativa con tu sitio WordPress — sin requerir que pegues código manualmente en cada página.
+
+## Plugin vs. Inserción Manual
+
+| | **Plugin WordPress** | **Inserción Manual** |
+|---|---|---|
+| **Instalación** | Sube y activa | Añade script al encabezado HTML |
+| **Configuración** | Panel de configuración visual | Variables JavaScript |
+| **Actualizaciones automáticas** | Sí | Copiar/pegar manual |
+| **Shortcode** | Sí (`[mga_chat_app]`) | No |
+| **Herramientas IA WordPress** | Sí (buscar contenido, ver páginas) | No |
+
+## Instalación
+
+<Steps>
+1. **Descarga el plugin** desde tu Panel de Control de MyGPTAssistants → Configuración → Plugin WordPress
+
+2. **Sube a WordPress** → Plugins → Añadir Nuevo → Subir Plugin
+
+3. **Activa el plugin** en la lista de Plugins
+
+4. **Configura** → Ajustes → MyGPTAssistants:
+   - Pega tu **ID de Bot**
+   - Pega tu **Clave de API**
+   - Ajusta el botón del widget y el texto de bienvenida
+
+5. **Guarda** — el widget de chat aparece en todo el sitio
+</Steps>
+
+## Shortcode
+
+Usa `[mga_chat_app]` para insertar el chat en páginas o entradas específicas:
+
+```php
+[mga_chat_app bot_id="tu-id-bot"]
+[mga_chat_app bot_id="tu-id-bot" theme="dark"]
+[mga_chat_app bot_id="tu-id-bot" open="true"]
+```
+
+| Parámetro | Descripción |
+|-----------|-------------|
+| `bot_id` | Qué asistente usar (anula el global) |
+| `theme` | `light` o `dark` |
+| `open` | `true` abre el widget automáticamente |
+
+## Herramientas WordPress del Asistente
+
+Una vez instalado, tu asistente puede:
+
+- **Buscar contenido de WordPress** — encontrar páginas, entradas, productos
+- **Recuperar entradas por categoría o etiqueta** — responder preguntas sobre tu contenido
+- **Acceder a información de productos** (si WooCommerce está instalado)
+
+<Aside type="tip" title="Activa las Herramientas WordPress">
+Ve a Configuración del asistente → Complementos → Herramientas WordPress para activar estas capacidades.
+</Aside>
+
+## Actualizaciones Automáticas
+
+El plugin se actualiza automáticamente cuando hay nuevas versiones disponibles. Cada actualización está firmada con una firma Ed25519 y verificada antes de instalarse.
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Inserción" description="Inserción manual del widget en cualquier sitio" href="/es/assistants/embed/" />
+  <LinkCard title="Apariencia" description="Personalización de colores y comportamiento del widget" href="/es/assistants/appearance/" />
+  <LinkCard title="Complementos" description="Activa herramientas adicionales del asistente" href="/es/assistants/plugins/" />
+</CardGrid>

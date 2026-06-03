@@ -1,0 +1,61 @@
+---
+title: Tickets
+description: Gestiona y resuelve problemas de soporte al cliente desde conversaciones escaladas
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Gestión de Tickets de Soporte <Badge text="Función CRM" variant="note" size="small" />
+
+Los tickets se crean cuando una conversación con un cliente requiere seguimiento y resolución formal. Generalmente se generan automáticamente cuando la IA escala a un agente humano, o manualmente por tu equipo.
+
+![Vista de lista de tickets](../../../../assets/screenshots/crm-tickets.png)
+
+## Ciclo de Vida del Ticket
+
+```
+Abierto  →  En Progreso  →  Resuelto
+   ↓                           ↓
+Cancelado              Reabierto (si el cliente responde)
+```
+
+## Campos del Ticket
+
+| Campo | Descripción |
+|-------|-------------|
+| **Título** | Resumen breve del problema |
+| **Estado** | Abierto / En Progreso / Resuelto / Cancelado |
+| **Prioridad** | Baja / Media / Alta / Urgente |
+| **Asignado** | Miembro del equipo responsable |
+| **Contacto** | El cliente al que pertenece el ticket |
+| **Conversación** | Transcripción del chat original vinculada |
+
+## Creación de un Ticket
+
+<Steps>
+1. **Desde una conversación:** Abre la conversación → Haz clic en "Crear Ticket"
+
+2. **Desde el perfil de un contacto:** Pestaña Tickets → Nuevo Ticket
+
+3. **Desde la lista de Tickets:** CRM → Tickets → Nuevo Ticket
+
+4. **Completa los detalles** — título, descripción, prioridad, asignado
+
+5. **Guarda** — el ticket se crea y se notifica al asignado
+</Steps>
+
+## Creación Automática desde Escaladas
+
+Cuando la IA escala una conversación, se crea automáticamente un ticket con el historial completo de conversación, la razón de escalada detectada por IA y los datos del perfil del contacto.
+
+<Aside type="tip" title="Integración Escalada + Ticket">
+Los tickets y la Escalada en Vivo trabajan juntos. Cuando un agente humano toma el control de una conversación, el ticket rastrea formalmente el problema hasta su resolución.
+</Aside>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Escalada en Vivo" description="Cómo los tickets se crean automáticamente desde transferencias" href="/es/crm/live-escalation/" />
+  <LinkCard title="Contactos" description="Ver todos los tickets de un contacto" href="/es/crm/contacts/" />
+  <LinkCard title="Informes" description="Análisis de tickets y métricas de resolución" href="/es/crm/reports/" />
+</CardGrid>

@@ -1,0 +1,173 @@
+---
+title: Appointments
+description: Let your AI assistant schedule appointments directly with customers
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## AI-Powered Scheduling <Badge text="CRM Feature" variant="success" size="small" />
+
+Appointments lets your AI assistant book meetings directly with customers during conversations — no back-and-forth emails, no calendar ping-pong. Customers pick a time that works for them, and it lands in your calendar automatically.
+
+![Appointments calendar view](../../../assets/screenshots/crm-appointments.png)
+
+## How It Works
+
+<CardGrid>
+  <Card title="Appointment Types" icon="document">
+    Create different types of meetings — demos, consultations, support calls — each with its own duration, availability, and color.
+  </Card>
+  <Card title="AI Scheduling" icon="rocket">
+    Your assistant detects when a customer wants to book and offers available slots in real time during the conversation.
+  </Card>
+  <Card title="Google Calendar Sync" icon="external">
+    Appointments sync bidirectionally with Google Calendar. Existing events block availability automatically.
+  </Card>
+  <Card title="Confirmation Emails" icon="email">
+    Customers receive a branded confirmation email with the appointment details, a calendar attachment (.ics), and links to cancel or reschedule.
+  </Card>
+</CardGrid>
+
+## Setting Up Appointment Types
+
+<Steps>
+1. **Navigate to CRM → Appointments**
+
+2. **Click "New Appointment Type"**
+
+3. **Configure the details:**
+   - Name and description (shown to customers)
+   - Duration (15, 30, 45, 60 minutes, or custom)
+   - Color (for calendar display)
+   - Availability windows (which days and hours)
+   - Buffer time between appointments
+
+4. **Connect your calendar** (optional but recommended)
+
+5. **Enable on your assistant** via the Plugins → CRM Toolkit → Appointments section
+</Steps>
+
+## Appointment Types Configuration
+
+<Tabs>
+  <TabItem label="Basic Settings">
+    | Setting | Description |
+    |---------|-------------|
+    | **Name** | What customers see (e.g., "30-min Demo Call") |
+    | **Duration** | How long the appointment lasts |
+    | **Color** | Color on your calendar view |
+    | **Description** | What customers should expect |
+  </TabItem>
+  <TabItem label="Availability">
+    | Setting | Description |
+    |---------|-------------|
+    | **Available Days** | Which days of the week |
+    | **Available Hours** | Start and end time each day |
+    | **Buffer Time** | Gap between back-to-back appointments |
+    | **Advance Notice** | Minimum time before a booking |
+    | **Max per Day** | Cap on daily bookings |
+  </TabItem>
+  <TabItem label="Calendar Sync">
+    | Setting | Description |
+    |---------|-------------|
+    | **Google Calendar** | Connect via OAuth to sync availability |
+    | **Block Existing Events** | Busy time from Google Calendar blocks slots |
+    | **Create Events** | New appointments auto-create calendar events |
+    | **ICS Attachment** | Customers receive .ics file for any calendar app |
+  </TabItem>
+</Tabs>
+
+## Customer Experience
+
+When a customer asks to book a meeting, your assistant:
+
+1. **Detects the intent** — "I'd like to schedule a demo" triggers the booking flow
+2. **Asks qualifying questions** — collects name, email, and any relevant info
+3. **Shows available slots** — displays real-time availability
+4. **Confirms the booking** — creates the appointment and sends a confirmation email
+5. **Provides management link** — customer receives a link to cancel or reschedule
+
+<Aside type="tip" title="Confirmation Email">
+The confirmation email includes:
+- Appointment date, time, and type
+- A `.ics` calendar file attachment
+- A link to cancel or reschedule at `/my-appointment`
+- Your brand colors and logo
+</Aside>
+
+## Customer Self-Service Page
+
+Customers can manage their appointments at `/my-appointment` — a public page (no login required) accessible from the confirmation email. They can:
+
+- View their appointment details
+- Cancel with one click
+- Request a reschedule
+
+<Aside type="note" title="No Account Required">
+The self-service page uses a secure confirmation code from the email link. Customers don't need to create an account.
+</Aside>
+
+## Embedding the Booking Widget
+
+You can embed a standalone booking widget on any webpage using the appointment type's embed URL:
+
+```html
+<iframe
+  src="https://app.mygptassistants.com/booking/YOUR_APPOINTMENT_TYPE_ID"
+  width="100%"
+  height="600"
+  frameborder="0"
+></iframe>
+```
+
+This lets customers book directly from your website without the chat widget.
+
+## Calendar View
+
+The CRM Appointments calendar shows all scheduled appointments with:
+
+- **Month / Week / Day** views
+- Color-coded appointment types
+- Status indicators (confirmed, cancelled, completed)
+- Click-to-view appointment details and contact profile
+
+## Managing Appointments
+
+<CardGrid>
+  <Card title="Upcoming" icon="document">
+    See all confirmed future appointments. Click any appointment to view details, contact info, and conversation history.
+  </Card>
+  <Card title="Past" icon="bars">
+    Review completed appointments. Mark as completed, no-show, or reschedule from the appointment detail page.
+  </Card>
+  <Card title="Cancelled" icon="close">
+    Log of cancelled appointments. Helps identify patterns (appointment types with high cancellation rates).
+  </Card>
+</CardGrid>
+
+## Google Calendar Integration
+
+<Steps>
+1. **Go to CRM Settings → Integrations**
+
+2. **Click "Connect Google Calendar"**
+
+3. **Authorize access** — grant read/write permission to your calendar
+
+4. **Select the calendar** to sync with (if you have multiple)
+
+5. **Test** — create a test appointment and verify it appears in Google Calendar
+</Steps>
+
+<Aside type="caution" title="Google Calendar Scope">
+The integration requires access to read your existing events (to block busy time) and write new events (to create appointment entries). Only the selected calendar is accessed.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="CRM Overview" description="Full CRM feature list" href="/crm/overview/" />
+  <LinkCard title="Plugins" description="Enable appointment booking on your assistant" href="/assistants/plugins/" />
+  <LinkCard title="Contacts" description="Contacts created from bookings" href="/crm/contacts/" />
+  <LinkCard title="Live Escalation" description="Escalate to human when needed" href="/crm/live-escalation/" />
+</CardGrid>

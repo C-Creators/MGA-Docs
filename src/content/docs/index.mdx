@@ -20,16 +20,22 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <CardGrid>
   <Card title="AI Assistants" icon="rocket">
-    Create and configure intelligent chatbots with custom personalities, training data, and integrations. Deploy to your website, WhatsApp, or any platform.
+    Create and configure intelligent chatbots with custom personalities, training data, and multi-channel integrations. Deploy to your website, WhatsApp, Instagram, Telegram, Discord, LinkedIn, or Facebook Messenger.
   </Card>
   <Card title="CRM" icon="group">
-    Manage customer relationships with contacts, segments, pipelines, and automated workflows. Track every interaction in one place.
+    Full customer relationship management: contacts, leads, pipelines, appointments, tasks, tickets, campaigns, sequences, and live escalation to human agents. Everything in one place.
+  </Card>
+  <Card title="Appointments" icon="document">
+    Let your AI assistant schedule appointments directly with customers. Supports availability rules, Google Calendar sync, branded confirmation emails, and a self-service management page.
+  </Card>
+  <Card title="WordPress Plugin" icon="external">
+    Native WordPress plugin that embeds your chat widget with a shortcode, includes a full settings panel, and supports all widget customizations without touching theme files.
   </Card>
   <Card title="API Reference" icon="seti:json">
-    Developer documentation for programmatic access. Send messages, receive webhooks, and integrate AI capabilities into your applications.
+    Developer documentation for programmatic access. Send messages, receive webhooks, and integrate AI capabilities into your own applications.
   </Card>
   <Card title="Legal" icon="document">
-    Terms of Service, Privacy Policy, and compliance documentation. Templates ready for legal review.
+    Terms of Service, Privacy Policy, and compliance documentation.
   </Card>
 </CardGrid>
 
@@ -38,7 +44,9 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 <CardGrid>
   <LinkCard title="Playground" description="Test and interact with your AI assistant" href="/assistants/playground/" />
   <LinkCard title="Embed Widget" description="Add your bot to any website" href="/assistants/embed/" />
+  <LinkCard title="Appointments" description="Let your bot schedule meetings for you" href="/crm/appointments/" />
   <LinkCard title="Contacts" description="Manage your customer database" href="/crm/contacts/" />
+  <LinkCard title="Live Escalation" description="Hand off to a human agent in real time" href="/crm/live-escalation/" />
   <LinkCard title="Chat API" description="Send messages programmatically" href="/api/chat-api/" />
 </CardGrid>
 
@@ -50,7 +58,8 @@ New to MyGPTAssistants? Here's how to get started:
 2. **Train with Data** - Upload documents in [Data Sources](/assistants/data-sources/) to give your bot knowledge
 3. **Customize Appearance** - Brand your widget in [Appearance](/assistants/appearance/) settings
 4. **Deploy** - [Embed](/assistants/embed/) your bot on your website or connect via [Integrations](/assistants/integrations/)
-5. **Monitor** - Track conversations and performance in [Analytics](/assistants/analytics/)
+5. **Enable Scheduling** - Set up [Appointments](/crm/appointments/) so your bot can book meetings
+6. **Monitor** - Track conversations and performance in [Analytics](/assistants/analytics/)
 
 ## Need Help?
 

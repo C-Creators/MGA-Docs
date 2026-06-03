@@ -1,0 +1,74 @@
+---
+title: Escalada en Vivo
+description: Transfiere conversaciones del asistente de IA a agentes humanos en tiempo real
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Transferencia Humana Cuando Más Importa <Badge text="Función CRM" variant="success" size="small" />
+
+La Escalada en Vivo permite que tu asistente de IA transfiera conversaciones a un agente humano real cuando los clientes necesitan más de lo que puede proporcionar la IA. La transferencia es fluida — el agente ve el historial completo y puede continuar justo donde lo dejó la IA.
+
+## Cómo Funciona la Escalada
+
+<CardGrid>
+  <Card title="Detección por IA" icon="rocket">
+    La IA monitorea continuamente el sentimiento e intención de la conversación. Cuando detecta frustración, problemas complejos o una solicitud explícita de ayuda humana, inicia la escalada.
+  </Card>
+  <Card title="Solicitud del Cliente" icon="phone">
+    Los clientes pueden pedir un agente humano en cualquier momento. La IA reconoce esto y escala inmediatamente.
+  </Card>
+  <Card title="Notificación Instantánea" icon="warning">
+    Tu equipo es notificado instantáneamente cuando ocurre una escalada.
+  </Card>
+  <Card title="Transferencia con Contexto Completo" icon="document">
+    El agente humano recibe el historial completo de conversación, el perfil del contacto y la razón de escalada.
+  </Card>
+</CardGrid>
+
+## El Flujo de Escalada
+
+<Steps>
+1. **Escalada activada** — la IA detecta la necesidad o el cliente solicita ayuda humana
+
+2. **Cola creada** — la conversación entra en la cola de escalada con prioridad
+
+3. **Equipo notificado** — los agentes disponibles reciben una alerta
+
+4. **Agente reclama** — un agente abre la conversación y hace clic en "Tomar Control"
+
+5. **IA se retira** — la IA deja de responder; el humano lleva ahora la conversación
+
+6. **Ticket creado** — se crea automáticamente un ticket de soporte para seguimiento
+
+7. **Resolución** — el agente resuelve el problema y cierra la conversación
+</Steps>
+
+## Cola de Escalada
+
+Navega a **CRM → Escalada en Vivo** para ver la cola en tiempo real con el contacto, tiempo de espera, canal, razón y prioridad de cada escalada.
+
+## Configurar Escalada
+
+<Tabs>
+  <TabItem label="Activar Transferencia Humana">
+    1. Ve a **Configuración del asistente → Marco de Agente**
+    2. Activa **Transferencia Humana**
+    3. El asistente ahora sabe que puede escalar
+  </TabItem>
+  <TabItem label="Disparadores de Escalada">
+    Configura qué activa una escalada:
+    - Umbral de puntuación de sentimiento
+    - Palabras clave que siempre escalan
+    - Número de respuestas IA sin resolución
+    - Solicitud explícita del cliente
+  </TabItem>
+</Tabs>
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Tickets" description="Tickets creados automáticamente desde escaladas" href="/es/crm/tickets/" />
+  <LinkCard title="Complementos" description="Activa la transferencia humana en tu asistente" href="/es/assistants/plugins/" />
+  <LinkCard title="Contactos" description="Perfil del contacto mostrado durante la transferencia" href="/es/crm/contacts/" />
+</CardGrid>

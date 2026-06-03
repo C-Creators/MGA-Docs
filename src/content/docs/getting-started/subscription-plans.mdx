@@ -1,0 +1,141 @@
+---
+title: Subscription Plans
+description: Choose the right plan for your business and understand what's included
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Plans That Grow With You <Badge text="Billing" variant="note" size="small" />
+
+MyGPTAssistants offers tiered subscription plans so you can start small and scale as your business grows. All plans include the core AI assistant features — plans differ by usage limits, number of assistants, and access to advanced features.
+
+## Plans Overview
+
+<Tabs>
+  <TabItem label="Starter">
+    **Best for:** Small businesses just getting started with AI chat
+    
+    | Feature | Included |
+    |---------|---------|
+    | AI Assistants | 1 |
+    | Monthly Messages | Up to plan limit |
+    | CRM Contacts | Basic |
+    | Channels | Website chat + 1 integration |
+    | Human Escalation | ✓ |
+    | Appointments | ✓ |
+    | Support | Email |
+  </TabItem>
+  <TabItem label="Growth">
+    **Best for:** Growing businesses with multiple channels and team members
+    
+    | Feature | Included |
+    |---------|---------|
+    | AI Assistants | Multiple |
+    | Monthly Messages | Higher limit |
+    | CRM Contacts | Extended |
+    | Channels | All integrations |
+    | Human Escalation | ✓ |
+    | Appointments | ✓ |
+    | Campaigns & Sequences | ✓ |
+    | Team Members | Multiple |
+    | Support | Priority email |
+  </TabItem>
+  <TabItem label="Business">
+    **Best for:** Established businesses needing full CRM, campaigns, and analytics
+    
+    | Feature | Included |
+    |---------|---------|
+    | AI Assistants | Unlimited |
+    | Monthly Messages | High limit |
+    | CRM Contacts | Unlimited |
+    | Channels | All integrations |
+    | Full CRM Suite | ✓ |
+    | Campaigns & Sequences | ✓ |
+    | Advanced Analytics | ✓ |
+    | API Access | ✓ |
+    | Team Members | Unlimited |
+    | Support | Priority + onboarding |
+  </TabItem>
+</Tabs>
+
+<Aside type="note" title="Current Pricing">
+For current pricing, visit [mygptassistants.com/pricing](https://www.mygptassistants.com/pricing). Prices may vary by billing cycle (monthly vs. annual).
+</Aside>
+
+## Feature Availability by Plan
+
+| Feature | Starter | Growth | Business |
+|---------|---------|--------|----------|
+| AI Assistants | 1 | Multiple | Unlimited |
+| Website Chat | ✓ | ✓ | ✓ |
+| WhatsApp | — | ✓ | ✓ |
+| Instagram | — | ✓ | ✓ |
+| Telegram | — | ✓ | ✓ |
+| Facebook Messenger | — | ✓ | ✓ |
+| LinkedIn | — | ✓ | ✓ |
+| Appointments | ✓ | ✓ | ✓ |
+| Live Escalation | ✓ | ✓ | ✓ |
+| CRM Contacts | ✓ | ✓ | ✓ |
+| Leads & Pipelines | — | ✓ | ✓ |
+| Campaigns & Sequences | — | ✓ | ✓ |
+| Tickets | ✓ | ✓ | ✓ |
+| Google Drive Sources | — | ✓ | ✓ |
+| WordPress Plugin | ✓ | ✓ | ✓ |
+| API Access | — | — | ✓ |
+| Custom Roles | — | ✓ | ✓ |
+
+## Managing Your Subscription
+
+<Steps>
+1. **Navigate to Settings** (top-right menu → Settings)
+
+2. **Click "Subscription"** in the left sidebar
+
+3. **View your current plan** and usage
+
+4. **Upgrade or change plan** using the plan cards
+
+5. **Billing is managed via Stripe** — you'll be redirected to the billing portal for payment method changes
+</Steps>
+
+## Usage & Limits
+
+Your plan includes a monthly message allowance. You can monitor your usage in:
+- **Settings → Subscription** — current period usage and limit
+- **Analytics** — message volume charts
+
+<Aside type="caution" title="Approaching Your Limit">
+If you approach your monthly message limit, you'll receive an email notification. Consider upgrading before you hit the limit to avoid service interruptions.
+</Aside>
+
+## Team Members
+
+Growth and Business plans support multiple team members with role-based access:
+
+| Role | Access Level |
+|------|-------------|
+| **Owner** | Full access to all settings, billing, and team management |
+| **Admin** | Full access except billing |
+| **Manager** | CRM access + can manage members' tasks |
+| **Member** | CRM access per admin-set permissions |
+| **Viewer** | Read-only CRM access |
+
+## Annual Billing Discount
+
+Switch to annual billing for a discount compared to monthly billing. Change billing cycle in **Settings → Subscription → Billing Portal**.
+
+## Cancellation
+
+You can cancel your subscription at any time from **Settings → Subscription**. Your access continues until the end of your current billing period.
+
+<Aside type="note" title="Data on Cancellation">
+Your data is retained for 30 days after cancellation. You can export your contacts and conversations before the account is closed.
+</Aside>
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Settings" description="API keys and account settings" href="/assistants/settings/" />
+  <LinkCard title="CRM Overview" description="What's included in the CRM" href="/crm/overview/" />
+  <LinkCard title="API Reference" description="API access on Business plan" href="/api/overview/" />
+</CardGrid>
