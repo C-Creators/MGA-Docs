@@ -9,7 +9,116 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Las tareas son acciones de seguimiento vinculadas a contactos, conversaciones o negocios. Tu asistente de IA puede crear tareas automáticamente durante las conversaciones, o los miembros del equipo pueden crearlas manualmente.
 
-![Vista de lista y kanban de tareas](../../../../assets/screenshots/crm-tasks.png)
+<div class="mga-app" aria-label="Tablero kanban de tareas — vista previa ilustrativa">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contactos</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">★</span> Leads</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▦</span> Citas</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">▤</span> Tareas</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Tareas</div>
+          <div class="mga-app__topbar-sub">Acciones de seguimiento para tu equipo y asistentes de IA</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Filtros</button>
+          <button class="mga-app__btn mga-app__btn--primary">+ Nueva tarea</button>
+        </div>
+      </div>
+      <div class="mga-app__tabs">
+        <button class="mga-app__tab">Lista</button>
+        <button class="mga-app__tab mga-app__tab--active">Kanban</button>
+        <button class="mga-app__tab">Mis tareas</button>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__kanban">
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Pendiente <span class="mga-app__kanban-count">4</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Enviar propuesta a Jamie Reyes</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-2" style="width:20px;height:20px;font-size:10px;">MR</span>
+                Vence mañana
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--danger">Alta</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Programar llamada de seguimiento</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-1" style="width:20px;height:20px;font-size:10px;">IA</span>
+                Creada por IA · Soporte
+              </div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Actualizar guion de onboarding</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-3" style="width:20px;height:20px;font-size:10px;">DP</span>
+                Vence 12 jun
+              </div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">En curso <span class="mga-app__kanban-count">2</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Revisar incidente de cargo duplicado #4821</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-5" style="width:20px;height:20px;font-size:10px;">ML</span>
+                Marina López
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--warning">Media</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Preparar email de renovación Q2</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-4" style="width:20px;height:20px;font-size:10px;">TG</span>
+                Tomás García
+              </div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Esperando <span class="mga-app__kanban-count">1</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Esperando firma del contrato</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-2" style="width:20px;height:20px;font-size:10px;">RS</span>
+                Ravi Suresh
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--info">Externo</span></div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Hechas <span class="mga-app__kanban-count">3</span></div>
+            <div class="mga-app__kanban-card" style="opacity:0.7;">
+              <div class="mga-app__kanban-card-title">Email de bienvenida a Priya Shah</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-5" style="width:20px;height:20px;font-size:10px;">PS</span>
+                Completada ayer
+              </div>
+            </div>
+            <div class="mga-app__kanban-card" style="opacity:0.7;">
+              <div class="mga-app__kanban-card-title">Reembolso de cargo duplicado #4821</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-5" style="width:20px;height:20px;font-size:10px;">ML</span>
+                Completada hace 2h
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## Vistas de Tareas
 

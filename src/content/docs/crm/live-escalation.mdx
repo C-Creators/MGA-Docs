@@ -9,7 +9,85 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Live Escalation lets your AI assistant hand off conversations to a real human agent when customers need more than an AI can provide. The handoff is seamless — the human agent sees the full conversation history and can pick up right where the AI left off.
 
-![Live escalation interface](../../../assets/screenshots/crm-live-escalation.png)
+<div class="mga-app" aria-label="Live escalation handoff — illustrative preview">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">★</span> Leads</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">⇆</span> Live escalation</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Conversation #4821</div>
+          <div class="mga-app__topbar-sub">
+            <span class="mga-app__chip mga-app__chip--warning"><span class="mga-app__chip-dot"></span> Awaiting agent</span>
+            &nbsp;Soporte CCreators
+          </div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Mute</button>
+          <button class="mga-app__btn mga-app__btn--primary">Accept handoff</button>
+        </div>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__split">
+          <div class="mga-app__chat-pane">
+            <div class="mga-app__chat-head">
+              <span class="mga-app__avatar mga-app__avatar-2" style="width:28px;height:28px;font-size:11px;">JP</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;">Jamie Patel</div>
+                <div style="font-size:11px;color:var(--mga-a-text-muted);">jamie@acme.com · 2 prior chats</div>
+              </div>
+            </div>
+            <div class="mga-app__chat-thread">
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--user">My subscription was charged twice this month.</div>
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--bot">I'm sorry to hear that — I can see two charges on your account on June 1 and June 3 for $49 each. Let me check whether the second one was a retry.</div>
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--user">Yes, can you refund the duplicate? I need this resolved today.</div>
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--bot">This requires a human agent. Connecting you now…</div>
+              <div class="mga-app__chat-divider">Handoff to agent</div>
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--agent">Hi Jamie — I'm Marina from billing. I can see both charges. The June 3 charge was a duplicate from a retry. Issuing a refund now — you'll see it in 3–5 business days.</div>
+              <div class="mga-app__chat-bubble mga-app__chat-bubble--user">Thank you!</div>
+            </div>
+            <div class="mga-app__chat-composer">
+              <div class="mga-app__chat-composer-input">Type a reply…</div>
+              <button class="mga-app__btn mga-app__btn--primary">Send</button>
+            </div>
+          </div>
+          <aside class="mga-app__rail">
+            <div class="mga-app__rail-card">
+              <div class="mga-app__rail-card-title">Customer</div>
+              <div class="mga-app__rail-row"><span class="mga-app__rail-row-label">Email</span><span>jamie@acme.com</span></div>
+              <div class="mga-app__rail-row"><span class="mga-app__rail-row-label">Plan</span><span>Pro · monthly</span></div>
+              <div class="mga-app__rail-row"><span class="mga-app__rail-row-label">Last login</span><span>2 hours ago</span></div>
+              <div class="mga-app__rail-row"><span class="mga-app__rail-row-label">CSAT</span><span>4.6 / 5</span></div>
+            </div>
+            <div class="mga-app__rail-card">
+              <div class="mga-app__rail-card-title">AI summary</div>
+              <div style="font-size:12px;color:var(--mga-a-text-muted);line-height:1.5;">Duplicate Stripe charge of $49 on June 3. Customer wants immediate refund. Billing system confirms retry artefact. Recommendation: refund the duplicate, send receipt.</div>
+            </div>
+            <div class="mga-app__rail-card">
+              <div class="mga-app__rail-card-title">Suggested next actions</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                <button class="mga-app__btn">Refund $49 in Stripe</button>
+                <button class="mga-app__btn">Create ticket</button>
+                <button class="mga-app__btn">Send receipt</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## How Escalation Works
 

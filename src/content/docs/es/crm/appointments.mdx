@@ -9,7 +9,85 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Las Citas permiten que tu asistente de IA programe reuniones directamente con los clientes durante las conversaciones — sin emails de ida y vuelta. Los clientes eligen el horario que les conviene y queda en tu calendario automáticamente.
 
-![Vista de calendario de citas](../../../../assets/screenshots/crm-appointments.png)
+<div class="mga-app" aria-label="Vista de calendario de citas — vista previa ilustrativa">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contactos</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">★</span> Leads</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">▦</span> Citas</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tareas</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Citas</div>
+          <div class="mga-app__topbar-sub">Reservadas por tu asistente de IA o por tu equipo</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Filtros</button>
+          <button class="mga-app__btn mga-app__btn--primary">+ Nueva cita</button>
+        </div>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__calendar">
+          <div class="mga-app__calendar-head">
+            <button class="mga-app__btn">‹</button>
+            <div class="mga-app__calendar-month">Junio 2026</div>
+            <button class="mga-app__btn">›</button>
+            <div style="margin-left:auto;display:flex;gap:6px;">
+              <button class="mga-app__btn mga-app__btn--primary">Mes</button>
+              <button class="mga-app__btn">Semana</button>
+              <button class="mga-app__btn">Día</button>
+            </div>
+          </div>
+          <div class="mga-app__calendar-grid">
+            <div class="mga-app__calendar-dow">Lun</div>
+            <div class="mga-app__calendar-dow">Mar</div>
+            <div class="mga-app__calendar-dow">Mié</div>
+            <div class="mga-app__calendar-dow">Jue</div>
+            <div class="mga-app__calendar-dow">Vie</div>
+            <div class="mga-app__calendar-dow">Sáb</div>
+            <div class="mga-app__calendar-dow">Dom</div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">26</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">27</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">28</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">29</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">30</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">31</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">1</span><span class="mga-app__calendar-event">10:00 Lisa P. — Demo</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">2</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">3</span><span class="mga-app__calendar-event mga-app__calendar-event--green">14:30 Onboarding</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">4</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--today"><span class="mga-app__calendar-num">5</span><span class="mga-app__calendar-event">09:00 J. Patel</span><span class="mga-app__calendar-event mga-app__calendar-event--orange">16:00 Llamada precios</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">6</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">7</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">8</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">9</span><span class="mga-app__calendar-event mga-app__calendar-event--green">11:15 R. Suárez</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">10</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">11</span><span class="mga-app__calendar-event">15:00 Seguimiento</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">12</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">13</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">14</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">15</span><span class="mga-app__calendar-event mga-app__calendar-event--orange">10:00 Renovación</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">16</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">17</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">18</span><span class="mga-app__calendar-event">13:00 Descubrimiento</span></div>
+            <div class="mga-app__calendar-day"><span class="mga-app__calendar-num">19</span></div>
+            <div class="mga-app__calendar-day mga-app__calendar-day--muted"><span class="mga-app__calendar-num">20</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## Cómo Funciona
 

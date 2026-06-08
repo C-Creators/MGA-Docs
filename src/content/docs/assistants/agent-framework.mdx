@@ -9,7 +9,124 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 The Agent Framework turns a simple Q&A chatbot into a capable AI agent. Instead of just answering questions, your assistant can take actions: schedule appointments, capture leads, escalate to humans, and proactively reach out to contacts.
 
-![Agent framework settings](../../../assets/screenshots/assistants-agent-framework.png)
+<div class="mga-app" aria-label="Agent framework settings — illustrative preview">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">Assistants</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◆</span> Overview</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⚙</span> Settings</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">⚡</span> Agent framework</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▣</span> Data sources</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Conversations</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Agent framework</div>
+          <div class="mga-app__topbar-sub">Soporte CCreators — define purpose, capabilities, guardrails</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Cancel</button>
+          <button class="mga-app__btn mga-app__btn--primary">Save</button>
+        </div>
+      </div>
+      <div class="mga-app__tabs">
+        <button class="mga-app__tab mga-app__tab--active">Bot purpose</button>
+        <button class="mga-app__tab">Capabilities</button>
+        <button class="mga-app__tab">Guardrails</button>
+        <button class="mga-app__tab">BotJobs</button>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__card">
+          <div class="mga-app__card-head">
+            <div>
+              <div class="mga-app__card-title">Primary mode</div>
+              <div class="mga-app__card-sub">Shapes how the agent prioritizes tasks and frames responses.</div>
+            </div>
+          </div>
+          <div class="mga-app__card-body">
+            <div class="mga-app__cap-grid">
+              <div class="mga-app__toggle-row" style="border-color: var(--mga-a-primary-strong); background: var(--mga-a-primary-tint);">
+                <span class="mga-app__toggle mga-app__toggle--on" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Support bot</div>
+                  <div class="mga-app__toggle-desc">Resolves issues, answers questions, escalates when stuck.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Sales bot</div>
+                  <div class="mga-app__toggle-desc">Qualifies leads, books demos, follows up with prospects.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Concierge</div>
+                  <div class="mga-app__toggle-desc">Navigates visitors across products and content.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Custom</div>
+                  <div class="mga-app__toggle-desc">Bring your own system prompt and capability mix.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mga-app__card">
+          <div class="mga-app__card-head">
+            <div>
+              <div class="mga-app__card-title">Capabilities</div>
+              <div class="mga-app__card-sub">Only enable powers this assistant needs.</div>
+            </div>
+          </div>
+          <div class="mga-app__card-body">
+            <div class="mga-app__cap-grid">
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle mga-app__toggle--on" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Human handoff</div>
+                  <div class="mga-app__toggle-desc">Escalate to a live agent when the conversation requires it.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle mga-app__toggle--on" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Lead capture</div>
+                  <div class="mga-app__toggle-desc">Gather name, email, intent and persist as a Lead.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Appointment booking</div>
+                  <div class="mga-app__toggle-desc">Book meetings against connected calendars in-chat.</div>
+                </div>
+              </div>
+              <div class="mga-app__toggle-row">
+                <span class="mga-app__toggle" aria-hidden="true"></span>
+                <div>
+                  <div class="mga-app__toggle-label">Proactive outreach</div>
+                  <div class="mga-app__toggle-desc">Start conversations on a schedule via BotJobs.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## What the Agent Framework Controls
 

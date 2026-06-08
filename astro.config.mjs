@@ -21,6 +21,7 @@ export default defineConfig({
 			customCss: [
 				'./src/styles/custom.css',
 				'./src/styles/wp-plugin-replica.css',
+				'./src/styles/mga-app-replica.css',
 			],
 			// i18n configuration - English (root) and Spanish
 			// Using root locale so English pages serve at / without prefix

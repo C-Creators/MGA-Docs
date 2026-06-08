@@ -9,7 +9,114 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Tickets are created when a customer conversation requires formal tracking and resolution. They're typically generated automatically when the AI escalates to a human agent, or manually by your team when a conversation reveals a support issue.
 
-![Tickets list view](../../../assets/screenshots/crm-tickets.png)
+<div class="mga-app" aria-label="Tickets list — illustrative preview">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⇆</span> Live escalation</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Tickets</div>
+          <div class="mga-app__topbar-sub">Support cases — opened by AI escalation or manually</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Filters</button>
+          <button class="mga-app__btn mga-app__btn--primary">+ New ticket</button>
+        </div>
+      </div>
+      <div class="mga-app__tabs">
+        <button class="mga-app__tab mga-app__tab--active">All</button>
+        <button class="mga-app__tab">Open</button>
+        <button class="mga-app__tab">Awaiting customer</button>
+        <button class="mga-app__tab">Resolved</button>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__card">
+          <table class="mga-app__table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Customer</th>
+                <th>Assignee</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#4821</strong></td>
+                <td>Duplicate Stripe charge in June</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-2">JP</span>Jamie Patel</div></td>
+                <td>Marina López</td>
+                <td><span class="mga-app__chip mga-app__chip--danger">High</span></td>
+                <td><span class="mga-app__chip mga-app__chip--warning"><span class="mga-app__chip-dot"></span> In progress</span></td>
+                <td>2 min ago</td>
+              </tr>
+              <tr>
+                <td><strong>#4820</strong></td>
+                <td>Webhook not firing on payment intent</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-4">RM</span>Rebeca M.</div></td>
+                <td>Tomás García</td>
+                <td><span class="mga-app__chip mga-app__chip--warning">Medium</span></td>
+                <td><span class="mga-app__chip mga-app__chip--info"><span class="mga-app__chip-dot"></span> Awaiting customer</span></td>
+                <td>1 h ago</td>
+              </tr>
+              <tr>
+                <td><strong>#4819</strong></td>
+                <td>How to invite a new team member?</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-3">DP</span>Daniela Pérez</div></td>
+                <td>—</td>
+                <td><span class="mga-app__chip">Low</span></td>
+                <td><span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> Resolved by AI</span></td>
+                <td>3 h ago</td>
+              </tr>
+              <tr>
+                <td><strong>#4818</strong></td>
+                <td>Export contacts to CSV fails after 10k rows</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-1">AT</span>A. Tanaka</div></td>
+                <td>Marina López</td>
+                <td><span class="mga-app__chip mga-app__chip--danger">High</span></td>
+                <td><span class="mga-app__chip mga-app__chip--warning"><span class="mga-app__chip-dot"></span> Open</span></td>
+                <td>4 h ago</td>
+              </tr>
+              <tr>
+                <td><strong>#4817</strong></td>
+                <td>Request: dark mode for embed widget</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-5">PS</span>Priya Shah</div></td>
+                <td>Product team</td>
+                <td><span class="mga-app__chip">Low</span></td>
+                <td><span class="mga-app__chip"><span class="mga-app__chip-dot"></span> Triaged</span></td>
+                <td>Yesterday</td>
+              </tr>
+              <tr>
+                <td><strong>#4816</strong></td>
+                <td>WP plugin won't connect with new API key</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-6">LO</span>L. Okafor</div></td>
+                <td>Tomás García</td>
+                <td><span class="mga-app__chip mga-app__chip--warning">Medium</span></td>
+                <td><span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> Resolved</span></td>
+                <td>Yesterday</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## How Tickets Work
 

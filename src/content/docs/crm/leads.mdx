@@ -9,7 +9,118 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Leads are prospects captured by your AI assistant before they become full contacts. Your assistant qualifies them during conversation — gathering name, email, interest level, and budget — and creates a structured lead record in your CRM automatically.
 
-![Leads management](../../../assets/screenshots/crm-leads.png)
+<div class="mga-app" aria-label="Leads management — illustrative preview">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">★</span> Leads</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▦</span> Appointments</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⇋</span> Pipelines</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Leads</div>
+          <div class="mga-app__topbar-sub">Prospects captured by your AI assistant</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Filters</button>
+          <button class="mga-app__btn mga-app__btn--primary">+ New lead</button>
+        </div>
+      </div>
+      <div class="mga-app__tabs">
+        <button class="mga-app__tab mga-app__tab--active">Pipeline view</button>
+        <button class="mga-app__tab">List</button>
+        <button class="mga-app__tab">All segments</button>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__kanban">
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">New <span class="mga-app__kanban-count">4</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Jamie Reyes</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-1" style="width:20px;height:20px;font-size:10px;">JR</span>
+                Interested in Pro plan
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--info">Web chat</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Daniela Pérez</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-5" style="width:20px;height:20px;font-size:10px;">DP</span>
+                Asked for demo
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--success">Hot · 92%</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">A. Tanaka</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-2" style="width:20px;height:20px;font-size:10px;">AT</span>
+                Pricing inquiry
+              </div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Qualified <span class="mga-app__kanban-count">3</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Marina López</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-3" style="width:20px;height:20px;font-size:10px;">ML</span>
+                Budget confirmed
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--success">Hot · 87%</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Tomás García</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-4" style="width:20px;height:20px;font-size:10px;">TG</span>
+                Demo on Friday
+              </div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Contacted <span class="mga-app__kanban-count">2</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Ravi Suresh</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-2" style="width:20px;height:20px;font-size:10px;">RS</span>
+                Waiting on reply
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--warning">Cool · 41%</span></div>
+            </div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">L. Okafor</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-6" style="width:20px;height:20px;font-size:10px;">LO</span>
+                Sent pricing
+              </div>
+            </div>
+          </div>
+          <div class="mga-app__kanban-col">
+            <div class="mga-app__kanban-col-head">Converted <span class="mga-app__kanban-count">1</span></div>
+            <div class="mga-app__kanban-card">
+              <div class="mga-app__kanban-card-title">Priya Shah</div>
+              <div class="mga-app__kanban-card-meta">
+                <span class="mga-app__avatar mga-app__avatar-5" style="width:20px;height:20px;font-size:10px;">PS</span>
+                Closed · $4,800/yr
+              </div>
+              <div><span class="mga-app__chip mga-app__chip--success">Won</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## Leads vs. Contacts
 

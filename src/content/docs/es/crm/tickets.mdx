@@ -9,7 +9,114 @@ import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@a
 
 Los tickets se crean cuando una conversación con un cliente requiere seguimiento y resolución formal. Generalmente se generan automáticamente cuando la IA escala a un agente humano, o manualmente por tu equipo.
 
-![Vista de lista de tickets](../../../../assets/screenshots/crm-tickets.png)
+<div class="mga-app" aria-label="Lista de tickets — vista previa ilustrativa">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contactos</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⇆</span> Escalación en vivo</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tareas</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Tickets</div>
+          <div class="mga-app__topbar-sub">Casos de soporte — abiertos por escalación de IA o manualmente</div>
+        </div>
+        <div class="mga-app__topbar-actions">
+          <button class="mga-app__btn">Filtros</button>
+          <button class="mga-app__btn mga-app__btn--primary">+ Nuevo ticket</button>
+        </div>
+      </div>
+      <div class="mga-app__tabs">
+        <button class="mga-app__tab mga-app__tab--active">Todos</button>
+        <button class="mga-app__tab">Abiertos</button>
+        <button class="mga-app__tab">Esperando al cliente</button>
+        <button class="mga-app__tab">Resueltos</button>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__card">
+          <table class="mga-app__table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Asunto</th>
+                <th>Cliente</th>
+                <th>Asignado a</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Actualizado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#4821</strong></td>
+                <td>Cobro duplicado en Stripe en junio</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-2">JP</span>Jamie Patel</div></td>
+                <td>Marina López</td>
+                <td><span class="mga-app__chip mga-app__chip--danger">Alta</span></td>
+                <td><span class="mga-app__chip mga-app__chip--warning"><span class="mga-app__chip-dot"></span> En curso</span></td>
+                <td>Hace 2 min</td>
+              </tr>
+              <tr>
+                <td><strong>#4820</strong></td>
+                <td>El webhook no se dispara al cobrar</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-4">RM</span>Rebeca M.</div></td>
+                <td>Tomás García</td>
+                <td><span class="mga-app__chip mga-app__chip--warning">Media</span></td>
+                <td><span class="mga-app__chip mga-app__chip--info"><span class="mga-app__chip-dot"></span> Esperando al cliente</span></td>
+                <td>Hace 1 h</td>
+              </tr>
+              <tr>
+                <td><strong>#4819</strong></td>
+                <td>¿Cómo invitar a un nuevo miembro al equipo?</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-3">DP</span>Daniela Pérez</div></td>
+                <td>—</td>
+                <td><span class="mga-app__chip">Baja</span></td>
+                <td><span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> Resuelto por IA</span></td>
+                <td>Hace 3 h</td>
+              </tr>
+              <tr>
+                <td><strong>#4818</strong></td>
+                <td>La exportación a CSV falla pasadas 10k filas</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-1">AT</span>A. Tanaka</div></td>
+                <td>Marina López</td>
+                <td><span class="mga-app__chip mga-app__chip--danger">Alta</span></td>
+                <td><span class="mga-app__chip mga-app__chip--warning"><span class="mga-app__chip-dot"></span> Abierto</span></td>
+                <td>Hace 4 h</td>
+              </tr>
+              <tr>
+                <td><strong>#4817</strong></td>
+                <td>Solicitud: modo oscuro para el widget</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-5">PS</span>Priya Shah</div></td>
+                <td>Equipo de producto</td>
+                <td><span class="mga-app__chip">Baja</span></td>
+                <td><span class="mga-app__chip"><span class="mga-app__chip-dot"></span> Triado</span></td>
+                <td>Ayer</td>
+              </tr>
+              <tr>
+                <td><strong>#4816</strong></td>
+                <td>El plugin de WP no se conecta con la nueva API key</td>
+                <td><div class="mga-app__table-name"><span class="mga-app__avatar mga-app__avatar-6">LO</span>L. Okafor</div></td>
+                <td>Tomás García</td>
+                <td><span class="mga-app__chip mga-app__chip--warning">Media</span></td>
+                <td><span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> Resuelto</span></td>
+                <td>Ayer</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
 ## Ciclo de Vida del Ticket
 
