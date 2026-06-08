@@ -5,7 +5,7 @@ description: Aplica tu marca a la superficie [mga_chat_app] — colores, pantall
 
 import { Aside, Steps, Badge } from '@astrojs/starlight/components';
 
-El Personalizador del Chat es donde aplicas tu marca a la superficie
+El Chat App Customizer es donde aplicas tu marca a la superficie
 de chat de página completa renderizada por el shortcode
 `[mga_chat_app]`. Cada cambio que hagas **pertenece al bot seleccionado
 en el desplegable Espacio del bot** — no hay configuración "global" y
@@ -58,15 +58,15 @@ nunca puedes guardar sin querer contra el bot equivocado.
       <div class="mga-replica__group-label">Secciones del chat</div>
       <div class="mga-replica__anchor mga-replica__anchor--block">
         <nav class="mga-replica__subnav">
-          <button class="mga-replica__subnav-item">Marca</button>
-          <button class="mga-replica__subnav-item">Bienvenida</button>
-          <button class="mga-replica__subnav-item">Mensajes</button>
-          <button class="mga-replica__subnav-item">Compositor</button>
-          <button class="mga-replica__subnav-item">Barra lateral</button>
-          <button class="mga-replica__subnav-item">Pie y legales</button>
-          <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Comportamiento</button>
-          <button class="mga-replica__subnav-item">Avanzado</button>
-          <button class="mga-replica__subnav-item">Incrustar</button>
+          <button class="mga-replica__subnav-item">Branding</button>
+          <button class="mga-replica__subnav-item">Welcome</button>
+          <button class="mga-replica__subnav-item">Messages</button>
+          <button class="mga-replica__subnav-item">Composer</button>
+          <button class="mga-replica__subnav-item">Sidebar</button>
+          <button class="mga-replica__subnav-item">Footer &amp; Legal</button>
+          <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Behavior</button>
+          <button class="mga-replica__subnav-item">Advanced</button>
+          <button class="mga-replica__subnav-item">Embed</button>
         </nav>
         <span class="mga-replica__pin mga-replica__pin--bl">2</span>
       </div>
@@ -76,15 +76,15 @@ nunca puedes guardar sin querer contra el bot equivocado.
         <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
         <div class="mga-replica__toolbar-titlewrap">
           <div class="mga-replica__toolbar-title">
-            Personalizador del Chat
-            <span class="mga-replica__chip-dirty">Cambios sin guardar</span>
+            Chat App Customizer
+            <span class="mga-replica__chip-dirty">Unsaved changes</span>
           </div>
-          <div class="mga-replica__toolbar-sub">Soporte CCreators — Configura el shortcode [mga_chat_app] de página completa</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Configure the full-page [mga_chat_app] shortcode</div>
         </div>
-        <button class="mga-replica__btn">↺ Restablecer</button>
-        <button class="mga-replica__btn">↻ Descartar</button>
+        <button class="mga-replica__btn">↺ Reset</button>
+        <button class="mga-replica__btn">↻ Discard</button>
         <div class="mga-replica__anchor" style="display:inline-block;">
-          <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">✓ Guardar cambios</button>
+          <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">✓ Save changes</button>
           <span class="mga-replica__pin">3</span>
         </div>
       </header>
@@ -93,8 +93,8 @@ nunca puedes guardar sin querer contra el bot equivocado.
           <div class="mga-replica__card-head">
             <div class="mga-replica__card-icon">⚙</div>
             <div>
-              <div class="mga-replica__card-title">Comportamiento de la conversación</div>
-              <div class="mga-replica__card-sub">Cómo reacciona la superficie del chat durante una conversación.</div>
+              <div class="mga-replica__card-title">Conversation behavior</div>
+              <div class="mga-replica__card-sub">How the chat surface reacts during a conversation.</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
@@ -102,8 +102,8 @@ nunca puedes guardar sin querer contra el bot equivocado.
             <div class="mga-replica__switch-row">
               <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
               <div>
-                <span class="mga-replica__switch-label">Desplazar al mensaje más reciente</span>
-                <span class="mga-replica__switch-desc">Baja automáticamente mientras el asistente transmite la respuesta.</span>
+                <span class="mga-replica__switch-label">Auto-scroll to newest message</span>
+                <span class="mga-replica__switch-desc">Scrolls down automatically as the assistant streams a reply.</span>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@ nunca puedes guardar sin querer contra el bot equivocado.
     </div>
     <div class="mga-replica__legend-item">
       <span class="mga-replica__legend-num">3</span>
-      <span><strong>Guardar cambios</strong> — escribe la configuración en la fila del bot. Mientras hay ediciones sin guardar verás el chip "Cambios sin guardar".</span>
+      <span><strong>Guardar cambios</strong> — escribe la configuración en la fila del bot. Mientras hay ediciones sin guardar verás el chip "Unsaved changes".</span>
     </div>
   </div>
 </div>
@@ -153,19 +153,19 @@ superior — y los valores guardados son independientes.
       </div>
       <div class="mga-replica__group-label">Secciones del chat</div>
       <nav class="mga-replica__subnav">
-        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Marca</button>
-        <button class="mga-replica__subnav-item">Bienvenida</button>
-        <button class="mga-replica__subnav-item">Incrustar</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Embed</button>
       </nav>
     </aside>
     <main class="mga-replica__main">
       <header class="mga-replica__toolbar">
         <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
         <div class="mga-replica__toolbar-titlewrap">
-          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
-          <div class="mga-replica__toolbar-sub">Asesor de ventas — Configura el shortcode [mga_chat_app] de página completa</div>
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
+          <div class="mga-replica__toolbar-sub">Asesor de ventas — Configure the full-page [mga_chat_app] shortcode</div>
         </div>
-        <button class="mga-replica__btn mga-replica__btn--primary is-disabled">✓ Guardar cambios</button>
+        <button class="mga-replica__btn mga-replica__btn--primary is-disabled">✓ Save changes</button>
       </header>
       <div class="mga-replica__body mga-replica__body--single">
         <div class="mga-replica__card">

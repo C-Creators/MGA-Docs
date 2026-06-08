@@ -63,47 +63,73 @@ contract: **whatever you save targets the bot picked in the dropdown.**
       <header class="mga-replica__toolbar">
         <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
         <div class="mga-replica__toolbar-titlewrap">
-          <div class="mga-replica__toolbar-title">Floating widget</div>
-          <div class="mga-replica__toolbar-sub">Soporte CCreators</div>
+          <div class="mga-replica__toolbar-title">Widget Customizer</div>
+          <div class="mga-replica__toolbar-sub">Configure the chat widget for Soporte CCreators</div>
         </div>
-        <button class="mga-replica__btn mga-replica__btn--primary">✓ Save changes</button>
+        <button class="mga-replica__btn mga-replica__btn--primary">✓ Save Changes</button>
       </header>
       <div class="mga-replica__body mga-replica__body--single">
         <div class="mga-replica__card">
           <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">🎨</div>
+            <div>
+              <div class="mga-replica__card-title">Colors</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Primary Color</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__input mga-replica__input--mono mga-replica__highlight">#10b981</div>
+              <span class="mga-replica__pin">2</span>
+            </div>
+            <span class="mga-replica__field-hint">Buttons &amp; chat bubble</span>
+            <label class="mga-replica__field-label">Header Color</label>
+            <div class="mga-replica__input mga-replica__input--mono">#10b981</div>
+            <span class="mga-replica__field-hint">Chat window header</span>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">✎</div>
+            <div>
+              <div class="mga-replica__card-title">Text &amp; Content</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Greeting Message</label>
+            <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">Hi there! How can I help you?</span></div>
+            <span class="mga-replica__field-hint">Displayed when the chat is first opened</span>
+            <label class="mga-replica__field-label">Input Placeholder</label>
+            <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">Type a message…</span></div>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
             <div class="mga-replica__card-icon">📍</div>
             <div>
-              <div class="mga-replica__card-title">Position & color</div>
-              <div class="mga-replica__card-sub">Where the bubble sits and how it looks.</div>
+              <div class="mga-replica__card-title">Position</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
           <div class="mga-replica__card-body">
             <label class="mga-replica__field-label">Position</label>
-            <div class="mga-replica__input">Bottom right</div>
-            <label class="mga-replica__field-label">Primary color</label>
-            <div class="mga-replica__input mga-replica__input--mono">#10b981</div>
-            <label class="mga-replica__field-label">Greeting</label>
-            <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">Hi! How can I help you today?</span></div>
+            <div class="mga-replica__input">Bottom Right</div>
           </div>
         </div>
         <div class="mga-replica__card">
           <div class="mga-replica__card-head">
             <div class="mga-replica__card-icon">👁</div>
             <div>
-              <div class="mga-replica__card-title">Page visibility</div>
-              <div class="mga-replica__card-sub">Where the floating widget should appear on your site.</div>
+              <div class="mga-replica__card-title">Page Visibility</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
           <div class="mga-replica__card-body">
-            <div class="mga-replica__switch-row">
-              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
-              <div>
-                <span class="mga-replica__switch-label">Show on all pages</span>
-                <span class="mga-replica__switch-desc">The bubble appears on every published page.</span>
-              </div>
-            </div>
+            <label class="mga-replica__field-label">Show On</label>
+            <div class="mga-replica__input">All pages</div>
+            <span class="mga-replica__field-hint">Choose between <em>All pages</em>, <em>Only selected pages</em>, or <em>All pages except…</em>.</span>
           </div>
         </div>
       </div>

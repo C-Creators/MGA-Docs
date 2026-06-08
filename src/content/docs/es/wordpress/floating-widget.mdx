@@ -66,50 +66,71 @@ apunta al bot elegido en el desplegable.**
       <header class="mga-replica__toolbar">
         <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
         <div class="mga-replica__toolbar-titlewrap">
-          <div class="mga-replica__toolbar-title">Widget flotante</div>
-          <div class="mga-replica__toolbar-sub">Soporte CCreators</div>
+          <div class="mga-replica__toolbar-title">Personalizador de widget</div>
+          <div class="mga-replica__toolbar-sub">Configura el widget de chat para Soporte CCreators</div>
         </div>
         <button class="mga-replica__btn mga-replica__btn--primary">✓ Guardar cambios</button>
       </header>
       <div class="mga-replica__body mga-replica__body--single">
         <div class="mga-replica__card">
           <div class="mga-replica__card-head">
-            <div class="mga-replica__card-icon">📍</div>
+            <div class="mga-replica__card-icon">🎨</div>
             <div>
-              <div class="mga-replica__card-title">Posición y color</div>
-              <div class="mga-replica__card-sub">Dónde se sitúa la burbuja y cómo se ve.</div>
+              <div class="mga-replica__card-title">Colores</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
           <div class="mga-replica__card-body">
-            <label class="mga-replica__field-label">Posición</label>
-            <div class="mga-replica__input">Abajo a la derecha</div>
             <label class="mga-replica__field-label">Color primario</label>
             <div class="mga-replica__anchor mga-replica__anchor--block">
               <div class="mga-replica__input mga-replica__input--mono mga-replica__highlight">#10b981</div>
               <span class="mga-replica__pin">2</span>
             </div>
-            <label class="mga-replica__field-label">Saludo</label>
+            <span class="mga-replica__field-hint">Botones y burbuja del chat</span>
+            <label class="mga-replica__field-label">Color de encabezado</label>
+            <div class="mga-replica__input mga-replica__input--mono">#10b981</div>
+            <span class="mga-replica__field-hint">Encabezado de la ventana de chat</span>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">✎</div>
+            <div>
+              <div class="mga-replica__card-title">Texto y contenido</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Mensaje de bienvenida</label>
             <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">¡Hola! ¿En qué puedo ayudarte hoy?</span></div>
+            <span class="mga-replica__field-hint">Se muestra al abrir el chat por primera vez</span>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">📍</div>
+            <div>
+              <div class="mga-replica__card-title">Posición</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Posición</label>
+            <div class="mga-replica__input">Inferior derecho</div>
           </div>
         </div>
         <div class="mga-replica__card">
           <div class="mga-replica__card-head">
             <div class="mga-replica__card-icon">👁</div>
             <div>
-              <div class="mga-replica__card-title">Visibilidad por página</div>
-              <div class="mga-replica__card-sub">Dónde debe aparecer el widget en tu sitio.</div>
+              <div class="mga-replica__card-title">Visibilidad de página</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
           <div class="mga-replica__card-body">
-            <div class="mga-replica__switch-row">
-              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
-              <div>
-                <span class="mga-replica__switch-label">Mostrar en todas las páginas</span>
-                <span class="mga-replica__switch-desc">La burbuja aparece en cada página publicada.</span>
-              </div>
-            </div>
+            <label class="mga-replica__field-label">Mostrar en</label>
+            <div class="mga-replica__input">Todas las páginas</div>
+            <span class="mga-replica__field-hint">Elige entre <em>Todas las páginas</em>, <em>Solo páginas seleccionadas</em> o <em>Todas excepto…</em>.</span>
           </div>
         </div>
       </div>

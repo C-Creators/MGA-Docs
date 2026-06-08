@@ -19,16 +19,16 @@ coexistir.
 
 2. Haz clic en **Secciones del chat → Comportamiento**.
 
-3. Baja hasta **Autenticación y protección** y activa **Requerir inicio de sesión en WordPress**.
+3. Baja hasta **Authentication &amp; gating** y activa **Requerir inicio de sesión en WordPress**.
 
-4. Personaliza la copia de inicio de sesión (por defecto: *"Necesitas iniciar sesión para interactuar con este asistente."*) y opcionalmente una **URL de redirección de inicio de sesión** — los visitantes ven un botón que los lleva ahí. Si está vacío se usa la URL de login por defecto de WordPress.
+4. Personaliza la copia de inicio de sesión (por defecto: *"Necesitas iniciar sesión para interactuar con este asistente."*) y opcionalmente una **Sign-in redirect URL** — los visitantes ven un botón que los lleva ahí. Si está vacío se usa la URL de login por defecto de WordPress.
 
 5. Haz clic en **Guardar cambios**.
 </Steps>
 
 ## Cómo se ve el toggle en el personalizador
 
-<div class="mga-replica" aria-label="Sección Autenticación y protección">
+<div class="mga-replica" aria-label="Sección Authentication &amp; gating">
   <div class="mga-replica__shell">
     <aside class="mga-replica__sidebar">
       <div class="mga-replica__brand">
@@ -40,16 +40,16 @@ coexistir.
       </div>
       <div class="mga-replica__group-label">Secciones del chat</div>
       <nav class="mga-replica__subnav">
-        <button class="mga-replica__subnav-item">Marca</button>
-        <button class="mga-replica__subnav-item">Compositor</button>
-        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Comportamiento</button>
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Composer</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Behavior</button>
       </nav>
     </aside>
     <main class="mga-replica__main">
       <header class="mga-replica__toolbar">
         <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
         <div class="mga-replica__toolbar-titlewrap">
-          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
           <div class="mga-replica__toolbar-sub">Soporte CCreators — Comportamiento</div>
         </div>
       </header>
@@ -58,8 +58,8 @@ coexistir.
           <div class="mga-replica__card-head">
             <div class="mga-replica__card-icon">🔒</div>
             <div>
-              <div class="mga-replica__card-title">Autenticación y protección</div>
-              <div class="mga-replica__card-sub">Requerir un inicio de sesión en WordPress antes de que los visitantes puedan interactuar con este chat.</div>
+              <div class="mga-replica__card-title">Authentication &amp; gating</div>
+              <div class="mga-replica__card-sub">Require a WordPress login before visitors can interact with this chat.</div>
             </div>
           </div>
           <div class="mga-replica__card-divider"></div>
@@ -68,8 +68,8 @@ coexistir.
               <div class="mga-replica__switch-row mga-replica__highlight">
                 <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
                 <div>
-                  <span class="mga-replica__switch-label">Requerir inicio de sesión en WordPress</span>
-                  <span class="mga-replica__switch-desc">Cuando está activo, los visitantes no logueados ven la indicación de inicio de sesión en lugar de la superficie del chat.</span>
+                  <span class="mga-replica__switch-label">Require WordPress login</span>
+                  <span class="mga-replica__switch-desc">When on, logged-out visitors see the sign-in prompt below instead of the chat surface.</span>
                 </div>
               </div>
               <span class="mga-replica__pin">1</span>
@@ -77,24 +77,24 @@ coexistir.
             <div class="mga-replica__alert">
               <span class="mga-replica__alert-icon" aria-hidden="true">🔒</span>
               <div class="mga-replica__alert-body">
-                Este bot también tiene una <strong>contraseña del lado del servidor</strong> configurada en la plataforma MGA. La protección de inicio de sesión de WordPress es independiente — controla quién llega a la superficie del chat, pero la contraseña se aplica desde la API.
-                <a class="mga-replica__alert-link" href="#">Gestionar contraseña del bot →</a>
+                This bot also has a <strong>server-side password</strong> set on the MGA platform. The WordPress login gate is independent — it controls who reaches the chat surface, but the password is enforced by the API itself.
+                <a class="mga-replica__alert-link" href="#">Manage bot password →</a>
               </div>
             </div>
-            <label class="mga-replica__field-label">Texto del mensaje de inicio de sesión</label>
+            <label class="mga-replica__field-label">Sign-in prompt text</label>
             <div class="mga-replica__anchor mga-replica__anchor--block">
               <div class="mga-replica__input mga-replica__highlight">Necesitas iniciar sesión para interactuar con este asistente.</div>
               <span class="mga-replica__pin">2</span>
             </div>
-            <span class="mga-replica__field-hint">Se muestra a visitantes no logueados cuando se requiere inicio de sesión.</span>
-            <label class="mga-replica__field-label">URL de redirección de inicio de sesión</label>
+            <span class="mga-replica__field-hint">Shown to logged-out visitors when WordPress login is required.</span>
+            <label class="mga-replica__field-label">Sign-in redirect URL</label>
             <div class="mga-replica__input mga-replica__input--mono"><span style="color:var(--mga-r-text-faint);">https://example.com/login</span></div>
-            <span class="mga-replica__field-hint">Si se configura, un botón lleva al visitante ahí. De lo contrario se usa el login por defecto de WordPress.</span>
+            <span class="mga-replica__field-hint">If set, a button takes the visitor here. Otherwise WordPress's default login is used.</span>
             <div class="mga-replica__switch-row">
               <span class="mga-replica__switch" aria-hidden="true"></span>
               <div>
-                <span class="mga-replica__switch-label">Permitir a invitados ver la pantalla de bienvenida</span>
-                <span class="mga-replica__switch-desc">Los visitantes pueden ver las sugerencias antes de iniciar sesión.</span>
+                <span class="mga-replica__switch-label">Allow guests to view the welcome screen</span>
+                <span class="mga-replica__switch-desc">Visitors can see suggested prompts before signing in.</span>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ coexistir.
     </div>
     <div class="mga-replica__legend-item">
       <span class="mga-replica__legend-num">2</span>
-      <span><strong>Texto del mensaje de inicio de sesión</strong> — la copia exacta que verá el visitante. Personalízala para tu marca.</span>
+      <span><strong>Sign-in prompt text</strong> — la copia exacta que verá el visitante. Personalízala para tu marca.</span>
     </div>
   </div>
 </div>
