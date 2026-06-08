@@ -1,0 +1,146 @@
+---
+title: Widget flotante
+description: Configura la burbuja de chat flotante que sigue a los visitantes por tu sitio WordPress. Es por bot, igual que la superficie de página completa.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Además de la superficie `[mga_chat_app]` de página completa, el plugin
+MGA WP incluye un **widget flotante** — una burbuja de chat en la
+esquina inferior que sigue a los visitantes por todas las páginas de
+tu sitio. Es la elección correcta para asistentes tipo soporte que
+deben estar siempre a un clic.
+
+## Cuándo usar cada uno
+
+| Caso de uso | Usa esto |
+|---|---|
+| Asistente siempre disponible en todo el sitio | **Widget flotante** |
+| Página de asistente dedicada (`/ayuda`, `/ventas`, etc.) | **Shortcode `[mga_chat_app]`** |
+| Asistentes distintos en páginas distintas | **`[mga_chat]` o `[mga_chat_app]`** con colocación por página |
+| Hero estilo marketing | **`[mga_chat_app]`** con `max_width` y un `height` alto |
+
+<Aside type="note" title="Un widget flotante a la vez">
+  Solo un widget flotante puede estar activo en todo el sitio — el del
+  bot marcado como "Activo" en la lista de bots. Múltiples shortcodes
+  `[mga_chat]` y `[mga_chat_app]` pueden convivir en la misma página,
+  cada uno con un bot distinto.
+</Aside>
+
+## Cómo se ve el personalizador
+
+El personalizador del Widget Flotante es independiente del
+Personalizador del Chat — vive un nivel más arriba en la sub-nav del
+Espacio del bot. Mismo contrato del desplegable: **lo que guardes
+apunta al bot elegido en el desplegable.**
+
+<div class="mga-replica" aria-label="Personalizador del widget flotante">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Seleccionar bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">▦</span> Resumen del bot</button>
+        <div class="mga-replica__anchor mga-replica__anchor--block">
+          <button class="mga-replica__nav-item mga-replica__nav-item--active mga-replica__highlight">
+            <span class="mga-replica__nav-icon">✦</span> Widget flotante
+          </button>
+          <span class="mga-replica__pin">1</span>
+        </div>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Widget flotante</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators</div>
+        </div>
+        <button class="mga-replica__btn mga-replica__btn--primary">✓ Guardar cambios</button>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">📍</div>
+            <div>
+              <div class="mga-replica__card-title">Posición y color</div>
+              <div class="mga-replica__card-sub">Dónde se sitúa la burbuja y cómo se ve.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Posición</label>
+            <div class="mga-replica__input">Abajo a la derecha</div>
+            <label class="mga-replica__field-label">Color primario</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__input mga-replica__input--mono mga-replica__highlight">#10b981</div>
+              <span class="mga-replica__pin">2</span>
+            </div>
+            <label class="mga-replica__field-label">Saludo</label>
+            <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">¡Hola! ¿En qué puedo ayudarte hoy?</span></div>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">👁</div>
+            <div>
+              <div class="mga-replica__card-title">Visibilidad por página</div>
+              <div class="mga-replica__card-sub">Dónde debe aparecer el widget en tu sitio.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Mostrar en todas las páginas</span>
+                <span class="mga-replica__switch-desc">La burbuja aparece en cada página publicada.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Widget flotante</strong> en la barra lateral — lleva a este personalizador específico para el bot elegido en el desplegable.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span><strong>Color primario</strong> aplica al botón de la burbuja, al encabezado y al estilo de los mensajes del usuario.</span>
+    </div>
+  </div>
+</div>
+
+## El shortcode inline `[mga_chat]`
+
+Un segundo shortcode, `[mga_chat]`, renderiza el mismo widget como un
+**bloque inline** (no como burbuja flotante). Respeta cada campo del
+widget flotante por defecto y soporta los mismos overrides de
+atributos por incrustación:
+
+```html
+[mga_chat height="500" title="Chat de ventas" primary_color="#3b82f6"]
+```
+
+Tanto `[mga_chat]` como el widget flotante usan un flujo de
+**contraseña del bot** cuando el bot está protegido por contraseña en
+la plataforma MGA — los visitantes ven una pantalla de contraseña
+antes de poder chatear. (La superficie `[mga_chat_app]` de página
+completa usa un modelo distinto — ver
+**[Requerir inicio de sesión en WordPress](/es/wordpress/require-wp-login/)**.)

@@ -14,25 +14,61 @@ import { Aside, Steps, Badge } from '@astrojs/starlight/components';
 
 3. **Open the plugin.** A new **MGA WP** entry appears in the WordPress sidebar. Open it — you'll land on the Dashboard.
 
-4. **Paste your API key.** Open **Settings**, paste the `mga_…` API key from your MyGPT Assistants account, and click **Connect**. The plugin validates the key against `/api/v1/user/me` and shows your account name on success.
+4. **Paste your API key.** Open **Settings**, paste the `mga_…` API key from your MyGPT Assistants account, and click **Connect Account**. The plugin validates the key against `/api/v1/user/me` and shows your account name on success.
 
-5. **Sync your bots.** Open **Bots** and press **Sync bots**. Every bot from your MyGPT Assistants account is imported into the local table (`mga_wp_bots`). After this, the **Bot Workspace** dropdown in the sidebar is populated with all your bots.
+5. **Sync your bots.** Press **Sync bots**. Every bot from your MyGPT Assistants account is imported into the local table. After this, the **Bot workspace** dropdown is populated with all your bots.
 </Steps>
 
-<Aside type="note" title="Bot Workspace dropdown is everything">
-  Every settings page in the plugin operates on whichever bot is selected
-  in the **Select bot** dropdown. The dropdown drives the URL
-  (`/bots/<id>/…`); the URL drives the form load; the form save targets
-  that bot's row only.
-</Aside>
+## Step 3 — find the menu entry in WP admin
 
-## What the dropdown looks like
+After activating, look at your WordPress admin left rail. The **MGA WP**
+item is registered at menu position 3 (right under Dashboard) with a
+small teal robot icon.
 
-The sidebar's **Bot Workspace** section is where you switch which bot you
-are configuring. Switching it reloads the right-hand panel for the new bot
-— customizer fields, preview, and the embed shortcode all change with it.
+<div class="mga-replica" aria-label="WordPress admin chrome — MGA WP entry highlighted">
+  <div class="mga-replica__wp">
+    <nav class="mga-replica__wp-rail">
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⌂</span> Dashboard</button>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <button class="mga-replica__wp-item mga-replica__wp-item--active mga-replica__highlight">
+          <span class="mga-replica__wp-icon">▣</span> MGA WP
+        </button>
+        <span class="mga-replica__pin">1</span>
+      </div>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">✎</span> Posts</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">▤</span> Pages</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">✉</span> Comments</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">◇</span> Appearance</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⌘</span> Plugins</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⚙</span> Settings</button>
+    </nav>
+    <div class="mga-replica__wp-body">
+      <div class="mga-replica__wp-page-title">MGA WP — Dashboard</div>
+      <p style="font-size:13px;color:#50575e;margin:0 0 14px;">Your MyGPT Assistants account is not connected yet.</p>
+      <div class="mga-replica__anchor" style="display:inline-block;">
+        <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">Connect account →</button>
+        <span class="mga-replica__pin">2</span>
+      </div>
+    </div>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span>The plugin registers a top-level menu item called <strong>MGA WP</strong>. It uses a 20×20 teal robot SVG so it stays crisp on Retina displays.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span>Until you connect, the Dashboard nudges you toward Settings. After connecting, you'll see your synced bots here.</span>
+    </div>
+  </div>
+</div>
 
-<div class="mga-replica" aria-label="Bot workspace dropdown preview">
+## Step 4 — connect your account
+
+The Settings page is where you paste the API key. After a successful
+connect you'll see the green "Connected and syncing" card.
+
+<div class="mga-replica" aria-label="Settings page — Connect account">
   <div class="mga-replica__shell">
     <aside class="mga-replica__sidebar">
       <div class="mga-replica__brand">
@@ -42,41 +78,104 @@ are configuring. Switching it reloads the right-hand panel for the new bot
           <span class="mga-replica__brand-sub">for WordPress</span>
         </div>
       </div>
-      <div class="mga-replica__group-label">Bot Workspace</div>
-      <div class="mga-replica__select-wrap">
-        <span class="mga-replica__select-label">Select bot</span>
-        <div class="mga-replica__select">
-          <span class="mga-replica__bot-dot"></span>
-          Soporte CCreators
+      <div class="mga-replica__group-label">Navigation</div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⌂</span> Dashboard</button>
+        <button class="mga-replica__nav-item mga-replica__nav-item--active"><span class="mga-replica__nav-icon">⚙</span> Settings</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Settings</div>
+          <div class="mga-replica__toolbar-sub">Manage your MyGPT Assistants integration</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">⚙</div>
+            <div>
+              <div class="mga-replica__card-title">Connect Account</div>
+              <div class="mga-replica__card-sub">Enter your API key to link this WordPress site.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">API Key</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__input mga-replica__input--mono mga-replica__highlight">mga_e63a90eb320a4b78828636dad151b825</div>
+              <span class="mga-replica__pin">1</span>
+            </div>
+            <span class="mga-replica__field-hint">Find your API key in <strong>Settings → API Keys</strong> in your MyGPT Assistants account.</span>
+            <div class="mga-replica__anchor" style="display:inline-block;margin-top:6px;">
+              <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">Connect Account</button>
+              <span class="mga-replica__pin">2</span>
+            </div>
+          </div>
         </div>
       </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span>Paste the <code>mga_…</code> key from your MyGPT Assistants <strong>Settings → API Keys</strong> page. The plugin stores it encrypted (AES‑256‑CBC) and only shows a masked preview afterwards.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span>Pressing <strong>Connect Account</strong> calls <code>GET /api/v1/user/me</code> on the server — a 200 confirms the key is valid; a 401 surfaces an inline error.</span>
+    </div>
+  </div>
+</div>
+
+## Step 5 — Bot workspace, populated
+
+After **Sync bots** completes, the dropdown turns into a list of every
+bot in your MyGPT Assistants account.
+
+<div class="mga-replica" aria-label="Bot workspace populated after sync">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot workspace</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <div class="mga-replica__select-wrap mga-replica__highlight">
+          <span class="mga-replica__select-label">Select bot</span>
+          <div class="mga-replica__select">
+            <span class="mga-replica__bot-dot"></span>
+            Soporte CCreators
+          </div>
+        </div>
+        <span class="mga-replica__pin">1</span>
+      </div>
       <nav class="mga-replica__nav">
-        <button class="mga-replica__nav-item mga-replica__nav-item--active">
-          <span class="mga-replica__nav-icon">▦</span> Bot overview
-        </button>
-        <button class="mga-replica__nav-item">
-          <span class="mga-replica__nav-icon">✦</span> Floating widget
-        </button>
+        <button class="mga-replica__nav-item mga-replica__nav-item--active"><span class="mga-replica__nav-icon">▦</span> Bot overview</button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">✦</span> Floating widget</button>
       </nav>
-      <div class="mga-replica__group-label">Chat App Sections</div>
+      <div class="mga-replica__group-label">Chat app sections</div>
       <nav class="mga-replica__subnav">
         <button class="mga-replica__subnav-item">Branding</button>
         <button class="mga-replica__subnav-item">Welcome</button>
-        <button class="mga-replica__subnav-item">Messages</button>
         <button class="mga-replica__subnav-item">Embed</button>
       </nav>
     </aside>
     <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Bot overview</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators</div>
+        </div>
+        <button class="mga-replica__btn">Sync bots</button>
+      </header>
       <div class="mga-replica__body mga-replica__body--single">
         <div class="mga-replica__card">
-          <div class="mga-replica__card-head">
-            <div class="mga-replica__card-icon">●</div>
-            <div>
-              <div class="mga-replica__card-title">Selected bot</div>
-              <div class="mga-replica__card-sub">All fields on the right belong to this bot only.</div>
-            </div>
-          </div>
-          <div class="mga-replica__card-divider"></div>
           <div class="mga-replica__card-body">
             <label class="mga-replica__field-label">Public ID</label>
             <div class="mga-replica__input mga-replica__input--mono mga-replica__input--disabled">a8d3-…-f72c</div>
@@ -88,14 +187,20 @@ are configuring. Switching it reloads the right-hand panel for the new bot
       </div>
     </main>
   </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span>You can switch the bot at any time — the entire workspace re-loads for the new bot.</span>
+    </div>
+  </div>
 </div>
 
 ## Auto-updates
 
 Once installed, the plugin polls your MyGPT Assistants account for new
-releases every 12 hours (via the `plugin-update-checker` library). When a
-newer version is available you'll see an **Update available** notice on
-WP's **Plugins** page exactly like any other plugin.
+releases every 12 hours (via the `plugin-update-checker` library). When
+a newer version is available you'll see an **Update available** notice
+on WP's **Plugins** page exactly like any other plugin.
 
 <Aside type="tip" title="Force an update check">
   Don't want to wait? On **Plugins**, click the **"Check for updates"**

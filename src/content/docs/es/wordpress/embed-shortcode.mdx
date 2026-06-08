@@ -1,0 +1,189 @@
+---
+title: Copiar el shortcode de incrustación
+description: Hay un shortcode [mga_chat_app] por bot. Elige un bot en el desplegable, abre la pestaña Incrustar, copia el snippet y pégalo en una página.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+La superficie de chat de página completa se incrusta con el shortcode
+`[mga_chat_app]`. **Cada bot tiene su propio shortcode** — no hay
+"un shortcode para todo". La pestaña Incrustar genera el snippet con
+el bot que tienes seleccionado en el desplegable Espacio del bot.
+
+<Aside type="caution" title="Cambia el desplegable para cambiar de bot">
+  Si quieres el shortcode de **otro bot**, debes cambiar primero el
+  desplegable **Seleccionar bot** en la barra lateral del espacio. La
+  pestaña Incrustar siempre muestra el snippet del bot cargado en ese
+  momento — no es un campo genérico de copiar/pegar.
+</Aside>
+
+## Dónde vive el shortcode
+
+<Steps>
+1. **Abre el personalizador** del bot que quieras incrustar. (`MGA WP →` elige un bot en el desplegable.)
+
+2. **Haz clic en "Incrustar"** en las Secciones del chat de la barra lateral.
+
+3. **Copia** el valor del campo de solo lectura. El shortcode contiene el `public_id` portátil del bot, así que funciona tras reinstalaciones e incluso en otros sitios WordPress que compartan la misma cuenta de MyGPT Assistants.
+
+4. **Pega** en el bloque Gutenberg de tu elección (un bloque Shortcode, un bloque HTML personalizado o el editor clásico). Guarda la página. Vísitala — la superficie del chat se renderiza inline.
+</Steps>
+
+## Cómo se ve la pestaña Incrustar
+
+<div class="mga-replica" aria-label="Vista previa de la pestaña Incrustar">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <div class="mga-replica__select-wrap mga-replica__highlight">
+          <span class="mga-replica__select-label">Seleccionar bot</span>
+          <div class="mga-replica__select">
+            <span class="mga-replica__bot-dot"></span>
+            Soporte CCreators
+          </div>
+        </div>
+        <span class="mga-replica__pin">1</span>
+      </div>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <nav class="mga-replica__subnav">
+          <button class="mga-replica__subnav-item">Marca</button>
+          <button class="mga-replica__subnav-item">Bienvenida</button>
+          <button class="mga-replica__subnav-item">Mensajes</button>
+          <button class="mga-replica__subnav-item">Comportamiento</button>
+          <button class="mga-replica__subnav-item mga-replica__subnav-item--active mga-replica__highlight">Incrustar</button>
+        </nav>
+        <span class="mga-replica__pin mga-replica__pin--bl">2</span>
+      </div>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Incrustar</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Shortcode del bot seleccionado</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__shortcode mga-replica__highlight">
+                <div class="mga-replica__shortcode-value">[mga_chat_app public_id="a8d3-…-f72c"]</div>
+                <button class="mga-replica__shortcode-copy">⧉ Copiar</button>
+              </div>
+              <span class="mga-replica__pin">3</span>
+            </div>
+            <span class="mga-replica__field-hint">
+              La personalización se guarda por bot. Este shortcode solo necesita el identificador del bot — toda la configuración visual se carga del personalizador guardado.
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Seleccionar bot</strong> es lo primero. Cualquier shortcode que aparezca abajo pertenece a este bot.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span>Abre la pestaña <strong>Incrustar</strong>. La URL pasa a <code>/bots/&lt;id&gt;/chat-app/embed</code>.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">3</span>
+      <span>Haz clic en <strong>Copiar</strong>. Ahora pega ese shortcode en cualquier entrada o página de WordPress.</span>
+    </div>
+  </div>
+</div>
+
+## Cambiar de bot = cambiar de shortcode
+
+Si eliges otro bot en el desplegable, la pestaña Incrustar regenera el
+snippet con el `public_id` de ese bot. No hay un "shortcode global del
+plugin" — cada bot tiene el suyo.
+
+<div class="mga-replica" aria-label="Pestaña Incrustar para un segundo bot">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Seleccionar bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Asesor de ventas
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Incrustar</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
+          <div class="mga-replica__toolbar-sub">Asesor de ventas — Incrustar</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Shortcode del bot seleccionado</label>
+            <div class="mga-replica__shortcode">
+              <div class="mga-replica__shortcode-value">[mga_chat_app public_id="b71f-…-09ae"]</div>
+              <button class="mga-replica__shortcode-copy">⧉ Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## Overrides por incrustación (avanzado)
+
+El shortcode `[mga_chat_app]` también acepta overrides de atributos
+por incrustación — útil cuando quieres que el mismo bot se renderice
+distinto en distintas páginas (p. ej. tema oscuro en marketing, ancho
+más estrecho en una barra lateral).
+
+| Atributo | Tipo | Ejemplo |
+|---|---|---|
+| `public_id` | string | `public_id="a8d3-…-f72c"` — requerido (o `bot_id="N"`). |
+| `height` | px / vh / % | `height="100vh"` |
+| `theme` | `light` / `dark` / `auto` | `theme="dark"` |
+| `primary_color` | hex | `primary_color="#3b82f6"` |
+| `max_width` | longitud CSS | `max_width="640px"` |
+| `sidebar` | `true` / `false` | `sidebar="false"` |
+| `require_wp_login` | `true` / `false` | `require_wp_login="true"` |
+| `submit_on_enter` | `true` / `false` | `submit_on_enter="false"` |
+
+Ejemplo:
+
+```html
+[mga_chat_app public_id="a8d3-…-f72c" theme="dark" max_width="640px" sidebar="false"]
+```
+
+Los atributos solo sobreescriben la configuración para esa incrustación
+concreta. La configuración guardada en el personalizador no se modifica.
+
+Siguiente: **[Requerir inicio de sesión en WordPress →](/es/wordpress/require-wp-login/)**.

@@ -43,13 +43,33 @@ export default defineConfig({
 				},
 				{
 					label: 'WordPress Plugin',
+					translations: { es: 'Plugin de WordPress' },
 					items: [
-						{ slug: 'wordpress/overview', label: 'Overview' },
-						{ slug: 'wordpress/install' },
-						{ slug: 'wordpress/customize-bot' },
-						{ slug: 'wordpress/embed-shortcode' },
-						{ slug: 'wordpress/require-wp-login' },
-						{ slug: 'wordpress/floating-widget' },
+						{
+							slug: 'wordpress/overview',
+							label: 'Overview',
+							translations: { es: 'Resumen' },
+						},
+						{
+							slug: 'wordpress/install',
+							translations: { es: 'Instalar el plugin' },
+						},
+						{
+							slug: 'wordpress/customize-bot',
+							translations: { es: 'Personalizar el chat' },
+						},
+						{
+							slug: 'wordpress/embed-shortcode',
+							translations: { es: 'Shortcode de incrustación' },
+						},
+						{
+							slug: 'wordpress/require-wp-login',
+							translations: { es: 'Requerir login de WordPress' },
+						},
+						{
+							slug: 'wordpress/floating-widget',
+							translations: { es: 'Widget flotante' },
+						},
 					],
 				},
 				{

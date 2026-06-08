@@ -1,0 +1,145 @@
+---
+title: Tutoriales del Plugin de WordPress
+description: Guías paso a paso para instalar, configurar e incrustar tus asistentes de IA con el plugin MyGPT Assistants para WordPress.
+---
+
+import { Aside, Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Esta sección recorre el plugin **MGA WP** desde la perspectiva del
+administrador de WordPress — cada captura aquí es una réplica HTML en
+vivo de la interfaz del plugin, no una imagen estática, así que las
+etiquetas y el diseño siempre coinciden con el plugin publicado.
+
+<Aside type="tip" title="Dos modos de incrustación">
+  El plugin MGA WP incluye *dos* modos de incrustación: un **widget
+  flotante** (burbuja de chat en la esquina inferior que sigue a los
+  visitantes por todo el sitio) y una **superficie de chat de página
+  completa** renderizada con el shortcode `[mga_chat_app]`. Los
+  tutoriales siguientes se centran en la superficie de página completa
+  y en la interfaz de espacio de bot compartida; el widget flotante
+  tiene su propia página.
+</Aside>
+
+## El espacio de trabajo, de un vistazo
+
+Cada página del plugin vive dentro del mismo armazón. Toma 10 segundos
+para aprender las tres regiones:
+
+<div class="mga-replica" aria-label="Armazón del espacio del plugin — anotado">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Navegación</div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⌂</span> Panel</button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⚙</span> Configuración</button>
+      </nav>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <div class="mga-replica__select-wrap mga-replica__highlight">
+          <span class="mga-replica__select-label">Seleccionar bot</span>
+          <div class="mga-replica__select">
+            <span class="mga-replica__bot-dot"></span>
+            Soporte CCreators
+          </div>
+        </div>
+        <span class="mga-replica__pin">1</span>
+      </div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item mga-replica__nav-item--active"><span class="mga-replica__nav-icon">▦</span> Resumen del bot</button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">✦</span> Widget flotante</button>
+      </nav>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <nav class="mga-replica__subnav">
+          <button class="mga-replica__subnav-item">Marca</button>
+          <button class="mga-replica__subnav-item">Bienvenida</button>
+          <button class="mga-replica__subnav-item">Mensajes</button>
+          <button class="mga-replica__subnav-item">Compositor</button>
+          <button class="mga-replica__subnav-item">Comportamiento</button>
+          <button class="mga-replica__subnav-item">Incrustar</button>
+        </nav>
+        <span class="mga-replica__pin mga-replica__pin--bl">2</span>
+      </div>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Resumen del bot</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — conectar, personalizar e incrustar</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__anchor mga-replica__anchor--block">
+          <div class="mga-replica__card">
+            <div class="mga-replica__card-head">
+              <div class="mga-replica__card-icon">▦</div>
+              <div>
+                <div class="mga-replica__card-title">Resumen del bot</div>
+                <div class="mga-replica__card-sub">Configuración, vista previa y shortcode de incrustación del bot seleccionado.</div>
+              </div>
+            </div>
+            <div class="mga-replica__card-divider"></div>
+            <div class="mga-replica__card-body">
+              <p style="margin:0;font-size:14px;line-height:1.55;color:var(--mga-r-text-muted);">
+                Todo lo que leas o edites en esta columna principal pertenece al bot que elegiste en el desplegable de la izquierda. Cambia el desplegable para cargar otro bot — no hay estado "global".
+              </p>
+            </div>
+          </div>
+          <span class="mga-replica__pin">3</span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Seleccionar bot</strong> — gobierna todo. El desplegable escribe el id del bot en la URL; el resto del panel re-lee desde ahí.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span><strong>Secciones del chat</strong> — todas las pestañas del personalizador del chat de página completa. Al hacer clic vas a <code>/bots/&lt;id&gt;/chat-app/&lt;sección&gt;</code>.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">3</span>
+      <span><strong>Panel principal</strong> — formulario + vista previa en vivo del bot seleccionado. El guardado siempre apunta a la fila de ese bot.</span>
+    </div>
+  </div>
+</div>
+
+## Elige un tutorial
+
+<CardGrid>
+  <LinkCard
+    title="Instalar el plugin"
+    href="/es/wordpress/install/"
+    description="Descarga, sube, activa y sincroniza tus bots."
+  />
+  <LinkCard
+    title="Personaliza la superficie del chat"
+    href="/es/wordpress/customize-bot/"
+    description="Marca, pantalla de bienvenida, estilo de burbujas y comportamiento — todo por bot."
+  />
+  <LinkCard
+    title="Copiar el shortcode de incrustación"
+    href="/es/wordpress/embed-shortcode/"
+    description="Un shortcode por bot. Cómo conseguir el correcto."
+  />
+  <LinkCard
+    title="Requerir inicio de sesión en WordPress"
+    href="/es/wordpress/require-wp-login/"
+    description="Protege la superficie del chat tras un login WP + copia de inicio de sesión."
+  />
+  <LinkCard
+    title="Widget flotante"
+    href="/es/wordpress/floating-widget/"
+    description="Cuándo usar la burbuja vs la superficie de página completa."
+  />
+</CardGrid>

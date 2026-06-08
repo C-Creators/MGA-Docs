@@ -1,0 +1,166 @@
+---
+title: Requerir inicio de sesión en WordPress
+description: Protege la superficie [mga_chat_app] tras un inicio de sesión de WordPress. Personaliza la copia y la URL de redirección.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+La superficie `[mga_chat_app]` puede exigir que los visitantes hayan
+**iniciado sesión en WordPress** antes de poder interactuar con el
+chat. Cuando está activado, los visitantes no logueados ven una
+tarjeta de inicio de sesión en lugar de la superficie del chat. Esto
+es independiente de la contraseña del bot del servidor — pueden
+coexistir.
+
+## Activarlo
+
+<Steps>
+1. Abre el personalizador del bot que quieras proteger. (Espacio del bot → elige un bot.)
+
+2. Haz clic en **Secciones del chat → Comportamiento**.
+
+3. Baja hasta **Autenticación y protección** y activa **Requerir inicio de sesión en WordPress**.
+
+4. Personaliza la copia de inicio de sesión (por defecto: *"Necesitas iniciar sesión para interactuar con este asistente."*) y opcionalmente una **URL de redirección de inicio de sesión** — los visitantes ven un botón que los lleva ahí. Si está vacío se usa la URL de login por defecto de WordPress.
+
+5. Haz clic en **Guardar cambios**.
+</Steps>
+
+## Cómo se ve el toggle en el personalizador
+
+<div class="mga-replica" aria-label="Sección Autenticación y protección">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Marca</button>
+        <button class="mga-replica__subnav-item">Compositor</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Comportamiento</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Comportamiento</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">🔒</div>
+            <div>
+              <div class="mga-replica__card-title">Autenticación y protección</div>
+              <div class="mga-replica__card-sub">Requerir un inicio de sesión en WordPress antes de que los visitantes puedan interactuar con este chat.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__switch-row mga-replica__highlight">
+                <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+                <div>
+                  <span class="mga-replica__switch-label">Requerir inicio de sesión en WordPress</span>
+                  <span class="mga-replica__switch-desc">Cuando está activo, los visitantes no logueados ven la indicación de inicio de sesión en lugar de la superficie del chat.</span>
+                </div>
+              </div>
+              <span class="mga-replica__pin">1</span>
+            </div>
+            <div class="mga-replica__alert">
+              <span class="mga-replica__alert-icon" aria-hidden="true">🔒</span>
+              <div class="mga-replica__alert-body">
+                Este bot también tiene una <strong>contraseña del lado del servidor</strong> configurada en la plataforma MGA. La protección de inicio de sesión de WordPress es independiente — controla quién llega a la superficie del chat, pero la contraseña se aplica desde la API.
+                <a class="mga-replica__alert-link" href="#">Gestionar contraseña del bot →</a>
+              </div>
+            </div>
+            <label class="mga-replica__field-label">Texto del mensaje de inicio de sesión</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__input mga-replica__highlight">Necesitas iniciar sesión para interactuar con este asistente.</div>
+              <span class="mga-replica__pin">2</span>
+            </div>
+            <span class="mga-replica__field-hint">Se muestra a visitantes no logueados cuando se requiere inicio de sesión.</span>
+            <label class="mga-replica__field-label">URL de redirección de inicio de sesión</label>
+            <div class="mga-replica__input mga-replica__input--mono"><span style="color:var(--mga-r-text-faint);">https://example.com/login</span></div>
+            <span class="mga-replica__field-hint">Si se configura, un botón lleva al visitante ahí. De lo contrario se usa el login por defecto de WordPress.</span>
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Permitir a invitados ver la pantalla de bienvenida</span>
+                <span class="mga-replica__switch-desc">Los visitantes pueden ver las sugerencias antes de iniciar sesión.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Requerir inicio de sesión en WordPress</strong> — el toggle principal. Cuando está activo, los visitantes no logueados nunca llegan a la superficie del chat.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span><strong>Texto del mensaje de inicio de sesión</strong> — la copia exacta que verá el visitante. Personalízala para tu marca.</span>
+    </div>
+  </div>
+</div>
+
+## Qué ve un visitante no logueado
+
+Cuando un visitante sin sesión en WordPress llega a la página, el
+shortcode `[mga_chat_app]` renderiza la tarjeta de inicio de sesión en
+lugar de la superficie del chat. Una vez inicia sesión, el chat carga
+normalmente.
+
+<div class="mga-replica" aria-label="Vista previa de la tarjeta de inicio de sesión" style="padding: 30px;">
+  <div class="mga-replica__card" style="max-width: 480px; margin: 0 auto; text-align: center;">
+    <div class="mga-replica__card-body">
+      <div style="font-size:36px; margin-bottom:8px;">🔒</div>
+      <p style="font-size:15px; line-height:1.5; color:var(--mga-r-text);">
+        Necesitas iniciar sesión para interactuar con este asistente.
+      </p>
+      <div style="margin-top:14px;">
+        <a class="mga-replica__btn mga-replica__btn--primary" href="#" style="text-decoration:none;">Iniciar sesión →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Override por incrustación
+
+Puedes activar/desactivar la protección por incrustación sin tocar el
+personalizador pasando `require_wp_login="true"` (o `"false"`)
+directamente en el shortcode:
+
+```html
+[mga_chat_app public_id="a8d3-…-f72c" require_wp_login="true"]
+```
+
+<Aside type="tip" title="Contraseña del bot vs. login de WordPress">
+  Son dos protecciones independientes. La **contraseña del bot**
+  (configurada en la plataforma MGA) la aplica la propia API del chat.
+  **Requerir inicio de sesión en WordPress** la aplica el plugin de
+  WordPress — nunca deja que la superficie React se renderice para
+  visitantes no logueados. Usa la contraseña del bot para protección
+  cross-canal (el mismo bot incrustado fuera de WordPress también queda
+  protegido), y Requerir inicio de sesión cuando solo quieras limitar
+  una página de WordPress a tu zona de miembros.
+</Aside>
+
+## Comportamiento heredado
+
+Si un bot ya estaba protegido por la contraseña del servidor antes de
+actualizar a v1.2.10+, la protección de login WP queda activa
+automáticamente hasta que abras el personalizador una vez y configures
+explícitamente **Requerir inicio de sesión en WordPress** al valor que
+prefieras. Tras tu primer guardado, el toggle del personalizador es la
+fuente canónica.

@@ -3,29 +3,27 @@ title: WordPress Plugin Tutorials
 description: Step-by-step guides for installing, configuring and embedding your AI assistants with the MyGPT Assistants WordPress plugin.
 ---
 
-import { Aside, Card, CardGrid, LinkCard, Badge } from '@astrojs/starlight/components';
+import { Aside, Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-This section walks through the **MGA WP** plugin from the WordPress admin's
-perspective — every screenshot is a live HTML replica of the plugin UI,
-not a static image, so you can hover and read the same labels you'll see
-once the plugin is installed on your site.
+This section walks through the **MGA WP** plugin from the WordPress
+admin's perspective — every screenshot here is a live HTML replica of
+the plugin UI, not a static image, so labels and layouts always match
+the shipped plugin.
 
-<Aside type="tip" title="Heads up">
+<Aside type="tip" title="Two embedding modes">
   The MGA WP plugin ships *two* embedding modes: a **floating widget**
-  (bottom-corner chat bubble that follows visitors across your site) and
-  a **full-page chat surface** rendered via the `[mga_chat_app]`
+  (bottom-corner chat bubble that follows visitors across your site)
+  and a **full-page chat surface** rendered via the `[mga_chat_app]`
   shortcode. The tutorials below focus on the full-page surface and the
   shared workspace UI; the floating widget has its own page.
 </Aside>
 
-## The workspace, in 30 seconds
+## The workspace, at a glance
 
-Every page of the plugin lives inside the same shell: a left **workspace
-sidebar** with a brand card, a "Select bot" dropdown, and a sub-nav for the
-currently selected bot. The dropdown is the single source of truth — every
-field you edit and every shortcode you copy belongs to the bot picked here.
+Every page of the plugin lives inside the same shell. Take 10 seconds
+to learn the three regions:
 
-<div class="mga-replica" aria-label="Plugin workspace shell preview">
+<div class="mga-replica" aria-label="Plugin workspace shell — annotated">
   <div class="mga-replica__shell">
     <aside class="mga-replica__sidebar">
       <div class="mga-replica__brand">
@@ -37,38 +35,36 @@ field you edit and every shortcode you copy belongs to the bot picked here.
       </div>
       <div class="mga-replica__group-label">Navigation</div>
       <nav class="mga-replica__nav">
-        <button class="mga-replica__nav-item">
-          <span class="mga-replica__nav-icon">⌂</span> Dashboard
-        </button>
-        <button class="mga-replica__nav-item">
-          <span class="mga-replica__nav-icon">⚙</span> Settings
-        </button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⌂</span> Dashboard</button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⚙</span> Settings</button>
       </nav>
-      <div class="mga-replica__group-label">Bot Workspace</div>
-      <div class="mga-replica__select-wrap">
-        <span class="mga-replica__select-label">Select bot</span>
-        <div class="mga-replica__select">
-          <span class="mga-replica__bot-dot"></span>
-          Soporte CCreators
+      <div class="mga-replica__group-label">Bot workspace</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <div class="mga-replica__select-wrap mga-replica__highlight">
+          <span class="mga-replica__select-label">Select bot</span>
+          <div class="mga-replica__select">
+            <span class="mga-replica__bot-dot"></span>
+            Soporte CCreators
+          </div>
         </div>
+        <span class="mga-replica__pin">1</span>
       </div>
       <nav class="mga-replica__nav">
-        <button class="mga-replica__nav-item mga-replica__nav-item--active">
-          <span class="mga-replica__nav-icon">▦</span> Bot overview
-        </button>
-        <button class="mga-replica__nav-item">
-          <span class="mga-replica__nav-icon">✦</span> Floating widget
-        </button>
+        <button class="mga-replica__nav-item mga-replica__nav-item--active"><span class="mga-replica__nav-icon">▦</span> Bot overview</button>
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">✦</span> Floating widget</button>
       </nav>
-      <div class="mga-replica__group-label">Chat App Sections</div>
-      <nav class="mga-replica__subnav">
-        <button class="mga-replica__subnav-item">Branding</button>
-        <button class="mga-replica__subnav-item">Welcome</button>
-        <button class="mga-replica__subnav-item">Messages</button>
-        <button class="mga-replica__subnav-item">Composer</button>
-        <button class="mga-replica__subnav-item">Behavior</button>
-        <button class="mga-replica__subnav-item">Embed</button>
-      </nav>
+      <div class="mga-replica__group-label">Chat app sections</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <nav class="mga-replica__subnav">
+          <button class="mga-replica__subnav-item">Branding</button>
+          <button class="mga-replica__subnav-item">Welcome</button>
+          <button class="mga-replica__subnav-item">Messages</button>
+          <button class="mga-replica__subnav-item">Composer</button>
+          <button class="mga-replica__subnav-item">Behavior</button>
+          <button class="mga-replica__subnav-item">Embed</button>
+        </nav>
+        <span class="mga-replica__pin mga-replica__pin--bl">2</span>
+      </div>
     </aside>
     <main class="mga-replica__main">
       <header class="mga-replica__toolbar">
@@ -79,25 +75,40 @@ field you edit and every shortcode you copy belongs to the bot picked here.
         </div>
       </header>
       <div class="mga-replica__body mga-replica__body--single">
-        <div class="mga-replica__card">
-          <div class="mga-replica__card-head">
-            <div class="mga-replica__card-icon">▦</div>
-            <div>
-              <div class="mga-replica__card-title">Workspace tour</div>
-              <div class="mga-replica__card-sub">
-                The bot you pick in the dropdown drives every form, preview, and shortcode in this section.
+        <div class="mga-replica__anchor mga-replica__anchor--block">
+          <div class="mga-replica__card">
+            <div class="mga-replica__card-head">
+              <div class="mga-replica__card-icon">▦</div>
+              <div>
+                <div class="mga-replica__card-title">Bot overview</div>
+                <div class="mga-replica__card-sub">Settings, preview and the embed shortcode for the selected bot.</div>
               </div>
             </div>
+            <div class="mga-replica__card-divider"></div>
+            <div class="mga-replica__card-body">
+              <p style="margin:0;font-size:14px;line-height:1.55;color:var(--mga-r-text-muted);">
+                Whatever you read or edit in this main column belongs to the bot you picked in the dropdown on the left. Switch the dropdown to load a different bot — there is no "global" state.
+              </p>
+            </div>
           </div>
-          <div class="mga-replica__card-divider"></div>
-          <div class="mga-replica__card-body">
-            <p style="margin:0;font-size:14px;line-height:1.55;color:var(--mga-r-text-muted);">
-              Open the <strong>Select bot</strong> dropdown on the left to switch the workspace to any bot synced from your MyGPT Assistants account. The chat app customizer, the embed snippet, the floating widget settings, and the password controls all re-load for the chosen bot — there's no global state.
-            </p>
-          </div>
+          <span class="mga-replica__pin">3</span>
         </div>
       </div>
     </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Select bot</strong> — drives everything. The dropdown writes the bot id into the URL; the rest of the panel re-reads from that.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span><strong>Chat app sections</strong> — every tab of the full-page chat customizer. Clicking jumps you into <code>/bots/&lt;id&gt;/chat-app/&lt;section&gt;</code>.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">3</span>
+      <span><strong>Main pane</strong> — form + live preview for the selected bot. Saves only ever target that bot's row.</span>
+    </div>
   </div>
 </div>
 

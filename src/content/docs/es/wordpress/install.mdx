@@ -1,0 +1,151 @@
+---
+title: Instalar el plugin de WordPress
+description: Descarga, sube, activa y conecta el plugin MGA WP con tu cuenta de MyGPT Assistants.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+## Instalación rápida <Badge text="5 minutos" variant="success" size="small" />
+
+<Steps>
+1. **Descarga el zip** desde tu panel de MyGPT Assistants → pestaña **Embed → WordPress**. El enlace está firmado y se vincula a tu cuenta.
+
+2. **Súbelo a WordPress.** En tu admin de WP ve a **Plugins → Añadir nuevo → Subir plugin**, elige el `mga-wp.zip` que descargaste, haz clic en **Instalar ahora** y luego **Activar**.
+
+3. **Abre el plugin.** Aparecerá una nueva entrada **MGA WP** en la barra lateral de WordPress. Ábrela — caerás en el Panel.
+
+4. **Pega tu clave API.** Abre **Configuración**, pega la clave `mga_…` de tu cuenta de MyGPT Assistants y haz clic en **Conectar cuenta**. El plugin la valida contra `/api/v1/user/me` y muestra el nombre de tu cuenta al tener éxito.
+
+5. **Sincroniza tus bots.** Pulsa **Sincronizar bots**. Cada bot de tu cuenta se importa a la tabla local. Después, el desplegable **Espacio del bot** se llena con todos tus bots.
+</Steps>
+
+## Paso 3 — encuentra la entrada del menú en el admin de WP
+
+Tras activar, mira la barra izquierda del admin de WordPress. El item
+**MGA WP** se registra en la posición 3 (justo bajo Dashboard) con un
+pequeño icono de robot turquesa.
+
+<div class="mga-replica" aria-label="Cromado del admin de WP — entrada MGA WP resaltada">
+  <div class="mga-replica__wp">
+    <nav class="mga-replica__wp-rail">
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⌂</span> Escritorio</button>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <button class="mga-replica__wp-item mga-replica__wp-item--active mga-replica__highlight">
+          <span class="mga-replica__wp-icon">▣</span> MGA WP
+        </button>
+        <span class="mga-replica__pin">1</span>
+      </div>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">✎</span> Entradas</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">▤</span> Páginas</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">✉</span> Comentarios</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">◇</span> Apariencia</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⌘</span> Plugins</button>
+      <button class="mga-replica__wp-item"><span class="mga-replica__wp-icon">⚙</span> Ajustes</button>
+    </nav>
+    <div class="mga-replica__wp-body">
+      <div class="mga-replica__wp-page-title">MGA WP — Panel</div>
+      <p style="font-size:13px;color:#50575e;margin:0 0 14px;">Tu cuenta de MyGPT Assistants aún no está conectada.</p>
+      <div class="mga-replica__anchor" style="display:inline-block;">
+        <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">Conectar cuenta →</button>
+        <span class="mga-replica__pin">2</span>
+      </div>
+    </div>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span>El plugin registra un menú de nivel superior llamado <strong>MGA WP</strong>. Usa un SVG de robot turquesa de 20×20 para mantenerse nítido en Retina.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span>Hasta conectar, el Panel te empuja hacia Configuración. Después de conectar, verás aquí tus bots sincronizados.</span>
+    </div>
+  </div>
+</div>
+
+## Paso 4 — conectar tu cuenta
+
+La página de Configuración es donde pegas la clave API. Tras una
+conexión exitosa verás la tarjeta verde "Conectado y sincronizando".
+
+<div class="mga-replica" aria-label="Página de Configuración — Conectar cuenta">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Navegación</div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item"><span class="mga-replica__nav-icon">⌂</span> Panel</button>
+        <button class="mga-replica__nav-item mga-replica__nav-item--active"><span class="mga-replica__nav-icon">⚙</span> Configuración</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Configuración</div>
+          <div class="mga-replica__toolbar-sub">Gestiona tu integración de MyGPT Assistants</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">⚙</div>
+            <div>
+              <div class="mga-replica__card-title">Conectar cuenta</div>
+              <div class="mga-replica__card-sub">Introduce tu clave API para vincular este sitio de WordPress.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Clave API</label>
+            <div class="mga-replica__anchor mga-replica__anchor--block">
+              <div class="mga-replica__input mga-replica__input--mono mga-replica__highlight">mga_e63a90eb320a4b78828636dad151b825</div>
+              <span class="mga-replica__pin">1</span>
+            </div>
+            <span class="mga-replica__field-hint">Encuentra tu clave API en <strong>Configuración → Claves API</strong> dentro de tu cuenta de MyGPT Assistants.</span>
+            <div class="mga-replica__anchor" style="display:inline-block;margin-top:6px;">
+              <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">Conectar cuenta</button>
+              <span class="mga-replica__pin">2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span>Pega la clave <code>mga_…</code> de la página <strong>Configuración → Claves API</strong> de MyGPT Assistants. El plugin la guarda cifrada (AES‑256‑CBC) y solo muestra una vista enmascarada después.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span>Pulsar <strong>Conectar cuenta</strong> llama a <code>GET /api/v1/user/me</code> — un 200 confirma que la clave es válida; un 401 muestra un error inline.</span>
+    </div>
+  </div>
+</div>
+
+<Aside type="note" title="El desplegable Espacio del bot lo gobierna todo">
+  Una vez conectado, cada página de configuración del plugin opera sobre
+  el bot seleccionado en el desplegable **Seleccionar bot**. El
+  desplegable controla la URL (`/bots/<id>/…`); la URL controla la
+  carga del formulario; el guardado apunta solo a la fila de ese bot.
+</Aside>
+
+## Auto-actualizaciones
+
+Una vez instalado, el plugin consulta tu cuenta de MyGPT Assistants
+cada 12 horas (vía la librería `plugin-update-checker`) para ver si hay
+nuevas versiones. Cuando hay una más nueva, verás un aviso de
+**Actualización disponible** en la página **Plugins** de WP, como con
+cualquier otro plugin.
+
+<Aside type="tip" title="Forzar la verificación de actualizaciones">
+  ¿No quieres esperar? En **Plugins**, haz clic en el enlace
+  **"Comprobar actualizaciones"** junto a MGA WP y WordPress refrescará
+  al instante.
+</Aside>

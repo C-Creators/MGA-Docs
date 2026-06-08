@@ -721,3 +721,299 @@
 :root[data-theme="dark"] .mga-replica__input--disabled {
 	background: rgba(255, 255, 255, 0.04);
 }
+
+/* ── Tutorial annotations ──────────────────────────────────────
+ * Numbered step pins, highlight rings, captions. Use `.is-anchor`
+ * on any element you want to attach a pin to, and pair with one of
+ * the `.mga-replica__pin--N` variants on a child <span>.
+ * ──────────────────────────────────────────────────────────── */
+
+.mga-replica__step-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 3px 10px;
+	background: var(--mga-r-primary);
+	color: #ffffff;
+	border-radius: var(--mga-r-radius-pill);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	box-shadow: 0 4px 14px -4px var(--mga-r-primary);
+}
+
+.mga-replica__step-tag-num {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	background: rgba(255, 255, 255, 0.25);
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 800;
+}
+
+.mga-replica__caption {
+	margin: 6px 0 0;
+	font-size: 12.5px;
+	color: var(--mga-r-text-muted);
+	line-height: 1.45;
+}
+
+/* Element to be highlighted — gets a glowing ring */
+.mga-replica__highlight {
+	position: relative;
+	box-shadow:
+		0 0 0 3px var(--mga-r-primary),
+		0 0 0 7px color-mix(in srgb, var(--mga-r-primary) 28%, transparent),
+		var(--mga-r-shadow-soft);
+	border-radius: inherit;
+	z-index: 1;
+}
+
+.mga-replica__highlight--soft {
+	box-shadow:
+		0 0 0 2px color-mix(in srgb, var(--mga-r-primary) 70%, transparent),
+		0 0 0 6px color-mix(in srgb, var(--mga-r-primary) 18%, transparent);
+}
+
+/* Pin: a numbered circular badge anchored to an element.
+ * Wrap any element in a span/div with `.mga-replica__anchor` and add
+ * a child `<span class="mga-replica__pin">N</span>`. */
+.mga-replica__anchor {
+	position: relative;
+	display: inline-block;
+}
+
+.mga-replica__anchor--block {
+	display: block;
+}
+
+.mga-replica__pin {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	z-index: 2;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: var(--mga-r-primary);
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 800;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow:
+		0 0 0 3px #ffffff,
+		0 6px 18px -4px var(--mga-r-primary);
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	animation: mga-replica-pulse 2s ease-in-out infinite;
+}
+
+.mga-replica__pin--left {
+	right: auto;
+	left: -10px;
+}
+
+.mga-replica__pin--bl {
+	top: auto;
+	bottom: -10px;
+	right: auto;
+	left: -10px;
+}
+
+.mga-replica__pin--br {
+	top: auto;
+	bottom: -10px;
+}
+
+@keyframes mga-replica-pulse {
+	0%, 100% {
+		transform: scale(1);
+		box-shadow:
+			0 0 0 3px #ffffff,
+			0 0 0 0 color-mix(in srgb, var(--mga-r-primary) 40%, transparent);
+	}
+	50% {
+		transform: scale(1.06);
+		box-shadow:
+			0 0 0 3px #ffffff,
+			0 0 0 8px color-mix(in srgb, var(--mga-r-primary) 10%, transparent);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mga-replica__pin {
+		animation: none;
+	}
+}
+
+:root[data-theme="dark"] .mga-replica__pin {
+	box-shadow:
+		0 0 0 3px #0b1220,
+		0 6px 18px -4px var(--mga-r-primary);
+}
+
+@keyframes mga-replica-pulse-dark {
+	0%, 100% { box-shadow: 0 0 0 3px #0b1220, 0 0 0 0 transparent; }
+	50%      { box-shadow: 0 0 0 3px #0b1220, 0 0 0 8px color-mix(in srgb, var(--mga-r-primary) 14%, transparent); }
+}
+
+:root[data-theme="dark"] .mga-replica__pin {
+	animation-name: mga-replica-pulse-dark;
+}
+
+/* Caption row beneath a replica showing the step legend */
+.mga-replica__legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px 22px;
+	padding: 14px 18px;
+	border-top: 1px solid var(--mga-r-border);
+	background: var(--mga-r-surface-alt);
+	font-size: 13px;
+	color: var(--mga-r-text);
+}
+
+.mga-replica__legend-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	max-width: 360px;
+	line-height: 1.45;
+}
+
+.mga-replica__legend-num {
+	flex-shrink: 0;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: var(--mga-r-primary);
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 800;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1px;
+}
+
+/* Small chips for status labels */
+.mga-replica__chip-success {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 2px 10px;
+	font-size: 11px;
+	font-weight: 600;
+	color: #047857;
+	background: rgba(14, 201, 153, 0.12);
+	border: 1px solid rgba(14, 201, 153, 0.32);
+	border-radius: var(--mga-r-radius-pill);
+}
+
+.mga-replica__chip-info {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 2px 10px;
+	font-size: 11px;
+	font-weight: 600;
+	color: #1d4ed8;
+	background: rgba(59, 130, 246, 0.1);
+	border: 1px solid rgba(59, 130, 246, 0.28);
+	border-radius: var(--mga-r-radius-pill);
+}
+
+/* WP-admin chrome (the host nav above our SPA) — used in install
+ * tutorials to show "where the MGA WP menu item lives". */
+.mga-replica__wp {
+	display: flex;
+	background: #1d2327;
+	color: #c3c4c7;
+	border-radius: var(--mga-r-radius);
+	overflow: hidden;
+	font-size: 13px;
+	border: 1px solid #1d2327;
+}
+
+.mga-replica__wp-rail {
+	width: 180px;
+	padding: 6px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.mga-replica__wp-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 14px;
+	color: #c3c4c7;
+	font-size: 13px;
+	background: transparent;
+	border: 0;
+	cursor: default;
+	text-align: left;
+}
+
+.mga-replica__wp-item:hover {
+	background: #2c3338;
+	color: #ffffff;
+}
+
+.mga-replica__wp-item--active {
+	background: #135e96;
+	color: #ffffff;
+	border-left: 4px solid #00a32a;
+	padding-left: 10px;
+}
+
+.mga-replica__wp-icon {
+	width: 18px;
+	height: 18px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mga-replica__wp-body {
+	flex: 1;
+	background: #f0f0f1;
+	color: #1d2327;
+	padding: 22px;
+	min-height: 240px;
+}
+
+.mga-replica__wp-page-title {
+	font-size: 23px;
+	font-weight: 400;
+	color: #1d2327;
+	margin-bottom: 14px;
+}
+
+:root[data-theme="dark"] .mga-replica__wp {
+	border-color: #0b1220;
+}
+
+:root[data-theme="dark"] .mga-replica__wp-body {
+	background: #1e293b;
+	color: #e6edf6;
+}
+
+:root[data-theme="dark"] .mga-replica__wp-page-title {
+	color: #f1f5f9;
+}
+
+:root[data-theme="dark"] .mga-replica__chip-success {
+	color: #6ee7b7;
+}
+
+:root[data-theme="dark"] .mga-replica__chip-info {
+	color: #93c5fd;
+}

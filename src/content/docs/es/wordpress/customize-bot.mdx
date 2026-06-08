@@ -1,0 +1,214 @@
+---
+title: Personalizar la superficie del chat
+description: Aplica tu marca a la superficie [mga_chat_app] — colores, pantalla de bienvenida, estilo de burbujas, comportamiento — para el bot elegido en el desplegable.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+El Personalizador del Chat es donde aplicas tu marca a la superficie
+de chat de página completa renderizada por el shortcode
+`[mga_chat_app]`. Cada cambio que hagas **pertenece al bot seleccionado
+en el desplegable Espacio del bot** — no hay configuración "global" y
+nunca puedes guardar sin querer contra el bot equivocado.
+
+<Aside type="caution" title="Un bot por guardado">
+  La URL del personalizador es `/wp-admin/admin.php?page=mga-wp#/bots/<id>/chat-app/<sección>`.
+  El `<id>` en esa URL es el bot del que el formulario lee y al que
+  escribe. Cambia el desplegable, la URL cambia, y el formulario
+  recarga para el nuevo bot — tus ediciones sin guardar no se trasladan.
+</Aside>
+
+## Abrir el personalizador
+
+<Steps>
+1. En el admin de WP, abre **MGA WP**.
+
+2. En el desplegable **Espacio del bot**, elige el bot al que quieres aplicar la marca.
+
+3. Haz clic en **Secciones del chat → Marca** en la barra lateral (o cualquier otra sección).
+
+4. La columna derecha es el formulario en vivo; a la derecha del formulario hay una vista previa que refleja cada cambio antes de guardar.
+
+5. Haz clic en **Guardar cambios** en la barra superior fija. **Restablecer** revierte el formulario a los valores por defecto; **Descartar** deshace ediciones sin guardar.
+</Steps>
+
+## Cómo se ve el personalizador
+
+<div class="mga-replica" aria-label="Vista previa del personalizador del chat">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <div class="mga-replica__select-wrap mga-replica__highlight">
+          <span class="mga-replica__select-label">Seleccionar bot</span>
+          <div class="mga-replica__select">
+            <span class="mga-replica__bot-dot"></span>
+            Soporte CCreators
+          </div>
+        </div>
+        <span class="mga-replica__pin">1</span>
+      </div>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <div class="mga-replica__anchor mga-replica__anchor--block">
+        <nav class="mga-replica__subnav">
+          <button class="mga-replica__subnav-item">Marca</button>
+          <button class="mga-replica__subnav-item">Bienvenida</button>
+          <button class="mga-replica__subnav-item">Mensajes</button>
+          <button class="mga-replica__subnav-item">Compositor</button>
+          <button class="mga-replica__subnav-item">Barra lateral</button>
+          <button class="mga-replica__subnav-item">Pie y legales</button>
+          <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Comportamiento</button>
+          <button class="mga-replica__subnav-item">Avanzado</button>
+          <button class="mga-replica__subnav-item">Incrustar</button>
+        </nav>
+        <span class="mga-replica__pin mga-replica__pin--bl">2</span>
+      </div>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">
+            Personalizador del Chat
+            <span class="mga-replica__chip-dirty">Cambios sin guardar</span>
+          </div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Configura el shortcode [mga_chat_app] de página completa</div>
+        </div>
+        <button class="mga-replica__btn">↺ Restablecer</button>
+        <button class="mga-replica__btn">↻ Descartar</button>
+        <div class="mga-replica__anchor" style="display:inline-block;">
+          <button class="mga-replica__btn mga-replica__btn--primary mga-replica__highlight">✓ Guardar cambios</button>
+          <span class="mga-replica__pin">3</span>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">⚙</div>
+            <div>
+              <div class="mga-replica__card-title">Comportamiento de la conversación</div>
+              <div class="mga-replica__card-sub">Cómo reacciona la superficie del chat durante una conversación.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Desplazar al mensaje más reciente</span>
+                <span class="mga-replica__switch-desc">Baja automáticamente mientras el asistente transmite la respuesta.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="mga-replica__legend">
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">1</span>
+      <span><strong>Seleccionar bot</strong> — todo lo que edites debajo pertenece a este bot.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">2</span>
+      <span><strong>Secciones del chat</strong> — Marca, Bienvenida, Mensajes, Compositor… cada pestaña controla una porción de la superficie del chat.</span>
+    </div>
+    <div class="mga-replica__legend-item">
+      <span class="mga-replica__legend-num">3</span>
+      <span><strong>Guardar cambios</strong> — escribe la configuración en la fila del bot. Mientras hay ediciones sin guardar verás el chip "Cambios sin guardar".</span>
+    </div>
+  </div>
+</div>
+
+## El personalizador es por bot
+
+Abajo está el mismo panel del personalizador después de cambiar el
+desplegable a otro bot. Fíjate cómo se actualiza el título en la barra
+superior — y los valores guardados son independientes.
+
+<div class="mga-replica" aria-label="Personalizador para un segundo bot">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">para WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Espacio del bot</div>
+      <div class="mga-replica__select-wrap mga-replica__highlight">
+        <span class="mga-replica__select-label">Seleccionar bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Asesor de ventas
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Secciones del chat</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Marca</button>
+        <button class="mga-replica__subnav-item">Bienvenida</button>
+        <button class="mga-replica__subnav-item">Incrustar</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Personalizador del Chat</div>
+          <div class="mga-replica__toolbar-sub">Asesor de ventas — Configura el shortcode [mga_chat_app] de página completa</div>
+        </div>
+        <button class="mga-replica__btn mga-replica__btn--primary is-disabled">✓ Guardar cambios</button>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">🎨</div>
+            <div>
+              <div class="mga-replica__card-title">Colores</div>
+              <div class="mga-replica__card-sub">Paleta de marca para la superficie del chat.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Color primario</label>
+            <div class="mga-replica__input mga-replica__input--mono">#3b82f6</div>
+            <span class="mga-replica__field-hint">Se usa para acentos, focus rings y el botón de enviar.</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<Aside type="tip" title="Vista previa en vivo">
+  En pantallas más anchas, el personalizador renderiza un segundo panel
+  de vista previa a la derecha del formulario. Todo lo que escribas se
+  actualiza al instante, antes de guardar — esa vista previa usa la
+  misma superficie React y la misma hoja de estilos que el shortcode
+  `[mga_chat_app]` publicado, así que lo que ves es exactamente lo que
+  los visitantes verán.
+</Aside>
+
+## Qué puedes personalizar
+
+| Sección | Qué controla |
+|---|---|
+| **Marca** | Tema (auto/claro/oscuro), densidad, ancho máximo, radio de bordes, colores primario/acento/fondo/superficie/texto, familia tipográfica, logo, avatar del bot. |
+| **Bienvenida** | Título y subtítulo de cabecera, encabezado y subencabezado de bienvenida, sugerencias (una por línea, máx. 6), ocultar tras el primer mensaje, aleatorizar. |
+| **Mensajes** | Forma de la burbuja, colores por lado, mostrar avatares, mostrar marcas de tiempo, acciones por mensaje (fuentes / regenerar / copiar / feedback). |
+| **Compositor** | Texto del placeholder, longitud máxima de mensaje, Enter vs Cmd/Ctrl+Enter para enviar. |
+| **Barra lateral** | Activar panel de conversaciones, título, etiqueta del botón "Nueva conversación". |
+| **Pie y legales** | Línea "powered by", HTML del pie, URLs de privacidad y términos. |
+| **Comportamiento** | Auto-scroll, **Requerir inicio de sesión en WordPress**, copia de inicio de sesión y redirección, modo invitado, copia de errores. |
+| **Avanzado** | CSS personalizado inyectado como `<style>` con scope dentro de la superficie del chat. |
+| **Incrustar** | Shortcode por bot que pegas en una página o entrada — ver el siguiente tutorial. |
+
+Continúa con **[Copiar el shortcode de incrustación →](/es/wordpress/embed-shortcode/)**.
