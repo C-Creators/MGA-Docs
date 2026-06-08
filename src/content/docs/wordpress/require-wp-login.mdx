@@ -1,0 +1,146 @@
+---
+title: Require WordPress login
+description: Gate the [mga_chat_app] surface behind a WordPress login. Customize sign-in copy and the login redirect URL.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+The `[mga_chat_app]` surface can require visitors to be **signed in to
+WordPress** before they can interact with the chat. When enabled,
+logged-out visitors see a polished sign-in card instead of the chat
+surface. This is independent of the server-side bot password — both can
+coexist.
+
+## Turn it on
+
+<Steps>
+1. Open the customizer for the bot you want to protect. (Bot Workspace → pick a bot.)
+
+2. Click **Chat App Sections → Behavior**.
+
+3. Scroll to **Authentication & gating** and flip **Require WordPress login** on.
+
+4. Customize the sign-in copy (default: *"You need to be logged in to be able to interact with this assistant."*) and optionally a **Sign-in redirect URL** — visitors get a button that takes them there. If empty, WordPress's default login URL is used.
+
+5. Click **Save changes**.
+</Steps>
+
+## What the toggle looks like in the customizer
+
+<div class="mga-replica" aria-label="Authentication & gating section">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Composer</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Behavior</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Behavior</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">🔒</div>
+            <div>
+              <div class="mga-replica__card-title">Authentication & gating</div>
+              <div class="mga-replica__card-sub">Require a WordPress login before visitors can interact with this chat.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Require WordPress login</span>
+                <span class="mga-replica__switch-desc">When on, logged-out visitors see the sign-in prompt below instead of the chat surface.</span>
+              </div>
+            </div>
+            <div class="mga-replica__alert">
+              <span class="mga-replica__alert-icon" aria-hidden="true">🔒</span>
+              <div class="mga-replica__alert-body">
+                This bot also has a <strong>server-side password</strong> set on the MGA platform. The WordPress login gate is independent — it controls who reaches the chat surface, but the password is enforced by the API itself.
+                <a class="mga-replica__alert-link" href="#">Manage bot password →</a>
+              </div>
+            </div>
+            <label class="mga-replica__field-label">Sign-in prompt text</label>
+            <div class="mga-replica__input">You need to be logged in to be able to interact with this assistant.</div>
+            <span class="mga-replica__field-hint">Shown to logged-out visitors when WordPress login is required.</span>
+            <label class="mga-replica__field-label">Sign-in redirect URL</label>
+            <div class="mga-replica__input mga-replica__input--mono"><span style="color:var(--mga-r-text-faint);">https://example.com/login</span></div>
+            <span class="mga-replica__field-hint">If set, a button takes the visitor here. Otherwise WordPress's default login is used.</span>
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Allow guests to view the welcome screen</span>
+                <span class="mga-replica__switch-desc">Visitors can see suggested prompts before signing in.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## What a logged-out visitor sees
+
+When a visitor without a WordPress session lands on the page, the
+`[mga_chat_app]` shortcode renders the sign-in card instead of the chat
+surface. Once they sign in, the chat loads normally.
+
+<div class="mga-replica" aria-label="Sign-in card preview" style="padding: 30px;">
+  <div class="mga-replica__card" style="max-width: 480px; margin: 0 auto; text-align: center;">
+    <div class="mga-replica__card-body">
+      <div style="font-size:36px; margin-bottom:8px;">🔒</div>
+      <p style="font-size:15px; line-height:1.5; color:var(--mga-r-text);">
+        You need to be logged in to be able to interact with this assistant.
+      </p>
+      <div style="margin-top:14px;">
+        <a class="mga-replica__btn mga-replica__btn--primary" href="#" style="text-decoration:none;">Sign in →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Per-embed override
+
+You can flip the gate on/off per embed without touching the customizer
+by passing `require_wp_login="true"` (or `"false"`) directly on the
+shortcode:
+
+```html
+[mga_chat_app public_id="a8d3-…-f72c" require_wp_login="true"]
+```
+
+<Aside type="tip" title="Bot password vs WordPress login">
+  These two are independent gates. **Bot password** (set on the MGA
+  platform) is enforced by the chat API itself. **Require WordPress login**
+  is enforced by the WordPress plugin — it never lets the React surface
+  render at all for logged-out visitors. Use the bot password for
+  cross-channel protection (the same bot embedded outside WordPress is
+  also locked), and Require WordPress login when you want to limit a
+  WordPress page to your members area.
+</Aside>
+
+## Legacy behavior
+
+If a bot was already gated by the server-side password before you
+upgraded to v1.2.10+, the WP-login gate stays on automatically until you
+open the customizer once and explicitly toggle **Require WordPress
+login** to your preferred value. After your first save, the toggle in
+the customizer is the canonical source.

@@ -1,0 +1,129 @@
+---
+title: Floating widget
+description: Configure the floating chat bubble that follows visitors across your WordPress site. Per-bot like the full-page surface.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In addition to the `[mga_chat_app]` full-page surface, the MGA WP plugin
+ships a **floating widget** — a bottom-corner chat bubble that follows
+visitors across every page of your site. It's the right choice for
+support-style assistants that should always be one click away.
+
+## When to use which
+
+| Use case | Use this |
+|---|---|
+| Always-available assistant across the whole site | **Floating widget** |
+| Dedicated assistant page (`/help`, `/sales`, etc.) | **`[mga_chat_app]` shortcode** |
+| Different assistants on different pages | **`[mga_chat]` or `[mga_chat_app]`** with per-page placement |
+| Marketing-style hero embed | **`[mga_chat_app]`** with `max_width` and a tall `height` |
+
+<Aside type="note" title="One floating widget at a time">
+  Only one floating widget can be active site-wide — the one tied to the
+  bot marked as "Active" in the bot list. Multiple `[mga_chat]` and
+  `[mga_chat_app]` shortcodes can run on the same page, each for a
+  different bot.
+</Aside>
+
+## What the customizer looks like
+
+The Floating Widget customizer is separate from the Chat App Customizer
+— it lives one step up in the Bot Workspace sub-nav. Same dropdown
+contract: **whatever you save targets the bot picked in the dropdown.**
+
+<div class="mga-replica" aria-label="Floating widget customizer">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item">
+          <span class="mga-replica__nav-icon">▦</span> Bot overview
+        </button>
+        <button class="mga-replica__nav-item mga-replica__nav-item--active">
+          <span class="mga-replica__nav-icon">✦</span> Floating widget
+        </button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Floating widget</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators</div>
+        </div>
+        <button class="mga-replica__btn mga-replica__btn--primary">✓ Save changes</button>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">📍</div>
+            <div>
+              <div class="mga-replica__card-title">Position & color</div>
+              <div class="mga-replica__card-sub">Where the bubble sits and how it looks.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Position</label>
+            <div class="mga-replica__input">Bottom right</div>
+            <label class="mga-replica__field-label">Primary color</label>
+            <div class="mga-replica__input mga-replica__input--mono">#10b981</div>
+            <label class="mga-replica__field-label">Greeting</label>
+            <div class="mga-replica__input"><span style="color:var(--mga-r-text-faint);">Hi! How can I help you today?</span></div>
+          </div>
+        </div>
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">👁</div>
+            <div>
+              <div class="mga-replica__card-title">Page visibility</div>
+              <div class="mga-replica__card-sub">Where the floating widget should appear on your site.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Show on all pages</span>
+                <span class="mga-replica__switch-desc">The bubble appears on every published page.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## The `[mga_chat]` inline shortcode
+
+A second shortcode, `[mga_chat]`, renders the same widget as an
+**inline block** (not a floating bubble). It honors every floating
+widget config field by default and supports the same per-embed
+attribute overrides:
+
+```html
+[mga_chat height="500" title="Sales chat" primary_color="#3b82f6"]
+```
+
+Both `[mga_chat]` and the floating widget use a **bot password** flow
+when the bot is password-protected on the MGA platform — visitors see a
+password screen before they can chat. (The `[mga_chat_app]` full-page
+surface uses a different model — see
+**[Require WordPress login](/wordpress/require-wp-login/)**.)

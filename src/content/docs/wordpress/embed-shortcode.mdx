@@ -1,0 +1,166 @@
+---
+title: Copy the embed shortcode
+description: There is one [mga_chat_app] shortcode per bot. Pick a bot in the dropdown, open the Embed tab, copy the snippet, paste it into a page.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+The full-page chat surface is embedded via the `[mga_chat_app]`
+shortcode. **Each bot has its own shortcode** — there is no
+"one shortcode for everything." The Embed tab generates the snippet
+pre-filled with the bot you've selected in the Bot Workspace dropdown.
+
+<Aside type="caution" title="Switch the dropdown to switch bots">
+  If you want the shortcode for **a different bot**, you must first
+  switch the **Select bot** dropdown in the workspace sidebar. The
+  Embed tab always shows the snippet for the bot currently loaded — it
+  is not a generic copy/paste field.
+</Aside>
+
+## Where the shortcode lives
+
+<Steps>
+1. **Open the customizer** for the bot you want to embed. (`MGA WP →` pick a bot in the dropdown.)
+
+2. **Click "Embed"** in the sidebar's Chat App Sections.
+
+3. **Copy** the value from the read-only field. The shortcode contains the bot's portable `public_id`, so it works across reinstalls and even across WordPress sites that share the same MyGPT Assistants account.
+
+4. **Paste** it into the Gutenberg block of your choice (a Shortcode block, a Custom HTML block, or a classic editor). Save the page. Visit it — the full-page chat surface renders inline.
+</Steps>
+
+## What the Embed tab looks like
+
+<div class="mga-replica" aria-label="Embed tab preview">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Messages</button>
+        <button class="mga-replica__subnav-item">Behavior</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Embed</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Shortcode for the selected bot</label>
+            <div class="mga-replica__shortcode">
+              <div class="mga-replica__shortcode-value">[mga_chat_app public_id="a8d3-…-f72c"]</div>
+              <button class="mga-replica__shortcode-copy">⧉ Copy</button>
+            </div>
+            <span class="mga-replica__field-hint">
+              Customization is stored per bot. This shortcode only needs the bot identifier — every visual setting is loaded from the saved customizer config.
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## Switching bots = switching shortcodes
+
+Pick a different bot in the dropdown and the Embed tab regenerates the
+snippet with that bot's `public_id`. There is no global "the plugin's
+shortcode" — every bot owns its own.
+
+<div class="mga-replica" aria-label="Embed tab for a second bot">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Sales Concierge
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
+          <div class="mga-replica__toolbar-sub">Sales Concierge — Embed</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Shortcode for the selected bot</label>
+            <div class="mga-replica__shortcode">
+              <div class="mga-replica__shortcode-value">[mga_chat_app public_id="b71f-…-09ae"]</div>
+              <button class="mga-replica__shortcode-copy">⧉ Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## Per-embed overrides (advanced)
+
+The `[mga_chat_app]` shortcode also accepts per-embed attribute
+overrides — useful when you want the same bot to render differently
+on different pages (e.g. a darker theme on a marketing page, a
+narrower max-width inside a sidebar).
+
+| Attribute | Type | Example |
+|---|---|---|
+| `public_id` | string | `public_id="a8d3-…-f72c"` — required (or `bot_id="N"`). |
+| `height` | px / vh / % | `height="100vh"` |
+| `theme` | `light` / `dark` / `auto` | `theme="dark"` |
+| `primary_color` | hex | `primary_color="#3b82f6"` |
+| `max_width` | CSS length | `max_width="640px"` |
+| `sidebar` | `true` / `false` | `sidebar="false"` |
+| `require_wp_login` | `true` / `false` | `require_wp_login="true"` |
+| `submit_on_enter` | `true` / `false` | `submit_on_enter="false"` |
+
+Example:
+
+```html
+[mga_chat_app public_id="a8d3-…-f72c" theme="dark" max_width="640px" sidebar="false"]
+```
+
+Attributes only override the customizer config for that specific embed.
+The saved customizer config stays untouched.
+
+Next: **[Require WordPress login →](/wordpress/require-wp-login/)**.

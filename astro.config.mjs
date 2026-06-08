@@ -18,7 +18,10 @@ export default defineConfig({
 				replacesTitle: true,
 			},
 			// Custom theme matching MyGPTAssistants app
-			customCss: ['./src/styles/custom.css'],
+			customCss: [
+				'./src/styles/custom.css',
+				'./src/styles/wp-plugin-replica.css',
+			],
 			// i18n configuration - English (root) and Spanish
 			// Using root locale so English pages serve at / without prefix
 			locales: {
@@ -35,6 +38,17 @@ export default defineConfig({
 					label: 'Getting Started',
 					items: [
 						{ slug: 'getting-started/subscription-plans' },
+					],
+				},
+				{
+					label: 'WordPress Plugin',
+					items: [
+						{ slug: 'wordpress/overview', label: 'Overview' },
+						{ slug: 'wordpress/install' },
+						{ slug: 'wordpress/customize-bot' },
+						{ slug: 'wordpress/embed-shortcode' },
+						{ slug: 'wordpress/require-wp-login' },
+						{ slug: 'wordpress/floating-widget' },
 					],
 				},
 				{

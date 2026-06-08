@@ -1,0 +1,190 @@
+---
+title: Customize the chat surface
+description: Brand the [mga_chat_app] surface — colors, welcome screen, bubble style, behavior — for the bot selected in the dropdown.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+The Chat App Customizer is where you brand the full-page chat surface
+rendered by the `[mga_chat_app]` shortcode. Every change you make
+**belongs to the bot selected in the Bot Workspace dropdown** — there is
+no "global" config and you can never accidentally save settings against
+the wrong bot.
+
+<Aside type="caution" title="One bot per save">
+  The customizer's URL is `/wp-admin/admin.php?page=mga-wp#/bots/<id>/chat-app/<section>`.
+  The `<id>` in that URL is the bot the form is reading from and writing to.
+  Switch the dropdown, the URL changes, and the form re-loads for the new bot
+  — your previous unsaved edits are not carried across.
+</Aside>
+
+## Open the customizer
+
+<Steps>
+1. In the WP admin, open **MGA WP**.
+
+2. In the **Bot Workspace** dropdown, pick the bot you want to brand.
+
+3. Click **Chat App Sections → Branding** in the sidebar (or any other section).
+
+4. The right column is the live form; the right of the form is a live preview that reflects every change before you save.
+
+5. Click **Save changes** in the sticky top toolbar to persist. **Reset** reverts the entire form to defaults; **Discard** drops unsaved edits and reloads the saved state.
+</Steps>
+
+## What the customizer looks like
+
+<div class="mga-replica" aria-label="Chat App Customizer preview">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Messages</button>
+        <button class="mga-replica__subnav-item">Composer</button>
+        <button class="mga-replica__subnav-item">Sidebar</button>
+        <button class="mga-replica__subnav-item">Footer & Legal</button>
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Behavior</button>
+        <button class="mga-replica__subnav-item">Advanced</button>
+        <button class="mga-replica__subnav-item">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">
+            Chat App Customizer
+            <span class="mga-replica__chip-dirty">Unsaved changes</span>
+          </div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — Configure the full-page [mga_chat_app] shortcode</div>
+        </div>
+        <button class="mga-replica__btn">↺ Reset</button>
+        <button class="mga-replica__btn">↻ Discard</button>
+        <button class="mga-replica__btn mga-replica__btn--primary">✓ Save changes</button>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">⚙</div>
+            <div>
+              <div class="mga-replica__card-title">Conversation behavior</div>
+              <div class="mga-replica__card-sub">How the chat surface reacts during a conversation.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <div class="mga-replica__switch-row">
+              <span class="mga-replica__switch mga-replica__switch--on" aria-hidden="true"></span>
+              <div>
+                <span class="mga-replica__switch-label">Auto-scroll to newest message</span>
+                <span class="mga-replica__switch-desc">Scrolls down automatically as the assistant streams a reply.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## The customizer is per-bot
+
+Below is the same customizer pane after you switch the dropdown to a
+different bot. Notice the title in the toolbar updates — and the saved
+field values are independent.
+
+<div class="mga-replica" aria-label="Customizer for a second bot">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Sales Concierge
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item mga-replica__subnav-item--active">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Chat App Customizer</div>
+          <div class="mga-replica__toolbar-sub">Sales Concierge — Configure the full-page [mga_chat_app] shortcode</div>
+        </div>
+        <button class="mga-replica__btn mga-replica__btn--primary is-disabled">✓ Save changes</button>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">🎨</div>
+            <div>
+              <div class="mga-replica__card-title">Colors</div>
+              <div class="mga-replica__card-sub">Brand-level palette for the chat surface.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Primary color</label>
+            <div class="mga-replica__input mga-replica__input--mono">#3b82f6</div>
+            <span class="mga-replica__field-hint">Used for accents, focus rings and the send button.</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<Aside type="tip" title="Live preview">
+  Wider screens render a second live-preview pane on the right of the
+  form. Anything you type updates instantly, even before saving — that
+  preview uses the same React surface and stylesheet as your published
+  `[mga_chat_app]` shortcode, so what you see is exactly what visitors
+  will see.
+</Aside>
+
+## What you can customize
+
+| Section | What it controls |
+|---|---|
+| **Branding** | Theme (auto/light/dark), density, max content width, border radius, primary/accent/background/surface/text colors, font family, brand logo, bot avatar. |
+| **Welcome** | Header title & subtitle, welcome heading & subheading, suggested prompts (one per line, max 6), hide-after-first-message, randomize prompts. |
+| **Messages** | Bubble shape (rounded / pill / square), per-side bubble & text colors, show avatars, show timestamps, per-message actions (sources / regenerate / copy / feedback). |
+| **Composer** | Placeholder text, max message length, Enter vs Cmd/Ctrl+Enter to send. |
+| **Sidebar** | Enable conversations panel, sidebar title, "New chat" label. |
+| **Footer & Legal** | Powered-by line, footer HTML, privacy & terms URLs. |
+| **Behavior** | Auto-scroll, **Require WordPress login**, sign-in copy & redirect, guest mode, empty/network/rate-limit error copy. |
+| **Advanced** | Custom CSS injected as a scoped `<style>` inside the chat surface. |
+| **Embed** | Per-bot shortcode you paste into a page or post — see the next tutorial. |
+
+Continue to **[Copy the embed shortcode →](/wordpress/embed-shortcode/)**.

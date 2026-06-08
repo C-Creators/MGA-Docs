@@ -1,0 +1,132 @@
+---
+title: WordPress Plugin Tutorials
+description: Step-by-step guides for installing, configuring and embedding your AI assistants with the MyGPT Assistants WordPress plugin.
+---
+
+import { Aside, Card, CardGrid, LinkCard, Badge } from '@astrojs/starlight/components';
+
+This section walks through the **MGA WP** plugin from the WordPress admin's
+perspective — every screenshot is a live HTML replica of the plugin UI,
+not a static image, so you can hover and read the same labels you'll see
+once the plugin is installed on your site.
+
+<Aside type="tip" title="Heads up">
+  The MGA WP plugin ships *two* embedding modes: a **floating widget**
+  (bottom-corner chat bubble that follows visitors across your site) and
+  a **full-page chat surface** rendered via the `[mga_chat_app]`
+  shortcode. The tutorials below focus on the full-page surface and the
+  shared workspace UI; the floating widget has its own page.
+</Aside>
+
+## The workspace, in 30 seconds
+
+Every page of the plugin lives inside the same shell: a left **workspace
+sidebar** with a brand card, a "Select bot" dropdown, and a sub-nav for the
+currently selected bot. The dropdown is the single source of truth — every
+field you edit and every shortcode you copy belongs to the bot picked here.
+
+<div class="mga-replica" aria-label="Plugin workspace shell preview">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Navigation</div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item">
+          <span class="mga-replica__nav-icon">⌂</span> Dashboard
+        </button>
+        <button class="mga-replica__nav-item">
+          <span class="mga-replica__nav-icon">⚙</span> Settings
+        </button>
+      </nav>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item mga-replica__nav-item--active">
+          <span class="mga-replica__nav-icon">▦</span> Bot overview
+        </button>
+        <button class="mga-replica__nav-item">
+          <span class="mga-replica__nav-icon">✦</span> Floating widget
+        </button>
+      </nav>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Messages</button>
+        <button class="mga-replica__subnav-item">Composer</button>
+        <button class="mga-replica__subnav-item">Behavior</button>
+        <button class="mga-replica__subnav-item">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <header class="mga-replica__toolbar">
+        <button class="mga-replica__toolbar-back" aria-hidden="true">←</button>
+        <div class="mga-replica__toolbar-titlewrap">
+          <div class="mga-replica__toolbar-title">Bot overview</div>
+          <div class="mga-replica__toolbar-sub">Soporte CCreators — connect, customize and embed</div>
+        </div>
+      </header>
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">▦</div>
+            <div>
+              <div class="mga-replica__card-title">Workspace tour</div>
+              <div class="mga-replica__card-sub">
+                The bot you pick in the dropdown drives every form, preview, and shortcode in this section.
+              </div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <p style="margin:0;font-size:14px;line-height:1.55;color:var(--mga-r-text-muted);">
+              Open the <strong>Select bot</strong> dropdown on the left to switch the workspace to any bot synced from your MyGPT Assistants account. The chat app customizer, the embed snippet, the floating widget settings, and the password controls all re-load for the chosen bot — there's no global state.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## Pick a tutorial
+
+<CardGrid>
+  <LinkCard
+    title="Install the plugin"
+    href="/wordpress/install/"
+    description="Download, upload, activate, sync your bots."
+  />
+  <LinkCard
+    title="Customize the chat surface"
+    href="/wordpress/customize-bot/"
+    description="Branding, welcome screen, bubble style, behavior — all per bot."
+  />
+  <LinkCard
+    title="Copy the embed shortcode"
+    href="/wordpress/embed-shortcode/"
+    description="One shortcode per bot. How to grab the right one."
+  />
+  <LinkCard
+    title="Require WordPress login"
+    href="/wordpress/require-wp-login/"
+    description="Gate the chat surface behind a WP login + sign-in copy."
+  />
+  <LinkCard
+    title="Floating widget"
+    href="/wordpress/floating-widget/"
+    description="When to use the bubble vs the full-page surface."
+  />
+</CardGrid>

@@ -1,0 +1,103 @@
+---
+title: Install the WordPress plugin
+description: Download, upload, activate, and connect the MGA WP plugin to your MyGPT Assistants account.
+---
+
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
+
+## Quick install <Badge text="5 minutes" variant="success" size="small" />
+
+<Steps>
+1. **Download the zip** from your MyGPT Assistants dashboard → **Embed → WordPress** tab. The download link is signed and ties to your account.
+
+2. **Upload to WordPress.** In your WP admin go to **Plugins → Add New → Upload Plugin**, choose the `mga-wp.zip` you just downloaded, click **Install Now**, then **Activate**.
+
+3. **Open the plugin.** A new **MGA WP** entry appears in the WordPress sidebar. Open it — you'll land on the Dashboard.
+
+4. **Paste your API key.** Open **Settings**, paste the `mga_…` API key from your MyGPT Assistants account, and click **Connect**. The plugin validates the key against `/api/v1/user/me` and shows your account name on success.
+
+5. **Sync your bots.** Open **Bots** and press **Sync bots**. Every bot from your MyGPT Assistants account is imported into the local table (`mga_wp_bots`). After this, the **Bot Workspace** dropdown in the sidebar is populated with all your bots.
+</Steps>
+
+<Aside type="note" title="Bot Workspace dropdown is everything">
+  Every settings page in the plugin operates on whichever bot is selected
+  in the **Select bot** dropdown. The dropdown drives the URL
+  (`/bots/<id>/…`); the URL drives the form load; the form save targets
+  that bot's row only.
+</Aside>
+
+## What the dropdown looks like
+
+The sidebar's **Bot Workspace** section is where you switch which bot you
+are configuring. Switching it reloads the right-hand panel for the new bot
+— customizer fields, preview, and the embed shortcode all change with it.
+
+<div class="mga-replica" aria-label="Bot workspace dropdown preview">
+  <div class="mga-replica__shell">
+    <aside class="mga-replica__sidebar">
+      <div class="mga-replica__brand">
+        <div class="mga-replica__brand-logo">M</div>
+        <div class="mga-replica__brand-text">
+          <span class="mga-replica__brand-title">MyGPT Assistants</span>
+          <span class="mga-replica__brand-sub">for WordPress</span>
+        </div>
+      </div>
+      <div class="mga-replica__group-label">Bot Workspace</div>
+      <div class="mga-replica__select-wrap">
+        <span class="mga-replica__select-label">Select bot</span>
+        <div class="mga-replica__select">
+          <span class="mga-replica__bot-dot"></span>
+          Soporte CCreators
+        </div>
+      </div>
+      <nav class="mga-replica__nav">
+        <button class="mga-replica__nav-item mga-replica__nav-item--active">
+          <span class="mga-replica__nav-icon">▦</span> Bot overview
+        </button>
+        <button class="mga-replica__nav-item">
+          <span class="mga-replica__nav-icon">✦</span> Floating widget
+        </button>
+      </nav>
+      <div class="mga-replica__group-label">Chat App Sections</div>
+      <nav class="mga-replica__subnav">
+        <button class="mga-replica__subnav-item">Branding</button>
+        <button class="mga-replica__subnav-item">Welcome</button>
+        <button class="mga-replica__subnav-item">Messages</button>
+        <button class="mga-replica__subnav-item">Embed</button>
+      </nav>
+    </aside>
+    <main class="mga-replica__main">
+      <div class="mga-replica__body mga-replica__body--single">
+        <div class="mga-replica__card">
+          <div class="mga-replica__card-head">
+            <div class="mga-replica__card-icon">●</div>
+            <div>
+              <div class="mga-replica__card-title">Selected bot</div>
+              <div class="mga-replica__card-sub">All fields on the right belong to this bot only.</div>
+            </div>
+          </div>
+          <div class="mga-replica__card-divider"></div>
+          <div class="mga-replica__card-body">
+            <label class="mga-replica__field-label">Public ID</label>
+            <div class="mga-replica__input mga-replica__input--mono mga-replica__input--disabled">a8d3-…-f72c</div>
+            <label class="mga-replica__field-label">Model</label>
+            <div class="mga-replica__input mga-replica__input--disabled">gpt-4o-mini</div>
+            <span class="mga-replica__field-hint">Both come from your MyGPT Assistants account and refresh on each sync.</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## Auto-updates
+
+Once installed, the plugin polls your MyGPT Assistants account for new
+releases every 12 hours (via the `plugin-update-checker` library). When a
+newer version is available you'll see an **Update available** notice on
+WP's **Plugins** page exactly like any other plugin.
+
+<Aside type="tip" title="Force an update check">
+  Don't want to wait? On **Plugins**, click the **"Check for updates"**
+  link next to MGA WP and WordPress will refresh immediately.
+</Aside>
