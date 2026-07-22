@@ -1,0 +1,51 @@
+---
+title: Errors
+description: normalizeError() turns any thrown value into a user-facing message, and ApiError is the canonical server error shape generated from the ErrorResponse DTO.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## `normalizeError`
+
+`normalizeError()` collapses any thrown value into a single user-facing string. It unwraps axios errors, reads the server's structured error body, and falls back to `error.message` for unknown throws.
+
+```ts
+import { normalizeError } from '@mygpt/sdk';
+
+try {
+  await api.post('/crm/contacts', { name: 'A' });
+} catch (err) {
+  message.error(normalizeError(err));
+}
+```
+
+Resolution order:
+
+1. **Axios error** with a `response.data.error.message` → returns that API message.
+2. **Axios error** without one → returns `error.message`.
+3. Any other `Error` instance → returns its `.message`.
+4. Anything else → returns `"An unexpected error occurred"`.
+
+## `ApiError`
+
+`ApiError` is the canonical error shape, generated from the server's `ErrorResponse` DTO — the same envelope every non-2xx response uses:
+
+```ts
+import type { ApiError } from '@mygpt/sdk';
+```
+
+```jsonc
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Email is required",
+    "field": "email",        // optional
+    "requestId": "req_abc",  // optional
+    "timestamp": "2026-07-22T20:00:00.000Z" // optional
+  }
+}
+```
+
+<Aside type="tip">
+With the [typed client](/sdk/typed-client/), the `error` returned in `{ data, error }` is already this shape — no try/catch needed. `normalizeError` is most useful with the [axios client](/sdk/axios-client/), which rejects on non-2xx.
+</Aside>

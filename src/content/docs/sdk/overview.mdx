@@ -1,0 +1,118 @@
+---
+title: TypeScript SDK
+description: The official @mygpt/sdk TypeScript client for the MyGPTAssistants v1 API — fully generated from the server OpenAPI spec.
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Tabs, TabItem } from '@astrojs/starlight/components';
+
+`@mygpt/sdk` is the official TypeScript SDK for the MyGPTAssistants **v1 REST API**. <Badge text="TypeScript" variant="note" size="small" /> <Badge text="Generated" variant="success" size="small" />
+
+Every type and function name is **generated from the server's OpenAPI spec** — there are no hand-written contracts to drift out of sync. When the API changes, the SDK types change with it, and CI fails if they don't.
+
+<Aside type="note" title="Which API is this?">
+This SDK targets the **v1 REST API** (the platform's long-standing backend). The full endpoint catalogue is browsable under **[SDK · API Reference](/sdk/api/)**, generated from the same spec the SDK is built from.
+</Aside>
+
+## Install
+
+The package lives inside the monorepo workspace and is consumed via `workspace:*` — there is no separate npm publish step.
+
+```jsonc
+// app/ui/package.json
+{
+  "dependencies": {
+    "@mygpt/sdk": "workspace:*"
+  }
+}
+```
+
+## Three ways to use it
+
+Pick the entry point that fits your call site — they all share the same generated types.
+
+<CardGrid>
+  <LinkCard
+    title="Typed client (recommended)"
+    description="createTypedClient() — path, query, body & response all checked against the live spec at compile time."
+    href="/sdk/typed-client/"
+  />
+  <LinkCard
+    title="Axios client"
+    description="createApiClient() — a pre-configured axios instance for uploads, interceptors, and custom transports."
+    href="/sdk/axios-client/"
+  />
+  <LinkCard
+    title="DTOs & types"
+    description="import type { Contact, Lead, TicketStatus } from '@mygpt/sdk/dto' when you only need the shapes."
+    href="/sdk/dtos/"
+  />
+</CardGrid>
+
+## Quick start
+
+<Tabs>
+  <TabItem label="Typed client">
+    ```ts
+    import { createTypedClient } from '@mygpt/sdk';
+
+    const sdk = createTypedClient({
+      baseUrl: '/api/v1',
+      getToken: () => localStorage.getItem('jwt'),
+      getTeamId: () => localStorage.getItem('teamId'),
+      onUnauthorized: () => navigate('/login'),
+    });
+
+    const { data, error } = await sdk.GET('/api/v1/crm/contacts', {
+      params: { query: { page: 1, pageSize: 25 } },
+    });
+    ```
+  </TabItem>
+  <TabItem label="Axios">
+    ```ts
+    import { createApiClient } from '@mygpt/sdk';
+
+    const api = createApiClient({
+      baseURL: '/api/v1',
+      getToken: () => localStorage.getItem('jwt'),
+    });
+
+    const res = await api.get('/crm/contacts', { params: { page: 1, pageSize: 25 } });
+    ```
+  </TabItem>
+  <TabItem label="Types only">
+    ```ts
+    import type { Contact, Lead, AppointmentStatus } from '@mygpt/sdk/dto';
+    ```
+  </TabItem>
+</Tabs>
+
+## Also exported
+
+Beyond the two clients, the package root (`@mygpt/sdk`) also re-exports:
+
+| Export | Purpose |
+| ------ | ------- |
+| `normalizeError`, `ApiError` | Turn any thrown value into a user-facing message — see [Errors](/sdk/errors/). |
+| `Rooms` + realtime event contracts | Socket.io room names and typed event maps — see [Realtime](/sdk/realtime/). |
+| `sdkVersion` / `__sdkVersion__` | Spec-hash metadata to detect client/server drift at runtime. |
+| `createBlueprintsClient`, `createInterviewsClient`, `createInboxClient` | Higher-level domain clients used by the newer surfaces. |
+
+## How the SDK stays honest
+
+| Mechanism | What it catches |
+| --------- | --------------- |
+| `pnpm sdk:check` (CI quality gate) | Server route/DTO changes without a regenerated SDK. |
+| `sdk-contract.test.ts` (CI test) | Validator/auth regressions (boots the real app, signs a real JWT, hits authenticated routes). |
+| `AssertEqual<>` on the enum module | New Prisma enum values not propagated to the SDK. |
+| `fast-json-stringify` strip on the server | Handlers leaking undeclared columns. |
+
+Regenerate the SDK from a running/booted server with:
+
+```bash
+pnpm sdk:refresh   # extract spec + regenerate TS types
+pnpm sdk:check     # CI guard — fails if local spec/types drift from server
+```
+
+<Aside type="tip" title="Keeping this reference current">
+The [API Reference](/sdk/api/) on this site is built from a vendored copy of `packages/sdk/openapi-spec.json`. After `pnpm sdk:refresh` in the app repo, run `npm run sync:openapi` in the docs repo to refresh it, then commit.
+</Aside>

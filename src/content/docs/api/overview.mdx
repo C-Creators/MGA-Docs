@@ -201,21 +201,24 @@ Contact support if you need higher rate limits for your use case. Enterprise pla
    Replace test keys with production keys when ready.
 </Steps>
 
-## SDKs & Libraries <Badge text="Coming Soon" variant="caution" size="small" />
-
-Official SDKs for popular languages are in development:
+## SDKs & Libraries
 
 <CardGrid>
-  <Card title="JavaScript/TypeScript" icon="seti:javascript">
-    NPM package for Node.js and browser.
-  </Card>
-  <Card title="Python" icon="seti:python">
-    PyPI package with async support.
-  </Card>
-  <Card title="PHP" icon="seti:php">
-    Composer package for Laravel and more.
-  </Card>
+  <LinkCard
+    title="TypeScript SDK"
+    description="@mygpt/sdk — the official, fully-typed client generated from this API. Start here."
+    href="/sdk/overview/"
+  />
+  <LinkCard
+    title="Full API Reference"
+    description="Every endpoint, parameter and response shape, generated from the OpenAPI spec."
+    href="/sdk/api/"
+  />
 </CardGrid>
+
+<Aside type="note" title="More languages">
+Python and PHP SDKs are on the roadmap. Until then, the [OpenAPI spec](/sdk/api/) can generate a client in any language via your tool of choice.
+</Aside>
 
 ## Related Topics
 

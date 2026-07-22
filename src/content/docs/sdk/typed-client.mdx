@@ -1,0 +1,81 @@
+---
+title: Typed Client
+description: createTypedClient() — a fully type-checked API client backed by openapi-fetch, where paths, params, bodies and responses are validated against the live spec.
+---
+
+import { Aside, Badge } from '@astrojs/starlight/components';
+
+`createTypedClient()` is the **recommended** way to call the API. <Badge text="Recommended" variant="success" size="small" />
+
+It's backed by [`openapi-fetch`](https://openapi-ts.dev/openapi-fetch/), so path strings, query params, request bodies, and response shapes are **all checked against the generated `paths` type at compile time**. A misspelled path or a wrong query param fails the build — not production.
+
+## Create the client
+
+```ts
+import { createTypedClient } from '@mygpt/sdk';
+
+const sdk = createTypedClient({
+  baseUrl: '/api/v1',
+  getToken: () => localStorage.getItem('jwt'),
+  getTeamId: () => localStorage.getItem('teamId'),
+  onUnauthorized: () => navigate('/login'),
+  onPaymentRequired: (data) => navigate('/billing', { state: data }),
+  onForbidden: (data) => toast.error('Not allowed'),
+});
+```
+
+### Configuration
+
+| Option | Type | Required | Description |
+| ------ | ---- | -------- | ----------- |
+| `baseUrl` | `string` | ✅ | Base URL for all requests (e.g. `/api/v1`). |
+| `getToken` | `() => string \| null` | — | Returns the JWT; attached as `Authorization: Bearer <token>` on every request. |
+| `getTeamId` | `() => string \| null` | — | Returns the active team id; attached as the `x-team-id` header. |
+| `onUnauthorized` | `() => void` | — | Called on any `401` response. |
+| `onPaymentRequired` | `(data: unknown) => void` | — | Called on `402` with the parsed body — use for subscription/billing gates. |
+| `onForbidden` | `(data: unknown) => void` | — | Called on `403` with the parsed body. |
+| `fetch` | `ClientOptions['fetch']` | — | Custom `fetch` implementation (tests, SSR, proxies). |
+
+<Aside type="note">
+Auth and team headers are injected automatically by a request middleware, and the `401` / `402` / `403` callbacks fire from a response middleware — you don't wire interceptors yourself.
+</Aside>
+
+## Reading data
+
+```ts
+const { data, error } = await sdk.GET('/api/v1/crm/contacts', {
+  params: { query: { page: 1, pageSize: 25 } },
+});
+
+if (error) {
+  // `error` is the typed ErrorResponse body
+  return;
+}
+
+// `data` is typed as the 200 response for this path — e.g. { data, total, page, pageSize, totalPages }
+console.log(data.total);
+```
+
+## Writing data
+
+```ts
+const { data, error } = await sdk.POST('/api/v1/crm/contacts', {
+  body: { name: 'Ada Lovelace', email: 'ada@example.com' },
+});
+```
+
+`GET`, `POST`, `PUT`, `PATCH`, and `DELETE` are all available, each constrained to the paths that actually declare that method.
+
+## Detecting drift at runtime
+
+The client carries the spec-hash it was generated against on a non-enumerable `__sdkVersion__` property:
+
+```ts
+console.log(sdk.__sdkVersion__); // compare against the server's reported spec hash
+```
+
+Use it on app startup or a health check to detect when a deployed client has drifted from the server.
+
+<Aside type="tip">
+Browse every path, method, param, and response shape in the **[API Reference](/sdk/api/)** — it's generated from the same spec that types this client.
+</Aside>

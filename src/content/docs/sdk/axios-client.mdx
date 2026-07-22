@@ -1,0 +1,54 @@
+---
+title: Axios Client
+description: createApiClient() — a pre-configured axios instance with auth and team-id headers, for uploads, custom interceptors, and transports that need them.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+`createApiClient()` returns a **pre-configured [axios](https://axios-http.com/) instance** with the JWT and team-id headers already wired in, plus standard status-code callbacks.
+
+Reach for this when you need axios features the typed client doesn't cover — multipart file uploads, request/response interceptors, streaming, retries, or integrating with existing axios-based code.
+
+## Create the client
+
+```ts
+import { createApiClient } from '@mygpt/sdk';
+
+const api = createApiClient({
+  baseURL: '/api/v1',
+  getToken: () => localStorage.getItem('jwt'),
+  getTeamId: () => localStorage.getItem('teamId'),
+  onUnauthorized: () => navigate('/login'),
+  onPaymentRequired: (data) => navigate('/billing', { state: data }),
+});
+```
+
+### Configuration
+
+| Option | Type | Required | Description |
+| ------ | ---- | -------- | ----------- |
+| `baseURL` | `string` | ✅ | Base URL for all requests. |
+| `getToken` | `() => string \| null` | ✅ | Returns the JWT; attached as `Authorization: Bearer <token>`. |
+| `getTeamId` | `() => string \| null` | — | Returns the active team id; attached as the `x-team-id` header. |
+| `onUnauthorized` | `() => void` | — | Called on any `401` response. |
+| `onPaymentRequired` | `(data: unknown) => void` | — | Called on `402` with the response body. |
+| `onForbidden` | `(data: unknown) => void` | — | Called on `403` with the response body. |
+| `axiosConfig` | `Omit<AxiosRequestConfig, 'baseURL'>` | — | Extra axios config merged into the instance (timeouts, headers, etc.). |
+
+<Aside type="caution" title="Not type-checked against the spec">
+The axios instance is a plain `AxiosInstance` — request/response shapes are **not** validated against the OpenAPI spec the way the [typed client](/sdk/typed-client/) is. Import the matching shapes from [`@mygpt/sdk/dto`](/sdk/dtos/) and annotate your calls when you want type safety here.
+</Aside>
+
+## Example — file upload
+
+```ts
+import type { Contact } from '@mygpt/sdk/dto';
+
+const res = await api.post<{ data: Contact[] }>(
+  '/crm/contacts/import',
+  formData,
+  { headers: { 'Content-Type': 'multipart/form-data' } },
+);
+```
+
+The default `Content-Type` is `application/json`; override it per request as shown above for uploads.

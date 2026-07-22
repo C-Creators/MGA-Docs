@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +11,18 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
+			plugins: [
+				// Auto-generates the full REST/SDK API reference from the vendored
+				// @mygpt/sdk OpenAPI spec. Refresh it with `npm run sync:openapi`.
+				starlightOpenAPI([
+					{
+						base: 'sdk/api',
+						label: 'SDK · API Reference',
+						schema: './src/openapi/mga-sdk.json',
+						collapsed: true,
+					},
+				]),
+			],
 			title: 'MyGPTAssistants Documentation',
 			description: 'Complete guide to MyGPTAssistants platform - AI Assistants and CRM tools',
 			logo: {
@@ -116,6 +129,20 @@ export default defineConfig({
 						{ slug: 'api/webhooks' },
 					],
 				},
+				{
+					label: 'TypeScript SDK',
+					translations: { es: 'SDK de TypeScript' },
+					items: [
+						{ slug: 'sdk/overview', label: 'Overview' },
+						{ slug: 'sdk/typed-client' },
+						{ slug: 'sdk/axios-client' },
+						{ slug: 'sdk/dtos' },
+						{ slug: 'sdk/errors' },
+						{ slug: 'sdk/realtime' },
+					],
+				},
+				// Generated, one group per configured schema (the full API reference).
+				...openAPISidebarGroups,
 				{
 					label: 'Legal',
 					items: [

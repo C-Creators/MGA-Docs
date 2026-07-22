@@ -1,0 +1,55 @@
+---
+title: DTOs & Types
+description: Import resource types, request payloads, list-query params and enums from @mygpt/sdk/dto — all generated from the server OpenAPI spec.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When you only need the **shapes** — not a client — import them from `@mygpt/sdk/dto`:
+
+```ts
+import type { Contact, Lead, Bot, AppointmentStatus } from '@mygpt/sdk/dto';
+```
+
+Every resource type, create/update payload, list-query param, and enum is exported. All of them are one-line aliases over the auto-generated OpenAPI components, so they never drift from the API.
+
+<Aside type="caution" title="Import from /dto, not the root">
+Prefer `@mygpt/sdk/dto`. The root `@mygpt/sdk` still re-exports these names for backwards-compatibility, but that path also carries deprecated hand-written types that are being phased out.
+</Aside>
+
+## What's available
+
+For each resource you get a predictable set of aliases:
+
+- **`Resource`** — the full read shape (e.g. `Contact`, `Ticket`, `Appointment`).
+- **`ResourceCreatePayload`** / **`ResourceUpdatePayload`** — request bodies.
+- **`ResourceListQuery`** — the list-endpoint query params.
+- Related **enums** (e.g. `TicketStatus`, `LeadStatus`, `AppointmentStatus`).
+
+### A sampler
+
+| Category | Types |
+| -------- | ----- |
+| CRM core | `Contact`, `Lead`, `Account`, `Opportunity`, `Pipeline`, `Stage`, `Ticket`, `TicketMessage`, `Appointment`, `Task`, `Note`, `Tag`, `Segment`, `Campaign` |
+| Bots | `Bot`, `BotAppearance`, `BotJob`, `BotJobRun`, `BotIntegration`, `BotPlayground`, `BotPlaygroundMessage` |
+| Billing | `SubscriptionPlan`, `TeamSubscription`, `TeamBillingInfo`, `Invoice`, `SubscriptionStatus`, `BillingCycle`, `PricingModel` |
+| Team | `Team`, `TeamMember`, `TeamRole` |
+| Reports | `SearchResponse`, `PipelineSummaryReport`, `LeadFunnelReport`, `TicketSlaReport`, `CrmOverviewReport` |
+| Governance | `AuditLog`, `IdentityProvider`, `DataConsent`, `DataSubjectRequest`, `DataRetentionPolicy` |
+| Enums | `TicketStatus`, `TicketChannel`, `Priority`, `LeadStatus`, `AccountStatus`, `AppointmentStatus`, `TaskStatus`, `CampaignStatus`, … |
+| Envelopes | `ErrorResponse`, `PaginationMeta` |
+
+<Aside type="note">
+This is a subset — the exported set tracks the migration state. If a resource hasn't been migrated to a DTO yet, its alias resolves to `unknown`. The full, always-current list lives in `packages/sdk/src/dto.ts`, and every shape is browsable in the [API Reference](/sdk/api/).
+</Aside>
+
+## Building your own typed calls
+
+`@mygpt/sdk/dto` also re-exports the raw OpenAPI metadata, so you can derive precise types for any endpoint:
+
+```ts
+import type { paths, components, operations } from '@mygpt/sdk/dto';
+
+type ContactsList =
+  paths['/api/v1/crm/contacts']['get']['responses']['200']['content']['application/json'];
+```

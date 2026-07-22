@@ -1,0 +1,68 @@
+---
+title: Realtime
+description: Typed Socket.io event contracts and room-name constructors from @mygpt/sdk/realtime for notifications, live-chat handoff, typing, presence and data-source progress.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The realtime module ships the **Socket.io event contracts** and **room-name constructors** the server emits against. It's a set of types plus helpers — you bring your own `socket.io-client` connection and type it with these.
+
+```ts
+import { Rooms } from '@mygpt/sdk/realtime';
+import type { ServerToClientEvents, ClientToServerEvents } from '@mygpt/sdk/realtime';
+```
+
+<Aside type="caution" title="No client factory">
+There is no `createRealtimeClient()` — the module intentionally exposes only the typed contracts and `Rooms`. Wire the connection with `socket.io-client` directly and apply the event maps as generics (below).
+</Aside>
+
+## Room names
+
+`Rooms` builds the exact room strings the server uses, so client and server never disagree on a name:
+
+```ts
+Rooms.team(42);          // "team:42"
+Rooms.user(7);           // "user:7"
+Rooms.conversation(1024); // "conversation:1024"
+Rooms.bot('bot_abc');    // "bot:bot_abc"
+```
+
+## Typed connection
+
+Apply the event maps as generics so both incoming and outgoing events are checked:
+
+```ts
+import { io, type Socket } from 'socket.io-client';
+import { Rooms } from '@mygpt/sdk/realtime';
+import type { ServerToClientEvents, ClientToServerEvents } from '@mygpt/sdk/realtime';
+
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('/', {
+  auth: { token: localStorage.getItem('jwt') },
+});
+
+socket.emit('join', Rooms.team(42));
+
+socket.on('notification:new', (event) => {
+  // `event` is typed as NotificationEvent
+  showToast(event);
+});
+```
+
+## Event contracts
+
+The following event payload types are exported from `@mygpt/sdk/realtime`:
+
+| Type | Emitted for |
+| ---- | ----------- |
+| `NotificationEvent` | New / read in-app notifications. |
+| `HandoffMessageEvent` | Live-chat escalation messages (human ↔ visitor). |
+| `TypingEvent` | Typing indicators in a conversation. |
+| `PresenceEvent` | Online/offline presence changes. |
+| `DatasourceStatusEvent` | Data-source (RAG) ingestion status changes. |
+| `DatasourceProgressEvent` | Incremental data-source indexing progress. |
+| `MaggieConversionEvent` / `ConversionType` | Assistant-driven conversion events. |
+| `ServerToClientEvents` / `ClientToServerEvents` | The full event maps used as `Socket<…>` generics. |
+
+<Aside type="tip">
+These are the shapes the platform's live features (notifications, CRM live-escalation, data-source progress) are built on. See **[CRM → Live Escalation](/crm/live-escalation/)** for the product-side view.
+</Aside>
