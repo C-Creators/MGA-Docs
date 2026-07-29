@@ -28,3 +28,10 @@ pnpm-debug.log*
 
 # VS Code MCP config (contains API keys)
 .vscode/mcp.json
+
+# This project builds with npm (package-lock.json) and the deploy workflow
+# picks its package manager from whichever lockfile is present. A stray
+# pnpm-lock.yaml silently switches CI to pnpm and fails the deploy, so keep
+# pnpm's artifacts out of the repo even if someone runs pnpm locally.
+pnpm-lock.yaml
+pnpm-workspace.yaml
