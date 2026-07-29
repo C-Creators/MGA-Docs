@@ -579,6 +579,87 @@
 }
 
 /* Live escalation split view */
+/* In-page section nav — the sticky left rail inside a page body, as used by the
+ * Customer Support portal. Distinct from `__sidebar` (the app-level CRM nav) and
+ * from `__tabs` (horizontal). Mirrors the real component: a bordered rounded card
+ * of padded rows, the active row tinted with the primary colour and its icon and
+ * label taking the primary tone. */
+.mga-app__subnav {
+	width: 210px;
+	flex-shrink: 0;
+	align-self: flex-start;
+	background: var(--mga-a-surface);
+	border: 1px solid var(--mga-a-border);
+	border-radius: var(--mga-a-radius);
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.mga-app__subnav-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	width: 100%;
+	padding: 9px 12px;
+	border: 0;
+	border-radius: var(--mga-a-radius-sm);
+	background: transparent;
+	color: var(--mga-a-text);
+	font: inherit;
+	font-size: 13px;
+	font-weight: 500;
+	text-align: left;
+	cursor: default;
+}
+
+.mga-app__subnav-item--active {
+	background: var(--mga-a-primary-tint);
+	color: var(--mga-a-primary-strong);
+}
+
+.mga-app__subnav-icon {
+	color: var(--mga-a-text-faint);
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.mga-app__subnav-item--active .mga-app__subnav-icon {
+	color: var(--mga-a-primary-strong);
+}
+
+/* Caption under a nav row (e.g. "3 waiting"), like the real portal's counts. */
+.mga-app__subnav-meta {
+	display: block;
+	font-size: 11px;
+	font-weight: 400;
+	color: var(--mga-a-text-muted);
+	margin-top: 1px;
+}
+
+.mga-app__subnav-item--active .mga-app__subnav-meta {
+	color: var(--mga-a-primary-strong);
+	opacity: 0.75;
+}
+
+/* Page body pairing the section nav with its content. */
+.mga-app__portal {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+}
+
+@media (max-width: 720px) {
+	.mga-app__subnav {
+		width: 100%;
+	}
+
+	.mga-app__portal {
+		flex-direction: column;
+	}
+}
+
 .mga-app__split {
 	display: grid;
 	grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
