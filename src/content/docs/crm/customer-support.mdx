@@ -1,0 +1,237 @@
+---
+title: Customer Support Portal
+description: One place to watch every live bot conversation, take over on any channel, and resolve the ticket that comes out of it
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Everything Support, In One Screen <Badge text="CRM Feature" variant="success" size="small" />
+
+The **Customer Support** portal replaces the old standalone Tickets page. Instead of jumping between an escalation queue, a ticket list and a conversation view, everything a support agent needs sits behind one left-hand menu — with a live chat console that adapts to whichever channel the customer is actually on.
+
+Find it under **CRM → Customer Support**.
+
+<div class="mga-app" aria-label="Customer Support portal — illustrative preview">
+  <div class="mga-app__shell">
+    <aside class="mga-app__sidebar">
+      <div class="mga-app__sidebar-brand">
+        <div class="mga-app__sidebar-logo">M</div>
+        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+      </div>
+      <div class="mga-app__sidebar-section">CRM</div>
+      <nav class="mga-app__sidebar-nav">
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
+        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">☎</span> Customer Support</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
+        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◇</span> Pipelines</button>
+      </nav>
+    </aside>
+    <main class="mga-app__main">
+      <div class="mga-app__topbar">
+        <div>
+          <div class="mga-app__topbar-title">Customer Support</div>
+          <div class="mga-app__topbar-subtitle">Live Chat · 3 waiting · 2 active</div>
+        </div>
+      </div>
+      <div class="mga-app__body">
+        <div class="mga-app__panel">
+          <div class="mga-app__panel-title">Live Chat</div>
+          <div class="mga-app__panel-title">Active Conversations</div>
+          <div class="mga-app__panel-title">Tickets</div>
+          <div class="mga-app__panel-title">Analytics</div>
+          <div class="mga-app__panel-title">Escalation Settings</div>
+        </div>
+        <div class="mga-app__panel">
+          <div class="mga-app__panel-title">Maria López · WhatsApp</div>
+          <div class="mga-app__row">Customer: my order hasn't arrived</div>
+          <div class="mga-app__row">AI: let me check that for you…</div>
+          <div class="mga-app__row">Ana (agent): Hi Maria, taking a look now</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+## The Five Sections
+
+<CardGrid>
+  <Card title="Live Chat" icon="comment">
+    The takeover console. Everything waiting for a human, everything currently being handled, and the chat itself.
+  </Card>
+  <Card title="Active Conversations" icon="rocket">
+    Every conversation your bots are handling **right now**, across every channel — whether or not anyone has asked for a human.
+  </Card>
+  <Card title="Tickets" icon="document">
+    The formal record. Same tickets as before, now alongside the conversation that produced them.
+  </Card>
+  <Card title="Analytics" icon="bars">
+    How fast the team claims and resolves, where conversations come from, and who is carrying the load.
+  </Card>
+  <Card title="Escalation Settings" icon="setting">
+    When a bot should stop trying and fetch a person.
+  </Card>
+</CardGrid>
+
+---
+
+## Live Chat
+
+### The queue
+
+Conversations arrive here in two states:
+
+- **Waiting** — the bot escalated and nobody has claimed it yet
+- **Active** — an agent has taken over and is replying
+
+Both lists update in real time. You do not need to refresh, and you should not have to wait for a poll: claiming, resolving and new messages all push to every agent's screen as they happen.
+
+### The chat looks like the customer's channel
+
+The console re-skins itself to match wherever the customer actually is — WhatsApp, Telegram, Instagram, Messenger, Discord or the web widget. It is a small thing that prevents a real mistake: replying with the tone or formatting of the wrong platform.
+
+<Aside type="tip" title="Full context before you type">
+Above the live thread you'll find the **bot conversation that came before you** — collapsed by default. Open it to see exactly what the customer already asked and what the AI already told them, so you don't repeat a question they've answered twice.
+</Aside>
+
+### Taking over
+
+<Steps>
+1. Open a waiting conversation and press **Accept**.
+2. **The bot goes quiet immediately.** It will not reply again on this conversation while you hold it.
+3. Reply normally. Your messages are delivered on the customer's own channel — they never see a channel switch or a new number.
+4. When you're done, press **Resolve**.
+</Steps>
+
+On resolve, the bot resumes and the conversation you just had is **written into its memory**, with each turn attributed: the customer, the AI, and you by name. The next time that customer writes in, the bot knows what was agreed and who agreed it.
+
+<Aside type="caution" title="Your name, not your username">
+Customers see your **display name**. If you haven't set one, they see your login username — which for an account literally named `admin` reads badly. Set it in **Settings → Profile → Display name** (e.g. *Ana from Support*).
+</Aside>
+
+### Sending files, photos, audio and video
+
+The composer accepts every format the platform can deliver:
+
+| Type | Formats |
+|---|---|
+| Images | JPEG, PNG, GIF, WebP |
+| Audio | MP3, OGG/Opus, WAV, M4A, AAC |
+| Video | MP4, MOV, M4V, 3GP, MKV, WebM |
+| Documents | PDF, Word, Excel, CSV, TXT |
+
+You can also **record a voice note** directly in the console — press the microphone, speak, send. It arrives as a proper push-to-talk bubble, not a file attachment.
+
+Documents arrive for the customer as a tappable card showing the file type and size, rather than a bare link they might not notice.
+
+<Aside type="note" title="Oversized video is handled for you">
+WhatsApp will not accept an arbitrarily large video. If yours is over the limit it is automatically compressed to fit; if it still cannot be made small enough it is sent as a document instead, so the customer always receives the file one way or another.
+</Aside>
+
+### Internal notes
+
+Below the conversation there's a collapsed **Internal notes** section. Notes are visible to your team only and are deliberately kept **out of the message thread**, so there is never a moment where you have to work out whether a line was actually delivered to the customer.
+
+### Acting on the CRM without leaving the chat
+
+The **CRM panel** button opens a side drawer where you can, mid-conversation:
+
+- Create a **lead** from a first-time contact
+- Attach a **contact** to the ticket
+- Move an open **deal** to its next pipeline stage
+- Create a **new deal**
+
+Your bots can do the same things autonomously — capture a lead, progress a deal, record a note — so a conversation that starts with the AI and finishes with you produces one continuous CRM history rather than two disconnected halves.
+
+---
+
+## Active Conversations
+
+Live Chat shows you what has been escalated. **Active Conversations** shows you everything else: every conversation your bots are handling right now, with the channel, the customer, how long it has been running and the last thing said.
+
+From here you can:
+
+- Open a **transcript** of any ongoing bot conversation
+- **Take over** any of them with one click — no escalation required
+
+That second point is the useful one. You do not have to wait for a customer to get frustrated enough to ask for a human, or for the bot to decide it is stuck. If you can see a conversation going sideways, you can step in.
+
+<Aside type="caution" title="Two channels can't be taken over">
+Conversations arriving through the **REST API** or **Unipile** are shown for visibility but cannot be taken over, because there is no live channel to bridge your replies back through.
+</Aside>
+
+---
+
+## Escalation
+
+### How a conversation reaches a human
+
+Three routes, and they run independently:
+
+<Steps>
+1. **The customer asks.** "Let me talk to a person." The AI recognises the intent and escalates.
+2. **The bot gives up.** After a configurable number of unsuccessful attempts on the same problem, it stops trying and fetches someone.
+3. **Frustration is detected.** Optionally, the AI escalates when a customer's tone turns clearly negative.
+</Steps>
+
+### Where it goes
+
+If an agent is **online**, the conversation lands in the Live Chat queue and everyone sees it immediately.
+
+If **nobody is available**, a ticket is created instead so the request is not lost, and the customer is told a person will follow up.
+
+### If nobody claims it in time
+
+An escalation that sits unclaimed does not simply expire. The bot returns to the conversation, offers the customer a **contact-back**, and opens a ticket containing a summary of what happened — so the follow-up starts with context rather than "sorry, can you explain again?"
+
+### Configuring it
+
+Escalation behaviour is set **per bot**, under **Assistants → your bot → Handoff**:
+
+| Setting | What it does |
+|---|---|
+| **Default assignee** | Who new escalations are routed to |
+| **Human request threshold** | How many failed attempts before the bot escalates on its own |
+| **Auto-escalate on frustration** | Escalate when the customer's tone turns negative |
+| **Escalation keywords** | Phrases that trigger an immediate handoff |
+
+The portal's **Escalation Settings** section links straight to these.
+
+---
+
+## When an agent replies from their own phone
+
+If your team answers a WhatsApp customer directly from the WhatsApp app rather than the console, that reply is **captured back into the ticket** automatically. The transcript stays complete, and the bot's memory stays accurate, even when someone works outside the portal.
+
+---
+
+## Analytics
+
+The Analytics section reports on the support operation itself:
+
+- **Open handoffs** and how many arrived **today**
+- **Time to claim** and **time to resolve** (median and 95th percentile)
+- **Abandon rate** — escalations nobody picked up
+- **Critical** — conversations breaching your response window
+- **Online agents** right now
+- Breakdown **by channel** and **per agent**
+
+Percentiles matter more than averages here: a p95 time-to-claim tells you what your slowest customers experienced, which an average will happily hide.
+
+---
+
+## Tickets
+
+Tickets work exactly as before — they are now a section of this portal rather than a separate page. Anything escalated produces one, and you can still create them by hand.
+
+<LinkCard title="Ticket fields, lifecycle and reports" href="/crm/tickets/" description="Statuses, priorities, assignment and the full ticket reference" />
+
+---
+
+## Related Topics
+
+<CardGrid>
+  <LinkCard title="Live Escalation" href="/crm/live-escalation/" description="The escalation mechanics in depth" />
+  <LinkCard title="Tickets" href="/crm/tickets/" description="Ticket lifecycle and fields" />
+  <LinkCard title="Integrations" href="/assistants/integrations/" description="Connect WhatsApp, Telegram, Instagram and more" />
+  <LinkCard title="Pipelines" href="/crm/pipelines/" description="The deal stages you can move from inside a chat" />
+</CardGrid>

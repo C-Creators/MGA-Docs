@@ -1,0 +1,196 @@
+---
+title: Portal de Soporte
+description: Un solo lugar para ver todas las conversaciones en vivo, tomar el control en cualquier canal y resolver el ticket que se genera
+---
+
+import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Todo el Soporte en Una Sola Pantalla <Badge text="Función CRM" variant="success" size="small" />
+
+El **Portal de Soporte** reemplaza la antigua página de Tickets. En vez de saltar entre la cola de escaladas, la lista de tickets y la vista de conversación, todo lo que un agente necesita queda detrás de un solo menú lateral — con una consola de chat en vivo que se adapta al canal donde está realmente el cliente.
+
+Lo encuentras en **CRM → Soporte al Cliente**.
+
+## Las Cinco Secciones
+
+<CardGrid>
+  <Card title="Chat en Vivo" icon="comment">
+    La consola de toma de control. Lo que espera atención, lo que ya se está atendiendo, y el chat en sí.
+  </Card>
+  <Card title="Conversaciones Activas" icon="rocket">
+    Todas las conversaciones que tus bots están atendiendo **en este momento**, en todos los canales — hayan pedido un humano o no.
+  </Card>
+  <Card title="Tickets" icon="document">
+    El registro formal. Los mismos tickets de siempre, ahora junto a la conversación que los originó.
+  </Card>
+  <Card title="Analítica" icon="bars">
+    Qué tan rápido responde y resuelve el equipo, de dónde vienen las conversaciones y quién carga con más.
+  </Card>
+  <Card title="Configuración de Escalada" icon="setting">
+    Cuándo el bot debe dejar de intentar y buscar a una persona.
+  </Card>
+</CardGrid>
+
+---
+
+## Chat en Vivo
+
+### La cola
+
+Las conversaciones llegan en dos estados:
+
+- **En espera** — el bot escaló y nadie la ha tomado todavía
+- **Activa** — un agente tomó el control y está respondiendo
+
+Ambas listas se actualizan en tiempo real. No hace falta recargar: tomar, resolver y los mensajes nuevos aparecen en la pantalla de todos los agentes en el momento.
+
+### El chat se ve como el canal del cliente
+
+La consola cambia su apariencia según dónde esté el cliente — WhatsApp, Telegram, Instagram, Messenger, Discord o el widget web. Es un detalle pequeño que evita un error real: responder con el tono o el formato de la plataforma equivocada.
+
+<Aside type="tip" title="Contexto completo antes de escribir">
+Sobre la conversación en vivo aparece **lo que el bot conversó antes que vos** — plegado por defecto. Ábrelo para ver qué preguntó el cliente y qué le respondió la IA, y así no repetir una pregunta que ya contestó dos veces.
+</Aside>
+
+### Tomar el control
+
+<Steps>
+1. Abre una conversación en espera y presiona **Aceptar**.
+2. **El bot se calla de inmediato.** No volverá a responder en esa conversación mientras la tengas tomada.
+3. Responde normalmente. Tus mensajes se entregan en el canal propio del cliente — nunca ve un cambio de canal ni un número nuevo.
+4. Cuando termines, presiona **Resolver**.
+</Steps>
+
+Al resolver, el bot retoma la conversación y lo que acaban de hablar **queda escrito en su memoria**, con cada turno atribuido: el cliente, la IA, y vos por nombre. La próxima vez que ese cliente escriba, el bot sabe qué se acordó y con quién.
+
+<Aside type="caution" title="Tu nombre, no tu usuario">
+Los clientes ven tu **nombre para mostrar**. Si no lo configuras, ven tu nombre de usuario — que en una cuenta llamada `admin` se lee bastante mal. Configúralo en **Configuración → Perfil → Nombre para mostrar** (por ejemplo, *Ana de Soporte*).
+</Aside>
+
+### Enviar archivos, fotos, audio y video
+
+El compositor acepta todos los formatos que la plataforma puede entregar:
+
+| Tipo | Formatos |
+|---|---|
+| Imágenes | JPEG, PNG, GIF, WebP |
+| Audio | MP3, OGG/Opus, WAV, M4A, AAC |
+| Video | MP4, MOV, M4V, 3GP, MKV, WebM |
+| Documentos | PDF, Word, Excel, CSV, TXT |
+
+También puedes **grabar una nota de voz** desde la consola — presiona el micrófono, habla, envía. Llega como una burbuja de voz real, no como un archivo adjunto.
+
+Los documentos le llegan al cliente como una tarjeta con el tipo y el tamaño del archivo, en vez de un enlace suelto que podría pasar por alto.
+
+<Aside type="note" title="El video grande se maneja solo">
+WhatsApp no acepta un video de cualquier tamaño. Si el tuyo excede el límite, se comprime automáticamente; y si aun así no cabe, se envía como documento. El cliente siempre recibe el archivo de una forma u otra.
+</Aside>
+
+### Notas internas
+
+Debajo de la conversación hay una sección **Notas internas**, plegada. Las notas las ve solo tu equipo y se mantienen deliberadamente **fuera del hilo de mensajes**, para que nunca tengas que averiguar si una línea se le envió al cliente o no.
+
+### Actuar sobre el CRM sin salir del chat
+
+El botón del **panel CRM** abre un cajón lateral donde puedes, en medio de la conversación:
+
+- Crear un **lead** desde un contacto nuevo
+- Vincular un **contacto** al ticket
+- Mover una **oportunidad** abierta a su siguiente etapa
+- Crear una **oportunidad nueva**
+
+Tus bots pueden hacer lo mismo por su cuenta — capturar un lead, avanzar una oportunidad, registrar una nota — así una conversación que empieza con la IA y termina con vos deja un solo historial continuo en el CRM, y no dos mitades sueltas.
+
+---
+
+## Conversaciones Activas
+
+Chat en Vivo muestra lo que ya fue escalado. **Conversaciones Activas** muestra todo lo demás: cada conversación que tus bots están atendiendo ahora mismo, con el canal, el cliente, cuánto lleva y lo último que se dijo.
+
+Desde ahí puedes:
+
+- Ver la **transcripción** de cualquier conversación en curso
+- **Tomar el control** de cualquiera con un clic — sin necesidad de escalada
+
+Ese segundo punto es el valioso. No hace falta esperar a que el cliente se frustre lo suficiente como para pedir un humano, ni a que el bot decida que se trabó. Si ves una conversación yéndose de lado, entras.
+
+<Aside type="caution" title="Dos canales no se pueden tomar">
+Las conversaciones que llegan por la **API REST** o por **Unipile** se muestran para visibilidad, pero no se pueden tomar: no hay un canal en vivo por donde devolver tus respuestas.
+</Aside>
+
+---
+
+## Escalada
+
+### Cómo llega una conversación a un humano
+
+Tres caminos, y funcionan de forma independiente:
+
+<Steps>
+1. **El cliente lo pide.** "Quiero hablar con una persona." La IA reconoce la intención y escala.
+2. **El bot se rinde.** Después de una cantidad configurable de intentos fallidos sobre el mismo problema, deja de insistir y busca a alguien.
+3. **Se detecta frustración.** Opcionalmente, la IA escala cuando el tono del cliente se vuelve claramente negativo.
+</Steps>
+
+### A dónde va
+
+Si hay un agente **en línea**, la conversación entra en la cola de Chat en Vivo y todos la ven de inmediato.
+
+Si **no hay nadie disponible**, se crea un ticket para que la solicitud no se pierda, y se le avisa al cliente que una persona dará seguimiento.
+
+### Si nadie la toma a tiempo
+
+Una escalada que queda sin atender no simplemente vence. El bot vuelve a la conversación, le ofrece al cliente un **contacto de vuelta**, y abre un ticket con un resumen de lo que pasó — para que el seguimiento arranque con contexto y no con un "disculpe, ¿me lo explica otra vez?".
+
+### Cómo configurarla
+
+El comportamiento de escalada se define **por bot**, en **Asistentes → tu bot → Handoff**:
+
+| Ajuste | Qué hace |
+|---|---|
+| **Responsable por defecto** | A quién se le asignan las escaladas nuevas |
+| **Umbral de solicitudes** | Cuántos intentos fallidos antes de que el bot escale solo |
+| **Escalar por frustración** | Escalar cuando el tono del cliente se vuelve negativo |
+| **Palabras clave de escalada** | Frases que disparan una transferencia inmediata |
+
+La sección **Configuración de Escalada** del portal enlaza directamente a estos ajustes.
+
+---
+
+## Cuando un agente responde desde su propio teléfono
+
+Si alguien de tu equipo le contesta a un cliente de WhatsApp desde la app en vez de la consola, esa respuesta **se registra en el ticket** automáticamente. La transcripción queda completa y la memoria del bot queda correcta, aun cuando se trabaje fuera del portal.
+
+---
+
+## Analítica
+
+La sección de Analítica mide la operación de soporte en sí:
+
+- **Escaladas abiertas** y cuántas entraron **hoy**
+- **Tiempo hasta tomar** y **tiempo hasta resolver** (mediana y percentil 95)
+- **Tasa de abandono** — escaladas que nadie atendió
+- **Críticas** — conversaciones que incumplen tu ventana de respuesta
+- **Agentes en línea** en este momento
+- Desglose **por canal** y **por agente**
+
+Aquí los percentiles importan más que los promedios: un p95 de tiempo hasta tomar te dice qué vivieron tus clientes más lentos, algo que un promedio esconde sin problema.
+
+---
+
+## Tickets
+
+Los tickets funcionan igual que antes — ahora son una sección de este portal en vez de una página aparte. Todo lo escalado genera uno, y puedes seguir creándolos a mano.
+
+<LinkCard title="Campos, ciclo de vida y reportes de tickets" href="/es/crm/tickets/" description="Estados, prioridades, asignación y la referencia completa" />
+
+---
+
+## Temas Relacionados
+
+<CardGrid>
+  <LinkCard title="Escalada en Vivo" href="/es/crm/live-escalation/" description="La mecánica de escalada a fondo" />
+  <LinkCard title="Tickets" href="/es/crm/tickets/" description="Ciclo de vida y campos" />
+  <LinkCard title="Integraciones" href="/es/assistants/integrations/" description="Conecta WhatsApp, Telegram, Instagram y más" />
+  <LinkCard title="Pipelines" href="/es/crm/pipelines/" description="Las etapas que puedes mover desde el chat" />
+</CardGrid>

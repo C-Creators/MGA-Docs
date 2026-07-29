@@ -111,6 +111,7 @@ export default defineConfig({
 						{ slug: 'crm/leads' },
 						{ slug: 'crm/appointments' },
 						{ slug: 'crm/tasks' },
+						{ slug: 'crm/customer-support' },
 						{ slug: 'crm/tickets' },
 						{ slug: 'crm/campaigns' },
 						{ slug: 'crm/live-escalation' },
@@ -120,29 +121,45 @@ export default defineConfig({
 						{ slug: 'crm/reports' },
 					],
 				},
+				// Developer reference, nested and collapsed.
+				//
+				// These three groups (API Reference, TypeScript SDK and the generated
+				// endpoint reference) used to sit at the TOP level, where they
+				// outnumbered the product documentation and pushed it out of view for
+				// readers who never touch the API. Nesting them under one collapsed
+				// entry keeps the reference a click away without letting it dominate
+				// the sidebar.
 				{
-					label: 'API Reference',
+					label: 'Developers',
+					translations: { es: 'Desarrolladores' },
+					collapsed: true,
 					items: [
-						{ slug: 'api/overview', label: 'Overview' },
-						{ slug: 'api/authentication' },
-						{ slug: 'api/chat-api' },
-						{ slug: 'api/webhooks' },
+						{
+							label: 'API Reference',
+							translations: { es: 'Referencia de la API' },
+							items: [
+								{ slug: 'api/overview', label: 'Overview' },
+								{ slug: 'api/authentication' },
+								{ slug: 'api/chat-api' },
+								{ slug: 'api/webhooks' },
+							],
+						},
+						{
+							label: 'TypeScript SDK',
+							translations: { es: 'SDK de TypeScript' },
+							items: [
+								{ slug: 'sdk/overview', label: 'Overview' },
+								{ slug: 'sdk/typed-client' },
+								{ slug: 'sdk/axios-client' },
+								{ slug: 'sdk/dtos' },
+								{ slug: 'sdk/errors' },
+								{ slug: 'sdk/realtime' },
+							],
+						},
+						// Generated, one group per configured schema.
+						...openAPISidebarGroups,
 					],
 				},
-				{
-					label: 'TypeScript SDK',
-					translations: { es: 'SDK de TypeScript' },
-					items: [
-						{ slug: 'sdk/overview', label: 'Overview' },
-						{ slug: 'sdk/typed-client' },
-						{ slug: 'sdk/axios-client' },
-						{ slug: 'sdk/dtos' },
-						{ slug: 'sdk/errors' },
-						{ slug: 'sdk/realtime' },
-					],
-				},
-				// Generated, one group per configured schema (the full API reference).
-				...openAPISidebarGroups,
 				{
 					label: 'Legal',
 					items: [
