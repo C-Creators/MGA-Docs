@@ -4,22 +4,42 @@
  */
 
 /* ── Layout ───────────────────────────────────────────────────────────
- * Starlight defaults to a 45rem content column, and the "On this page"
- * container is DERIVED from it:
+ * These pages embed replicas of the app, and the app is a multi-pane layout:
+ * a 260px shell nav, a 240px portal nav, a 340px conversation list and a chat
+ * pane. Starlight's stock 45rem column cannot hold that, so the previews were
+ * rendering with chat bubbles a few words wide.
+ *
+ * Starlight derives the "On this page" container from the content width:
  *
  *   width = --sl-sidebar-width + (100% - --sl-content-width - --sl-sidebar-width) / 2
  *
- * so on a wide screen every pixel not given to content is split between the
- * margins and that panel — which is why it renders very wide with a lot of
- * empty space beside the links. Widening the content column therefore does two
- * jobs at once: more room for the page, and a proportionally narrower table of
- * contents. Overriding the custom property is Starlight's documented mechanism
- * (its own example uses 50rem); we go a little further because these pages
- * embed full-width app replicas — six-column tables and a chat pane beside its
- * detail rail — that are cramped at 45rem.
+ * which means every pixel not given to content gets split between the page
+ * margins and that panel — hence a very wide table of contents with a lot of
+ * empty space beside short links. Rather than keep trading one against the
+ * other through that formula, pin the panel to the width its content actually
+ * needs and let the column take the rest.
+ *
+ * The override is safe despite targeting Starlight's own class: its rules sit
+ * in `@layer starlight.core`, and unlayered author styles beat any layer
+ * regardless of specificity, so this wins without !important. Both panes are
+ * flex children of the same row, so sizing them with flex rather than the
+ * derived calc() keeps them consistent at every viewport.
  * ─────────────────────────────────────────────────────────────────── */
 :root {
-	--sl-content-width: 56rem;
+	--sl-content-width: 62rem;
+}
+
+@media (min-width: 72rem) {
+	.right-sidebar-container {
+		width: 15rem;
+		flex: 0 0 15rem;
+	}
+
+	[data-has-sidebar][data-has-toc] .main-pane {
+		width: auto;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
 }
 
 :root {

@@ -90,6 +90,15 @@
 }
 
 /* App shell */
+/* A preview showing a single fixed-width pane (e.g. the 340px conversation
+ * list on its own) should hug it rather than float it inside a mostly-empty
+ * 992px frame. The pane keeps its real width; only the chrome around it
+ * shrinks, so nothing is rescaled. */
+.mga-app--fit {
+	width: fit-content;
+	max-width: 100%;
+}
+
 .mga-app__shell {
 	display: flex;
 	min-height: 420px;
@@ -624,6 +633,142 @@
  * from `__tabs` (horizontal). Mirrors the real component: a bordered rounded card
  * of padded rows, the active row tinted with the primary colour and its icon and
  * label taking the primary tone. */
+/* ── Live-chat queue list ─────────────────────────────────────────
+ * The pane the previews were missing entirely. LiveChatSection.tsx renders
+ * Live Chat as exactly two panes — `flex gap-4`, a `lg:w-[340px] lg:shrink-0`
+ * conversation list and a `flex-1` ChatPane — and nothing else. The old
+ * previews instead drew a permanent right-hand "CRM" rail, which does not
+ * exist: CrmActionsPanel is an antd <Drawer width={400}> opened from the
+ * header, so it is closed in the resting state these previews show. */
+.mga-app__split {
+	display: flex;
+	gap: 16px; /* gap-4 */
+	align-items: stretch;
+	min-width: 0;
+}
+
+.mga-app__queue {
+	width: 340px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px; /* space-y-1 */
+	min-width: 0;
+}
+
+/* rounded-lg px-3 py-2 with a 1px border; selected swaps to colorPrimaryBg
+ * with colorPrimaryBorder, unselected is colorBgContainer/colorBorderSecondary. */
+.mga-app__queue-item {
+	width: 100%;
+	text-align: left;
+	border-radius: var(--mga-a-radius-sm);
+	padding: 8px 12px;
+	border: 1px solid var(--mga-a-border);
+	background: var(--mga-a-surface);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font: inherit;
+	color: var(--mga-a-text);
+	cursor: default;
+}
+
+.mga-app__queue-item--active {
+	background: var(--mga-a-primary-tint);
+	border-color: var(--mga-a-primary);
+}
+
+/* These are <span>s, so they need an explicit block/flex display: `truncate`
+ * (overflow+ellipsis) has no effect on an inline box, and without it the row
+ * text spills straight out past the 340px card edge. */
+.mga-app__queue-main {
+	display: block;
+	min-width: 0;
+	flex: 1;
+	overflow: hidden;
+}
+
+.mga-app__queue-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.mga-app__queue-name {
+	display: block;
+	min-width: 0;
+	font-size: 14px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mga-app__queue-time {
+	font-size: 11px;
+	flex-shrink: 0;
+	color: var(--mga-a-text-faint);
+}
+
+.mga-app__queue-preview {
+	display: block;
+	font-size: 12px;
+	color: var(--mga-a-text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mga-app__queue-tags {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 2px;
+	flex-wrap: wrap;
+}
+
+/* antd <Tag> at !text-[10px] !leading-4 !px-1. */
+.mga-app__queue-tag {
+	font-size: 10px;
+	line-height: 16px;
+	padding: 0 4px;
+	border-radius: var(--mga-a-radius-sm);
+	border: 1px solid;
+}
+
+.mga-app__queue-tag--orange {
+	color: #d46b08;
+	background: #fff7e6;
+	border-color: #ffd591;
+}
+
+.mga-app__queue-tag--green {
+	color: #389e0d;
+	background: #f6ffed;
+	border-color: #b7eb8f;
+}
+
+.mga-app__queue-tag--red {
+	color: #cf1322;
+	background: #fff1f0;
+	border-color: #ffa39e;
+}
+
+/* The channel glyph beside each row. */
+.mga-app__queue-badge {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	font-size: 13px;
+	color: #ffffff;
+	background: #25d366; /* WhatsApp accent, per channelThemes */
+}
+
 /* Support-portal section nav. Geometry is the Tailwind classes in
  * routes/crm/support/index.tsx read literally: w-60 → 240px, rounded-xl → 12px,
  * p-2 → 8px, space-y-1 → 4px. */
@@ -732,35 +877,155 @@
 	}
 }
 
-.mga-app__split {
-	display: grid;
-	grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-	gap: 18px;
-}
-
+/* Below the app's own `lg` breakpoint the list and the chat stop sharing a
+ * row — LiveChatSection hides one or the other rather than shrinking both. */
 @media (max-width: 900px) {
 	.mga-app__split {
-		grid-template-columns: minmax(0, 1fr);
+		flex-direction: column;
+	}
+
+	.mga-app__queue {
+		width: 100%;
 	}
 }
 
+/* ── Live-chat console ────────────────────────────────────────────
+ * The takeover console is CHANNEL-SKINNED: routes/crm/support/ChatPane.tsx
+ * paints the header, thread background and both bubble colours from
+ * getChannelTheme(), so a WhatsApp conversation really does render in
+ * WhatsApp's greens. Values below are the WHATSAPP.light entry of
+ * channelThemes.tsx; add a sibling modifier for another channel rather than
+ * editing these.
+ *
+ * Note the sides: the CUSTOMER is on the LEFT and you (agent, and the bot
+ * speaking as you) are on the RIGHT — `isCustomer ? justify-start :
+ * justify-end`. This file previously had it backwards. */
 .mga-app__chat-pane {
+	--wa-header-bg: #075e54;
+	--wa-header-text: #ffffff;
+	--wa-chat-bg: #ece5dd;
+	--wa-customer-bg: #ffffff;
+	--wa-customer-text: #111b21;
+	--wa-agent-bg: #dcf8c6;
+	--wa-agent-text: #111b21;
+	--wa-accent: #25d366;
+	--wa-bubble-radius: 10px;
+
 	background: var(--mga-a-surface);
-	border: 1px solid var(--mga-a-border);
+	border: 1px solid var(--mga-a-border-strong); /* the pane border is colorBorder */
 	border-radius: var(--mga-a-radius);
 	overflow: hidden;
-	box-shadow: var(--mga-a-shadow-soft);
 	display: flex;
 	flex-direction: column;
-	min-height: 320px;
+	min-height: 380px;
 }
 
+/* px-4 py-3, gap-3, on the channel's header colour. */
 .mga-app__chat-head {
 	padding: 12px 16px;
-	border-bottom: 1px solid var(--mga-a-border);
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 12px;
+	background: var(--wa-header-bg);
+	color: var(--wa-header-text);
+}
+
+.mga-app__chat-head-icon {
+	font-size: 20px;
+	line-height: 1;
+	display: inline-flex;
+	flex-shrink: 0;
+}
+
+.mga-app__chat-head-main {
+	min-width: 0;
+	flex: 1;
+}
+
+.mga-app__chat-head-name {
+	font-weight: 600;
+	line-height: 1.25;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* text-xs opacity-90 — channel label · bot name · presence dot. Only the NAME
+ * above is truncated in ChatPane; this row is not, so it must not be clipped. */
+.mga-app__chat-head-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	opacity: 0.9;
+}
+
+.mga-app__chat-head-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px; /* antd <Space size={4}> */
+	flex-shrink: 0;
+	margin-left: auto;
+}
+
+/* Header buttons are antd size="small": 24px tall, borderRadiusSM. */
+.mga-app__chat-head-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 24px;
+	padding: 0 7px;
+	font-size: 12px;
+	border-radius: var(--mga-a-radius-sm);
+	border: 1px solid currentColor;
+	background: transparent;
+	color: inherit;
+	cursor: default;
+}
+
+/* type="text" — no border, used for the CRM-drawer and open-ticket icons. */
+.mga-app__chat-head-btn--icon {
+	border-color: transparent;
+	padding: 0;
+	width: 24px;
+}
+
+/* The Take-over button is type="primary" painted with the CHANNEL accent
+ * (#25D366 for WhatsApp), not the app's emerald — ChatPane overrides both
+ * background and borderColor with theme.accent. */
+.mga-app__chat-head-btn--accept {
+	background: var(--wa-accent);
+	border-color: var(--wa-accent);
+	color: #ffffff;
+	font-weight: 500;
+}
+
+.mga-app__chat-presence {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+/* ONLINE #4ade80 / AWAY #facc15 / OFFLINE #9ca3af. */
+.mga-app__chat-presence-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #4ade80;
+	display: inline-block;
+}
+
+.mga-app__chat-composer-attach {
+	font-size: 15px;
+	opacity: 0.6;
+	flex-shrink: 0;
+}
+
+/* Send is also painted with theme.accent rather than the app primary. */
+.mga-app__chat-composer .mga-app__btn--primary {
+	background: var(--wa-accent);
+	border-color: var(--wa-accent);
 }
 
 .mga-app__chat-thread {
@@ -768,66 +1033,76 @@
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 8px; /* space-y-2 */
 	font-size: 13px;
+	background: var(--wa-chat-bg);
 }
 
+/* max-w-[78%] px-3 py-2 shadow-sm, radius from the channel theme. */
 .mga-app__chat-bubble {
-	max-width: 80%;
+	max-width: 78%;
 	padding: 8px 12px;
-	border-radius: 14px;
+	border-radius: var(--wa-bubble-radius);
 	line-height: 1.4;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	width: fit-content;
 }
 
-.mga-app__chat-bubble--bot {
-	background: var(--mga-a-surface-alt);
-	color: var(--mga-a-text);
-	border-bottom-left-radius: 4px;
-}
-
+/* The customer — left, white. */
 .mga-app__chat-bubble--user {
-	background: var(--mga-a-primary-strong);
-	color: #ffffff;
-	align-self: flex-end;
-	border-bottom-right-radius: 4px;
+	background: var(--wa-customer-bg);
+	color: var(--wa-customer-text);
+	align-self: flex-start;
 }
 
+/* The bot and the human agent both speak from your side — right, green. */
+.mga-app__chat-bubble--bot,
 .mga-app__chat-bubble--agent {
-	background: #fefce8;
-	color: #713f12;
-	border: 1px solid #fde68a;
-	border-bottom-left-radius: 4px;
+	background: var(--wa-agent-bg);
+	color: var(--wa-agent-text);
+	align-self: flex-end;
 }
 
-.mga-app__chat-divider {
-	text-align: center;
+/* Attribution above a human agent's message, so the transcript shows who
+ * actually replied (the display-name work — never the bare account name). */
+.mga-app__chat-sender {
+	display: block;
+	font-size: 11px;
+	font-weight: 600;
+	opacity: 0.65;
+	margin-bottom: 2px;
+}
+
+/* text-[10px] opacity-60 mt-0.5, right-aligned inside the bubble. */
+.mga-app__chat-time {
+	display: block;
+	text-align: right;
 	font-size: 10px;
-	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
+	opacity: 0.6;
+	margin-top: 2px;
+}
+
+/* System events (takeover, resolve) sit on the themed thread background, so
+ * they are a centred pill rather than the hairline rule this used to draw —
+ * a rule reads as a page divider against a coloured chat surface. */
+.mga-app__chat-divider {
+	align-self: center;
+	text-align: center;
+	font-size: 11px;
 	color: var(--mga-a-text-muted);
-	padding: 6px 0;
-	position: relative;
+	background: rgba(255, 255, 255, 0.75);
+	border-radius: var(--mga-a-radius-sm);
+	padding: 4px 10px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
-.mga-app__chat-divider::before,
-.mga-app__chat-divider::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	height: 1px;
-	background: var(--mga-a-border);
-	width: 30%;
-}
-
-.mga-app__chat-divider::before { left: 0; }
-.mga-app__chat-divider::after { right: 0; }
 
 .mga-app__chat-composer {
 	border-top: 1px solid var(--mga-a-border);
 	padding: 12px 16px;
 	display: flex;
+	align-items: center;
 	gap: 8px;
+	background: var(--mga-a-surface);
 }
 
 .mga-app__chat-composer-input {
