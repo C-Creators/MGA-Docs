@@ -4,6 +4,8 @@ description: One place to watch every live bot conversation, take over on any ch
 ---
 
 import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import CrmSidebar from '../../../components/CrmSidebar.astro';
+import SupportPortalNav from '../../../components/SupportPortalNav.astro';
 
 ## Everything Support, In One Screen <Badge text="CRM Feature" variant="success" size="small" />
 
@@ -13,54 +15,17 @@ Find it under **CRM → Customer Support**.
 
 <div class="mga-app" aria-label="Customer Support portal — Live Chat">
   <div class="mga-app__shell">
-    <aside class="mga-app__sidebar">
-      <div class="mga-app__sidebar-brand">
-        <div class="mga-app__sidebar-logo">M</div>
-        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
-      </div>
-      <div class="mga-app__sidebar-section">CRM</div>
-      <nav class="mga-app__sidebar-nav">
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◈</span> Leads</button>
-        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">☎</span> Customer Support</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◇</span> Pipelines</button>
-      </nav>
-    </aside>
+    <CrmSidebar active="support" />
     <main class="mga-app__main">
       <div class="mga-app__topbar">
         <div>
           <div class="mga-app__topbar-title">Customer Support</div>
-          <div class="mga-app__topbar-sub">Live chat, active conversations, tickets and escalation settings</div>
-        </div>
-        <div class="mga-app__topbar-actions">
-          <span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> 2 agents online</span>
+          <div class="mga-app__topbar-sub">Live conversations, tickets, analytics and escalation settings — all in one place</div>
         </div>
       </div>
       <div class="mga-app__body">
         <div class="mga-app__portal">
-          <nav class="mga-app__subnav">
-            <button class="mga-app__subnav-item mga-app__subnav-item--active">
-              <span class="mga-app__subnav-icon">◍</span>
-              <span>Live Chat<span class="mga-app__subnav-meta">3 waiting · 2 active</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">⚡</span>
-              <span>Active Conversations<span class="mga-app__subnav-meta">11 with bots</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">◫</span>
-              <span>Tickets<span class="mga-app__subnav-meta">8 open</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">▥</span>
-              <span>Analytics</span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">⚙</span>
-              <span>Escalation Settings</span>
-            </button>
-          </nav>
+          <SupportPortalNav active="live-chat" pending={3} />
           <div class="mga-app__split" style="flex:1;min-width:0;">
             <div class="mga-app__chat-pane">
               <div class="mga-app__chat-head">

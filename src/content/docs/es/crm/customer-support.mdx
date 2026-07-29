@@ -4,63 +4,28 @@ description: Un solo lugar para ver todas las conversaciones en vivo, tomar el c
 ---
 
 import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import CrmSidebar from "../../../../components/CrmSidebar.astro";
+import SupportPortalNav from "../../../../components/SupportPortalNav.astro";
 
 ## Todo el Soporte en Una Sola Pantalla <Badge text="Función CRM" variant="success" size="small" />
 
 El **Portal de Soporte** reemplaza la antigua página de Tickets. En vez de saltar entre la cola de escaladas, la lista de tickets y la vista de conversación, todo lo que un agente necesita queda detrás de un solo menú lateral — con una consola de chat en vivo que se adapta al canal donde está realmente el cliente.
 
-Lo encuentras en **CRM → Soporte al Cliente**.
+Lo encuentras en **CRM → Atención al Cliente**.
 
 <div class="mga-app" aria-label="Portal de Soporte — Chat en Vivo">
   <div class="mga-app__shell">
-    <aside class="mga-app__sidebar">
-      <div class="mga-app__sidebar-brand">
-        <div class="mga-app__sidebar-logo">M</div>
-        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
-      </div>
-      <div class="mga-app__sidebar-section">CRM</div>
-      <nav class="mga-app__sidebar-nav">
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contactos</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◈</span> Leads</button>
-        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">☎</span> Soporte al Cliente</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tareas</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◇</span> Pipelines</button>
-      </nav>
-    </aside>
+    <CrmSidebar active="support" lang="es" />
     <main class="mga-app__main">
       <div class="mga-app__topbar">
         <div>
-          <div class="mga-app__topbar-title">Soporte al Cliente</div>
-          <div class="mga-app__topbar-sub">Chat en vivo, conversaciones activas, tickets y configuración de escalada</div>
-        </div>
-        <div class="mga-app__topbar-actions">
-          <span class="mga-app__chip mga-app__chip--success"><span class="mga-app__chip-dot"></span> 2 agentes en línea</span>
+          <div class="mga-app__topbar-title">Atención al Cliente</div>
+          <div class="mga-app__topbar-sub">Conversaciones en vivo, tickets, analíticas y configuración de escalado — todo en un solo lugar</div>
         </div>
       </div>
       <div class="mga-app__body">
         <div class="mga-app__portal">
-          <nav class="mga-app__subnav">
-            <button class="mga-app__subnav-item mga-app__subnav-item--active">
-              <span class="mga-app__subnav-icon">◍</span>
-              <span>Chat en Vivo<span class="mga-app__subnav-meta">3 en espera · 2 activas</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">⚡</span>
-              <span>Conversaciones Activas<span class="mga-app__subnav-meta">11 con bots</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">◫</span>
-              <span>Tickets<span class="mga-app__subnav-meta">8 abiertos</span></span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">▥</span>
-              <span>Analítica</span>
-            </button>
-            <button class="mga-app__subnav-item">
-              <span class="mga-app__subnav-icon">⚙</span>
-              <span>Configuración de Escalada</span>
-            </button>
-          </nav>
+          <SupportPortalNav active="live-chat" pending={3} lang="es" />
           <div class="mga-app__split" style="flex:1;min-width:0;">
             <div class="mga-app__chat-pane">
               <div class="mga-app__chat-head">
@@ -117,10 +82,10 @@ Lo encuentras en **CRM → Soporte al Cliente**.
   <Card title="Tickets" icon="document">
     El registro formal. Los mismos tickets de siempre, ahora junto a la conversación que los originó.
   </Card>
-  <Card title="Analítica" icon="bars">
+  <Card title="Analíticas" icon="bars">
     Qué tan rápido responde y resuelve el equipo, de dónde vienen las conversaciones y quién carga con más.
   </Card>
-  <Card title="Configuración de Escalada" icon="setting">
+  <Card title="Configuración de Escalado" icon="setting">
     Cuándo el bot debe dejar de intentar y buscar a una persona.
   </Card>
 </CardGrid>

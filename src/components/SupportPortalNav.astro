@@ -1,0 +1,106 @@
+---
+/**
+ * The Customer Support portal's internal section nav, mirroring the `sections`
+ * array and its markup in app/ui/src/routes/crm/support/index.tsx.
+ *
+ * Two things the previous hand-written version got wrong and this fixes:
+ *   - every row carries a static DESCRIPTION under its label ("Take over
+ *     escalated conversations"), not a live stat line. The old previews put
+ *     counts there, which invented a UI the product does not have.
+ *   - the pending badge is an antd <Badge count> pill on the Live Chat row
+ *     only, driven by the PENDING conversation count.
+ * Geometry comes from the Tailwind classes on those elements: nav is w-60
+ * (240px) / rounded-xl / p-2 / space-y-1, rows are rounded-lg / px-3 / py-2.5
+ * / gap-3, icons w-5 h-5.
+ */
+import MgaIcon from './MgaIcon.astro';
+
+interface Props {
+  active?: string;
+  /** PENDING-queue count on the Live Chat row; omit or 0 to hide the badge. */
+  pending?: number;
+  lang?: 'en' | 'es';
+}
+
+const { active = 'live-chat', pending = 0, lang = 'en' } = Astro.props;
+
+/* Labels and descriptions verbatim from the crm.supportPortal.nav.* keys in
+ * app/ui/src/locales/{en,es}/translation.json. */
+const SECTIONS = [
+  {
+    key: 'live-chat',
+    label: { en: 'Live Chat', es: 'Chat en Vivo' },
+    description: {
+      en: 'Take over escalated conversations',
+      es: 'Toma el control de conversaciones escaladas',
+    },
+    icon: 'chat-bubble-left-right',
+    badge: true,
+  },
+  {
+    key: 'conversations',
+    label: { en: 'Active Conversations', es: 'Conversaciones Activas' },
+    description: {
+      en: 'Live bot chats on every channel — take over any of them',
+      es: 'Chats en vivo del bot en todos los canales — toma el control de cualquiera',
+    },
+    icon: 'bolt',
+  },
+  {
+    key: 'tickets',
+    label: { en: 'Tickets', es: 'Tickets' },
+    description: {
+      en: 'Manage support tickets',
+      es: 'Gestiona tickets de soporte',
+    },
+    icon: 'ticket',
+  },
+  {
+    key: 'analytics',
+    label: { en: 'Analytics', es: 'Analíticas' },
+    description: {
+      en: 'Escalation KPIs and agent load',
+      es: 'KPIs de escalado y carga de agentes',
+    },
+    icon: 'chart-bar',
+  },
+  {
+    key: 'settings',
+    label: { en: 'Escalation Settings', es: 'Configuración de Escalado' },
+    description: {
+      en: 'SLA and handoff tuning',
+      es: 'Ajustes de SLA y traspaso',
+    },
+    icon: 'cog-6-tooth',
+  },
+];
+---
+
+<nav class="mga-app__subnav">
+  {
+    SECTIONS.map((s) => (
+      <button
+        class:list={[
+          'mga-app__subnav-item',
+          s.key === active && 'mga-app__subnav-item--active',
+        ]}
+        type="button"
+        tabindex="-1"
+        aria-current={s.key === active ? 'page' : undefined}
+      >
+        <span class="mga-app__subnav-icon">
+          <MgaIcon name={s.icon} size={20} />
+        </span>
+        <span class="mga-app__subnav-text">
+          <span class="mga-app__subnav-label">
+            {s.label[lang]}
+            {s.badge && pending > 0 && (
+              <span class="mga-app__subnav-badge">{pending}</span>
+            )}
+          </span>
+          <span class="mga-app__subnav-desc">{s.description[lang]}</span>
+        </span>
+      </button>
+    ))
+  }
+</nav>

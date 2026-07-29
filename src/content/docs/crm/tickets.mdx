@@ -4,6 +4,7 @@ description: Track and resolve customer support issues from escalated conversati
 ---
 
 import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import CrmSidebar from "../../../components/CrmSidebar.astro";
 
 ## Support Ticket Management <Badge text="CRM Feature" variant="note" size="small" />
 
@@ -19,19 +20,7 @@ still applies; you just reach it from there.
 
 <div class="mga-app" aria-label="Tickets list — illustrative preview">
   <div class="mga-app__shell">
-    <aside class="mga-app__sidebar">
-      <div class="mga-app__sidebar-brand">
-        <div class="mga-app__sidebar-logo">M</div>
-        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
-      </div>
-      <div class="mga-app__sidebar-section">CRM</div>
-      <nav class="mga-app__sidebar-nav">
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⇆</span> Live escalation</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
-        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
-      </nav>
-    </aside>
+    <CrmSidebar active="support" />
     <main class="mga-app__main">
       <div class="mga-app__topbar">
         <div>

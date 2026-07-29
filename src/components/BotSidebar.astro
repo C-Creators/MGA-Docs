@@ -1,0 +1,66 @@
+---
+/**
+ * The bot workspace's left navigation, mirroring the `main` menu group in
+ * app/ui/src/components/Bot/Layout/ModernBotLayout.tsx.
+ *
+ * Separate from CrmSidebar because it is a genuinely different surface: five
+ * fixed items, an "Navigation" group label, and Ant Design's filled icons
+ * rather than the CRM's outlined Heroicons. The previous preview showed
+ * "Overview / Settings / Agent framework / Data sources / Conversations",
+ * none of which is this menu.
+ */
+import MgaIcon from './MgaIcon.astro';
+
+interface Props {
+  active?: string;
+  lang?: 'en' | 'es';
+}
+
+const { active = 'playground', lang = 'en' } = Astro.props;
+
+const GROUP_LABEL = { en: 'Navigation', es: 'Navegación' };
+
+const ITEMS = [
+  { key: 'playground', label: { en: 'Playground', es: 'Playground' }, icon: 'home' },
+  {
+    key: 'conversations',
+    label: { en: 'Conversations', es: 'Conversaciones' },
+    icon: 'message',
+  },
+  {
+    key: 'integrations',
+    label: { en: 'Integrations', es: 'Integraciones' },
+    icon: 'appstore',
+  },
+  { key: 'analytics', label: { en: 'Analytics', es: 'Analíticas' }, icon: 'bar-chart' },
+  { key: 'settings', label: { en: 'Settings', es: 'Configuración' }, icon: 'setting' },
+];
+---
+
+<aside class="mga-app__sidebar">
+  <div class="mga-app__sidebar-brand">
+    <div class="mga-app__sidebar-logo">M</div>
+    <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+  </div>
+  <div class="mga-app__sidebar-section">{GROUP_LABEL[lang]}</div>
+  <nav class="mga-app__sidebar-nav">
+    {
+      ITEMS.map((item) => (
+        <button
+          class:list={[
+            'mga-app__sidebar-item',
+            item.key === active && 'mga-app__sidebar-item--active',
+          ]}
+          type="button"
+          tabindex="-1"
+          aria-current={item.key === active ? 'page' : undefined}
+        >
+          <span class="mga-app__sidebar-icon">
+            <MgaIcon name={item.icon} size={16} />
+          </span>
+          <span>{item.label[lang]}</span>
+        </button>
+      ))
+    }
+  </nav>
+</aside>

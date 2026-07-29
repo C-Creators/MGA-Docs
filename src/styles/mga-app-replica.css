@@ -2,39 +2,59 @@
  * Pixel-faithful HTML replicas of the MGA web app screens (CRM
  * tables, kanban, calendar, agent framework, live escalation) for
  * docs tutorials. Scoped under `.mga-app` so it can't leak.
+ *
+ * EVERY value below is copied from the running app, not eyeballed.
+ * Sources, so this can be re-synced when the app's theme changes:
+ *   - colours + radius  app/ui/src/Layout/CRMLayout.tsx  (ConfigProvider
+ *                       token block; ModernBotLayout.tsx declares the same
+ *                       primary and radius, so both surfaces agree)
+ *   - typeface          app/ui/src/index.css  (@font-face + the global
+ *                       `* { font-family: "Inter" !important }` rule)
+ * Only the light theme is mirrored — the docs render these previews on a
+ * light page regardless of the site's own dark mode.
  * ──────────────────────────────────────────────────────────────── */
 
+/* The app self-hosts a SINGLE Inter file and, like the app, we declare it
+ * with no `font-weight` descriptor. That is not an oversight to tidy up:
+ * the descriptor defaults to 400, so every heavier weight has no matching
+ * face and the browser SYNTHESISES bold from this Medium file. Adding the
+ * real 600/700 files here would render crisper than the product does and
+ * the replica would stop matching. Same .ttf byte-for-byte. */
+@font-face {
+	font-family: "MGA Inter";
+	src: url("/fonts/Inter-Medium.ttf") format("truetype");
+	font-display: swap;
+}
+
 .mga-app {
-	--mga-a-bg: #f5f7fb;
-	--mga-a-surface: #ffffff;
-	--mga-a-surface-alt: #f8fafc;
-	--mga-a-text: #0f172a;
-	--mga-a-text-muted: #5a6b7b;
-	--mga-a-text-faint: #94a3b8;
-	--mga-a-border: rgba(15, 23, 42, 0.08);
-	--mga-a-border-strong: rgba(15, 23, 42, 0.14);
-	--mga-a-primary: #0ec999;
-	--mga-a-primary-strong: #00a676;
-	--mga-a-primary-tint: rgba(14, 201, 153, 0.12);
-	--mga-a-info: #3b82f6;
+	--mga-a-bg: #f5f5f5; /* colorBgLayout */
+	--mga-a-surface: #ffffff; /* colorBgContainer */
+	--mga-a-surface-alt: #fafafa; /* colorFillAlter over white */
+	--mga-a-text: #1f2937; /* colorText */
+	--mga-a-text-muted: #6b7280; /* colorTextSecondary */
+	--mga-a-text-faint: #9ca3af; /* colorTextTertiary */
+	--mga-a-border: #f3f4f6; /* colorBorderSecondary */
+	--mga-a-border-strong: #e5e7eb; /* colorBorder */
+	--mga-a-primary: #10b981; /* colorPrimary */
+	--mga-a-primary-strong: #059669; /* colorPrimaryHover */
+	--mga-a-primary-tint: rgba(16, 185, 129, 0.1); /* colorPrimaryBg */
+	--mga-a-info: #3b82f6; /* colorInfo */
 	--mga-a-info-tint: rgba(59, 130, 246, 0.12);
-	--mga-a-warning: #f59e0b;
+	--mga-a-warning: #f59e0b; /* colorWarning */
 	--mga-a-warning-tint: rgba(245, 158, 11, 0.14);
-	--mga-a-danger: #ef4444;
+	--mga-a-danger: #ef4444; /* colorError */
 	--mga-a-danger-tint: rgba(239, 68, 68, 0.12);
-	--mga-a-radius: 10px;
-	--mga-a-radius-sm: 6px;
-	--mga-a-radius-lg: 14px;
+	--mga-a-radius: 12px; /* token.borderRadius */
+	--mga-a-radius-sm: 8px; /* the app's smaller-control radius */
+	--mga-a-radius-lg: 16px;
 	--mga-a-radius-pill: 999px;
-	--mga-a-shadow-soft:
-		0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.08);
-	--mga-a-shadow-medium:
-		0 1px 3px rgba(15, 23, 42, 0.05),
-		0 16px 40px -20px rgba(15, 23, 42, 0.16);
+	/* Card.boxShadowTertiary — neutral black, not the slate-tinted shadow this
+	 * file used to carry (a blue-grey shadow subtly cools every surface). */
+	--mga-a-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+	--mga-a-shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.06);
 
 	display: block;
-	font-family:
-		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-family: "MGA Inter", sans-serif;
 	color: var(--mga-a-text);
 	-webkit-font-smoothing: antialiased;
 	background: var(--mga-a-bg);
@@ -75,11 +95,14 @@
 	min-height: 420px;
 }
 
+/* The real sidebar (Layout/CRMSidebar.tsx) is a hardcoded near-black #0E0E0E
+ * at 260px expanded — it does NOT follow the light/dark toggle, which is why
+ * there is no dark-mode override for it below. */
 .mga-app__sidebar {
-	width: 220px;
+	width: 260px;
 	flex-shrink: 0;
-	background: #0b1220;
-	color: #cbd5e1;
+	background: #0e0e0e;
+	color: #f5f5f5; /* Menu.itemColor */
 	display: flex;
 	flex-direction: column;
 	padding: 18px 12px;
@@ -98,11 +121,15 @@
 	width: 28px;
 	height: 28px;
 	border-radius: 8px;
-	background: linear-gradient(135deg, var(--mga-a-primary), #14b8a6);
+	background: linear-gradient(
+		135deg,
+		var(--mga-a-primary),
+		var(--mga-a-primary-strong)
+	);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #051e16;
+	color: #ffffff;
 	font-size: 13px;
 	font-weight: 800;
 }
@@ -110,15 +137,18 @@
 .mga-app__sidebar-brand-text {
 	font-size: 13px;
 	font-weight: 700;
-	color: #f1f5f9;
+	color: #ffffff;
 }
 
+/* The real group label is antd <Text type="secondary"> at 11px / weight 300 /
+ * 1px tracking, and it reads "Menu" — not a bold 10px "CRM". Neutral
+ * white-alpha rather than slate, which reads visibly blue on #0E0E0E. */
 .mga-app__sidebar-section {
-	font-size: 10px;
-	font-weight: 700;
-	letter-spacing: 0.08em;
+	font-size: 11px;
+	font-weight: 300;
+	letter-spacing: 1px;
 	text-transform: uppercase;
-	color: #64748b;
+	color: rgba(255, 255, 255, 0.45);
 	padding: 0 8px;
 }
 
@@ -128,14 +158,18 @@
 	gap: 1px;
 }
 
+/* Menu.itemBg / itemColor / itemHoverBg / itemSelectedBg / itemSelectedColor.
+ * The selected row is a white wash with white text — NOT the green tint this
+ * file used to draw. Green is reserved for the thin active indicator and for
+ * primary actions, so tinting the whole row green overstated it badly. */
 .mga-app__sidebar-item {
 	display: flex;
 	align-items: center;
 	gap: 10px;
 	padding: 7px 10px;
-	border-radius: 6px;
+	border-radius: 8px;
 	font-size: 13px;
-	color: #cbd5e1;
+	color: #f5f5f5;
 	background: transparent;
 	border: 0;
 	cursor: default;
@@ -143,24 +177,30 @@
 }
 
 .mga-app__sidebar-item:hover {
-	background: rgba(255, 255, 255, 0.05);
-	color: #f1f5f9;
+	background: rgba(255, 255, 255, 0.08);
+	color: #ffffff;
 }
 
 .mga-app__sidebar-item--active {
-	background: rgba(14, 201, 153, 0.18);
-	color: #6ee7b7;
+	background: rgba(255, 255, 255, 0.12);
+	color: #ffffff;
 	font-weight: 600;
 }
 
 .mga-app__sidebar-icon {
-	width: 14px;
-	height: 14px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	font-size: 13px;
+	color: inherit;
+}
+
+/* Expandable rows (Appointments, Campaigns) carry antd's submenu chevron. */
+.mga-app__sidebar-caret {
+	margin-left: auto;
+	font-size: 14px;
+	line-height: 1;
+	color: rgba(255, 255, 255, 0.45);
 }
 
 /* Main column */
@@ -463,7 +503,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+	box-shadow: var(--mga-a-shadow-soft);
 }
 
 .mga-app__kanban-card-title {
@@ -584,8 +624,11 @@
  * from `__tabs` (horizontal). Mirrors the real component: a bordered rounded card
  * of padded rows, the active row tinted with the primary colour and its icon and
  * label taking the primary tone. */
+/* Support-portal section nav. Geometry is the Tailwind classes in
+ * routes/crm/support/index.tsx read literally: w-60 → 240px, rounded-xl → 12px,
+ * p-2 → 8px, space-y-1 → 4px. */
 .mga-app__subnav {
-	width: 210px;
+	width: 240px;
 	flex-shrink: 0;
 	align-self: flex-start;
 	background: var(--mga-a-surface);
@@ -597,56 +640,85 @@
 	gap: 4px;
 }
 
+/* rounded-lg → 8px, px-3 py-2.5 → 12px/10px, gap-3 → 12px, items-start. */
 .mga-app__subnav-item {
 	display: flex;
 	align-items: flex-start;
-	gap: 10px;
+	gap: 12px;
 	width: 100%;
-	padding: 9px 12px;
+	padding: 10px 12px;
 	border: 0;
 	border-radius: var(--mga-a-radius-sm);
 	background: transparent;
 	color: var(--mga-a-text);
 	font: inherit;
-	font-size: 13px;
-	font-weight: 500;
 	text-align: left;
 	cursor: default;
 }
 
+/* colorPrimaryBg + colorPrimary — the flat primary, not the darker hover one. */
 .mga-app__subnav-item--active {
 	background: var(--mga-a-primary-tint);
-	color: var(--mga-a-primary-strong);
+	color: var(--mga-a-primary);
 }
 
 .mga-app__subnav-icon {
-	color: var(--mga-a-text-faint);
-	font-size: 12px;
-	line-height: 18px;
+	display: inline-flex;
+	flex-shrink: 0;
+	margin-top: 2px; /* mt-0.5 */
+	color: var(--mga-a-text-muted); /* colorTextSecondary */
 }
 
 .mga-app__subnav-item--active .mga-app__subnav-icon {
-	color: var(--mga-a-primary-strong);
+	color: var(--mga-a-primary);
 }
 
-/* Caption under a nav row (e.g. "3 waiting"), like the real portal's counts. */
-.mga-app__subnav-meta {
-	display: block;
-	font-size: 11px;
+.mga-app__subnav-text {
+	min-width: 0;
+	flex: 1;
+}
+
+/* text-sm font-medium, with the badge inline beside it (gap-2 → 8px). */
+.mga-app__subnav-label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+/* antd <Badge size="small">: 14px pill on colorError. */
+.mga-app__subnav-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 14px;
+	height: 14px;
+	padding: 0 4px;
+	border-radius: 7px;
+	background: var(--mga-a-danger);
+	color: #ffffff;
+	font-size: 12px;
+	line-height: 14px;
 	font-weight: 400;
-	color: var(--mga-a-text-muted);
-	margin-top: 1px;
 }
 
-.mga-app__subnav-item--active .mga-app__subnav-meta {
-	color: var(--mga-a-primary-strong);
-	opacity: 0.75;
+/* block text-xs mt-0.5, colorTextTertiary — and it stays tertiary on the active
+ * row too, exactly as the component does (no active-state override there). */
+.mga-app__subnav-desc {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 16px;
+	margin-top: 2px;
+	color: var(--mga-a-text-faint);
 }
 
-/* Page body pairing the section nav with its content. */
+/* lg:flex lg:gap-6 → 24px between the nav and the section content. */
 .mga-app__portal {
 	display: flex;
-	gap: 16px;
+	gap: 24px;
 	align-items: flex-start;
 }
 
@@ -819,7 +891,7 @@
 	width: 36px;
 	height: 22px;
 	border-radius: 22px;
-	background: #cbd5e1;
+	background: rgba(0, 0, 0, 0.25); /* antd Switch, unchecked */
 	position: relative;
 	flex-shrink: 0;
 }
@@ -908,30 +980,33 @@
 	}
 }
 
-/* Dark mode */
+/* Dark mode — the app's dark palette is NEUTRAL grey, not the blue-tinted
+ * slate this file used to use. Same source: CRMLayout.tsx, isDarkMode branch. */
 :root[data-theme="dark"] .mga-app {
-	--mga-a-bg: #0b1220;
-	--mga-a-surface: #15203a;
-	--mga-a-surface-alt: #111a2c;
-	--mga-a-text: #e6edf6;
-	--mga-a-text-muted: #94a3b8;
-	--mga-a-text-faint: #64748b;
-	--mga-a-border: rgba(148, 163, 184, 0.14);
-	--mga-a-border-strong: rgba(148, 163, 184, 0.24);
-	--mga-a-primary-tint: rgba(14, 201, 153, 0.18);
+	--mga-a-bg: #141414; /* colorBgLayout */
+	--mga-a-surface: #1c1c1c; /* colorBgContainer */
+	--mga-a-surface-alt: #232323; /* colorBgElevated */
+	--mga-a-text: #e5e5e5; /* colorText */
+	--mga-a-text-muted: #a0a0a0; /* colorTextSecondary */
+	--mga-a-text-faint: #737373; /* colorTextTertiary */
+	/* Note the swap against light mode: dark colorBorderSecondary (#3F3F3F) is
+	 * LIGHTER than colorBorder (#2D2D2D), so it is the more visible of the two
+	 * here. Mapping by appearance rather than by token name keeps "strong"
+	 * meaning strong in both themes. */
+	--mga-a-border: #2d2d2d; /* colorBorder */
+	--mga-a-border-strong: #3f3f3f; /* colorBorderSecondary */
+	--mga-a-primary-tint: rgba(16, 185, 129, 0.15); /* dark colorPrimaryBg */
 	--mga-a-info-tint: rgba(59, 130, 246, 0.18);
 	--mga-a-warning-tint: rgba(245, 158, 11, 0.18);
 	--mga-a-danger-tint: rgba(239, 68, 68, 0.18);
-	--mga-a-shadow-soft:
-		0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
-	--mga-a-shadow-medium:
-		0 1px 3px rgba(0, 0, 0, 0.4), 0 16px 40px -20px rgba(0, 0, 0, 0.6);
+	--mga-a-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+	--mga-a-shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.3);
 	color-scheme: dark;
 }
 
-:root[data-theme="dark"] .mga-app__sidebar {
-	background: #050a13;
-}
+/* Deliberately no dark-mode override for .mga-app__sidebar: the real one is a
+ * hardcoded #0E0E0E in every theme, so re-tinting it here would invent a state
+ * the product does not have. */
 
 :root[data-theme="dark"] .mga-app__chat-bubble--agent {
 	background: rgba(254, 252, 232, 0.08);

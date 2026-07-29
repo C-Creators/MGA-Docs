@@ -4,6 +4,7 @@ description: Define your assistant's purpose, capabilities, and operating guardr
 ---
 
 import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import BotSidebar from "../../../components/BotSidebar.astro";
 
 ## Beyond Q&A: Your AI as an Agent <Badge text="Advanced" variant="tip" size="small" />
 
@@ -11,20 +12,7 @@ The Agent Framework turns a simple Q&A chatbot into a capable AI agent. Instead 
 
 <div class="mga-app" aria-label="Agent framework settings — illustrative preview">
   <div class="mga-app__shell">
-    <aside class="mga-app__sidebar">
-      <div class="mga-app__sidebar-brand">
-        <div class="mga-app__sidebar-logo">M</div>
-        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
-      </div>
-      <div class="mga-app__sidebar-section">Assistants</div>
-      <nav class="mga-app__sidebar-nav">
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◆</span> Overview</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">⚙</span> Settings</button>
-        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">⚡</span> Agent framework</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▣</span> Data sources</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Conversations</button>
-      </nav>
-    </aside>
+    <BotSidebar active="settings" />
     <main class="mga-app__main">
       <div class="mga-app__topbar">
         <div>

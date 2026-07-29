@@ -1,0 +1,89 @@
+---
+/**
+ * The CRM left navigation, mirroring app/ui/src/Layout/CRMLayout.tsx.
+ *
+ * Exists as a component because every preview page was hand-writing its own
+ * sidebar, so they disagreed with the app AND with each other — different
+ * items, different order, dingbat icons. One component means a nav change in
+ * the app is a one-line change here instead of twelve.
+ *
+ * Item order, labels and icons are taken from the `navigation` array in
+ * CRMLayout.tsx. Entries the app renders as expandable groups (Appointments,
+ * Campaigns) carry a chevron here for the same reason.
+ */
+import MgaIcon from './MgaIcon.astro';
+
+interface Props {
+  /** Which nav row is highlighted — match the `key` values below. */
+  active?: string;
+  /** Label set to render. Strings come from the app's own locale bundles. */
+  lang?: 'en' | 'es';
+}
+
+const { active = 'support', lang = 'en' } = Astro.props;
+
+/* Copied from app/ui/src/locales/{en,es}/translation.json so the Spanish pages
+ * show the Spanish product, not translated prose wrapped around English chrome.
+ * `crm.maggieHQ` has no `es` entry, so the app falls back to the `en` string —
+ * mirrored here rather than "helpfully" inventing a Spanish translation. */
+const MENU_LABEL = { en: 'Menu', es: 'Menú' };
+
+const ITEMS = [
+  { key: 'maggie', label: { en: 'Maggie HQ', es: 'Maggie HQ' }, icon: 'sparkles' },
+  { key: 'contacts', label: { en: 'Contacts', es: 'Contactos' }, icon: 'users' },
+  { key: 'leads', label: { en: 'Leads', es: 'Prospectos' }, icon: 'funnel' },
+  { key: 'accounts', label: { en: 'Accounts', es: 'Cuentas' }, icon: 'building-office' },
+  { key: 'pipelines', label: { en: 'Pipelines', es: 'Pipelines' }, icon: 'view-columns' },
+  {
+    key: 'support',
+    label: { en: 'Customer Support', es: 'Atención al Cliente' },
+    icon: 'lifebuoy',
+  },
+  {
+    key: 'tasks',
+    label: { en: 'Tasks', es: 'Tareas' },
+    icon: 'clipboard-document-check',
+  },
+  {
+    key: 'appointments',
+    label: { en: 'Appointments', es: 'Citas' },
+    icon: 'calendar-days',
+    group: true,
+  },
+  {
+    key: 'campaigns',
+    label: { en: 'Campaigns', es: 'Campañas' },
+    icon: 'megaphone',
+    group: true,
+  },
+];
+---
+
+<aside class="mga-app__sidebar">
+  <div class="mga-app__sidebar-brand">
+    <div class="mga-app__sidebar-logo">M</div>
+    <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
+  </div>
+  <div class="mga-app__sidebar-section">{MENU_LABEL[lang]}</div>
+  <nav class="mga-app__sidebar-nav">
+    {
+      ITEMS.map((item) => (
+        <button
+          class:list={[
+            'mga-app__sidebar-item',
+            item.key === active && 'mga-app__sidebar-item--active',
+          ]}
+          type="button"
+          tabindex="-1"
+          aria-current={item.key === active ? 'page' : undefined}
+        >
+          <span class="mga-app__sidebar-icon">
+            <MgaIcon name={item.icon} size={18} />
+          </span>
+          <span>{item.label[lang]}</span>
+          {item.group && <span class="mga-app__sidebar-caret">›</span>}
+        </button>
+      ))
+    }
+  </nav>
+</aside>

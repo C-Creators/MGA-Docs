@@ -4,6 +4,7 @@ description: Let your AI assistant schedule appointments directly with customers
 ---
 
 import { Aside, Badge, Card, CardGrid, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import CrmSidebar from "../../../components/CrmSidebar.astro";
 
 ## AI-Powered Scheduling <Badge text="CRM Feature" variant="success" size="small" />
 
@@ -11,20 +12,7 @@ Appointments lets your AI assistant book meetings directly with customers during
 
 <div class="mga-app" aria-label="Appointments calendar view — illustrative preview">
   <div class="mga-app__shell">
-    <aside class="mga-app__sidebar">
-      <div class="mga-app__sidebar-brand">
-        <div class="mga-app__sidebar-logo">M</div>
-        <div class="mga-app__sidebar-brand-text">MyGPT Assistants</div>
-      </div>
-      <div class="mga-app__sidebar-section">CRM</div>
-      <nav class="mga-app__sidebar-nav">
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">◎</span> Contacts</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">★</span> Leads</button>
-        <button class="mga-app__sidebar-item mga-app__sidebar-item--active"><span class="mga-app__sidebar-icon">▦</span> Appointments</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">▤</span> Tasks</button>
-        <button class="mga-app__sidebar-item"><span class="mga-app__sidebar-icon">!</span> Tickets</button>
-      </nav>
-    </aside>
+    <CrmSidebar active="appointments" />
     <main class="mga-app__main">
       <div class="mga-app__topbar">
         <div>
