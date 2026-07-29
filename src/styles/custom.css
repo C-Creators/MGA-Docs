@@ -3,6 +3,25 @@
  * Teal accent color palette (#0ec999)
  */
 
+/* ── Layout ───────────────────────────────────────────────────────────
+ * Starlight defaults to a 45rem content column, and the "On this page"
+ * container is DERIVED from it:
+ *
+ *   width = --sl-sidebar-width + (100% - --sl-content-width - --sl-sidebar-width) / 2
+ *
+ * so on a wide screen every pixel not given to content is split between the
+ * margins and that panel — which is why it renders very wide with a lot of
+ * empty space beside the links. Widening the content column therefore does two
+ * jobs at once: more room for the page, and a proportionally narrower table of
+ * contents. Overriding the custom property is Starlight's documented mechanism
+ * (its own example uses 50rem); we go a little further because these pages
+ * embed full-width app replicas — six-column tables and a chat pane beside its
+ * detail rail — that are cramped at 45rem.
+ * ─────────────────────────────────────────────────────────────────── */
+:root {
+	--sl-content-width: 56rem;
+}
+
 :root {
   --sl-color-accent-low: #064e3b;
   --sl-color-accent: #0ec999;
